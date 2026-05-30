@@ -997,13 +997,16 @@ function createDayTab(dayId, label, isActive) {
 }
 
 function getDayTabLabel(day) {
-  const date = String(day.date || "");
-  const match = /-(\d{2})$/.exec(date);
-  if (match) {
-    return String(Number(match[1]));
+  const label = String(day.label || "");
+  const labelMatch = /^(\d{1,2})\/(\d{1,2})(.*)$/.exec(label);
+  if (labelMatch) {
+    const month = Number(labelMatch[1]);
+    const dayOfMonth = Number(labelMatch[2]);
+    const suffix = labelMatch[3] || "";
+    const dateText = month === 7 ? String(dayOfMonth) : `${month}/${dayOfMonth}`;
+    return `${dateText}${suffix}`;
   }
-  const labelMatch = /^(\d{1,2})\/(\d{1,2})/.exec(String(day.label || ""));
-  return labelMatch ? labelMatch[2] : day.label;
+  return label;
 }
 
 function renderTimeline() {

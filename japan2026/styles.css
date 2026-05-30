@@ -14,8 +14,8 @@
   --green: #34c759;
   --orange: #ff9500;
   --danger: #ff3b30;
-  --shadow: 0 18px 48px rgba(15, 23, 42, 0.14);
-  --small-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+  --shadow: none;
+  --small-shadow: none;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", sans-serif;
@@ -32,10 +32,7 @@ body {
 }
 
 body {
-  background:
-    radial-gradient(circle at 12% 10%, rgba(0, 122, 255, 0.12), transparent 28%),
-    radial-gradient(circle at 92% 6%, rgba(52, 199, 89, 0.12), transparent 26%),
-    var(--bg);
+  background: var(--bg);
   color: var(--ink);
 }
 
@@ -57,13 +54,11 @@ button {
   transition:
     background 140ms ease,
     border-color 140ms ease,
-    box-shadow 140ms ease,
     transform 140ms ease;
 }
 
 button:hover {
   background: var(--accent-strong);
-  box-shadow: var(--small-shadow);
 }
 
 button:active {
@@ -75,7 +70,6 @@ button.secondary,
   border-color: var(--border);
   background: rgba(255, 255, 255, 0.86);
   color: var(--accent);
-  box-shadow: var(--small-shadow);
 }
 
 button.secondary:hover,
@@ -150,7 +144,6 @@ button:focus-visible,
   border: 1px solid var(--border);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--small-shadow);
   backdrop-filter: blur(18px);
 }
 
@@ -159,18 +152,15 @@ button:focus-visible,
   border: 0;
   background: transparent;
   color: var(--muted);
-  box-shadow: none;
 }
 
 .view-tab:hover {
   background: rgba(0, 122, 255, 0.08);
-  box-shadow: none;
 }
 
 .view-tab.active {
   background: var(--panel-solid);
   color: var(--accent);
-  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.1);
 }
 
 .view-panel[hidden] {
@@ -191,7 +181,6 @@ button:focus-visible,
   border: 1px solid var(--border);
   border-radius: 24px;
   background: var(--panel);
-  box-shadow: var(--shadow);
   overflow: auto;
   backdrop-filter: blur(22px);
 }
@@ -232,13 +221,13 @@ button:focus-visible,
 
 .day-tab {
   flex: 0 0 auto;
-  width: 38px;
+  width: auto;
+  min-width: 112px;
   min-height: 34px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.76);
   color: var(--ink);
   font-size: 14px;
-  box-shadow: none;
 }
 
 .day-tab.active {
@@ -269,20 +258,17 @@ button:focus-visible,
   border: 1px solid var(--border);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.84);
-  box-shadow: var(--small-shadow);
   cursor: pointer;
   padding: 13px 14px;
   transition:
     background 140ms ease,
     border-color 140ms ease,
-    transform 140ms ease,
-    box-shadow 140ms ease;
+    transform 140ms ease;
 }
 
 .stop-card:hover {
   border-color: rgba(0, 122, 255, 0.28);
   background: #fff;
-  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
   transform: translateY(-1px);
 }
 
@@ -295,14 +281,12 @@ button:focus-visible,
   border-color: transparent;
   border-radius: 12px;
   background: transparent;
-  box-shadow: none;
   padding: 7px 4px;
 }
 
 .stop-card--plain:hover {
   border-color: transparent;
   background: rgba(0, 122, 255, 0.08);
-  box-shadow: none;
   transform: none;
 }
 
@@ -376,7 +360,6 @@ button:focus-visible,
   border: 1px solid var(--border);
   border-radius: 24px;
   background: var(--panel);
-  box-shadow: var(--shadow);
   backdrop-filter: blur(22px);
 }
 
@@ -423,7 +406,6 @@ button:focus-visible,
   border: 1px solid var(--border);
   border-radius: 24px;
   background: #dce6ef;
-  box-shadow: var(--shadow);
 }
 
 .map {
@@ -468,7 +450,6 @@ button:focus-visible,
   border: 1px solid var(--border);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
   color: var(--muted);
   font-size: 13px;
@@ -489,7 +470,6 @@ button:focus-visible,
   height: 32px;
   border: 2px solid #fff;
   border-radius: 50%;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.24);
   color: #fff;
   font-size: 13px;
   font-weight: 900;
@@ -501,7 +481,6 @@ button:focus-visible,
   border: 3px solid #fff;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 8px rgba(0, 122, 255, 0.18);
 }
 
 .info-window {
