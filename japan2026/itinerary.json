@@ -3,7 +3,10 @@
   "timezone": "Asia/Tokyo",
   "defaultTravelMode": "TRANSIT",
   "map": {
-    "center": { "lat": 35.681236, "lng": 139.767125 },
+    "center": {
+      "lat": 35.681236,
+      "lng": 139.767125
+    },
     "zoom": 11,
     "mapId": "DEMO_MAP_ID"
   },
@@ -11,7 +14,7 @@
     {
       "id": "2026-06-25-tokyo-arrival",
       "date": "2026-06-25",
-      "label": "6/25 · 东京",
+      "label": "6/25 · 东京抵达 / 新宿",
       "color": "#0f766e",
       "stops": [
         {
@@ -20,52 +23,323 @@
           "duration": "1h",
           "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel, 1-30-1 Kabukicho, Shinjuku City, Tokyo, Japan",
-          "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "入住 / 东京前半段酒店",
-          "travelModeToNext": "WALKING"
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "东京前半段酒店 (6/25–6/27)。位于新宿中心，出行便利。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         },
         {
-          "id": "shinjuku-evening",
-          "time": "18:00",
-          "duration": "2h",
-          "title": "新宿周边",
-          "place": "Shinjuku Station, Tokyo, Japan",
-          "coords": { "lat": 35.690921, "lng": 139.700258 },
-          "notes": "晚餐 / 第一天轻松散步"
+          "id": "kabukicho-tower",
+          "time": "17:00",
+          "duration": "1h",
+          "title": "东急歌舞伎町塔",
+          "place": "Tokyu Kabukicho Tower, Shinjuku, Tokyo, Japan",
+          "coords": {
+            "lat": 35.695884,
+            "lng": 139.700634
+          },
+          "notes": "2023年开业的娱乐综合体，集餐饮、电影院和观景台于一体，是夜景爱好者的新地标。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "omoide-yokocho",
+          "time": "18:30",
+          "duration": "1h 30m",
+          "title": "思出横丁",
+          "place": "Omoide Yokocho, Shinjuku, Tokyo, Japan",
+          "coords": {
+            "lat": 35.69384,
+            "lng": 139.69959
+          },
+          "notes": "狭窄的巷弄里密布着几十家小吃店，怀旧氛围浓厚，可以尝试烤鸡串等平民美食。",
+          "travelModeToNext": "WALKING",
+          "type": "restaurant"
+        },
+        {
+          "id": "shinjuku-night-walk",
+          "time": "20:30",
+          "duration": "1h",
+          "title": "新宿夜间散步",
+          "place": "Shinjuku Station area, Tokyo, Japan",
+          "coords": {
+            "lat": 35.690921,
+            "lng": 139.700258
+          },
+          "notes": "沿着霓虹闪烁的街道散步，体验新宿的繁华夜景。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "golden-gai",
+          "time": "22:00",
+          "duration": "1h 30m",
+          "title": "黄金街 (Golden Gai)",
+          "place": "Golden Gai, Shinjuku, Tokyo, Japan",
+          "coords": {
+            "lat": 35.6937,
+            "lng": 139.7041
+          },
+          "notes": "二战后遗留下来的六条狭窄小巷里分布着约200家小酒吧，保留了昭和时代的风貌，被誉为东京夜生活的活历史。可选择一家小店品尝清酒，感受文艺家和导演们曾经的聚会地。",
+          "travelModeToNext": "WALKING",
+          "type": "nightlife"
+        },
+        {
+          "id": "shinjuku-return-0625",
+          "time": "23:30",
+          "duration": "过夜",
+          "title": "新宿王子大饭店",
+          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "回到酒店休息。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         }
       ]
     },
     {
-      "id": "2026-06-26-tokyo",
+      "id": "2026-06-26-tokyo-west",
       "date": "2026-06-26",
-      "label": "6/26 · 东京",
+      "label": "6/26 · 东京西侧 / 原宿 · 涩谷",
       "color": "#2563eb",
       "stops": [
         {
-          "id": "tokyo-free-day-1",
+          "id": "shinjuku-prince-start",
           "time": "09:00",
-          "duration": "整天",
-          "title": "东京自由日 · 细节待定",
+          "duration": "15m",
+          "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel, Tokyo, Japan",
-          "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "确定当天安排后，在这里添加东京景点"
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "出发前往原宿。",
+          "travelModeToNext": "TRANSIT",
+          "type": "hotel"
+        },
+        {
+          "id": "meiji-jingu",
+          "time": "10:00",
+          "duration": "1h 30m",
+          "title": "明治神宫",
+          "place": "Meiji Jingu, 1-1 Yoyogikamizonocho, Shibuya City, Tokyo, Japan",
+          "coords": {
+            "lat": 35.676397,
+            "lng": 139.699326
+          },
+          "notes": "参拜东京最重要的神社之一，漫步静谧的林间参道。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "takeshita-street",
+          "time": "12:00",
+          "duration": "1h",
+          "title": "竹下通",
+          "place": "Takeshita Street, Harajuku, Tokyo, Japan",
+          "coords": {
+            "lat": 35.671702,
+            "lng": 139.703001
+          },
+          "notes": "汇集潮流服饰、甜品和动漫周边的小巷，是年轻人的打卡圣地。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "omotesando",
+          "time": "14:00",
+          "duration": "1h 30m",
+          "title": "表参道",
+          "place": "Omotesando, Tokyo, Japan",
+          "coords": {
+            "lat": 35.665247,
+            "lng": 139.712314
+          },
+          "notes": "欣赏林荫大道的设计建筑和精品店。",
+          "travelModeToNext": "TRANSIT",
+          "type": "area"
+        },
+        {
+          "id": "shibuya-crossing",
+          "time": "16:00",
+          "duration": "1h",
+          "title": "涩谷十字路口",
+          "place": "Shibuya Scramble Crossing, Tokyo, Japan",
+          "coords": {
+            "lat": 35.6595,
+            "lng": 139.7005
+          },
+          "notes": "体验世界上最繁忙的十字路口，感受行人交错的壮观景象。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "shibuya-sky",
+          "time": "18:00",
+          "duration": "1h 30m",
+          "title": "Shibuya Sky",
+          "place": "Shibuya Sky, Tokyo, Japan",
+          "coords": {
+            "lat": 35.658446,
+            "lng": 139.702182
+          },
+          "notes": "摩天楼展望台，俯瞰东京夜景。建议提前预约黄昏时段。",
+          "travelModeToNext": "TRAIN",
+          "type": "sight"
+        },
+        {
+          "id": "blue-note-tokyo",
+          "time": "20:00",
+          "duration": "2h 30m",
+          "title": "Blue Note Tokyo",
+          "place": "Blue Note Tokyo, 6-3-16 Minami-Aoyama, Minato City, Tokyo, Japan",
+          "coords": {
+            "lat": 35.6606,
+            "lng": 139.7116
+          },
+          "notes": "国际连锁蓝调俱乐部，被誉为东京最顶级的爵士现场。请来世界级音乐家演奏，如 Chick Corea、Herbie Hancock，并提供精致料理和高质量表演。票价较高但体验出众，需提前预订。",
+          "travelModeToNext": "TRANSIT",
+          "type": "nightlife"
+        },
+        {
+          "id": "shinjuku-prince-return-0626",
+          "time": "23:00",
+          "duration": "过夜",
+          "title": "新宿王子大饭店",
+          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "返回酒店休息。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         }
       ]
     },
     {
-      "id": "2026-06-27-tokyo",
+      "id": "2026-06-27-tokyo-east",
       "date": "2026-06-27",
-      "label": "6/27 · 东京",
+      "label": "6/27 · 浅草 · 上野 · 秋叶原",
       "color": "#c2410c",
       "stops": [
         {
-          "id": "tokyo-free-day-2",
+          "id": "shinjuku-prince-start-0627",
           "time": "09:00",
-          "duration": "整天",
-          "title": "东京自由日 · 细节待定",
+          "duration": "15m",
+          "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel, Tokyo, Japan",
-          "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "确定当天安排后，在这里添加东京景点"
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "出发前往浅草。",
+          "travelModeToNext": "TRAIN",
+          "type": "hotel"
+        },
+        {
+          "id": "sensoji",
+          "time": "10:15",
+          "duration": "1h 30m",
+          "title": "浅草寺",
+          "place": "Senso-ji, Asakusa, Tokyo, Japan",
+          "coords": {
+            "lat": 35.714765,
+            "lng": 139.796655
+          },
+          "notes": "东京最古老的佛寺，参拜雷门和五重塔。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "nakamise-dori",
+          "time": "12:00",
+          "duration": "1h",
+          "title": "仲见世商店街",
+          "place": "Nakamise-dori Street, Asakusa, Tokyo, Japan",
+          "coords": {
+            "lat": 35.711942,
+            "lng": 139.796357
+          },
+          "notes": "寺前的商业街，售卖传统点心和纪念品。",
+          "travelModeToNext": "TRANSIT",
+          "type": "area"
+        },
+        {
+          "id": "tokyo-skytree",
+          "time": "14:00",
+          "duration": "1h 30m",
+          "title": "东京晴空塔",
+          "place": "Tokyo Skytree, Tokyo, Japan",
+          "coords": {
+            "lat": 35.710063,
+            "lng": 139.8107
+          },
+          "notes": "世界第二高塔，可上展望台俯瞰关东地区。提前购票省排队。",
+          "travelModeToNext": "TRAIN",
+          "type": "sight"
+        },
+        {
+          "id": "ueno-park",
+          "time": "16:30",
+          "duration": "1h",
+          "title": "上野公园",
+          "place": "Ueno Park, Tokyo, Japan",
+          "coords": {
+            "lat": 35.715298,
+            "lng": 139.773038
+          },
+          "notes": "可漫步湖畔或参观附近的国立博物馆。",
+          "travelModeToNext": "TRAIN",
+          "type": "sight"
+        },
+        {
+          "id": "akihabara",
+          "time": "18:30",
+          "duration": "2h",
+          "title": "秋叶原",
+          "place": "Akihabara Station, Tokyo, Japan",
+          "coords": {
+            "lat": 35.698353,
+            "lng": 139.773114
+          },
+          "notes": "秋叶原是日本宅文化的中心，聚集动漫商店、游戏厅及偶像周边。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "maid-cafe",
+          "time": "20:30",
+          "duration": "1h 30m",
+          "title": "秋叶原女仆咖啡厅",
+          "place": "At-Home Maid Café, Akihabara, Tokyo, Japan",
+          "coords": {
+            "lat": 35.69865,
+            "lng": 139.7703
+          },
+          "notes": "女仆咖啡厅是秋叶原最具代表性的体验之一；女仆以可爱的装扮称呼客人“主人”和“大小姐”，提供绘图餐点并与客人互动。初次体验建议提前预约或参加当地导览团。",
+          "travelModeToNext": "TRANSIT",
+          "type": "restaurant"
+        },
+        {
+          "id": "shinjuku-prince-return-0627",
+          "time": "22:30",
+          "duration": "过夜",
+          "title": "新宿王子大饭店",
+          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "返回酒店休息。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         }
       ]
     },
@@ -77,13 +351,17 @@
       "stops": [
         {
           "id": "shinjuku-prince-checkout",
-          "time": "09:00",
+          "time": "08:30",
           "duration": "30m",
           "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel, Tokyo, Japan",
-          "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "退房",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "办理退房。",
+          "travelModeToNext": "TRAIN",
+          "type": "hotel"
         },
         {
           "id": "tokyo-station-to-nagoya",
@@ -91,75 +369,273 @@
           "duration": "30m",
           "title": "东京站",
           "place": "Tokyo Station, Tokyo, Japan",
-          "coords": { "lat": 35.681236, "lng": 139.767125 },
-          "notes": "新干线前往名古屋",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 35.681236,
+            "lng": 139.767125
+          },
+          "notes": "搭乘新干线前往名古屋，约1小时40分抵达。",
+          "travelModeToNext": "TRAIN",
+          "type": "station"
         },
         {
           "id": "nagoya-station-arrival",
-          "time": "12:30",
+          "time": "12:00",
           "duration": "30m",
           "title": "名古屋站",
           "place": "Nagoya Station, Nagoya, Aichi, Japan",
-          "coords": { "lat": 35.170915, "lng": 136.881537 },
-          "notes": "抵达名古屋",
-          "travelModeToNext": "WALKING"
+          "coords": {
+            "lat": 35.170915,
+            "lng": 136.881537
+          },
+          "notes": "抵达名古屋。",
+          "travelModeToNext": "WALKING",
+          "type": "station"
         },
         {
           "id": "via-inn-nagoya",
-          "time": "13:15",
-          "duration": "过夜",
+          "time": "12:45",
+          "duration": "30m",
           "title": "名古屋站前椿町维亚酒店",
           "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, 9-13 Tsubakicho, Nakamura Ward, Nagoya, Aichi, Japan",
-          "coords": { "lat": 35.1695482, "lng": 136.8782109 },
-          "notes": "名古屋酒店"
+          "coords": {
+            "lat": 35.1695482,
+            "lng": 136.8782109
+          },
+          "notes": "名古屋酒店 (6/28)。放下行李，准备游览。",
+          "travelModeToNext": "TRANSIT",
+          "type": "hotel"
+        },
+        {
+          "id": "nagoya-castle",
+          "time": "14:30",
+          "duration": "1h 30m",
+          "title": "名古屋城",
+          "place": "Nagoya Castle, Nagoya, Aichi, Japan",
+          "coords": {
+            "lat": 35.185575,
+            "lng": 136.899
+          },
+          "notes": "参观江户时代的名古屋城天守阁和本丸御殿。",
+          "travelModeToNext": "TRANSIT",
+          "type": "sight"
+        },
+        {
+          "id": "osu-kannon",
+          "time": "17:00",
+          "duration": "45m",
+          "title": "大须观音",
+          "place": "Osu Kannon, Nagoya, Aichi, Japan",
+          "coords": {
+            "lat": 35.159563,
+            "lng": 136.905968
+          },
+          "notes": "参拜名古屋著名寺院，附近有古老商店街可逛。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "osu-shopping-district",
+          "time": "18:00",
+          "duration": "1h 30m",
+          "title": "大须商店街",
+          "place": "Osu Shopping District, Nagoya, Aichi, Japan",
+          "coords": {
+            "lat": 35.158704,
+            "lng": 136.904813
+          },
+          "notes": "逛街购买电子产品、二手和服以及小吃。",
+          "travelModeToNext": "TRANSIT",
+          "type": "area"
+        },
+        {
+          "id": "oasis-21-sakae",
+          "time": "20:00",
+          "duration": "1h",
+          "title": "荣 / Oasis 21",
+          "place": "Oasis 21, Nagoya, Aichi, Japan",
+          "coords": {
+            "lat": 35.170278,
+            "lng": 136.909717
+          },
+          "notes": "夜景优美的现代建筑，可散步观赏光之水盘。",
+          "travelModeToNext": "TRAIN",
+          "type": "area"
+        },
+        {
+          "id": "jazz-inn-lovely",
+          "time": "22:00",
+          "duration": "2h",
+          "title": "Jazz Inn LOVELY",
+          "place": "Jazz Inn LOVELY, Higashisakura, Nagoya, Japan",
+          "coords": {
+            "lat": 35.1709,
+            "lng": 136.909
+          },
+          "notes": "1975年开业的老牌爵士俱乐部，被誉为名古屋最尊敬的爵士场地之一。这里每晚都有现场演出，室内温馨，重视音乐体验，建议提前预约。",
+          "travelModeToNext": "TRANSIT",
+          "type": "nightlife"
+        },
+        {
+          "id": "via-inn-return-0628",
+          "time": "00:00",
+          "duration": "过夜",
+          "title": "名古屋站前椿町维亚酒店",
+          "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, Nagoya, Japan",
+          "coords": {
+            "lat": 35.1695482,
+            "lng": 136.8782109
+          },
+          "notes": "返回酒店休息。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         }
       ]
     },
     {
       "id": "2026-06-29-nagoya-to-kyoto",
       "date": "2026-06-29",
-      "label": "6/29 · 名古屋 → 京都",
+      "label": "6/29 · 名古屋 → 京都 / 岚山",
       "color": "#be123c",
       "stops": [
         {
           "id": "via-inn-checkout",
-          "time": "09:00",
+          "time": "08:30",
           "duration": "30m",
           "title": "名古屋站前椿町维亚酒店",
           "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, Nagoya, Japan",
-          "coords": { "lat": 35.1695482, "lng": 136.8782109 },
-          "notes": "退房",
-          "travelModeToNext": "WALKING"
+          "coords": {
+            "lat": 35.1695482,
+            "lng": 136.8782109
+          },
+          "notes": "退房。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         },
         {
           "id": "nagoya-station-to-kyoto",
-          "time": "10:00",
+          "time": "09:30",
           "duration": "30m",
           "title": "名古屋站",
           "place": "Nagoya Station, Nagoya, Japan",
-          "coords": { "lat": 35.170915, "lng": 136.881537 },
-          "notes": "新干线前往京都",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 35.170915,
+            "lng": 136.881537
+          },
+          "notes": "乘坐新干线前往京都。",
+          "travelModeToNext": "TRAIN",
+          "type": "station"
         },
         {
-          "id": "kyoto-station-arrival",
-          "time": "11:15",
-          "duration": "45m",
+          "id": "kyoto-station-arrival-0629",
+          "time": "10:45",
+          "duration": "30m",
           "title": "京都站",
           "place": "Kyoto Station, Kyoto, Japan",
-          "coords": { "lat": 34.985849, "lng": 135.758766 },
-          "notes": "抵达京都",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 34.985849,
+            "lng": 135.758766
+          },
+          "notes": "抵达京都。",
+          "travelModeToNext": "TRAIN",
+          "type": "station"
+        },
+        {
+          "id": "kadensho-bag-drop",
+          "time": "12:00",
+          "duration": "30m",
+          "title": "京都岚山温泉 花传抄",
+          "place": "Kyoto Arashiyama Onsen Kadensho, 5-4 Arashiyama Nishiichikawacho, Nishikyo Ward, Kyoto, Japan",
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "在酒店寄存行李 (6/29–7/2入住)。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        },
+        {
+          "id": "togetsukyo-bridge",
+          "time": "13:00",
+          "duration": "45m",
+          "title": "渡月桥",
+          "place": "Togetsukyo Bridge, Arashiyama, Kyoto, Japan",
+          "coords": {
+            "lat": 35.013118,
+            "lng": 135.676237
+          },
+          "notes": "欣赏岚山的山景与桂川流风光。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "tenryuji",
+          "time": "14:00",
+          "duration": "1h",
+          "title": "天龙寺",
+          "place": "Tenryu-ji, Arashiyama, Kyoto, Japan",
+          "coords": {
+            "lat": 35.01579,
+            "lng": 135.67364
+          },
+          "notes": "世界文化遗产，赏枯山水庭园。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "arashiyama-bamboo",
+          "time": "15:30",
+          "duration": "1h",
+          "title": "岚山竹林小径",
+          "place": "Arashiyama Bamboo Forest, Kyoto, Japan",
+          "coords": {
+            "lat": 35.017209,
+            "lng": 135.6714
+          },
+          "notes": "在翠绿竹林中散步，感受宁静。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
         },
         {
           "id": "kadensho-checkin",
-          "time": "15:00",
+          "time": "17:00",
           "duration": "过夜",
           "title": "京都岚山温泉 花传抄",
-          "place": "Kyoto Arashiyama Onsen Kadensho, 5-4 Arashiyama Nishiichikawacho, Nishikyo Ward, Kyoto, Japan",
-          "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "京都 / 岚山酒店"
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "入住，享用旅馆温泉。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        },
+        {
+          "id": "hello-dolly",
+          "time": "20:30",
+          "duration": "2h",
+          "title": "Hello Dolly 爵士吧",
+          "place": "Hello Dolly, Pontocho, Kyoto, Japan",
+          "coords": {
+            "lat": 35.004,
+            "lng": 135.77
+          },
+          "notes": "1975年开业的复古爵士酒吧，以木质内饰和黑胶唱片营造出怀旧氛围，是京都音乐爱好者的热门夜生活场所。位于先斗町附近，可点酒品小食，感受京都夜色。",
+          "travelModeToNext": "TRANSIT",
+          "type": "nightlife"
+        },
+        {
+          "id": "kadensho-return-0629",
+          "time": "22:30",
+          "duration": "过夜",
+          "title": "京都岚山温泉 花传抄",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "返回旅馆休息。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         }
       ]
     },
@@ -171,160 +647,595 @@
       "stops": [
         {
           "id": "kadensho-start-nara",
-          "time": "08:30",
+          "time": "08:00",
           "duration": "20m",
           "title": "京都岚山温泉 花传抄",
           "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
-          "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "从京都酒店出发",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "出发前往奈良。",
+          "travelModeToNext": "TRAIN",
+          "type": "hotel"
         },
         {
           "id": "kyoto-station-nara-transfer",
-          "time": "09:30",
+          "time": "09:00",
           "duration": "20m",
           "title": "京都站",
           "place": "Kyoto Station, Kyoto, Japan",
-          "coords": { "lat": 34.985849, "lng": 135.758766 },
-          "notes": "搭车前往奈良",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 34.985849,
+            "lng": 135.758766
+          },
+          "notes": "乘车前往奈良。",
+          "travelModeToNext": "TRAIN",
+          "type": "station"
+        },
+        {
+          "id": "kintetsu-nara-station",
+          "time": "10:00",
+          "duration": "15m",
+          "title": "近铁奈良站",
+          "place": "Kintetsu Nara Station, Nara, Japan",
+          "coords": {
+            "lat": 34.684367,
+            "lng": 135.827571
+          },
+          "notes": "抵达奈良。",
+          "travelModeToNext": "WALKING",
+          "type": "station"
         },
         {
           "id": "nara-park",
-          "time": "11:00",
-          "duration": "2h",
+          "time": "10:30",
+          "duration": "1h 30m",
           "title": "奈良公园",
           "place": "Nara Park, Nara, Japan",
-          "coords": { "lat": 34.685087, "lng": 135.843012 },
-          "notes": "奈良一日游主要地点",
-          "travelModeToNext": "WALKING"
+          "coords": {
+            "lat": 34.685087,
+            "lng": 135.843012
+          },
+          "notes": "与梅花鹿亲密接触，欣赏东大寺和春日大社的园景。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
         },
         {
           "id": "todai-ji",
-          "time": "13:30",
+          "time": "12:30",
           "duration": "1h 30m",
           "title": "东大寺",
           "place": "Todai-ji, Nara, Japan",
-          "coords": { "lat": 34.688986, "lng": 135.839816 },
-          "notes": "可选；之后可以继续细化奈良路线",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 34.688986,
+            "lng": 135.839816
+          },
+          "notes": "参观大佛殿，感受奈良时代佛教建筑。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "kasuga-taisha",
+          "time": "14:30",
+          "duration": "1h",
+          "title": "春日大社",
+          "place": "Kasuga Taisha, Nara, Japan",
+          "coords": {
+            "lat": 34.681386,
+            "lng": 135.848392
+          },
+          "notes": "参拜奈良著名的世界遗产神社，赏千年石灯笼。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "nakatanidou",
+          "time": "16:30",
+          "duration": "45m",
+          "title": "中谷堂",
+          "place": "Nakatanidou, Nara, Japan",
+          "coords": {
+            "lat": 34.681604,
+            "lng": 135.827839
+          },
+          "notes": "品尝刚出炉的草莓大福，观看飞快捣年糕的演示。",
+          "travelModeToNext": "TRAIN",
+          "type": "restaurant"
         },
         {
           "id": "kadensho-return-nara",
-          "time": "18:30",
+          "time": "19:00",
           "duration": "过夜",
           "title": "京都岚山温泉 花传抄",
           "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
-          "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "返回京都酒店"
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "返回京都，享用旅馆温泉。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         }
       ]
     },
     {
-      "id": "2026-07-01-kyoto",
+      "id": "2026-07-01-kyoto-east",
       "date": "2026-07-01",
-      "label": "7/1 · 京都",
+      "label": "7/1 · 京都东山 / 清水寺 · 漫画博物馆",
       "color": "#0f766e",
       "stops": [
         {
-          "id": "kadensho-kyoto-day",
-          "time": "09:00",
-          "duration": "整天",
-          "title": "京都自由日 · 细节待定",
-          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
-          "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "确定当天安排后，在这里添加京都景点"
-        }
-      ]
-    },
-    {
-      "id": "2026-07-02-kyoto",
-      "date": "2026-07-02",
-      "label": "7/2 · 京都",
-      "color": "#2563eb",
-      "stops": [
-        {
-          "id": "kadensho-kyoto-day-2",
-          "time": "09:00",
-          "duration": "整天",
-          "title": "京都自由日 · 细节待定",
-          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
-          "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "确定当天安排后，在这里添加京都景点"
-        }
-      ]
-    },
-    {
-      "id": "2026-07-03-yokohama-day-trip",
-      "date": "2026-07-03",
-      "label": "7/3 · 横滨",
-      "color": "#c2410c",
-      "stops": [
-        {
-          "id": "kyoto-to-yokohama-start",
+          "id": "kadensho-start-0701",
           "time": "08:00",
           "duration": "30m",
           "title": "京都岚山温泉 花传抄",
           "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
-          "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "退房 / 时间取决于是否前一晚先回东京",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "出发去京都市中心。",
+          "travelModeToNext": "TRANSIT",
+          "type": "hotel"
         },
         {
-          "id": "shin-yokohama",
+          "id": "kyoto-manga-museum",
+          "time": "09:00",
+          "duration": "1h 30m",
+          "title": "京都国际漫画博物馆",
+          "place": "Kyoto International Manga Museum, Kyoto, Japan",
+          "coords": {
+            "lat": 35.0127,
+            "lng": 135.7604
+          },
+          "notes": "世界首座综合漫画博物馆，馆藏约30万册漫画，并设置英语等多语言展区和漫画历史展览。可在漫画墙上随意阅读，了解日本漫画文化。",
+          "travelModeToNext": "TRANSIT",
+          "type": "museum"
+        },
+        {
+          "id": "kiyomizudera",
+          "time": "11:00",
+          "duration": "1h 30m",
+          "title": "清水寺",
+          "place": "Kiyomizu-dera, Kyoto, Japan",
+          "coords": {
+            "lat": 34.994856,
+            "lng": 135.785046
+          },
+          "notes": "参观世界遗产寺院，体验清水舞台的壮观景色。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "sannenzaka-ninenzaka",
+          "time": "12:45",
+          "duration": "1h",
+          "title": "三年坂 / 二年坂",
+          "place": "Sannenzaka & Ninenzaka, Kyoto, Japan",
+          "coords": {
+            "lat": 34.996323,
+            "lng": 135.780887
+          },
+          "notes": "在古街上漫步，欣赏传统町家和特色手工艺店。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "yasaka-shrine",
+          "time": "14:00",
+          "duration": "45m",
+          "title": "八坂神社",
+          "place": "Yasaka Shrine, Kyoto, Japan",
+          "coords": {
+            "lat": 35.003656,
+            "lng": 135.778556
+          },
+          "notes": "京都祇园祭的发源地，祈求平安。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "gion",
+          "time": "15:00",
+          "duration": "1h",
+          "title": "祇园",
+          "place": "Gion, Kyoto, Japan",
+          "coords": {
+            "lat": 35.003722,
+            "lng": 135.775097
+          },
+          "notes": "漫步古街，偶遇舞妓，感受花街文化。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "nishiki-market",
+          "time": "16:30",
+          "duration": "1h",
+          "title": "锦市场",
+          "place": "Nishiki Market, Kyoto, Japan",
+          "coords": {
+            "lat": 35.005008,
+            "lng": 135.764892
+          },
+          "notes": "品尝京都特色小吃，购买调味品和手工艺品。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "pontocho",
+          "time": "18:00",
+          "duration": "1h 30m",
+          "title": "先斗町",
+          "place": "Pontocho, Kyoto, Japan",
+          "coords": {
+            "lat": 35.007655,
+            "lng": 135.770159
+          },
+          "notes": "沿鸭川的餐饮街，可在老屋餐厅享用晚餐。",
+          "travelModeToNext": "TRAIN",
+          "type": "restaurant"
+        },
+        {
+          "id": "kadensho-return-0701",
+          "time": "20:00",
+          "duration": "过夜",
+          "title": "京都岚山温泉 花传抄",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "返回旅馆休息。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        }
+      ]
+    },
+    {
+      "id": "2026-07-02-kyoto-fushimi-uji",
+      "date": "2026-07-02",
+      "label": "7/2 · 伏见稻荷 · 宇治",
+      "color": "#2563eb",
+      "stops": [
+        {
+          "id": "kadensho-start-0702",
+          "time": "08:00",
+          "duration": "15m",
+          "title": "京都岚山温泉 花传抄",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "出发前往伏见稻荷。",
+          "travelModeToNext": "TRAIN",
+          "type": "hotel"
+        },
+        {
+          "id": "fushimi-inari",
+          "time": "09:30",
+          "duration": "2h",
+          "title": "伏见稻荷大社",
+          "place": "Fushimi Inari Taisha, Kyoto, Japan",
+          "coords": {
+            "lat": 34.96714,
+            "lng": 135.772672
+          },
+          "notes": "千本鸟居步道，建议早去避开拥挤。",
+          "travelModeToNext": "TRAIN",
+          "type": "sight"
+        },
+        {
+          "id": "uji-station",
+          "time": "12:00",
+          "duration": "15m",
+          "title": "宇治站",
+          "place": "Uji Station, Uji, Kyoto, Japan",
+          "coords": {
+            "lat": 34.890489,
+            "lng": 135.800817
+          },
+          "notes": "抵达宇治。",
+          "travelModeToNext": "WALKING",
+          "type": "station"
+        },
+        {
+          "id": "byodoin",
+          "time": "12:30",
+          "duration": "1h",
+          "title": "平等院",
+          "place": "Byodoin, Uji, Kyoto, Japan",
+          "coords": {
+            "lat": 34.889268,
+            "lng": 135.807681
+          },
+          "notes": "参观凤凰堂，欣赏10日元硬币上的建筑。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "uji-river",
+          "time": "14:00",
+          "duration": "1h",
+          "title": "宇治川周边",
+          "place": "Uji River, Uji, Kyoto, Japan",
+          "coords": {
+            "lat": 34.889521,
+            "lng": 135.809442
+          },
+          "notes": "散步并品尝抹茶甜品。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "nakamura-tokichi-uji",
+          "time": "16:00",
+          "duration": "1h",
+          "title": "中村藤吉本店",
+          "place": "Nakamura Tokichi Honten, Uji, Kyoto, Japan",
+          "coords": {
+            "lat": 34.892086,
+            "lng": 135.802037
+          },
+          "notes": "宇治最有名的抹茶甜品店之一，可能需要排队。",
+          "travelModeToNext": "TRAIN",
+          "type": "restaurant"
+        },
+        {
+          "id": "kadensho-return-0702",
+          "time": "19:30",
+          "duration": "过夜",
+          "title": "京都岚山温泉 花传抄",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "返回旅馆，整理行李准备离开京都。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        }
+      ]
+    },
+    {
+      "id": "2026-07-03-kyoto-to-yokohama-to-tokyo",
+      "date": "2026-07-03",
+      "label": "7/3 · 京都 → 横滨 → 东京",
+      "color": "#c2410c",
+      "stops": [
+        {
+          "id": "kadensho-checkout-0703",
+          "time": "07:30",
+          "duration": "30m",
+          "title": "京都岚山温泉 花传抄",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": {
+            "lat": 35.01069,
+            "lng": 135.680376
+          },
+          "notes": "退房并可使用行李宅急便将大件行李运送到东京酒店。",
+          "travelModeToNext": "TRAIN",
+          "type": "hotel"
+        },
+        {
+          "id": "kyoto-station-to-shin-yokohama",
+          "time": "09:00",
+          "duration": "30m",
+          "title": "京都站",
+          "place": "Kyoto Station, Kyoto, Japan",
+          "coords": {
+            "lat": 34.985849,
+            "lng": 135.758766
+          },
+          "notes": "乘坐新干线前往新横滨。",
+          "travelModeToNext": "TRAIN",
+          "type": "station"
+        },
+        {
+          "id": "shin-yokohama-arrival",
           "time": "11:30",
           "duration": "30m",
           "title": "新横滨站",
           "place": "Shin-Yokohama Station, Yokohama, Japan",
-          "coords": { "lat": 35.507456, "lng": 139.617585 },
-          "notes": "新干线抵达横滨的主要车站",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 35.507456,
+            "lng": 139.617585
+          },
+          "notes": "抵达横滨。",
+          "travelModeToNext": "TRAIN",
+          "type": "station"
         },
         {
-          "id": "minato-mirai",
-          "time": "13:00",
-          "duration": "2h",
-          "title": "港未来",
-          "place": "Minato Mirai, Yokohama, Japan",
-          "coords": { "lat": 35.457719, "lng": 139.631564 },
-          "notes": "横滨一日游主要地点",
-          "travelModeToNext": "TRANSIT"
+          "id": "cup-noodles-museum",
+          "time": "12:30",
+          "duration": "1h 30m",
+          "title": "横滨杯面博物馆",
+          "place": "CupNoodles Museum Yokohama, Yokohama, Japan",
+          "coords": {
+            "lat": 35.4576,
+            "lng": 139.6369
+          },
+          "notes": "互动性强的博物馆展示方便面的历史，并可在鸡肉拉面工厂体验手工制作、在“My CUPNOODLES Factory”定制自己的杯面。适合全龄。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "yokohama-red-brick",
+          "time": "14:30",
+          "duration": "1h",
+          "title": "横滨红砖仓库",
+          "place": "Yokohama Red Brick Warehouse, Yokohama, Japan",
+          "coords": {
+            "lat": 35.452416,
+            "lng": 139.642447
+          },
+          "notes": "历史建筑改造的购物与餐饮区，可体验横滨港风情。",
+          "travelModeToNext": "WALKING",
+          "type": "area"
+        },
+        {
+          "id": "yamashita-park",
+          "time": "16:00",
+          "duration": "1h",
+          "title": "山下公园",
+          "place": "Yamashita Park, Yokohama, Japan",
+          "coords": {
+            "lat": 35.445911,
+            "lng": 139.650103
+          },
+          "notes": "海滨公园，观赏横滨港和港未来摩天轮。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
         },
         {
           "id": "yokohama-chinatown",
-          "time": "16:00",
+          "time": "17:30",
           "duration": "1h 30m",
           "title": "横滨中华街",
           "place": "Yokohama Chinatown, Yokohama, Japan",
-          "coords": { "lat": 35.443708, "lng": 139.645866 },
-          "notes": "可选晚餐 / 散步",
-          "travelModeToNext": "TRANSIT"
+          "coords": {
+            "lat": 35.443708,
+            "lng": 139.645866
+          },
+          "notes": "品尝中式美食，漫步彩门与灯笼之间。",
+          "travelModeToNext": "TRAIN",
+          "type": "restaurant"
         },
         {
-          "id": "tokyo-return-hotel-tbd",
-          "time": "20:00",
+          "id": "shinjuku-prince-checkin-0703",
+          "time": "20:30",
           "duration": "过夜",
-          "title": "东京酒店待定",
-          "place": "Tokyo Station, Tokyo, Japan",
-          "coords": { "lat": 35.681236, "lng": 139.767125 },
-          "notes": "返回东京。订好最后一晚酒店后补上。"
+          "title": "新宿王子大饭店",
+          "place": "Shinjuku Prince Hotel, 1-30-1 Kabukicho, Shinjuku City, Tokyo, Japan",
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "东京最后一晚酒店：7/3。返回东京。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        },
+        {
+          "id": "shinjuku-pit-inn",
+          "time": "21:30",
+          "duration": "2h",
+          "title": "新宿Pit Inn",
+          "place": "Shinjuku Pit Inn, Shinjuku, Tokyo, Japan",
+          "coords": {
+            "lat": 35.6955,
+            "lng": 139.704
+          },
+          "notes": "东京老牌爵士俱乐部，50多年历史。这里以音乐为重，演出场次长，票价合理，是乐迷必去的场地。夜间可体验东京地下爵士文化。",
+          "travelModeToNext": "WALKING",
+          "type": "nightlife"
+        },
+        {
+          "id": "shinjuku-prince-return-0703",
+          "time": "23:30",
+          "duration": "过夜",
+          "title": "新宿王子大饭店",
+          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "观看表演后回酒店休息。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
         }
       ]
     },
     {
       "id": "2026-07-04-tokyo-departure",
       "date": "2026-07-04",
-      "label": "7/4 · 东京",
+      "label": "7/4 · 东京最后一天",
       "color": "#7c3aed",
       "stops": [
         {
-          "id": "tokyo-final-day",
+          "id": "shinjuku-prince-checkout-0704",
           "time": "09:00",
-          "duration": "整天",
-          "title": "东京最后一天 / 离境待定",
-          "place": "Tokyo Station, Tokyo, Japan",
-          "coords": { "lat": 35.681236, "lng": 139.767125 },
-          "notes": "之后补上东京酒店、机场和航班时间"
+          "duration": "30m",
+          "title": "新宿王子大饭店",
+          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
+          "coords": {
+            "lat": 35.69475,
+            "lng": 139.7005
+          },
+          "notes": "办理退房。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        },
+        {
+          "id": "shinjuku-final-shopping",
+          "time": "09:30",
+          "duration": "2h",
+          "title": "新宿最后采购",
+          "place": "Shinjuku Station area, Tokyo, Japan",
+          "coords": {
+            "lat": 35.690921,
+            "lng": 139.700258
+          },
+          "notes": "购买纪念品、药妆和免税商品。",
+          "travelModeToNext": "TRAIN",
+          "type": "area"
+        },
+        {
+          "id": "nakano-broadway",
+          "time": "11:30",
+          "duration": "1h 30m",
+          "title": "中野百老汇",
+          "place": "Nakano Broadway, Nakano, Tokyo, Japan",
+          "coords": {
+            "lat": 35.7075,
+            "lng": 139.6659
+          },
+          "notes": "这座购物中心被称为宅文化天堂，二三层汇聚了十多家Mandarake等动漫、手办、偶像周边店。从新宿乘中央线5分钟即可到达。",
+          "travelModeToNext": "TRAIN",
+          "type": "shopping"
+        },
+        {
+          "id": "tokyo-station-character-street",
+          "time": "13:30",
+          "duration": "1h 30m",
+          "title": "东京站角色街 & Pokémon Store",
+          "place": "Tokyo Station Ichibangai, Chiyoda, Tokyo, Japan",
+          "coords": {
+            "lat": 35.681236,
+            "lng": 139.767125
+          },
+          "notes": "在东京站一番街的角色街逛卡通专门店，可到官方Pokémon Store购买限定周边。该店位于东京站内的购物街，营业时间10:00-20:30。",
+          "travelModeToNext": "TRAIN",
+          "type": "shopping"
+        },
+        {
+          "id": "ginza-final",
+          "time": "15:00",
+          "duration": "1h 30m",
+          "title": "银座",
+          "place": "Ginza, Tokyo, Japan",
+          "coords": {
+            "lat": 35.671999,
+            "lng": 139.763366
+          },
+          "notes": "逛精品店和百货公司，感受东京高端购物区的魅力。",
+          "travelModeToNext": "TRANSIT",
+          "type": "area"
+        },
+        {
+          "id": "tokyo-departure-placeholder",
+          "time": "16:30",
+          "duration": "待定",
+          "title": "离境 / 机场待定",
+          "place": "Tokyo Station or Airport, Tokyo, Japan",
+          "coords": {
+            "lat": 35.681236,
+            "lng": 139.767125
+          },
+          "notes": "根据航班或列车时间前往机场或车站，完成行程。",
+          "travelModeToNext": "TRANSIT",
+          "type": "area"
         }
       ]
     }
