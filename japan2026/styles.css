@@ -317,6 +317,22 @@ button:focus-visible,
   transform: none;
 }
 
+.stop-card--hotel,
+.stop-card--hotel:hover,
+.stop-card--hotel.is-now {
+  margin-right: -18px;
+  margin-left: -18px;
+  border-color: transparent;
+  border-radius: 0;
+  background: rgba(15, 118, 110, 0.14);
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
+.stop-card--hotel:hover {
+  background: rgba(15, 118, 110, 0.18);
+}
+
 .stop-card--hotel .stop-time {
   color: var(--time-hotel);
 }

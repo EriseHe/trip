@@ -861,14 +861,48 @@ function createDayTab(dayId, label, isActive) {
 }
 
 function getDayTabLabel(day) {
+  const dayOfMonth = getDayOfMonth(day);
+  const place = getDayTabPlace(day);
+  return [dayOfMonth, place].filter(Boolean).join(" · ");
+}
+
+function getDayOfMonth(day) {
+  const dateDay = String(day.date || "").match(/^\d{4}-\d{2}-(\d{2})$/);
+  if (dateDay) return String(Number(dateDay[1]));
+
   const label = String(day.label || "");
   const labelMatch = /^(\d{1,2})\/(\d{1,2})(.*)$/.exec(label);
   if (labelMatch) {
-    const dayOfMonth = Number(labelMatch[2]);
-    const suffix = labelMatch[3] || "";
-    return `${dayOfMonth}${suffix}`;
+    return String(Number(labelMatch[2]));
   }
+
   return label;
+}
+
+function getDayTabPlace(day) {
+  if (day.tabPlace) return String(day.tabPlace).trim();
+
+  const label = String(day.label || "");
+  const placeRules = [
+    [/横滨|橫濱|yokohama/i, "横滨"],
+    [/奈良|nara/i, "奈良"],
+    [/宇治|uji/i, "宇治"],
+    [/京都|岚山|嵐山|祇园|祇園|清水寺|伏见稻荷|伏見稻荷|kyoto|arashiyama/i, "京都"],
+    [/名古屋|nagoya/i, "名古屋"],
+    [/东京|東京|新宿|原宿|涩谷|澀谷|浅草|淺草|上野|秋叶原|秋葉原|中野|银座|銀座|tokyo|shinjuku|shibuya|akihabara/i, "东京"],
+  ];
+  const match = placeRules.find(([pattern]) => pattern.test(label));
+  if (match) return match[1];
+
+  return getFallbackDayTabPlace(label);
+}
+
+function getFallbackDayTabPlace(label) {
+  return label
+    .replace(/^\d{1,2}\/\d{1,2}\s*·\s*/, "")
+    .split(/[\/→·]/)[0]
+    .replace(/抵达|抵達|最后一天|一日游|东侧|西侧|東側|西側/g, "")
+    .trim();
 }
 
 function renderTimeline() {
