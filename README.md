@@ -1,12 +1,23 @@
 # Trips
 
-GitHub Pages trip hub. The root page lists available trips, and each trip lives in its own subdirectory.
+GitHub Pages trip hub. The root page reads `trips.json`, and every trip page uses the same shared planner in `shared/`.
+
+## Structure
+
+- `index.html` renders the trip list.
+- `site-config.js` stores repo-wide settings such as the shared Google Maps API key.
+- `trips.json` is the trip manifest for the homepage and route-cache workflow.
+- `shared/planner.js` and `shared/planner.css` are the reusable itinerary UI.
+- `shared/route-cache.js` contains route helper logic shared by the app and generator.
+- `shared/tools/precompute-routes.*` generates route-cache files for one or all trips.
+- `templates/trip/` is the starter folder for a new trip.
+- Each trip folder keeps only trip-specific files: `index.html`, `trip-config.js`, `itinerary.json`, and `route-cache.json`.
 
 ## Pages
 
 - Root trip list: `https://erisehe.github.io/trip/`
-- Japan 2026 itinerary map: `https://erisehe.github.io/trip/japan2026/`
-- Japan 2026 dates: June 25, 2026 to July 4, 2026
+- Japan 2026: `https://erisehe.github.io/trip/japan2026/`
+- Korea 2026: `https://erisehe.github.io/trip/korea2026/`
 
 ## Run Locally
 
@@ -21,38 +32,47 @@ Then open:
 http://localhost:5173/
 ```
 
-The Japan map is at:
+## Add A Trip
 
-```text
-http://localhost:5173/japan2026/
+Copy the reusable template:
+
+```bash
+cp -R templates/trip newtripid
 ```
 
-## Add Another Trip
+Then update:
 
-Create a new subdirectory next to `japan2026`, copy the map app files or add a new page, then add one card to the root `index.html`.
+1. `newtripid/trip-config.js`: trip id, title, timezone/timezone offset, map center, region, geocode defaults, and day-tab labels.
+2. `newtripid/itinerary.json`: dates, stops, coordinates, stop types, and `travelModeToNext`.
+3. `trips.json`: add one card so the new trip appears on the homepage.
 
-To update Japan 2026, edit `japan2026/itinerary.json`. The app loads that file first, and the in-browser itinerary editor can still override it for quick experiments.
-
-The editor is in the separate `编辑行程` tab inside the Japan page. The map tab does not show raw JSON.
+Use the same `index.html` from the template unless the shared page shell itself needs to change for every trip.
 
 ## Route Cache
 
-The Japan page reads precomputed routes from `japan2026/route-cache.json`. It does not call Directions while normal visitors load the map.
+Normal visitors read precomputed routes from each trip's `route-cache.json`; the page does not call Directions on load.
 
-Regenerate the cache after changing `japan2026/itinerary.json`:
+Regenerate every trip:
 
 ```bash
 npm install
-npm run precompute:japan2026
+npm run precompute:all
 ```
 
-The GitHub Action in `.github/workflows/precompute-route-cache.yml` runs the same command when itinerary files change and commits the regenerated `route-cache.json` back to `main`.
+Regenerate one trip:
 
-Google Maps can show Japan transit routes in the consumer app while the Maps JavaScript Directions service still returns `ZERO_RESULTS`. When that happens, the generator stores a road-route estimate and marks that leg as approximate instead of leaving a straight line.
+```bash
+npm run routes:cache -- japan2026
+npm run routes:cache -- korea2026
+```
+
+The GitHub Action in `.github/workflows/precompute-route-cache.yml` runs the shared generator after itinerary/config/shared-code changes and commits updated `*/route-cache.json` files back to `main`.
+
+`TRAIN`, `SHINKANSEN`, and `FLIGHT` are intentionally skipped by the route generator. Use those values in `travelModeToNext` when a leg should display as train/high-speed rail/flight without spending API calls on a route.
 
 ## Google API Setup
 
-The Japan map reads its Google Maps key from `japan2026/config.js`. In Google Cloud Console, enable:
+Trips read the shared key from `site-config.js`; a trip can still override it with `map.apiKey` in `trip-config.js`. In Google Cloud Console, enable:
 
 - Maps JavaScript API
 - Directions API (Legacy), only needed by the route-cache generator
@@ -70,9 +90,7 @@ For local testing, also allow:
 http://localhost:5173/*
 ```
 
-If the map shows `RefererNotAllowedMapError`, add the relevant URL above to `APIs & Services > Credentials > API key > Application restrictions > HTTP referrers`, save, then wait a minute and refresh.
-
-By default, the map only loads markers and precomputed `route-cache.json` paths. It does not call Directions on page load.
+By default, the map loads markers and precomputed `route-cache.json` paths. It does not call Directions on page load.
 
 ## Itinerary Format
 
@@ -82,6 +100,7 @@ Each stop should include:
 - `title`: display name
 - `place`: Google-recognized place name
 - `coords`: `{ "lat": 35.681236, "lng": 139.767125 }`
-- `travelModeToNext`: `TRANSIT`, `WALKING`, `DRIVING`, or `BICYCLING`
+- `type`: `hotel`, `station`, `restaurant`, `sight`, `area`, or `destination`
+- `travelModeToNext`: `TRANSIT`, `WALKING`, `DRIVING`, `BICYCLING`, `TRAIN`, `SHINKANSEN`, or `FLIGHT`
 
 If `coords` is missing, the app can try to geocode `place` or `title`, but explicit coordinates are more reliable.

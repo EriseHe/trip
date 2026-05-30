@@ -1,0 +1,37 @@
+window.TRIP_PLANNER_CONFIG = {
+  id: "japan2026",
+  documentTitle: "Japan Live Itinerary Map",
+  eyebrow: "Japan trip planner",
+  title: "日本2026 · 6/25 - 7/4",
+  clockLabel: "日本时间",
+  timezone: "Asia/Tokyo",
+  timezoneOffset: "+09:00",
+  map: {
+    autoLoadMap: true,
+    language: "zh-CN",
+    region: "JP",
+    center: { lat: 35.681236, lng: 139.767125 },
+    zoom: 11,
+  },
+  geocode: {
+    countryCode: "JP",
+    defaultCountry: "Japan",
+    defaultCity: "Tokyo",
+    countryTerms: ["japan", "日本"],
+    cityHints: [
+      { pattern: "东京|東京|tokyo|新宿|原宿|涩谷|澀谷|浅草|淺草|上野|秋叶原|秋葉原|中野|银座|銀座", city: "Tokyo" },
+      { pattern: "名古屋|nagoya", city: "Nagoya" },
+      { pattern: "京都|岚山|嵐山|祇园|祇園|清水寺|伏见稻荷|伏見稻荷|宇治|kyoto|arashiyama|uji", city: "Kyoto" },
+      { pattern: "奈良|nara", city: "Nara" },
+      { pattern: "横滨|橫濱|yokohama", city: "Yokohama" },
+    ],
+  },
+  dayTabPlaces: [
+    { pattern: "横滨|橫濱|yokohama", label: "横滨" },
+    { pattern: "奈良|nara", label: "奈良" },
+    { pattern: "宇治|uji", label: "宇治" },
+    { pattern: "京都|岚山|嵐山|祇园|祇園|清水寺|伏见稻荷|伏見稻荷|kyoto|arashiyama", label: "京都" },
+    { pattern: "名古屋|nagoya", label: "名古屋" },
+    { pattern: "东京|東京|新宿|原宿|涩谷|澀谷|浅草|淺草|上野|秋叶原|秋葉原|中野|银座|銀座|tokyo|shinjuku|shibuya|akihabara", label: "东京" },
+  ],
+};

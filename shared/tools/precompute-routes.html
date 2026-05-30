@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Japan 2026 Route Cache Generator</title>
+    <title>Trip Route Cache Generator</title>
     <style>
       :root {
         color-scheme: light;
@@ -48,11 +48,11 @@
   <body>
     <main>
       <h1>Route Cache Generator</h1>
-      <p id="route-cache-status">准备读取 itinerary.json...</p>
+      <p id="route-cache-status">准备读取 trip itinerary...</p>
       <pre id="route-cache-json">{}</pre>
     </main>
 
-    <script src="../config.js"></script>
+    <script src="../../site-config.js"></script>
     <script src="../route-cache.js"></script>
     <script src="./precompute-routes.js" defer></script>
   </body>

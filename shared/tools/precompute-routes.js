@@ -2,7 +2,8 @@
 
 const statusNode = document.querySelector("#route-cache-status");
 const outputNode = document.querySelector("#route-cache-json");
-const routeHelpers = window.JapanRouteCache;
+const routeHelpers = window.TripRouteCache;
+const routeParams = new URLSearchParams(window.location.search);
 
 function setGeneratorStatus(message) {
   statusNode.textContent = message;
@@ -20,15 +21,22 @@ function setGeneratorResult(result) {
 
 async function main() {
   try {
-    const itineraryText = await readItineraryText();
-    const itinerary = JSON.parse(itineraryText);
+    if (!routeHelpers) {
+      throw new Error("缺少 shared route-cache helper");
+    }
+
+    const tripId = getTripId();
+    await loadTripConfig(tripId);
+
+    const itineraryText = await readItineraryText(tripId);
+    const itinerary = applyTripDefaults(JSON.parse(itineraryText));
     const itineraryHash = await sha256Hex(itineraryText);
     const apiKey = getApiKey();
     if (!apiKey) {
       throw new Error("缺少 Google Maps API key");
     }
 
-    await loadGoogleMapsScript(apiKey);
+    await loadGoogleMapsScript(tripId, apiKey);
     const { DirectionsService } = await google.maps.importLibrary("routes");
     const directionsService = new DirectionsService();
     const routes = {};
@@ -36,7 +44,7 @@ async function main() {
     const legs = collectLegs(itinerary);
 
     for (const [index, leg] of legs.entries()) {
-      setGeneratorStatus(`正在计算 ${index + 1}/${legs.length}: ${leg.originStop.title} -> ${leg.destinationStop.title}`);
+      setGeneratorStatus(`正在计算 ${tripId} ${index + 1}/${legs.length}: ${leg.originStop.title} -> ${leg.destinationStop.title}`);
       const cacheKey = routeHelpers.getRouteCacheKey(
         leg.day,
         leg.originStop,
@@ -64,7 +72,7 @@ async function main() {
     const cache = {
       version: 1,
       generatedAt: new Date().toISOString(),
-      source: "korea2026/itinerary.json",
+      source: `${tripId}/itinerary.json`,
       itineraryHash,
       routeCount: Object.keys(routes).length,
       approximateCount,
@@ -86,37 +94,77 @@ async function main() {
   }
 }
 
-async function readItineraryText() {
-  const response = await fetch("../itinerary.json", { cache: "no-cache" });
+function getTripId() {
+  const tripId = routeParams.get("trip") || "";
+  if (!/^[a-z0-9][a-z0-9_-]*$/i.test(tripId)) {
+    throw new Error("URL 必须包含合法的 ?trip=trip-id");
+  }
+  return tripId;
+}
+
+function loadTripConfig(tripId) {
+  if (window.TRIP_PLANNER_CONFIG?.id === tripId) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = `/${tripId}/trip-config.js`;
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`无法读取 ${tripId}/trip-config.js`));
+    document.head.appendChild(script);
+  });
+}
+
+async function readItineraryText(tripId) {
+  const response = await fetch(`/${tripId}/itinerary.json`, { cache: "no-cache" });
   if (!response.ok) {
-    throw new Error(`无法读取 itinerary.json: HTTP ${response.status}`);
+    throw new Error(`无法读取 ${tripId}/itinerary.json: HTTP ${response.status}`);
   }
   return response.text();
 }
 
 function getApiKey() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("key") || window.KOREA_MAP_CONFIG?.apiKey || window.JAPAN_MAP_CONFIG?.apiKey || "";
+  return (
+    routeParams.get("key") ||
+    window.TRIP_PLANNER_CONFIG?.map?.apiKey ||
+    window.TRIP_SITE_CONFIG?.googleMapsApiKey ||
+    ""
+  );
 }
 
-function loadGoogleMapsScript(apiKey) {
+function applyTripDefaults(itinerary) {
+  const config = window.TRIP_PLANNER_CONFIG || {};
+  return {
+    ...itinerary,
+    timezone: itinerary.timezone || config.timezone,
+    timezoneOffset: itinerary.timezoneOffset || config.timezoneOffset,
+    defaultTravelMode: itinerary.defaultTravelMode || "TRANSIT",
+  };
+}
+
+function loadGoogleMapsScript(tripId, apiKey) {
   if (window.google?.maps?.importLibrary) {
     return Promise.resolve();
   }
 
   return new Promise((resolve, reject) => {
-    const callbackName = "__koreaRouteCacheGoogleMapsLoaded";
+    const callbackName = `__routeCacheGoogleMapsLoaded_${tripId.replace(/\W/g, "_")}`;
     window[callbackName] = () => {
       delete window[callbackName];
       resolve();
     };
 
+    const config = window.TRIP_PLANNER_CONFIG || {};
+    const language = config.map?.language || window.TRIP_SITE_CONFIG?.mapLanguage || "zh-CN";
     const script = document.createElement("script");
     script.src =
       "https://maps.googleapis.com/maps/api/js" +
       `?key=${encodeURIComponent(apiKey)}` +
       "&v=weekly&loading=async" +
-      "&language=zh-CN&region=KR" +
+      `&language=${encodeURIComponent(language)}` +
+      `${config.map?.region ? `&region=${encodeURIComponent(config.map.region)}` : ""}` +
       `&callback=${callbackName}`;
     script.async = true;
     script.defer = true;

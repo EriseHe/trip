@@ -1,7 +1,9 @@
 "use strict";
 
+const TRIP_CONFIG = window.TRIP_PLANNER_CONFIG || {};
+const TRIP_ID = TRIP_CONFIG.id || inferTripId();
 const STORAGE_KEYS = {
-  itinerary: "korea2026-itinerary-map:itinerary:v1",
+  itinerary: `${TRIP_ID}-itinerary-map:itinerary:v1`,
 };
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
@@ -10,41 +12,29 @@ const DAY_COLORS = ["#0f766e", "#2563eb", "#c2410c", "#7c3aed", "#be123c", "#158
 const UNBOXED_STOP_TYPES = new Set(["hotel", "station"]);
 
 const DEFAULT_ITINERARY = {
-  tripTitle: "韩国 2026 样例行程",
-  timezone: "Asia/Seoul",
+  tripTitle: TRIP_CONFIG.title || "Trip Planner",
+  timezone: TRIP_CONFIG.timezone || "Asia/Tokyo",
   defaultTravelMode: "TRANSIT",
   map: {
-    center: { lat: 37.5665, lng: 126.978 },
-    zoom: 11,
-    mapId: DEFAULT_MAP_ID,
+    center: TRIP_CONFIG.map?.center || { lat: 35.681236, lng: 139.767125 },
+    zoom: TRIP_CONFIG.map?.zoom || 11,
+    mapId: TRIP_CONFIG.map?.mapId || DEFAULT_MAP_ID,
   },
   days: [
     {
-      id: "fallback-seoul-stopover",
-      date: "2026-06-20",
-      label: "6/20 · 首尔抵达 / 明洞",
+      id: "sample-day",
+      date: "2026-01-01",
+      label: "1/1 · Sample",
       color: DAY_COLORS[0],
       stops: [
         {
-          id: "fallback-icn-arrival",
-          time: "06:05",
-          duration: "2h",
-          title: "抵达首尔 ICN T2",
-          place: "Incheon International Airport Terminal 2, Incheon, South Korea",
-          coords: { lat: 37.4688, lng: 126.4337 },
-          notes: "OZ223 从 New York JFK 抵达首尔。",
-          travelModeToNext: "TRAIN",
-          type: "station",
-        },
-        {
-          id: "fallback-myeongdong-hotel",
-          time: "09:30",
-          duration: "过夜",
-          title: "明洞酒店待定",
-          place: "Myeong-dong Station, Seoul, South Korea",
-          coords: { lat: 37.5609, lng: 126.9864 },
-          notes: "先放行李，之后开始首尔 stopover 行程。",
-          type: "hotel",
+          id: "sample-stop",
+          time: "09:00",
+          duration: "1h",
+          title: "Sample stop",
+          place: TRIP_CONFIG.geocode?.defaultCountry || "",
+          notes: "Add itinerary.json for this trip.",
+          type: "destination",
         },
       ],
     },
@@ -83,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => void initApp());
 
 async function initApp() {
   cacheElements();
+  applyPageConfig();
   bindEvents();
 
   const configuredApiKey = getActiveApiKey();
@@ -102,8 +93,32 @@ async function initApp() {
   }
 }
 
+function inferTripId() {
+  return window.location.pathname.split("/").filter(Boolean).pop() || "trip";
+}
+
+function applyPageConfig() {
+  document.title = TRIP_CONFIG.documentTitle || `${TRIP_CONFIG.title || "Trip"} Live Itinerary Map`;
+  if (els.tripEyebrow) els.tripEyebrow.textContent = TRIP_CONFIG.eyebrow || "Trip planner";
+  if (els.tripHeading) els.tripHeading.textContent = TRIP_CONFIG.title || "Trip Planner";
+  if (els.tripClock) els.tripClock.textContent = `${getClockLabel()} --:--`;
+}
+
+function getClockLabel() {
+  return TRIP_CONFIG.clockLabel || "当地时间";
+}
+
+function mapScriptLocaleParams() {
+  const language = TRIP_CONFIG.map?.language || window.TRIP_SITE_CONFIG?.mapLanguage || "zh-CN";
+  const params = [
+    `&language=${encodeURIComponent(language)}`,
+    TRIP_CONFIG.map?.region ? `&region=${encodeURIComponent(TRIP_CONFIG.map.region)}` : "",
+  ];
+  return params.join("");
+}
+
 function getLocalConfigApiKey() {
-  return window.KOREA_MAP_CONFIG?.apiKey || window.JAPAN_MAP_CONFIG?.apiKey || "";
+  return TRIP_CONFIG.map?.apiKey || window.TRIP_SITE_CONFIG?.googleMapsApiKey || "";
 }
 
 function getActiveApiKey() {
@@ -111,7 +126,7 @@ function getActiveApiKey() {
 }
 
 function shouldAutoLoadMap() {
-  return (window.KOREA_MAP_CONFIG || window.JAPAN_MAP_CONFIG)?.autoLoadMap !== false;
+  return TRIP_CONFIG.map?.autoLoadMap !== false;
 }
 
 async function loadDefaultItinerary() {
@@ -164,7 +179,9 @@ function cacheElements() {
   els.mobileTabs = document.querySelector(".mobile-view-tabs");
   els.mapView = document.querySelector("#map-view");
   els.editorView = document.querySelector("#editor-view");
-  els.tripClock = document.querySelector("#korea-clock");
+  els.tripClock = document.querySelector("#trip-clock");
+  els.tripEyebrow = document.querySelector("#trip-eyebrow");
+  els.tripHeading = document.querySelector("#trip-heading");
   els.dayTabs = document.querySelector("#day-tabs");
   els.timeline = document.querySelector("#timeline");
   els.editor = document.querySelector("#itinerary-json");
@@ -291,13 +308,17 @@ function normalizeItinerary(rawItinerary) {
   }
 
   const itinerary = clone(rawItinerary);
-  itinerary.tripTitle = itinerary.tripTitle || "韩国行程";
-  itinerary.timezone = itinerary.timezone || "Asia/Seoul";
+  itinerary.tripTitle = itinerary.tripTitle || TRIP_CONFIG.title || "Trip Planner";
+  itinerary.timezone = itinerary.timezone || TRIP_CONFIG.timezone || "Asia/Tokyo";
+  itinerary.timezoneOffset = itinerary.timezoneOffset || TRIP_CONFIG.timezoneOffset || "";
   itinerary.defaultTravelMode = normalizeTravelMode(itinerary.defaultTravelMode || "TRANSIT");
   itinerary.map = itinerary.map || {};
-  itinerary.map.center = normalizeCoords(itinerary.map.center) || DEFAULT_ITINERARY.map.center;
-  itinerary.map.zoom = Number.isFinite(Number(itinerary.map.zoom)) ? Number(itinerary.map.zoom) : 11;
-  itinerary.map.mapId = itinerary.map.mapId || DEFAULT_MAP_ID;
+  itinerary.map.center =
+    normalizeCoords(itinerary.map.center) || normalizeCoords(TRIP_CONFIG.map?.center) || DEFAULT_ITINERARY.map.center;
+  itinerary.map.zoom = Number.isFinite(Number(itinerary.map.zoom))
+    ? Number(itinerary.map.zoom)
+    : Number(TRIP_CONFIG.map?.zoom || 11);
+  itinerary.map.mapId = itinerary.map.mapId || TRIP_CONFIG.map?.mapId || DEFAULT_MAP_ID;
 
   itinerary.days = itinerary.days.map((day, dayIndex) => {
     if (!day || typeof day !== "object") {
@@ -372,7 +393,7 @@ function loadGoogleMapsScript(apiKey) {
   }
 
   state.mapsScriptPromise = new Promise((resolve, reject) => {
-    const callbackName = "__koreaItineraryMapLoaded";
+    const callbackName = `__tripItineraryMapLoaded_${TRIP_ID.replace(/\W/g, "_")}`;
     window[callbackName] = () => {
       delete window[callbackName];
       resolve();
@@ -383,7 +404,7 @@ function loadGoogleMapsScript(apiKey) {
       "https://maps.googleapis.com/maps/api/js" +
       `?key=${encodeURIComponent(apiKey)}` +
       "&v=weekly&loading=async" +
-      "&language=zh-CN&region=KR" +
+      mapScriptLocaleParams() +
       `&callback=${callbackName}`;
     script.async = true;
     script.defer = true;
@@ -506,17 +527,27 @@ async function ensureCoordinatesForDays(days) {
 
 function buildGeocodeQuery(stop, day) {
   const query = stop.place || stop.address || stop.title;
-  if (/korea|south korea|韩国|韓國|首尔|首爾|仁川/i.test(query)) {
+  if (queryIncludesCountry(query)) {
     return query;
   }
-  const cityHint = /首尔|首爾|seoul/i.test(day.label)
-    ? "Seoul"
-    : /仁川|incheon/i.test(day.label)
-      ? "Incheon"
-      : /上海|shanghai/i.test(day.label)
-        ? "Shanghai"
-        : "Seoul";
-  return [query, cityHint, "South Korea"].filter(Boolean).join(", ");
+  return [query, getCityHint(day), TRIP_CONFIG.geocode?.defaultCountry].filter(Boolean).join(", ");
+}
+
+function queryIncludesCountry(query) {
+  const countryTerms = TRIP_CONFIG.geocode?.countryTerms || [];
+  return countryTerms.some((term) => new RegExp(escapeRegExp(term), "i").test(query));
+}
+
+function getCityHint(day) {
+  const label = String(day.label || "");
+  const match = (TRIP_CONFIG.geocode?.cityHints || []).find(({ pattern }) => matchesConfigPattern(label, pattern));
+  return match?.city || TRIP_CONFIG.geocode?.defaultCity || "";
+}
+
+function getGeocodeRequestOptions() {
+  return TRIP_CONFIG.geocode?.countryCode
+    ? { componentRestrictions: { country: TRIP_CONFIG.geocode.countryCode } }
+    : {};
 }
 
 function geocodeAddress(address) {
@@ -524,7 +555,7 @@ function geocodeAddress(address) {
     state.geocoder.geocode(
       {
         address,
-        componentRestrictions: { country: "KR" },
+        ...getGeocodeRequestOptions(),
       },
       (results, status) => {
         if (status !== "OK" || !results?.[0]) {
@@ -694,13 +725,8 @@ function getDayTabPlace(day) {
   if (day.tabPlace) return String(day.tabPlace).trim();
 
   const label = String(day.label || "");
-  const placeRules = [
-    [/仁川|incheon|icn/i, "仁川"],
-    [/首尔|首爾|明洞|南山|弘大|圣水|聖水|江南|广藏|廣藏|梨泰院|汉江|漢江|seoul|myeongdong|hongdae|seongsu|gangnam/i, "首尔"],
-    [/上海|shanghai|pvg/i, "上海"],
-  ];
-  const match = placeRules.find(([pattern]) => pattern.test(label));
-  if (match) return match[1];
+  const match = (TRIP_CONFIG.dayTabPlaces || []).find(({ pattern }) => matchesConfigPattern(label, pattern));
+  if (match) return match.label;
 
   return getFallbackDayTabPlace(label);
 }
@@ -1034,11 +1060,11 @@ function formatStopForMapsUrl(stop) {
 }
 
 function getRouteCacheKey(day, originStop, destinationStop) {
-  return window.JapanRouteCache.getRouteCacheKey(day, originStop, destinationStop, state.itinerary.defaultTravelMode);
+  return window.TripRouteCache.getRouteCacheKey(day, originStop, destinationStop, state.itinerary.defaultTravelMode);
 }
 
 function shouldSkipRouteCalculation(originStop) {
-  return window.JapanRouteCache.isRouteCalculationSkipped(originStop, state.itinerary.defaultTravelMode);
+  return window.TripRouteCache.isRouteCalculationSkipped(originStop, state.itinerary.defaultTravelMode);
 }
 
 function countStopsWithCoords(days) {
@@ -1048,7 +1074,7 @@ function countStopsWithCoords(days) {
 function isStopCurrent(day, stop) {
   if (!day.date || !stop.time) return false;
 
-  const nowInTrip = getZonedDateParts(state.itinerary?.timezone || "Asia/Seoul");
+  const nowInTrip = getZonedDateParts(state.itinerary?.timezone || TRIP_CONFIG.timezone || "Asia/Tokyo");
   if (nowInTrip.date !== day.date) return false;
 
   const stopStart = parseClockMinutes(stop.time);
@@ -1061,14 +1087,14 @@ function isStopCurrent(day, stop) {
 
 function updateTripClock() {
   const formatter = new Intl.DateTimeFormat("zh-CN", {
-    timeZone: state.itinerary?.timezone || "Asia/Seoul",
+    timeZone: state.itinerary?.timezone || TRIP_CONFIG.timezone || "Asia/Tokyo",
     month: "2-digit",
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
   });
-  els.tripClock.textContent = `韩国时间 ${formatter.format(new Date())}`;
+  els.tripClock.textContent = `${getClockLabel()} ${formatter.format(new Date())}`;
   renderTimeline();
 }
 
@@ -1122,7 +1148,7 @@ function normalizeCoords(value) {
 }
 
 function normalizeTravelMode(value) {
-  return window.JapanRouteCache.normalizeTravelMode(value);
+  return window.TripRouteCache.normalizeTravelMode(value);
 }
 
 function normalizeStopType(value) {
@@ -1139,7 +1165,7 @@ function inferStopType(stop) {
   const stationPattern =
     /airport|terminal|flight|station|train|rail|railway|shinkansen|机场|機場|空港|航班|飞机|飛機|站|駅|新干线|新幹線/;
 
-  if (/hotel|inn|onsen|酒店|大饭店|旅馆|温泉|花传抄|维亚/.test(title)) return "hotel";
+  if (/hotel|inn|hostel|motel|resort|onsen|酒店|大饭店|旅馆|旅店|民宿|温泉/.test(title)) return "hotel";
   if (/area|周边|自由日|最后一天|待定/.test(visibleText)) return "area";
   if (stationPattern.test(visibleText)) return "station";
   if (/restaurant|cafe|餐厅|咖啡|晚餐|午餐/.test(visibleText)) return "restaurant";
@@ -1226,6 +1252,15 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function matchesConfigPattern(value, pattern) {
+  if (!pattern) return false;
+  return new RegExp(pattern, "i").test(value);
 }
 
 function clone(value) {

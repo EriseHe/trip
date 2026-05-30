@@ -1,0 +1,18 @@
+{
+  "trips": [
+    {
+      "id": "japan2026",
+      "href": "./japan2026/",
+      "meta": "2026 · 6/25-7/4",
+      "title": "Japan 2026",
+      "description": "东京、名古屋、京都、奈良一日游、横滨一日游的 live itinerary map。"
+    },
+    {
+      "id": "korea2026",
+      "href": "./korea2026/",
+      "meta": "2026 · 6/20-6/23",
+      "title": "Korea 2026",
+      "description": "仁川转机 stopover：首尔经典景点、圣水、江南、汉江和出发日机场安排。"
+    }
+  ]
+}

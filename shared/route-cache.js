@@ -63,7 +63,7 @@
 
   function getDepartureDate(itinerary, day, stop) {
     const rawTime = stop?.departAt || stop?.time;
-    const offset = timeZoneOffsetFor(itinerary?.timezone);
+    const offset = itinerary?.timezoneOffset || timeZoneOffsetFor(itinerary?.timezone);
     if (!day?.date || !rawTime || !offset) {
       return new Date(Date.now() + 10 * 60 * 1000);
     }
@@ -78,6 +78,8 @@
 
   function timeZoneOffsetFor(timezone) {
     if (["Asia/Tokyo", "Asia/Seoul"].includes(timezone)) return "+09:00";
+    if (timezone === "Asia/Shanghai") return "+08:00";
+    if (timezone === "America/New_York") return "-04:00";
     return null;
   }
 
@@ -88,7 +90,7 @@
     return "路线服务暂时没有结果；已保留计划连线。";
   }
 
-  global.JapanRouteCache = {
+  const helpers = {
     friendlyDirectionsError,
     getDepartureDate,
     getRouteCacheKey,
@@ -97,4 +99,6 @@
     normalizeCoords,
     normalizeTravelMode,
   };
+
+  global.TripRouteCache = helpers;
 })(window);

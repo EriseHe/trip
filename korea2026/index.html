@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Korea Live Itinerary Map</title>
-    <link rel="stylesheet" href="./styles.css?v=20260530-korea" />
+    <title>Trip Itinerary Map</title>
+    <link rel="stylesheet" href="../shared/planner.css?v=20260530-shared" />
   </head>
   <body>
     <header class="app-header">
       <div class="header-title">
-        <p class="eyebrow">Korea trip planner</p>
-        <h1>韩国2026 · 6/20 - 6/23</h1>
+        <p id="trip-eyebrow" class="eyebrow">Trip planner</p>
+        <h1 id="trip-heading">Trip Planner</h1>
       </div>
       <button id="editor-toggle" class="header-link" type="button">编辑行程</button>
     </header>
 
     <div class="trip-controls">
-      <nav class="mobile-view-tabs" aria-label="Korea trip views">
+      <nav class="mobile-view-tabs" aria-label="Trip views">
         <button class="mobile-view-tab active" type="button" data-mobile-view="planner">行程</button>
         <button class="mobile-view-tab" type="button" data-mobile-view="map">地图</button>
       </nav>
-      <div id="korea-clock" class="clock" aria-live="polite">韩国时间 --:--</div>
+      <div id="trip-clock" class="clock" aria-live="polite">当地时间 --:--</div>
     </div>
 
     <main id="map-view" class="app-shell view-panel" data-mobile-view="planner">
@@ -67,8 +67,9 @@
       </section>
     </main>
 
-    <script src="./config.js"></script>
-    <script src="./route-cache.js?v=20260530-korea"></script>
-    <script src="./app.js?v=20260530-korea" defer></script>
+    <script src="../site-config.js"></script>
+    <script src="./trip-config.js"></script>
+    <script src="../shared/route-cache.js?v=20260530-shared"></script>
+    <script src="../shared/planner.js?v=20260530-shared" defer></script>
   </body>
 </html>

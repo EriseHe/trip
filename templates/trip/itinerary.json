@@ -1,0 +1,30 @@
+{
+  "tripTitle": "New Trip",
+  "timezone": "Asia/Tokyo",
+  "defaultTravelMode": "TRANSIT",
+  "map": {
+    "center": { "lat": 35.681236, "lng": 139.767125 },
+    "zoom": 11
+  },
+  "days": [
+    {
+      "id": "day-1",
+      "date": "2026-01-01",
+      "label": "1/1 · Tokyo",
+      "tabPlace": "东京",
+      "stops": [
+        {
+          "id": "day-1-stop-1",
+          "time": "09:00",
+          "duration": "1h",
+          "title": "Sample stop",
+          "place": "Tokyo Station, Tokyo, Japan",
+          "coords": { "lat": 35.681236, "lng": 139.767125 },
+          "notes": "",
+          "type": "destination",
+          "travelModeToNext": "TRANSIT"
+        }
+      ]
+    }
+  ]
+}

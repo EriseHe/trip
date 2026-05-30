@@ -5,14 +5,11 @@ on:
     branches:
       - main
     paths:
-      - "japan2026/itinerary.json"
-      - "japan2026/config.js"
-      - "japan2026/route-cache.js"
-      - "japan2026/tools/precompute-routes.*"
-      - "korea2026/itinerary.json"
-      - "korea2026/config.js"
-      - "korea2026/route-cache.js"
-      - "korea2026/tools/precompute-routes.*"
+      - "trips.json"
+      - "site-config.js"
+      - "shared/**"
+      - "*/itinerary.json"
+      - "*/trip-config.js"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/precompute-route-cache.yml"
@@ -45,13 +42,13 @@ jobs:
 
       - name: Commit route cache
         run: |
-          if git diff --quiet -- japan2026/route-cache.json korea2026/route-cache.json; then
+          if git diff --quiet -- */route-cache.json; then
             echo "route-cache files are already current."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add japan2026/route-cache.json korea2026/route-cache.json
+          git add */route-cache.json
           git commit -m "Update route cache"
           git push
