@@ -8,25 +8,19 @@
   </head>
   <body>
     <header class="app-header">
-      <div>
-        <p class="eyebrow">Japan trip planner</p>
-        <h1>Live 行程地图</h1>
-      </div>
+      <h1>日本2026 · 6/25 - 7/4</h1>
+      <button id="editor-toggle" class="header-link" type="button">编辑行程</button>
     </header>
 
-    <nav class="view-tabs" aria-label="Japan trip views">
-      <button class="view-tab active" type="button" data-view-target="map-view">地图</button>
-      <button class="view-tab" type="button" data-view-target="editor-view">编辑行程</button>
+    <nav class="mobile-view-tabs" aria-label="Japan trip views">
+      <button class="mobile-view-tab active" type="button" data-mobile-view="planner">行程</button>
+      <button class="mobile-view-tab" type="button" data-mobile-view="map">地图</button>
     </nav>
 
-    <main id="map-view" class="app-shell view-panel">
+    <main id="map-view" class="app-shell view-panel" data-mobile-view="planner">
       <aside class="planner-panel">
         <section class="panel-section">
-          <div class="section-title-row">
-            <div>
-              <p class="eyebrow">Itinerary</p>
-              <h2 id="trip-title">行程</h2>
-            </div>
+          <div class="planner-meta">
             <div id="japan-clock" class="clock" aria-live="polite">日本时间 --:--</div>
           </div>
           <div id="day-tabs" class="day-tabs" aria-label="Choose itinerary day"></div>
@@ -71,7 +65,7 @@
     </main>
 
     <script src="./config.js"></script>
-    <script src="./route-cache.js?v=20260530-route-ui"></script>
-    <script src="./app.js?v=20260530-route-ui" defer></script>
+    <script src="./route-cache.js?v=20260530-layout"></script>
+    <script src="./app.js?v=20260530-layout" defer></script>
   </body>
 </html>

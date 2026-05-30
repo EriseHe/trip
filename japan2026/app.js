@@ -1,7 +1,6 @@
 "use strict";
 
 const STORAGE_KEYS = {
-  apiKey: "japan-itinerary-map:api-key",
   itinerary: "japan2026-itinerary-map:itinerary:v2",
 };
 
@@ -249,7 +248,6 @@ const state = {
   geocoder: null,
   infoWindow: null,
   markers: [],
-  routeRenderers: [],
   connectionLines: [],
   legSummariesByDay: new globalThis.Map(),
   routeCache: {},
@@ -258,6 +256,7 @@ const state = {
   locationMarker: null,
   locationWatchId: null,
   defaultItinerary: null,
+  mobileView: "planner",
 };
 
 const els = {};
@@ -275,14 +274,7 @@ async function initApp() {
   cacheElements();
   bindEvents();
 
-  const localConfigApiKey = getLocalConfigApiKey();
   const configuredApiKey = getActiveApiKey();
-  if (localConfigApiKey && els.apiKey) {
-    els.apiKey.placeholder = "Using config.js";
-  } else if (configuredApiKey && els.apiKey) {
-    els.apiKey.value = configuredApiKey;
-  }
-
   state.defaultItinerary = await loadDefaultItinerary();
   state.routeCacheMeta = await loadRouteCacheFile();
   const savedItinerary = parseJsonSafely(localStorage.getItem(STORAGE_KEYS.itinerary));
@@ -293,14 +285,10 @@ async function initApp() {
   if (configuredApiKey && shouldAutoLoadMap()) {
     void bootMap();
   } else if (configuredApiKey) {
-    setStatus("行程已载入。点击“加载地图”后会显示地图和仓库里的路线缓存。");
+    setStatus("行程已载入。地图会显示仓库里的路线缓存。");
   } else {
-    setStatus("行程已载入。输入 Google Maps API key 后会显示地图和仓库里的路线缓存。");
+    setStatus("行程已载入。地图配置缺少 Google Maps API key。", true);
   }
-}
-
-function getConfiguredApiKey() {
-  return getActiveApiKey();
 }
 
 function getLocalConfigApiKey() {
@@ -308,7 +296,7 @@ function getLocalConfigApiKey() {
 }
 
 function getActiveApiKey() {
-  return getLocalConfigApiKey() || localStorage.getItem(STORAGE_KEYS.apiKey) || els.apiKey?.value.trim() || "";
+  return getLocalConfigApiKey();
 }
 
 function shouldAutoLoadMap() {
@@ -360,11 +348,10 @@ async function loadRouteCacheFile() {
 }
 
 function cacheElements() {
-  els.apiKey = document.querySelector("#api-key");
-  els.loadMap = document.querySelector("#load-map");
-  els.viewTabs = document.querySelector(".view-tabs");
-  els.viewPanels = [...document.querySelectorAll(".view-panel")];
-  els.tripTitle = document.querySelector("#trip-title");
+  els.editorToggle = document.querySelector("#editor-toggle");
+  els.mobileTabs = document.querySelector(".mobile-view-tabs");
+  els.mapView = document.querySelector("#map-view");
+  els.editorView = document.querySelector("#editor-view");
   els.japanClock = document.querySelector("#japan-clock");
   els.dayTabs = document.querySelector("#day-tabs");
   els.timeline = document.querySelector("#timeline");
@@ -380,11 +367,11 @@ function cacheElements() {
 }
 
 function bindEvents() {
-  els.loadMap?.addEventListener("click", () => void bootMap());
-  els.viewTabs.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-view-target]");
+  els.editorToggle.addEventListener("click", toggleEditorPage);
+  els.mobileTabs.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-mobile-view]");
     if (!button) return;
-    switchView(button.dataset.viewTarget);
+    setMobileView(button.dataset.mobileView);
   });
   els.applyJson.addEventListener("click", applyJsonFromEditor);
   els.downloadJson.addEventListener("click", downloadItinerary);
@@ -419,15 +406,30 @@ function bindEvents() {
   });
 }
 
-function switchView(targetId) {
-  els.viewPanels.forEach((panel) => {
-    panel.hidden = panel.id !== targetId;
-  });
-  els.viewTabs.querySelectorAll("[data-view-target]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.viewTarget === targetId);
+function toggleEditorPage() {
+  setEditorVisible(els.editorView.hidden);
+}
+
+function setEditorVisible(isVisible) {
+  els.mapView.hidden = isVisible;
+  els.editorView.hidden = !isVisible;
+  els.mobileTabs.hidden = isVisible;
+  els.editorToggle.textContent = isVisible ? "返回行程" : "编辑行程";
+
+  if (!isVisible && state.map) {
+    google.maps.event.trigger(state.map, "resize");
+    fitMapToDays(getVisibleDays());
+  }
+}
+
+function setMobileView(view) {
+  state.mobileView = view === "map" ? "map" : "planner";
+  els.mapView.dataset.mobileView = state.mobileView;
+  els.mobileTabs.querySelectorAll("[data-mobile-view]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.mobileView === state.mobileView);
   });
 
-  if (targetId === "map-view" && state.map) {
+  if (state.mobileView === "map" && state.map) {
     google.maps.event.trigger(state.map, "resize");
     fitMapToDays(getVisibleDays());
   }
@@ -539,9 +541,6 @@ async function bootMap() {
     return;
   }
 
-  if (!getLocalConfigApiKey()) {
-    localStorage.setItem(STORAGE_KEYS.apiKey, apiKey);
-  }
   setStatus("正在加载 Google Maps...");
 
   try {
@@ -833,7 +832,6 @@ function drawConnectionLine(originStop, destinationStop, color, dashed = false) 
 }
 
 function renderPlan() {
-  els.tripTitle.textContent = state.itinerary.tripTitle;
   renderDayTabs();
   renderTimeline();
 }
@@ -938,8 +936,7 @@ function createLegSummaryNode(summary) {
   } else if (summary.fallback) {
     text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration}`;
   } else {
-    const timing = [summary.departure, summary.arrival].filter(Boolean).join(" → ");
-    text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration} · ${summary.distance}${timing ? ` · ${timing}` : ""}`;
+    text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration} · ${summary.distance}`;
   }
 
   node.append(connector, text);
@@ -947,8 +944,9 @@ function createLegSummaryNode(summary) {
 }
 
 function openStopInfoWindow(day, stop, stopIndex, marker) {
+  const stopType = normalizeStopType(stop.type || inferStopType(stop));
   const content = `
-    <div class="info-window">
+    <div class="info-window info-window--${stopType}">
       <h3>${escapeHtml(stop.title)}</h3>
       <p>${escapeHtml(day.label)}${day.date ? ` · ${escapeHtml(day.date)}` : ""}</p>
       <p>${escapeHtml(stop.time || "--:--")}${stop.duration ? ` · ${escapeHtml(stop.duration)}` : ""}</p>
@@ -958,20 +956,6 @@ function openStopInfoWindow(day, stop, stopIndex, marker) {
   `;
   state.infoWindow.setContent(content);
   state.infoWindow.open({ anchor: marker, map: state.map });
-}
-
-function panToStop(dayId, stopId) {
-  const match = state.markers.find(({ day, stop }) => day.id === dayId && stop.id === stopId);
-  if (!match || !state.map) return;
-
-  state.map.panTo(match.marker.position);
-  state.map.setZoom(Math.max(state.map.getZoom() || 14, 15));
-  openStopInfoWindow(
-    match.day,
-    match.stop,
-    match.day.stops.findIndex((stop) => stop.id === stopId),
-    match.marker,
-  );
 }
 
 function openStopFromTimeline(dayId, stopId) {
@@ -1019,9 +1003,7 @@ function clearMapArtifacts() {
 }
 
 function clearRouteArtifacts() {
-  state.routeRenderers.forEach((renderer) => renderer.setMap(null));
   state.connectionLines.forEach((line) => line.setMap(null));
-  state.routeRenderers = [];
   state.connectionLines = [];
 }
 
@@ -1282,14 +1264,15 @@ function inferStopType(stop) {
   const place = String(stop.place || "").toLowerCase();
   const notes = String(stop.notes || "").toLowerCase();
   const visibleText = [title, notes].filter(Boolean).join(" ");
+  const stationPattern =
+    /airport|terminal|flight|station|train|rail|railway|shinkansen|机场|機場|空港|航班|飞机|飛機|站|駅|新干线|新幹線/;
 
   if (/hotel|inn|onsen|酒店|大饭店|旅馆|温泉|花传抄|维亚/.test(title)) return "hotel";
-  if (/station|站|駅/.test(title)) return "station";
   if (/area|周边|自由日|最后一天|待定/.test(visibleText)) return "area";
+  if (stationPattern.test(visibleText)) return "station";
   if (/restaurant|cafe|餐厅|咖啡|晚餐|午餐/.test(visibleText)) return "restaurant";
   if (/park|temple|shrine|castle|museum|公园|寺|神社|城|博物馆|中华街|港未来/.test(visibleText)) return "sight";
   if (/hotel|inn|onsen/.test(place)) return "hotel";
-  if (/station/.test(place)) return "station";
   return "destination";
 }
 

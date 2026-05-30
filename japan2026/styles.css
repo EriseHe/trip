@@ -19,8 +19,7 @@
   --time-restaurant: #c2410c;
   --time-area: #4b5563;
   --danger: #ff3b30;
-  --shadow: none;
-  --small-shadow: none;
+  --shell-shadow: 0 18px 44px rgba(17, 24, 39, 0.12);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", sans-serif;
@@ -100,27 +99,25 @@ button:focus-visible,
 
 .app-header {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  min-height: 84px;
-  padding: 18px 24px 14px;
+  min-height: 78px;
+  padding: 18px 24px;
   border-bottom: 1px solid var(--border);
   background: rgba(242, 242, 247, 0.76);
   backdrop-filter: blur(22px);
 }
 
-.app-header h1,
-.panel-section h2 {
-  margin: 2px 0 0;
-  letter-spacing: 0;
-}
-
 .app-header h1 {
+  margin: 0;
+  letter-spacing: 0;
   font-size: 28px;
   line-height: 1.05;
 }
 
 .panel-section h2 {
+  margin: 2px 0 0;
+  letter-spacing: 0;
   font-size: 20px;
   line-height: 1.18;
 }
@@ -134,13 +131,24 @@ button:focus-visible,
   text-transform: uppercase;
 }
 
-.api-controls,
-.api-key-field {
-  display: none;
+.header-link {
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 850;
+  padding: 0;
 }
 
-.view-tabs {
-  display: inline-flex;
+.header-link:hover {
+  background: transparent;
+  color: var(--accent-strong);
+}
+
+.mobile-view-tabs {
+  display: none;
   gap: 4px;
   align-items: center;
   margin: 10px 24px;
@@ -151,18 +159,18 @@ button:focus-visible,
   backdrop-filter: blur(18px);
 }
 
-.view-tab {
+.mobile-view-tab {
   min-height: 34px;
   border: 0;
   background: transparent;
   color: var(--muted);
 }
 
-.view-tab:hover {
+.mobile-view-tab:hover {
   background: rgba(15, 118, 110, 0.08);
 }
 
-.view-tab.active {
+.mobile-view-tab.active {
   background: var(--panel-solid);
   color: var(--accent);
 }
@@ -175,9 +183,14 @@ button:focus-visible,
   display: grid;
   grid-template-columns: minmax(340px, 430px) minmax(0, 1fr);
   gap: 12px;
-  height: calc(100vh - 142px);
+  height: calc(100vh - 102px);
   min-height: 620px;
-  padding: 0 12px 12px;
+  margin: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: var(--shell-shadow);
 }
 
 .planner-panel {
@@ -200,6 +213,12 @@ button:focus-visible,
   gap: 12px;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.planner-meta {
+  display: flex;
+  justify-content: flex-end;
   margin-bottom: 14px;
 }
 
@@ -298,6 +317,14 @@ button:focus-visible,
   color: var(--time-station);
 }
 
+.stop-card--hotel .stop-body h3 {
+  color: var(--time-hotel);
+}
+
+.stop-card--station .stop-body h3 {
+  color: var(--time-station);
+}
+
 .stop-card--destination .stop-time,
 .stop-card--sight .stop-time {
   color: var(--time-destination);
@@ -359,10 +386,14 @@ button:focus-visible,
 
 .editor-page {
   width: min(1100px, calc(100% - 32px));
-  height: calc(100vh - 142px);
+  height: calc(100vh - 102px);
   min-height: 620px;
-  margin: 0 auto;
-  padding: 0 0 12px;
+  margin: 12px auto;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: var(--shell-shadow);
 }
 
 .editor-section {
@@ -506,6 +537,14 @@ button:focus-visible,
   font-size: 15px;
 }
 
+.info-window--hotel h3 {
+  color: var(--time-hotel);
+}
+
+.info-window--station h3 {
+  color: var(--time-station);
+}
+
 .info-window p {
   margin: 3px 0;
   color: var(--muted);
@@ -522,7 +561,12 @@ button:focus-visible,
     padding: 16px;
   }
 
-  .view-tabs {
+  .app-header h1 {
+    font-size: 23px;
+  }
+
+  .mobile-view-tabs {
+    display: inline-flex;
     margin: 10px 16px;
   }
 
@@ -530,7 +574,13 @@ button:focus-visible,
     display: block;
     height: auto;
     min-height: 0;
-    padding: 0 12px 12px;
+    margin: 0 12px 12px;
+    padding: 10px;
+  }
+
+  .app-shell[data-mobile-view="planner"] .map-panel,
+  .app-shell[data-mobile-view="map"] .planner-panel {
+    display: none;
   }
 
   .planner-panel,
@@ -538,19 +588,16 @@ button:focus-visible,
     border-radius: 22px;
   }
 
-  .planner-panel {
-    margin-bottom: 12px;
-  }
-
   .panel-section {
     max-height: none;
   }
 
   .editor-page {
-    width: min(100% - 24px, 1100px);
+    width: auto;
     height: auto;
     min-height: 0;
-    padding: 0 0 12px;
+    margin: 0 12px 12px;
+    padding: 10px;
   }
 
   .map {
