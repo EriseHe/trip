@@ -1,6 +1,6 @@
 "use strict";
 
-const grid = document.querySelector("#trip-grid");
+const list = document.querySelector("#trip-list");
 
 fetch("./trips.json", { cache: "no-cache" })
   .then((response) => {
@@ -9,36 +9,71 @@ fetch("./trips.json", { cache: "no-cache" })
   })
   .then((data) => renderTrips(Array.isArray(data.trips) ? data.trips : []))
   .catch((error) => {
-    grid.textContent = `无法读取 trips.json：${error.message}`;
+    list.textContent = `无法读取 trips.json：${error.message}`;
   });
 
 function renderTrips(trips) {
+  if (trips.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "trip-empty";
+    empty.textContent = "No trips yet.";
+    list.replaceChildren(empty);
+    return;
+  }
+
   const fragment = document.createDocumentFragment();
-  trips.forEach((trip) => fragment.appendChild(createTripCard(trip)));
-  grid.replaceChildren(fragment);
+  groupTripsByYear(trips).forEach(({ year, trips: yearTrips }) => {
+    fragment.appendChild(createYearSection(year, yearTrips));
+  });
+  list.replaceChildren(fragment);
 }
 
-function createTripCard(trip) {
-  const card = document.createElement("a");
-  card.className = "trip-card";
-  card.href = trip.href || `./${trip.id}/`;
+function groupTripsByYear(trips) {
+  const groups = new globalThis.Map();
+  trips.forEach((trip, index) => {
+    const year = getTripYear(trip);
+    const entry = { ...trip, order: Number(trip.order ?? index) };
+    groups.set(year, [...(groups.get(year) || []), entry]);
+  });
 
-  const content = document.createElement("div");
-  const meta = document.createElement("p");
-  meta.className = "trip-meta";
-  meta.textContent = trip.meta || "Trip";
+  return [...groups.entries()]
+    .sort(([leftYear], [rightYear]) => Number(rightYear) - Number(leftYear))
+    .map(([year, yearTrips]) => ({
+      year,
+      trips: yearTrips.sort((left, right) => left.order - right.order),
+    }));
+}
 
-  const title = document.createElement("h2");
-  title.textContent = trip.title || trip.id || "Trip";
+function createYearSection(year, trips) {
+  const section = document.createElement("section");
+  section.className = "trip-year";
 
-  const description = document.createElement("p");
-  description.textContent = trip.description || "Open itinerary map.";
+  const heading = document.createElement("h2");
+  heading.textContent = `${year} 年`;
 
-  const openLabel = document.createElement("span");
-  openLabel.className = "open-label";
-  openLabel.textContent = trip.openLabel || "Open map";
+  const links = document.createElement("ul");
+  links.className = "trip-links";
+  trips.forEach((trip) => links.appendChild(createTripLink(trip)));
 
-  content.append(meta, title, description);
-  card.append(content, openLabel);
-  return card;
+  section.append(heading, links);
+  return section;
+}
+
+function createTripLink(trip) {
+  const item = document.createElement("li");
+  const link = document.createElement("a");
+  link.href = trip.href || `./${trip.id}/`;
+  link.textContent = getTripName(trip);
+  item.append(link);
+  return item;
+}
+
+function getTripYear(trip) {
+  const yearText = String(trip.year || trip.meta || trip.title || trip.id || "");
+  return yearText.match(/\b(20\d{2})\b/)?.[1] || "Trips";
+}
+
+function getTripName(trip) {
+  if (trip.name) return trip.name;
+  return String(trip.title || trip.id || "Trip").replace(/\s*20\d{2}\s*$/, "");
 }

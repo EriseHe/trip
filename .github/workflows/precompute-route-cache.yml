@@ -5,14 +5,13 @@ on:
     branches:
       - main
     paths:
-      - "trips.json"
       - "site-config.js"
-      - "shared/**"
+      - "shared/route-cache.js"
+      - "shared/tools/**"
       - "*/itinerary.json"
       - "*/trip-config.js"
       - "package.json"
       - "package-lock.json"
-      - ".github/workflows/precompute-route-cache.yml"
   workflow_dispatch:
 
 permissions:

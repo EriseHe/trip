@@ -1,13 +1,10 @@
 :root {
   color-scheme: light;
-  --bg: #f7f5ef;
-  --surface: #ffffff;
+  --bg: #fbfaf7;
   --ink: #20242a;
   --muted: #667085;
   --border: #d8d2c6;
   --accent: #0f766e;
-  --accent-soft: #d9f2ee;
-  --shadow: 0 16px 40px rgba(32, 36, 42, 0.12);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -29,110 +26,92 @@ body {
 }
 
 .page-shell {
-  width: min(1040px, calc(100% - 32px));
+  width: min(640px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 48px 0;
+  padding: 56px 0;
 }
 
 .page-header {
-  max-width: 680px;
-  margin-bottom: 28px;
-}
-
-.eyebrow,
-.trip-meta {
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  margin-bottom: 36px;
 }
 
 h1,
-h2,
-.intro,
-.trip-card p {
+h2 {
   letter-spacing: 0;
 }
 
 h1 {
-  margin: 6px 0 10px;
-  font-size: clamp(36px, 7vw, 64px);
-  line-height: 1;
-}
-
-.intro {
   margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 750;
+}
+
+.trip-years {
+  display: grid;
+  gap: 34px;
+}
+
+.trip-year {
+  display: grid;
+  gap: 12px;
+}
+
+.trip-year h2 {
+  margin: 0;
+  border-bottom: 1px solid var(--border);
   color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  padding-bottom: 8px;
+}
+
+.trip-links {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trip-links a {
+  color: var(--ink);
   font-size: 18px;
-  line-height: 1.5;
-}
-
-.trip-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.trip-card {
-  display: grid;
-  min-height: 220px;
-  align-content: space-between;
-  gap: 32px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  color: inherit;
-  padding: 22px;
+  font-weight: 650;
+  line-height: 1.45;
   text-decoration: none;
-  transition:
-    border-color 140ms ease,
-    transform 140ms ease;
 }
 
-.trip-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+.trip-links a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-.trip-card:focus-visible {
-  outline: 3px solid rgba(15, 118, 110, 0.25);
+.trip-links a:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid rgba(15, 118, 110, 0.35);
   outline-offset: 3px;
 }
 
-.trip-card h2 {
-  margin: 8px 0 10px;
-  font-size: 28px;
-  line-height: 1.15;
-}
-
-.trip-card p:not(.trip-meta) {
+.trip-empty {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.open-label {
-  justify-self: start;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
-  background: var(--accent-soft);
-  color: #115e59;
-  font-size: 14px;
-  font-weight: 800;
-  padding: 9px 12px;
+  font-size: 16px;
 }
 
 @media (max-width: 620px) {
   .page-shell {
-    width: min(100% - 24px, 1040px);
-    padding: 28px 0;
+    width: min(100% - 28px, 640px);
+    padding: 32px 0;
   }
 
-  .intro {
-    font-size: 16px;
+  h1 {
+    font-size: 24px;
+  }
+
+  .trip-links a {
+    font-size: 17px;
   }
 }
