@@ -1,0 +1,59 @@
+{
+  "tripTitle": "日本行程样例",
+  "timezone": "Asia/Tokyo",
+  "defaultTravelMode": "TRANSIT",
+  "map": {
+    "center": { "lat": 35.681236, "lng": 139.767125 },
+    "zoom": 11,
+    "mapId": "DEMO_MAP_ID"
+  },
+  "days": [
+    {
+      "id": "tokyo-day-1",
+      "date": "2026-07-06",
+      "label": "Day 1 · 东京",
+      "color": "#0f766e",
+      "stops": [
+        {
+          "id": "tokyo-station",
+          "time": "09:00",
+          "duration": "35m",
+          "title": "Tokyo Station",
+          "place": "Tokyo Station, Tokyo, Japan",
+          "coords": { "lat": 35.681236, "lng": 139.767125 },
+          "notes": "到达、寄存行李",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "sensoji",
+          "time": "10:15",
+          "duration": "1h 20m",
+          "title": "浅草寺",
+          "place": "Senso-ji, Tokyo, Japan",
+          "coords": { "lat": 35.714765, "lng": 139.796655 },
+          "notes": "仲见世通和雷门",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "ueno-park",
+          "time": "12:25",
+          "duration": "1h 35m",
+          "title": "上野公园",
+          "place": "Ueno Park, Tokyo, Japan",
+          "coords": { "lat": 35.715625, "lng": 139.774529 },
+          "notes": "午餐、散步",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "shibuya-crossing",
+          "time": "18:40",
+          "duration": "1h 20m",
+          "title": "涩谷十字路口",
+          "place": "Shibuya Scramble Crossing, Tokyo, Japan",
+          "coords": { "lat": 35.659487, "lng": 139.700559 },
+          "notes": "晚饭、夜景、逛街"
+        }
+      ]
+    }
+  ]
+}
