@@ -2,8 +2,12 @@
   "name": "trip",
   "private": true,
   "scripts": {
-    "routes:cache": "node japan2026/tools/precompute-routes.mjs",
-    "precompute:japan2026": "npm run routes:cache"
+    "routes:cache:japan2026": "node japan2026/tools/precompute-routes.mjs",
+    "routes:cache:korea2026": "node korea2026/tools/precompute-routes.mjs",
+    "routes:cache": "npm run routes:cache:japan2026 && npm run routes:cache:korea2026",
+    "precompute:japan2026": "npm run routes:cache:japan2026",
+    "precompute:korea2026": "npm run routes:cache:korea2026",
+    "precompute:all": "npm run routes:cache"
   },
   "devDependencies": {
     "playwright": "^1.52.0"

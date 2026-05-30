@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Korea Live Itinerary Map</title>
+    <link rel="stylesheet" href="./styles.css?v=20260530-korea" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-title">
+        <p class="eyebrow">Korea trip planner</p>
+        <h1>韩国2026 · 6/20 - 6/23</h1>
+      </div>
+      <button id="editor-toggle" class="header-link" type="button">编辑行程</button>
+    </header>
+
+    <div class="trip-controls">
+      <nav class="mobile-view-tabs" aria-label="Korea trip views">
+        <button class="mobile-view-tab active" type="button" data-mobile-view="planner">行程</button>
+        <button class="mobile-view-tab" type="button" data-mobile-view="map">地图</button>
+      </nav>
+      <div id="korea-clock" class="clock" aria-live="polite">韩国时间 --:--</div>
+    </div>
+
+    <main id="map-view" class="app-shell view-panel" data-mobile-view="planner">
+      <aside class="planner-panel">
+        <section class="panel-section">
+          <div id="day-tabs" class="day-tabs" aria-label="Choose itinerary day"></div>
+          <div id="timeline" class="timeline"></div>
+        </section>
+      </aside>
+
+      <section class="map-panel">
+        <div id="map" class="map" role="application" aria-label="Google itinerary map">
+          <div class="map-empty-state">
+            <strong>正在加载地图</strong>
+            <span>默认读取仓库里的路线缓存；未缓存的路段会显示计划连线。</span>
+          </div>
+        </div>
+        <div class="map-toolbar">
+          <button id="locate-me" type="button" class="secondary">定位我</button>
+          <button id="open-google-maps" type="button">打开 Google Maps 路线</button>
+        </div>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <main id="editor-view" class="editor-page view-panel" hidden>
+      <section class="panel-section editor-section">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">Itinerary</p>
+            <h2>编辑行程</h2>
+          </div>
+          <label class="file-button">
+            导入
+            <input id="json-file" type="file" accept="application/json,.json" />
+          </label>
+        </div>
+        <textarea id="itinerary-json" spellcheck="false"></textarea>
+        <div class="button-row">
+          <button id="apply-json" type="button">更新</button>
+          <button id="download-json" type="button" class="secondary">下载</button>
+          <button id="copy-json" type="button" class="secondary">复制代码</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./route-cache.js?v=20260530-korea"></script>
+    <script src="./app.js?v=20260530-korea" defer></script>
+  </body>
+</html>
