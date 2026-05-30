@@ -1,0 +1,11 @@
+{
+  "name": "trip",
+  "private": true,
+  "scripts": {
+    "routes:cache": "node japan2026/tools/precompute-routes.mjs",
+    "precompute:japan2026": "npm run routes:cache"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
+  }
+}

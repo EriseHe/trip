@@ -31,16 +31,31 @@ http://localhost:5173/japan2026/
 
 Create a new subdirectory next to `japan2026`, copy the map app files or add a new page, then add one card to the root `index.html`.
 
-To update Japan 2026, edit `japan2026/itinerary.json`. The app loads that file first, and the in-browser JSON editor can still override it for quick experiments.
+To update Japan 2026, edit `japan2026/itinerary.json`. The app loads that file first, and the in-browser itinerary editor can still override it for quick experiments.
 
-The JSON editor is in the separate `编辑 JSON` tab inside the Japan page. The map tab does not show raw JSON.
+The editor is in the separate `编辑行程` tab inside the Japan page. The map tab does not show raw JSON.
+
+## Route Cache
+
+The Japan page reads precomputed routes from `japan2026/route-cache.json`. It does not call Directions while normal visitors load the map.
+
+Regenerate the cache after changing `japan2026/itinerary.json`:
+
+```bash
+npm install
+npm run precompute:japan2026
+```
+
+The GitHub Action in `.github/workflows/precompute-route-cache.yml` runs the same command when itinerary files change and commits the regenerated `route-cache.json` back to `main`.
+
+Google Maps can show Japan transit routes in the consumer app while the Maps JavaScript Directions service still returns `ZERO_RESULTS`. When that happens, the generator stores a road-route estimate and marks that leg as approximate instead of leaving a straight line.
 
 ## Google API Setup
 
 The Japan map reads its Google Maps key from `japan2026/config.js`. In Google Cloud Console, enable:
 
 - Maps JavaScript API
-- Directions API (Legacy), only needed if you click `计算/缓存路线`
+- Directions API (Legacy), only needed by the route-cache generator
 - Geocoding API, optional unless a stop is missing `coords`
 
 For GitHub Pages, restrict the key to:
@@ -57,7 +72,7 @@ http://localhost:5173/*
 
 If the map shows `RefererNotAllowedMapError`, add the relevant URL above to `APIs & Services > Credentials > API key > Application restrictions > HTTP referrers`, save, then wait a minute and refresh.
 
-By default, the map only loads markers and planned straight-line connections. It does not call Directions on page load. If you select a day and click `计算/缓存路线`, the browser calls Directions once per missing leg and caches the route locally.
+By default, the map only loads markers and precomputed `route-cache.json` paths. It does not call Directions on page load.
 
 ## Itinerary Format
 

@@ -38,12 +38,11 @@
         <div id="map" class="map" role="application" aria-label="Google itinerary map">
           <div class="map-empty-state">
             <strong>正在加载地图</strong>
-            <span>默认只显示地点和计划连线；需要真实路线时可打开 Google Maps 或手动计算并缓存。</span>
+            <span>默认读取仓库里的路线缓存；未缓存的路段会显示计划连线。</span>
           </div>
         </div>
         <div class="map-toolbar">
           <button id="locate-me" type="button" class="secondary">定位我</button>
-          <button id="calculate-routes" type="button" class="secondary">计算/缓存路线</button>
           <button id="open-google-maps" type="button">打开 Google Maps 路线</button>
         </div>
         <div id="status" class="status" role="status" aria-live="polite"></div>
@@ -72,6 +71,7 @@
     </main>
 
     <script src="./config.js"></script>
-    <script src="./app.js" defer></script>
+    <script src="./route-cache.js?v=20260530-route-ui"></script>
+    <script src="./app.js?v=20260530-route-ui" defer></script>
   </body>
 </html>
