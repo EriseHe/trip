@@ -1,5 +1,5 @@
 {
-  "tripTitle": "Japan 2026 · 6/25-7/4",
+  "tripTitle": "日本 2026 · 6/25-7/4",
   "timezone": "Asia/Tokyo",
   "defaultTravelMode": "TRANSIT",
   "map": {
@@ -11,27 +11,27 @@
     {
       "id": "2026-06-25-tokyo-arrival",
       "date": "2026-06-25",
-      "label": "6/25 · Tokyo",
+      "label": "6/25 · 东京",
       "color": "#0f766e",
       "stops": [
         {
           "id": "shinjuku-prince-checkin",
           "time": "15:00",
           "duration": "1h",
-          "title": "Shinjuku Prince Hotel",
+          "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel, 1-30-1 Kabukicho, Shinjuku City, Tokyo, Japan",
           "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "Check-in / Tokyo base hotel",
+          "notes": "入住 / 东京前半段酒店",
           "travelModeToNext": "WALKING"
         },
         {
           "id": "shinjuku-evening",
           "time": "18:00",
           "duration": "2h",
-          "title": "Shinjuku area",
+          "title": "新宿周边",
           "place": "Shinjuku Station, Tokyo, Japan",
           "coords": { "lat": 35.690921, "lng": 139.700258 },
-          "notes": "Dinner / light first-night walk"
+          "notes": "晚餐 / 第一天轻松散步"
         }
       ]
     }

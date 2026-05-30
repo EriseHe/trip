@@ -33,13 +33,15 @@ Create a new subdirectory next to `japan2026`, copy the map app files or add a n
 
 To update Japan 2026, edit `japan2026/itinerary.json`. The app loads that file first, and the in-browser JSON editor can still override it for quick experiments.
 
+The JSON editor is in the separate `编辑 JSON` tab inside the Japan page. The map tab does not show raw JSON.
+
 ## Google API Setup
 
 The Japan map reads its Google Maps key from `japan2026/config.js`. In Google Cloud Console, enable:
 
 - Maps JavaScript API
-- Directions API (Legacy)
-- Geocoding API, optional unless you want automatic coordinate lookup
+- Directions API (Legacy), only needed if you click `计算/缓存路线`
+- Geocoding API, optional unless a stop is missing `coords`
 
 For GitHub Pages, restrict the key to:
 
@@ -54,6 +56,8 @@ http://localhost:5173/*
 ```
 
 If the map shows `RefererNotAllowedMapError`, add the relevant URL above to `APIs & Services > Credentials > API key > Application restrictions > HTTP referrers`, save, then wait a minute and refresh.
+
+By default, the map only loads markers and planned straight-line connections. It does not call Directions on page load. If you select a day and click `计算/缓存路线`, the browser calls Directions once per missing leg and caches the route locally.
 
 ## Itinerary Format
 

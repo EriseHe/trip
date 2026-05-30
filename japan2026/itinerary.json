@@ -1,5 +1,5 @@
 {
-  "tripTitle": "Japan 2026 · 6/25-7/4",
+  "tripTitle": "日本 2026 · 6/25-7/4",
   "timezone": "Asia/Tokyo",
   "defaultTravelMode": "TRANSIT",
   "map": {
@@ -11,320 +11,320 @@
     {
       "id": "2026-06-25-tokyo-arrival",
       "date": "2026-06-25",
-      "label": "6/25 · Tokyo",
+      "label": "6/25 · 东京",
       "color": "#0f766e",
       "stops": [
         {
           "id": "shinjuku-prince-checkin",
           "time": "15:00",
           "duration": "1h",
-          "title": "Shinjuku Prince Hotel",
+          "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel, 1-30-1 Kabukicho, Shinjuku City, Tokyo, Japan",
           "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "Check-in / Tokyo base hotel",
+          "notes": "入住 / 东京前半段酒店",
           "travelModeToNext": "WALKING"
         },
         {
           "id": "shinjuku-evening",
           "time": "18:00",
           "duration": "2h",
-          "title": "Shinjuku area",
+          "title": "新宿周边",
           "place": "Shinjuku Station, Tokyo, Japan",
           "coords": { "lat": 35.690921, "lng": 139.700258 },
-          "notes": "Dinner / light first-night walk"
+          "notes": "晚餐 / 第一天轻松散步"
         }
       ]
     },
     {
       "id": "2026-06-26-tokyo",
       "date": "2026-06-26",
-      "label": "6/26 · Tokyo",
+      "label": "6/26 · 东京",
       "color": "#2563eb",
       "stops": [
         {
           "id": "tokyo-free-day-1",
           "time": "09:00",
-          "duration": "Full day",
-          "title": "Tokyo day · details TBD",
+          "duration": "整天",
+          "title": "东京自由日 · 细节待定",
           "place": "Shinjuku Prince Hotel, Tokyo, Japan",
           "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "Add Tokyo stops here when the day plan is decided"
+          "notes": "确定当天安排后，在这里添加东京景点"
         }
       ]
     },
     {
       "id": "2026-06-27-tokyo",
       "date": "2026-06-27",
-      "label": "6/27 · Tokyo",
+      "label": "6/27 · 东京",
       "color": "#c2410c",
       "stops": [
         {
           "id": "tokyo-free-day-2",
           "time": "09:00",
-          "duration": "Full day",
-          "title": "Tokyo day · details TBD",
+          "duration": "整天",
+          "title": "东京自由日 · 细节待定",
           "place": "Shinjuku Prince Hotel, Tokyo, Japan",
           "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "Add Tokyo stops here when the day plan is decided"
+          "notes": "确定当天安排后，在这里添加东京景点"
         }
       ]
     },
     {
       "id": "2026-06-28-tokyo-to-nagoya",
       "date": "2026-06-28",
-      "label": "6/28 · Tokyo → Nagoya",
+      "label": "6/28 · 东京 → 名古屋",
       "color": "#7c3aed",
       "stops": [
         {
           "id": "shinjuku-prince-checkout",
           "time": "09:00",
           "duration": "30m",
-          "title": "Shinjuku Prince Hotel",
+          "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel, Tokyo, Japan",
           "coords": { "lat": 35.69475, "lng": 139.7005 },
-          "notes": "Checkout",
+          "notes": "退房",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "tokyo-station-to-nagoya",
           "time": "10:00",
           "duration": "30m",
-          "title": "Tokyo Station",
+          "title": "东京站",
           "place": "Tokyo Station, Tokyo, Japan",
           "coords": { "lat": 35.681236, "lng": 139.767125 },
-          "notes": "Shinkansen to Nagoya",
+          "notes": "新干线前往名古屋",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "nagoya-station-arrival",
           "time": "12:30",
           "duration": "30m",
-          "title": "Nagoya Station",
+          "title": "名古屋站",
           "place": "Nagoya Station, Nagoya, Aichi, Japan",
           "coords": { "lat": 35.170915, "lng": 136.881537 },
-          "notes": "Arrive in Nagoya",
+          "notes": "抵达名古屋",
           "travelModeToNext": "WALKING"
         },
         {
           "id": "via-inn-nagoya",
           "time": "13:15",
-          "duration": "Overnight",
-          "title": "VIA INN NAGOYA EKIMAE TSUBAKICHO",
+          "duration": "过夜",
+          "title": "名古屋站前椿町维亚酒店",
           "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, 9-13 Tsubakicho, Nakamura Ward, Nagoya, Aichi, Japan",
           "coords": { "lat": 35.1695482, "lng": 136.8782109 },
-          "notes": "Nagoya hotel"
+          "notes": "名古屋酒店"
         }
       ]
     },
     {
       "id": "2026-06-29-nagoya-to-kyoto",
       "date": "2026-06-29",
-      "label": "6/29 · Nagoya → Kyoto",
+      "label": "6/29 · 名古屋 → 京都",
       "color": "#be123c",
       "stops": [
         {
           "id": "via-inn-checkout",
           "time": "09:00",
           "duration": "30m",
-          "title": "VIA INN NAGOYA EKIMAE TSUBAKICHO",
+          "title": "名古屋站前椿町维亚酒店",
           "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, Nagoya, Japan",
           "coords": { "lat": 35.1695482, "lng": 136.8782109 },
-          "notes": "Checkout",
+          "notes": "退房",
           "travelModeToNext": "WALKING"
         },
         {
           "id": "nagoya-station-to-kyoto",
           "time": "10:00",
           "duration": "30m",
-          "title": "Nagoya Station",
+          "title": "名古屋站",
           "place": "Nagoya Station, Nagoya, Japan",
           "coords": { "lat": 35.170915, "lng": 136.881537 },
-          "notes": "Shinkansen to Kyoto",
+          "notes": "新干线前往京都",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "kyoto-station-arrival",
           "time": "11:15",
           "duration": "45m",
-          "title": "Kyoto Station",
+          "title": "京都站",
           "place": "Kyoto Station, Kyoto, Japan",
           "coords": { "lat": 34.985849, "lng": 135.758766 },
-          "notes": "Arrive in Kyoto",
+          "notes": "抵达京都",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "kadensho-checkin",
           "time": "15:00",
-          "duration": "Overnight",
-          "title": "Kadensho Arashiyama Onsen",
+          "duration": "过夜",
+          "title": "京都岚山温泉 花传抄",
           "place": "Kyoto Arashiyama Onsen Kadensho, 5-4 Arashiyama Nishiichikawacho, Nishikyo Ward, Kyoto, Japan",
           "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "Kyoto / Arashiyama hotel"
+          "notes": "京都 / 岚山酒店"
         }
       ]
     },
     {
       "id": "2026-06-30-nara-day-trip",
       "date": "2026-06-30",
-      "label": "6/30 · Nara day trip",
+      "label": "6/30 · 奈良一日游",
       "color": "#15803d",
       "stops": [
         {
           "id": "kadensho-start-nara",
           "time": "08:30",
           "duration": "20m",
-          "title": "Kadensho Arashiyama Onsen",
+          "title": "京都岚山温泉 花传抄",
           "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
           "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "Start from Kyoto hotel",
+          "notes": "从京都酒店出发",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "kyoto-station-nara-transfer",
           "time": "09:30",
           "duration": "20m",
-          "title": "Kyoto Station",
+          "title": "京都站",
           "place": "Kyoto Station, Kyoto, Japan",
           "coords": { "lat": 34.985849, "lng": 135.758766 },
-          "notes": "Train toward Nara",
+          "notes": "搭车前往奈良",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "nara-park",
           "time": "11:00",
           "duration": "2h",
-          "title": "Nara Park",
+          "title": "奈良公园",
           "place": "Nara Park, Nara, Japan",
           "coords": { "lat": 34.685087, "lng": 135.843012 },
-          "notes": "Day trip anchor",
+          "notes": "奈良一日游主要地点",
           "travelModeToNext": "WALKING"
         },
         {
           "id": "todai-ji",
           "time": "13:30",
           "duration": "1h 30m",
-          "title": "Todai-ji",
+          "title": "东大寺",
           "place": "Todai-ji, Nara, Japan",
           "coords": { "lat": 34.688986, "lng": 135.839816 },
-          "notes": "Optional if you want to build out the Nara day",
+          "notes": "可选；之后可以继续细化奈良路线",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "kadensho-return-nara",
           "time": "18:30",
-          "duration": "Overnight",
-          "title": "Kadensho Arashiyama Onsen",
+          "duration": "过夜",
+          "title": "京都岚山温泉 花传抄",
           "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
           "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "Return to Kyoto hotel"
+          "notes": "返回京都酒店"
         }
       ]
     },
     {
       "id": "2026-07-01-kyoto",
       "date": "2026-07-01",
-      "label": "7/1 · Kyoto",
+      "label": "7/1 · 京都",
       "color": "#0f766e",
       "stops": [
         {
           "id": "kadensho-kyoto-day",
           "time": "09:00",
-          "duration": "Full day",
-          "title": "Kyoto day · details TBD",
+          "duration": "整天",
+          "title": "京都自由日 · 细节待定",
           "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
           "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "Add Kyoto stops here when the day plan is decided"
+          "notes": "确定当天安排后，在这里添加京都景点"
         }
       ]
     },
     {
       "id": "2026-07-02-kyoto",
       "date": "2026-07-02",
-      "label": "7/2 · Kyoto",
+      "label": "7/2 · 京都",
       "color": "#2563eb",
       "stops": [
         {
           "id": "kadensho-kyoto-day-2",
           "time": "09:00",
-          "duration": "Full day",
-          "title": "Kyoto day · details TBD",
+          "duration": "整天",
+          "title": "京都自由日 · 细节待定",
           "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
           "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "Add Kyoto stops here when the day plan is decided"
+          "notes": "确定当天安排后，在这里添加京都景点"
         }
       ]
     },
     {
       "id": "2026-07-03-yokohama-day-trip",
       "date": "2026-07-03",
-      "label": "7/3 · Yokohama day trip",
+      "label": "7/3 · 横滨一日游",
       "color": "#c2410c",
       "stops": [
         {
           "id": "kyoto-to-yokohama-start",
           "time": "08:00",
           "duration": "30m",
-          "title": "Kadensho Arashiyama Onsen",
+          "title": "京都岚山温泉 花传抄",
           "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
           "coords": { "lat": 35.01069, "lng": 135.680376 },
-          "notes": "Checkout / timing depends on whether you move to Tokyo the night before",
+          "notes": "退房 / 时间取决于是否前一晚先回东京",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "shin-yokohama",
           "time": "11:30",
           "duration": "30m",
-          "title": "Shin-Yokohama Station",
+          "title": "新横滨站",
           "place": "Shin-Yokohama Station, Yokohama, Japan",
           "coords": { "lat": 35.507456, "lng": 139.617585 },
-          "notes": "Shinkansen arrival point for Yokohama",
+          "notes": "新干线抵达横滨的主要车站",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "minato-mirai",
           "time": "13:00",
           "duration": "2h",
-          "title": "Minato Mirai",
+          "title": "港未来",
           "place": "Minato Mirai, Yokohama, Japan",
           "coords": { "lat": 35.457719, "lng": 139.631564 },
-          "notes": "Yokohama day trip anchor",
+          "notes": "横滨一日游主要地点",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "yokohama-chinatown",
           "time": "16:00",
           "duration": "1h 30m",
-          "title": "Yokohama Chinatown",
+          "title": "横滨中华街",
           "place": "Yokohama Chinatown, Yokohama, Japan",
           "coords": { "lat": 35.443708, "lng": 139.645866 },
-          "notes": "Optional dinner / walk",
+          "notes": "可选晚餐 / 散步",
           "travelModeToNext": "TRANSIT"
         },
         {
           "id": "tokyo-return-hotel-tbd",
           "time": "20:00",
-          "duration": "Overnight",
-          "title": "Tokyo hotel TBD",
+          "duration": "过夜",
+          "title": "东京酒店待定",
           "place": "Tokyo Station, Tokyo, Japan",
           "coords": { "lat": 35.681236, "lng": 139.767125 },
-          "notes": "Return to Tokyo. Add final Tokyo hotel once booked."
+          "notes": "返回东京。订好最后一晚酒店后补上。"
         }
       ]
     },
     {
       "id": "2026-07-04-tokyo-departure",
       "date": "2026-07-04",
-      "label": "7/4 · Tokyo",
+      "label": "7/4 · 东京",
       "color": "#7c3aed",
       "stops": [
         {
           "id": "tokyo-final-day",
           "time": "09:00",
-          "duration": "Full day",
-          "title": "Tokyo final day / departure TBD",
+          "duration": "整天",
+          "title": "东京最后一天 / 离境待定",
           "place": "Tokyo Station, Tokyo, Japan",
           "coords": { "lat": 35.681236, "lng": 139.767125 },
-          "notes": "Add final Tokyo hotel, airport, and flight time"
+          "notes": "之后补上东京酒店、机场和航班时间"
         }
       ]
     }

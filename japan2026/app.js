@@ -2,7 +2,8 @@
 
 const STORAGE_KEYS = {
   apiKey: "japan-itinerary-map:api-key",
-  itinerary: "japan2026-itinerary-map:itinerary:v1",
+  itinerary: "japan2026-itinerary-map:itinerary:v2",
+  routeCache: "japan2026-itinerary-map:route-cache:v2",
 };
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
@@ -250,7 +251,9 @@ const state = {
   infoWindow: null,
   markers: [],
   routeRenderers: [],
+  connectionLines: [],
   legSummariesByDay: new globalThis.Map(),
+  routeCache: loadRouteCache(),
   mapsScriptPromise: null,
   routeRunId: 0,
   locationMarker: null,
@@ -328,6 +331,8 @@ async function loadDefaultItinerary() {
 function cacheElements() {
   els.apiKey = document.querySelector("#api-key");
   els.loadMap = document.querySelector("#load-map");
+  els.viewTabs = document.querySelector(".view-tabs");
+  els.viewPanels = [...document.querySelectorAll(".view-panel")];
   els.tripTitle = document.querySelector("#trip-title");
   els.japanClock = document.querySelector("#japan-clock");
   els.dayTabs = document.querySelector("#day-tabs");
@@ -340,11 +345,17 @@ function cacheElements() {
   els.map = document.querySelector("#map");
   els.status = document.querySelector("#status");
   els.locateMe = document.querySelector("#locate-me");
+  els.calculateRoutes = document.querySelector("#calculate-routes");
   els.openGoogleMaps = document.querySelector("#open-google-maps");
 }
 
 function bindEvents() {
   els.loadMap.addEventListener("click", () => void bootMap());
+  els.viewTabs.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-view-target]");
+    if (!button) return;
+    switchView(button.dataset.viewTarget);
+  });
   els.applyJson.addEventListener("click", applyJsonFromEditor);
   els.downloadJson.addEventListener("click", downloadItinerary);
   els.resetSample.addEventListener("click", () => {
@@ -353,6 +364,7 @@ function bindEvents() {
   });
   els.jsonFile.addEventListener("change", handleJsonFile);
   els.openGoogleMaps.addEventListener("click", openSelectedDayInGoogleMaps);
+  els.calculateRoutes.addEventListener("click", () => void calculateRoutesForSelectedDay());
   els.locateMe.addEventListener("click", toggleLiveLocation);
   els.dayTabs.addEventListener("click", (event) => {
     const button = event.target.closest("[data-day-id]");
@@ -369,6 +381,20 @@ function bindEvents() {
     if (!stopNode) return;
     panToStop(stopNode.dataset.dayId, stopNode.dataset.stopId);
   });
+}
+
+function switchView(targetId) {
+  els.viewPanels.forEach((panel) => {
+    panel.hidden = panel.id !== targetId;
+  });
+  els.viewTabs.querySelectorAll("[data-view-target]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.viewTarget === targetId);
+  });
+
+  if (targetId === "map-view" && state.map) {
+    google.maps.event.trigger(state.map, "resize");
+    fitMapToDays(getVisibleDays());
+  }
 }
 
 function applyJsonFromEditor() {
@@ -394,6 +420,7 @@ function applyItinerary(rawItinerary, options = { save: true }) {
   if (!selectedStillExists) {
     state.selectedDayId = state.itinerary.days[0]?.id || "all";
   }
+  state.legSummariesByDay.clear();
 
   if (options.save) {
     saveItinerary();
@@ -510,6 +537,7 @@ function loadGoogleMapsScript(apiKey) {
       "https://maps.googleapis.com/maps/api/js" +
       `?key=${encodeURIComponent(apiKey)}` +
       "&v=weekly&loading=async" +
+      "&language=zh-CN&region=JP" +
       `&callback=${callbackName}`;
     script.async = true;
     script.defer = true;
@@ -523,18 +551,32 @@ function loadGoogleMapsScript(apiKey) {
 async function loadGoogleMapsLibraries() {
   if (state.libs) return state.libs;
 
-  const [maps, marker, routes, geocoding] = await Promise.all([
+  const [maps, marker] = await Promise.all([
     google.maps.importLibrary("maps"),
     google.maps.importLibrary("marker"),
-    google.maps.importLibrary("routes"),
-    google.maps.importLibrary("geocoding"),
   ]);
 
-  state.libs = { maps, marker, routes, geocoding };
-  state.directionsService = new routes.DirectionsService();
-  state.geocoder = new geocoding.Geocoder();
+  state.libs = { maps, marker };
   state.infoWindow = new google.maps.InfoWindow();
   return state.libs;
+}
+
+async function ensureRoutesLibrary() {
+  if (!state.libs.routes) {
+    state.libs.routes = await google.maps.importLibrary("routes");
+  }
+  if (!state.directionsService) {
+    state.directionsService = new state.libs.routes.DirectionsService();
+  }
+}
+
+async function ensureGeocodingLibrary() {
+  if (!state.libs.geocoding) {
+    state.libs.geocoding = await google.maps.importLibrary("geocoding");
+  }
+  if (!state.geocoder) {
+    state.geocoder = new state.libs.geocoding.Geocoder();
+  }
 }
 
 function createOrUpdateMap() {
@@ -561,34 +603,28 @@ function createOrUpdateMap() {
 async function renderMapForSelection() {
   if (!state.map || !state.libs) return;
 
-  const routeRunId = ++state.routeRunId;
   clearMapArtifacts();
   const visibleDays = getVisibleDays();
   await ensureCoordinatesForDays(visibleDays);
 
   drawMarkers(visibleDays);
+  renderCachedRoutesOrPlanned(visibleDays);
   fitMapToDays(visibleDays);
 
   if (state.selectedDayId === "all") {
-    state.legSummariesByDay.clear();
     renderPlan();
-    setStatus(`已显示 ${countStopsWithCoords(visibleDays)} 个地点。选择某一天后会计算路线和每段交通时间。`);
+    setStatus(`已显示 ${countStopsWithCoords(visibleDays)} 个地点。路线默认不自动计算，避免重复调用 Directions API。`);
     return;
   }
 
   const day = visibleDays[0];
-  const summaries = await renderRoutesForDay(day, routeRunId);
-  if (routeRunId !== state.routeRunId) return;
-
-  state.legSummariesByDay.set(day.id, summaries);
   renderPlan();
-  const successfulRoutes = summaries.filter((summary) => !summary.error).length;
-  setStatus(`已显示 ${day.label}：${day.stops.length} 个地点，${successfulRoutes} 段路线。`);
+  const cachedLegs = (state.legSummariesByDay.get(day.id) || []).filter((summary) => summary.cached).length;
+  const routeText = cachedLegs > 0 ? `已从本机缓存加载 ${cachedLegs} 段路线。` : "未请求 Directions API。";
+  setStatus(`已显示 ${day.label}：${day.stops.length} 个地点。${routeText}`);
 }
 
 async function ensureCoordinatesForDays(days) {
-  if (!state.geocoder) return;
-
   const missingStops = [];
   for (const day of days) {
     for (const stop of day.stops) {
@@ -600,6 +636,7 @@ async function ensureCoordinatesForDays(days) {
 
   if (missingStops.length === 0) return;
 
+  await ensureGeocodingLibrary();
   setStatus(`正在用地点名补全 ${missingStops.length} 个坐标...`);
   for (const { day, stop } of missingStops) {
     const query = buildGeocodeQuery(stop, day);
@@ -670,11 +707,61 @@ function drawMarkers(days) {
         content: createMarkerContent(markerNumber, day.color),
       });
 
-      marker.addListener("click", () => openStopInfoWindow(day, stop, stopIndex, marker));
+      marker.addEventListener("gmp-click", () => openStopInfoWindow(day, stop, stopIndex, marker));
       state.markers.push({ day, stop, marker });
       markerNumber += 1;
     });
   }
+}
+
+function renderCachedRoutesOrPlanned(days) {
+  for (const day of days) {
+    const summaries = [];
+
+    for (let index = 0; index < day.stops.length - 1; index += 1) {
+      const originStop = day.stops[index];
+      const destinationStop = day.stops[index + 1];
+      const cacheKey = getRouteCacheKey(day, originStop, destinationStop);
+      const cachedRoute = state.routeCache[cacheKey];
+
+      if (cachedRoute) {
+        drawCachedRoute(cachedRoute, day.color);
+        summaries.push({ ...cachedRoute.summary, cached: true });
+      } else {
+        drawConnectionLine(originStop, destinationStop, day.color, true);
+        summaries.push(createPlannedLegSummary(originStop, destinationStop));
+      }
+    }
+
+    state.legSummariesByDay.set(day.id, summaries);
+  }
+}
+
+async function calculateRoutesForSelectedDay() {
+  if (!state.map) {
+    setStatus("请先加载地图。", true);
+    return;
+  }
+
+  const day = getSelectedDay();
+  if (!day) {
+    setStatus("请先选择具体某一天，再计算并缓存路线。", true);
+    return;
+  }
+
+  const routeRunId = ++state.routeRunId;
+  clearRouteArtifacts();
+  setStatus(`正在计算 ${day.label} 的路线；算过的路线会缓存在本机，之后刷新不会重复请求。`);
+
+  await ensureRoutesLibrary();
+  const summaries = await renderRoutesForDay(day, routeRunId);
+  if (routeRunId !== state.routeRunId) return;
+
+  state.legSummariesByDay.set(day.id, summaries);
+  renderPlan();
+  const cachedLegs = summaries.filter((summary) => summary.cached).length;
+  const fallbackLegs = summaries.filter((summary) => summary.fallback).length;
+  setStatus(`已完成 ${day.label}：${cachedLegs} 段路线已缓存，${fallbackLegs} 段仅显示直线。`);
 }
 
 async function renderRoutesForDay(day, routeRunId) {
@@ -696,20 +783,32 @@ async function renderRoutesForDay(day, routeRunId) {
     }
 
     const travelMode = normalizeTravelMode(stops[index].travelModeToNext || state.itinerary.defaultTravelMode);
+    const cacheKey = getRouteCacheKey(day, stops[index], stops[index + 1]);
+    const cachedRoute = state.routeCache[cacheKey];
+    if (cachedRoute) {
+      drawCachedRoute(cachedRoute, day.color);
+      summaries.push({ ...cachedRoute.summary, cached: true });
+      continue;
+    }
+
     const request = buildDirectionsRequest(day, stops[index], stops[index + 1], travelMode);
 
     try {
       const result = await requestDirections(request);
       if (routeRunId !== state.routeRunId) return summaries;
-      renderDirectionsResult(result, day.color);
-      summaries.push(createLegSummary(stops[index], stops[index + 1], travelMode, result));
+      const routeCacheEntry = createRouteCacheEntry(stops[index], stops[index + 1], travelMode, result);
+      state.routeCache[cacheKey] = routeCacheEntry;
+      saveRouteCache();
+      drawCachedRoute(routeCacheEntry, day.color);
+      summaries.push({ ...routeCacheEntry.summary, cached: true });
     } catch (error) {
-      summaries.push({
-        fromStopId: stops[index].id,
-        toStopId: stops[index + 1].id,
-        travelMode,
-        error: error.message,
-      });
+      const fallbackSummary = createFallbackLegSummary(stops[index], stops[index + 1], travelMode, error.message);
+      if (String(error.message).includes("ZERO_RESULTS")) {
+        state.routeCache[cacheKey] = createFallbackRouteCacheEntry(stops[index], stops[index + 1], fallbackSummary);
+        saveRouteCache();
+      }
+      drawConnectionLine(stops[index], stops[index + 1], day.color, true);
+      summaries.push(fallbackSummary);
     }
   }
 
@@ -750,37 +849,116 @@ function requestDirections(request) {
   });
 }
 
-function renderDirectionsResult(result, color) {
-  const renderer = new state.libs.routes.DirectionsRenderer({
-    map: state.map,
-    suppressMarkers: true,
-    preserveViewport: true,
-    polylineOptions: {
-      strokeColor: color,
-      strokeOpacity: 0.78,
-      strokeWeight: 5,
-    },
-  });
-  renderer.setDirections(result);
-  state.routeRenderers.push(renderer);
-}
-
-function createLegSummary(originStop, destinationStop, travelMode, directionsResult) {
+function createRouteCacheEntry(originStop, destinationStop, travelMode, directionsResult) {
   const leg = directionsResult.routes?.[0]?.legs?.[0];
+  const path = getDirectionsPath(directionsResult);
   const duration = leg?.duration_in_traffic?.text || leg?.duration?.text || "时间未知";
   const distance = leg?.distance?.text || "距离未知";
   const departure = leg?.departure_time?.text || originStop.time || "";
   const arrival = leg?.arrival_time?.text || "";
 
   return {
+    createdAt: new Date().toISOString(),
+    path,
+    summary: {
+      fromStopId: originStop.id,
+      toStopId: destinationStop.id,
+      travelMode,
+      duration,
+      distance,
+      departure,
+      arrival,
+    },
+  };
+}
+
+function getDirectionsPath(directionsResult) {
+  const overviewPath = directionsResult.routes?.[0]?.overview_path || [];
+  return overviewPath
+    .map((point) => ({ lat: point.lat(), lng: point.lng() }))
+    .filter((point) => Number.isFinite(point.lat) && Number.isFinite(point.lng));
+}
+
+function createPlannedLegSummary(originStop, destinationStop) {
+  return {
+    fromStopId: originStop.id,
+    toStopId: destinationStop.id,
+    travelMode: normalizeTravelMode(originStop.travelModeToNext || state.itinerary.defaultTravelMode),
+    duration: "未计算",
+    distance: "计划连线",
+    planned: true,
+  };
+}
+
+function createFallbackLegSummary(originStop, destinationStop, travelMode, errorMessage) {
+  return {
     fromStopId: originStop.id,
     toStopId: destinationStop.id,
     travelMode,
-    duration,
-    distance,
-    departure,
-    arrival,
+    duration: "未找到路线",
+    distance: "已显示直线",
+    fallback: true,
+    note: friendlyDirectionsError(errorMessage),
   };
+}
+
+function createFallbackRouteCacheEntry(originStop, destinationStop, summary) {
+  return {
+    createdAt: new Date().toISOString(),
+    path: [getStopCoords(originStop), getStopCoords(destinationStop)].filter(Boolean),
+    summary,
+  };
+}
+
+function drawCachedRoute(routeCacheEntry, color) {
+  const path = routeCacheEntry.path?.length ? routeCacheEntry.path : null;
+  if (!path) return;
+
+  if (routeCacheEntry.summary?.fallback) {
+    drawConnectionLine({ coords: path[0] }, { coords: path[path.length - 1] }, color, true);
+    return;
+  }
+
+  const line = new google.maps.Polyline({
+    map: state.map,
+    path,
+    strokeColor: color,
+    strokeOpacity: 0.82,
+    strokeWeight: 5,
+  });
+  state.connectionLines.push(line);
+}
+
+function drawConnectionLine(originStop, destinationStop, color, dashed = false) {
+  const origin = getStopCoords(originStop);
+  const destination = getStopCoords(destinationStop);
+  if (!origin || !destination) return;
+
+  const line = new google.maps.Polyline({
+    map: state.map,
+    path: [origin, destination],
+    geodesic: true,
+    strokeColor: color,
+    strokeOpacity: dashed ? 0 : 0.42,
+    strokeWeight: 3,
+    icons: dashed
+      ? [
+          {
+            icon: { path: "M 0,-1 0,1", strokeOpacity: 0.72, scale: 3 },
+            offset: "0",
+            repeat: "14px",
+          },
+        ]
+      : undefined,
+  });
+  state.connectionLines.push(line);
+}
+
+function friendlyDirectionsError(errorMessage) {
+  if (String(errorMessage).includes("ZERO_RESULTS")) {
+    return "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。";
+  }
+  return "路线服务暂时没有结果；已保留计划连线。";
 }
 
 function renderPlan() {
@@ -862,7 +1040,7 @@ function createStopCard(day, stop) {
 
 function createLegSummaryNode(summary) {
   const node = document.createElement("div");
-  node.className = `leg-summary${summary.error ? " error" : ""}`;
+  node.className = `leg-summary${summary.fallback || summary.error ? " error" : ""}${summary.cached && !summary.fallback ? " cached" : ""}`;
 
   const connector = document.createElement("span");
   connector.textContent = "↓";
@@ -870,9 +1048,14 @@ function createLegSummaryNode(summary) {
   const text = document.createElement("span");
   if (summary.error) {
     text.textContent = summary.error;
+  } else if (summary.planned) {
+    text.textContent = `${modeLabel(summary.travelMode)} · 未计算路线 · 显示计划连线`;
+  } else if (summary.fallback) {
+    text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration} · ${summary.note}`;
   } else {
     const timing = [summary.departure, summary.arrival].filter(Boolean).join(" → ");
-    text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration} · ${summary.distance}${timing ? ` · ${timing}` : ""}`;
+    const cacheLabel = summary.cached ? "已缓存 · " : "";
+    text.textContent = `${cacheLabel}${modeLabel(summary.travelMode)} · ${summary.duration} · ${summary.distance}${timing ? ` · ${timing}` : ""}`;
   }
 
   node.append(connector, text);
@@ -886,8 +1069,7 @@ function openStopInfoWindow(day, stop, stopIndex, marker) {
       <p>${escapeHtml(day.label)}${day.date ? ` · ${escapeHtml(day.date)}` : ""}</p>
       <p>${escapeHtml(stop.time || "--:--")}${stop.duration ? ` · ${escapeHtml(stop.duration)}` : ""}</p>
       ${stop.notes ? `<p>${escapeHtml(stop.notes)}</p>` : ""}
-      ${stop.place ? `<p>${escapeHtml(stop.place)}</p>` : ""}
-      <p>Stop ${stopIndex + 1}</p>
+      <p>第 ${stopIndex + 1} 站</p>
     </div>
   `;
   state.infoWindow.setContent(content);
@@ -934,9 +1116,15 @@ function clearMapArtifacts() {
   state.markers.forEach(({ marker }) => {
     marker.map = null;
   });
-  state.routeRenderers.forEach((renderer) => renderer.setMap(null));
+  clearRouteArtifacts();
   state.markers = [];
+}
+
+function clearRouteArtifacts() {
+  state.routeRenderers.forEach((renderer) => renderer.setMap(null));
+  state.connectionLines.forEach((line) => line.setMap(null));
   state.routeRenderers = [];
+  state.connectionLines = [];
 }
 
 function toggleLiveLocation() {
@@ -1091,6 +1279,24 @@ function formatStopForMapsUrl(stop) {
   return getStopUrlQuery(stop);
 }
 
+function getRouteCacheKey(day, originStop, destinationStop) {
+  const origin = getStopCoords(originStop);
+  const destination = getStopCoords(destinationStop);
+  const travelMode = normalizeTravelMode(originStop.travelModeToNext || state.itinerary.defaultTravelMode);
+  return [
+    day.date || day.id,
+    originStop.time || "",
+    travelMode,
+    formatCoordsForCache(origin),
+    formatCoordsForCache(destination),
+  ].join("|");
+}
+
+function formatCoordsForCache(coords) {
+  if (!coords) return "missing";
+  return `${Number(coords.lat).toFixed(6)},${Number(coords.lng).toFixed(6)}`;
+}
+
 function countStopsWithCoords(days) {
   return days.reduce((count, day) => count + day.stops.filter((stop) => getStopCoords(stop)).length, 0);
 }
@@ -1138,7 +1344,7 @@ function updateJapanClock() {
     minute: "2-digit",
     hour12: false,
   });
-  els.japanClock.textContent = `Japan time ${formatter.format(new Date())}`;
+  els.japanClock.textContent = `日本时间 ${formatter.format(new Date())}`;
   renderTimeline();
 }
 
@@ -1237,6 +1443,15 @@ function syncEditorFromItinerary() {
 
 function saveItinerary() {
   localStorage.setItem(STORAGE_KEYS.itinerary, JSON.stringify(state.itinerary));
+}
+
+function loadRouteCache() {
+  const parsed = parseJsonSafely(localStorage.getItem(STORAGE_KEYS.routeCache));
+  return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+}
+
+function saveRouteCache() {
+  localStorage.setItem(STORAGE_KEYS.routeCache, JSON.stringify(state.routeCache));
 }
 
 function parseJsonSafely(value) {

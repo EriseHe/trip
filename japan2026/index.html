@@ -21,7 +21,12 @@
       </div>
     </header>
 
-    <main class="app-shell">
+    <nav class="view-tabs" aria-label="Japan trip views">
+      <button class="view-tab active" type="button" data-view-target="map-view">地图</button>
+      <button class="view-tab" type="button" data-view-target="editor-view">编辑 JSON</button>
+    </nav>
+
+    <main id="map-view" class="app-shell view-panel">
       <aside class="planner-panel">
         <section class="panel-section">
           <div class="section-title-row">
@@ -29,29 +34,10 @@
               <p class="eyebrow">Itinerary</p>
               <h2 id="trip-title">行程</h2>
             </div>
-            <div id="japan-clock" class="clock" aria-live="polite">Japan time --:--</div>
+            <div id="japan-clock" class="clock" aria-live="polite">日本时间 --:--</div>
           </div>
           <div id="day-tabs" class="day-tabs" aria-label="Choose itinerary day"></div>
           <div id="timeline" class="timeline"></div>
-        </section>
-
-        <section class="panel-section editor-section">
-          <div class="section-title-row">
-            <div>
-              <p class="eyebrow">JSON</p>
-              <h2>编辑行程</h2>
-            </div>
-            <label class="file-button">
-              导入
-              <input id="json-file" type="file" accept="application/json,.json" />
-            </label>
-          </div>
-          <textarea id="itinerary-json" spellcheck="false"></textarea>
-          <div class="button-row">
-            <button id="apply-json" type="button">应用 JSON</button>
-            <button id="download-json" type="button" class="secondary">下载</button>
-            <button id="reset-sample" type="button" class="secondary">重置示例</button>
-          </div>
         </section>
       </aside>
 
@@ -59,14 +45,36 @@
         <div id="map" class="map" role="application" aria-label="Google itinerary map">
           <div class="map-empty-state">
             <strong>先输入 API key 并加载地图</strong>
-            <span>左边可以直接改行程 JSON；有坐标会更准，没有坐标时会尝试用地点名补全。</span>
+            <span>默认只显示地点和计划连线；需要真实路线时可打开 Google Maps 或手动计算并缓存。</span>
           </div>
         </div>
         <div class="map-toolbar">
           <button id="locate-me" type="button" class="secondary">定位我</button>
+          <button id="calculate-routes" type="button" class="secondary">计算/缓存路线</button>
           <button id="open-google-maps" type="button">打开 Google Maps 路线</button>
         </div>
         <div id="status" class="status" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <main id="editor-view" class="editor-page view-panel" hidden>
+      <section class="panel-section editor-section">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">JSON</p>
+            <h2>编辑行程</h2>
+          </div>
+          <label class="file-button">
+            导入
+            <input id="json-file" type="file" accept="application/json,.json" />
+          </label>
+        </div>
+        <textarea id="itinerary-json" spellcheck="false"></textarea>
+        <div class="button-row">
+          <button id="apply-json" type="button">应用 JSON</button>
+          <button id="download-json" type="button" class="secondary">下载</button>
+          <button id="reset-sample" type="button" class="secondary">重置行程</button>
+        </div>
       </section>
     </main>
 
