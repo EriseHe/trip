@@ -53,7 +53,7 @@ async function main() {
       );
 
       try {
-        const directions = await requestDirectionsWithRetry(directionsService, itinerary, leg);
+        const directions = await requestDirectionsOnce(directionsService, itinerary, leg);
         routes[cacheKey] = createRouteCacheEntry(leg, directions);
       } catch (error) {
         failures.push({
@@ -68,14 +68,13 @@ async function main() {
       await sleep(160);
     }
 
-    const approximateCount = Object.values(routes).filter((route) => route.summary?.approximate).length;
     const cache = {
       version: 1,
       generatedAt: new Date().toISOString(),
       source: `${tripId}/itinerary.json`,
       itineraryHash,
       routeCount: Object.keys(routes).length,
-      approximateCount,
+      approximateCount: 0,
       fallbackCount: failures.length,
       failedCount: failures.length,
       failures,
@@ -83,9 +82,7 @@ async function main() {
     };
     const json = JSON.stringify(cache, null, 2);
     outputNode.textContent = json;
-    setGeneratorStatus(
-      `完成：${cache.routeCount - approximateCount - cache.failedCount} 段原模式路线，${approximateCount} 段估算路线，${cache.failedCount} 段 fallback。`,
-    );
+    setGeneratorStatus(`完成：${cache.routeCount - cache.failedCount} 段路线，${cache.failedCount} 段 fallback。`);
     setGeneratorResult({ done: true, data: cache });
   } catch (error) {
     outputNode.textContent = error.stack || error.message;
@@ -187,49 +184,12 @@ function collectLegs(itinerary) {
   );
 }
 
-async function requestDirectionsWithRetry(directionsService, itinerary, leg) {
-  try {
-    return {
-      result: await requestDirections(directionsService, itinerary, leg, { usePlannedDeparture: true }),
-      travelMode: leg.travelMode,
-      estimateSource: "planned-schedule",
-    };
-  } catch (error) {
-    if (!shouldRetryWithCurrentDeparture(error, leg)) {
-      throw error;
-    }
-
-    console.warn(`${leg.originStop.title} -> ${leg.destinationStop.title} 使用当前时刻表重试`);
-    try {
-      return {
-        result: await requestDirections(directionsService, itinerary, leg, { usePlannedDeparture: false }),
-        travelMode: leg.travelMode,
-        estimateSource: "current-schedule",
-      };
-    } catch (retryError) {
-      if (!shouldFallbackToDriving(retryError, leg)) {
-        throw retryError;
-      }
-
-      const drivingLeg = { ...leg, travelMode: "DRIVING" };
-      console.warn(`${leg.originStop.title} -> ${leg.destinationStop.title} 使用驾车路线估算`);
-      return {
-        result: await requestDirections(directionsService, itinerary, drivingLeg, { usePlannedDeparture: false }),
-        travelMode: "DRIVING",
-        requestedTravelMode: leg.travelMode,
-        estimateSource: "driving-fallback",
-        approximate: true,
-      };
-    }
-  }
-}
-
-function shouldRetryWithCurrentDeparture(error, leg) {
-  return leg.travelMode === "TRANSIT" && String(error.message).includes("ZERO_RESULTS");
-}
-
-function shouldFallbackToDriving(error, leg) {
-  return leg.travelMode === "TRANSIT" && String(error.message).includes("ZERO_RESULTS");
+async function requestDirectionsOnce(directionsService, itinerary, leg) {
+  return {
+    result: await requestDirections(directionsService, itinerary, leg, { usePlannedDeparture: true }),
+    travelMode: leg.travelMode,
+    estimateSource: "planned-schedule",
+  };
 }
 
 function requestDirections(directionsService, itinerary, leg, options) {

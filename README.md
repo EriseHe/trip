@@ -70,6 +70,8 @@ The GitHub Action in `.github/workflows/precompute-route-cache.yml` runs the sha
 
 `TRAIN`, `SHINKANSEN`, and `FLIGHT` are intentionally skipped by the route generator. Use those values in `travelModeToNext` when a leg should display as train/high-speed rail/flight without spending API calls on a route.
 
+For each eligible leg, the generator calls Directions once. If that request fails, it stores a fallback line and does not retry with another departure time or travel mode.
+
 ## Google API Setup
 
 Trips read the shared key from `site-config.js`; a trip can still override it with `map.apiKey` in `trip-config.js`. In Google Cloud Console, enable:
