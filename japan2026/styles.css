@@ -108,8 +108,12 @@ button:focus-visible,
   backdrop-filter: blur(22px);
 }
 
+.header-title {
+  min-width: 0;
+}
+
 .app-header h1 {
-  margin: 0;
+  margin: 2px 0 0;
   letter-spacing: 0;
   font-size: 28px;
   line-height: 1.05;
@@ -147,11 +151,20 @@ button:focus-visible,
   color: var(--accent-strong);
 }
 
+.trip-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 44px;
+  padding: 10px 24px 0;
+}
+
 .mobile-view-tabs {
   display: none;
+  flex: 0 0 auto;
   gap: 4px;
   align-items: center;
-  margin: 10px 24px;
+  margin: 0;
   padding: 4px;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -183,7 +196,7 @@ button:focus-visible,
   display: grid;
   grid-template-columns: minmax(340px, 430px) minmax(0, 1fr);
   gap: 12px;
-  height: calc(100vh - 102px);
+  height: calc(100vh - 146px);
   min-height: 620px;
   margin: 12px;
   padding: 12px;
@@ -216,12 +229,6 @@ button:focus-visible,
   margin-bottom: 14px;
 }
 
-.planner-meta {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 14px;
-}
-
 .clock {
   flex: 0 0 auto;
   max-width: 152px;
@@ -233,6 +240,7 @@ button:focus-visible,
   font-size: 12px;
   font-weight: 800;
   text-align: right;
+  white-space: nowrap;
 }
 
 .day-tabs {
@@ -565,9 +573,20 @@ button:focus-visible,
     font-size: 23px;
   }
 
+  .trip-controls {
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 0;
+    padding: 10px 16px;
+  }
+
   .mobile-view-tabs {
     display: inline-flex;
-    margin: 10px 16px;
+    margin: 0;
+  }
+
+  .clock {
+    max-width: none;
   }
 
   .app-shell {

@@ -127,12 +127,15 @@ function loadGoogleMapsScript(apiKey) {
 
 function collectLegs(itinerary) {
   return itinerary.days.flatMap((day) =>
-    day.stops.slice(0, -1).map((originStop, index) => ({
-      day,
-      originStop,
-      destinationStop: day.stops[index + 1],
-      travelMode: routeHelpers.normalizeTravelMode(originStop.travelModeToNext || itinerary.defaultTravelMode),
-    })),
+    day.stops
+      .slice(0, -1)
+      .map((originStop, index) => ({
+        day,
+        originStop,
+        destinationStop: day.stops[index + 1],
+        travelMode: routeHelpers.normalizeTravelMode(originStop.travelModeToNext || itinerary.defaultTravelMode),
+      }))
+      .filter((leg) => !routeHelpers.isRouteCalculationSkipped(leg.originStop, itinerary.defaultTravelMode)),
   );
 }
 

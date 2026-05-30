@@ -1,11 +1,34 @@
 "use strict";
 
 (function attachRouteCacheHelpers(global) {
-  const allowedModes = new Set(["DRIVING", "WALKING", "BICYCLING", "TRANSIT"]);
+  const modeAliases = {
+    AIRPLANE: "FLIGHT",
+    BULLET_TRAIN: "SHINKANSEN",
+    HIGH_SPEED_RAIL: "SHINKANSEN",
+    HIGH_SPEED_TRAIN: "SHINKANSEN",
+    PLANE: "FLIGHT",
+    RAIL: "TRAIN",
+    RAILWAY: "TRAIN",
+  };
+  const allowedModes = new Set([
+    "DRIVING",
+    "WALKING",
+    "BICYCLING",
+    "TRANSIT",
+    "TRAIN",
+    "SHINKANSEN",
+    "FLIGHT",
+  ]);
+  const skippedRouteModes = new Set(["TRAIN", "SHINKANSEN", "FLIGHT"]);
 
   function normalizeTravelMode(value) {
     const mode = String(value || "TRANSIT").trim().toUpperCase();
-    return allowedModes.has(mode) ? mode : "TRANSIT";
+    const normalizedMode = modeAliases[mode] || mode;
+    return allowedModes.has(normalizedMode) ? normalizedMode : "TRANSIT";
+  }
+
+  function isRouteCalculationSkipped(originStop, defaultTravelMode = "TRANSIT") {
+    return skippedRouteModes.has(normalizeTravelMode(originStop?.travelModeToNext || defaultTravelMode));
   }
 
   function normalizeCoords(value) {
@@ -70,6 +93,7 @@
     getDepartureDate,
     getRouteCacheKey,
     getStopCoords,
+    isRouteCalculationSkipped,
     normalizeCoords,
     normalizeTravelMode,
   };

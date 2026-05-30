@@ -348,6 +348,7 @@ async function loadRouteCacheFile() {
 }
 
 function cacheElements() {
+  els.topControls = document.querySelector(".trip-controls");
   els.editorToggle = document.querySelector("#editor-toggle");
   els.mobileTabs = document.querySelector(".mobile-view-tabs");
   els.mapView = document.querySelector("#map-view");
@@ -414,6 +415,7 @@ function setEditorVisible(isVisible) {
   els.mapView.hidden = isVisible;
   els.editorView.hidden = !isVisible;
   els.mobileTabs.hidden = isVisible;
+  els.topControls.hidden = isVisible;
   els.editorToggle.textContent = isVisible ? "返回行程" : "编辑行程";
 
   if (!isVisible && state.map) {
@@ -638,7 +640,9 @@ async function renderMapForSelection() {
   renderCachedRoutesOrPlanned(visibleDays);
   fitMapToDays(visibleDays);
 
-  const summaries = visibleDays.flatMap((day) => state.legSummariesByDay.get(day.id) || []);
+  const summaries = visibleDays
+    .flatMap((day) => state.legSummariesByDay.get(day.id) || [])
+    .filter(Boolean);
   const cachedLegs = summaries.filter((summary) => summary.cached).length;
   const plannedLegs = summaries.filter((summary) => summary.planned).length;
 
@@ -762,6 +766,10 @@ function renderCachedRoutesOrPlanned(days) {
       const destinationStop = day.stops[index + 1];
       const cacheKey = getRouteCacheKey(day, originStop, destinationStop);
       const cachedRoute = state.routeCache[cacheKey];
+      if (shouldSkipRouteCalculation(originStop)) {
+        summaries.push(null);
+        continue;
+      }
 
       if (cachedRoute) {
         drawCachedRoute(cachedRoute, day.color);
@@ -1167,6 +1175,10 @@ function getRouteCacheKey(day, originStop, destinationStop) {
   return window.JapanRouteCache.getRouteCacheKey(day, originStop, destinationStop, state.itinerary.defaultTravelMode);
 }
 
+function shouldSkipRouteCalculation(originStop) {
+  return window.JapanRouteCache.isRouteCalculationSkipped(originStop, state.itinerary.defaultTravelMode);
+}
+
 function countStopsWithCoords(days) {
   return days.reduce((count, day) => count + day.stops.filter((stop) => getStopCoords(stop)).length, 0);
 }
@@ -1248,9 +1260,7 @@ function normalizeCoords(value) {
 }
 
 function normalizeTravelMode(value) {
-  const mode = String(value || "TRANSIT").trim().toUpperCase();
-  const allowedModes = new Set(["DRIVING", "WALKING", "BICYCLING", "TRANSIT"]);
-  return allowedModes.has(mode) ? mode : "TRANSIT";
+  return window.JapanRouteCache.normalizeTravelMode(value);
 }
 
 function normalizeStopType(value) {
@@ -1282,6 +1292,9 @@ function modeLabel(mode) {
     WALKING: "步行",
     BICYCLING: "骑行",
     TRANSIT: "公共交通",
+    TRAIN: "火车",
+    SHINKANSEN: "新干线",
+    FLIGHT: "飞机",
   };
   return labels[normalizeTravelMode(mode)];
 }
@@ -1292,6 +1305,9 @@ function googleMapsUrlMode(mode) {
     WALKING: "walking",
     BICYCLING: "bicycling",
     TRANSIT: "transit",
+    TRAIN: "transit",
+    SHINKANSEN: "transit",
+    FLIGHT: "transit",
   };
   return modes[normalizeTravelMode(mode)] || "transit";
 }
