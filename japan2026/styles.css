@@ -13,6 +13,11 @@
   --accent-soft: rgba(15, 118, 110, 0.12);
   --green: #15803d;
   --orange: #c2410c;
+  --time-hotel: #0f766e;
+  --time-station: #2563eb;
+  --time-destination: #7c3aed;
+  --time-restaurant: #c2410c;
+  --time-area: #4b5563;
   --danger: #ff3b30;
   --shadow: none;
   --small-shadow: none;
@@ -53,8 +58,7 @@ button {
   padding: 0 16px;
   transition:
     background 140ms ease,
-    border-color 140ms ease,
-    transform 140ms ease;
+    border-color 140ms ease;
 }
 
 button:hover {
@@ -62,7 +66,7 @@ button:hover {
 }
 
 button:active {
-  transform: scale(0.98);
+  transform: none;
 }
 
 button.secondary,
@@ -214,7 +218,7 @@ button:focus-visible,
 
 .day-tabs {
   display: flex;
-  gap: 7px;
+  gap: 6px;
   overflow-x: auto;
   padding: 3px 0 12px;
 }
@@ -222,12 +226,13 @@ button:focus-visible,
 .day-tab {
   flex: 0 0 auto;
   width: auto;
-  min-width: 112px;
-  min-height: 34px;
+  min-width: 78px;
+  min-height: 32px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.76);
   color: var(--ink);
-  font-size: 14px;
+  font-size: 13px;
+  padding: 0 11px;
 }
 
 .day-tab.active {
@@ -260,16 +265,11 @@ button:focus-visible,
   background: rgba(255, 255, 255, 0.84);
   cursor: pointer;
   padding: 13px 14px;
-  transition:
-    background 140ms ease,
-    border-color 140ms ease,
-    transform 140ms ease;
 }
 
 .stop-card:hover {
-  border-color: rgba(15, 118, 110, 0.28);
-  background: #fff;
-  transform: translateY(-1px);
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.84);
 }
 
 .stop-card.is-now {
@@ -281,25 +281,38 @@ button:focus-visible,
   border-color: transparent;
   border-radius: 12px;
   background: transparent;
-  padding: 7px 4px;
+  padding: 7px 14px;
 }
 
 .stop-card--plain:hover {
   border-color: transparent;
-  background: rgba(15, 118, 110, 0.08);
+  background: transparent;
   transform: none;
 }
 
 .stop-card--hotel .stop-time {
-  color: var(--green);
+  color: var(--time-hotel);
 }
 
 .stop-card--station .stop-time {
-  color: var(--accent);
+  color: var(--time-station);
+}
+
+.stop-card--destination .stop-time,
+.stop-card--sight .stop-time {
+  color: var(--time-destination);
+}
+
+.stop-card--restaurant .stop-time {
+  color: var(--time-restaurant);
+}
+
+.stop-card--area .stop-time {
+  color: var(--time-area);
 }
 
 .stop-time {
-  color: var(--accent);
+  color: var(--time-destination);
   font-size: 14px;
   font-weight: 850;
   line-height: 1.25;
