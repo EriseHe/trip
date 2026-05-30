@@ -1,7 +1,7 @@
 {
   "tripTitle": "日本 2026 · 6/25-7/4",
   "timezone": "Asia/Tokyo",
-  "defaultTravelMode": "TRANSIT",
+  "defaultTravelMode": "DRIVING",
   "map": {
     "center": {
       "lat": 35.681236,
@@ -120,7 +120,7 @@
             "lng": 139.7005
           },
           "notes": "出发前往原宿。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
@@ -162,7 +162,7 @@
             "lng": 139.712314
           },
           "notes": "欣赏林荫大道的设计建筑和精品店。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -204,7 +204,7 @@
             "lng": 139.7116
           },
           "notes": "国际连锁蓝调俱乐部，被誉为东京最顶级的爵士现场。请来世界级音乐家演奏，如 Chick Corea、Herbie Hancock，并提供精致料理和高质量表演。票价较高但体验出众，需提前预订。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "nightlife"
         },
         {
@@ -268,7 +268,7 @@
             "lng": 139.796357
           },
           "notes": "寺前的商业街，售卖传统点心和纪念品。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -324,7 +324,7 @@
             "lng": 139.7703
           },
           "notes": "女仆咖啡厅是秋叶原最具代表性的体验之一；女仆以可爱的装扮称呼客人“主人”和“大小姐”，提供绘图餐点并与客人互动。初次体验建议提前预约或参加当地导览团。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "restaurant"
         },
         {
@@ -402,7 +402,7 @@
             "lng": 136.8782109
           },
           "notes": "名古屋酒店 (6/28)。放下行李，准备游览。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
@@ -416,7 +416,7 @@
             "lng": 136.899
           },
           "notes": "参观江户时代的名古屋城天守阁和本丸御殿。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "sight"
         },
         {
@@ -444,7 +444,7 @@
             "lng": 136.904813
           },
           "notes": "逛街购买电子产品、二手和服以及小吃。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -472,7 +472,7 @@
             "lng": 136.909
           },
           "notes": "1975年开业的老牌爵士俱乐部，被誉为名古屋最尊敬的爵士场地之一。这里每晚都有现场演出，室内温馨，重视音乐体验，建议提前预约。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "nightlife"
         },
         {
@@ -620,7 +620,7 @@
             "lng": 135.77
           },
           "notes": "1975年开业的复古爵士酒吧，以木质内饰和黑胶唱片营造出怀旧氛围，是京都音乐爱好者的热门夜生活场所。位于先斗町附近，可点酒品小食，感受京都夜色。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "nightlife"
         },
         {
@@ -776,7 +776,7 @@
             "lng": 135.680376
           },
           "notes": "出发去京都市中心。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
@@ -790,7 +790,7 @@
             "lng": 135.7604
           },
           "notes": "世界首座综合漫画博物馆，馆藏约30万册漫画，并设置英语等多语言展区和漫画历史展览。可在漫画墙上随意阅读，了解日本漫画文化。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "museum"
         },
         {
@@ -1220,7 +1220,7 @@
             "lng": 139.763366
           },
           "notes": "逛精品店和百货公司，感受东京高端购物区的魅力。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -1234,7 +1234,7 @@
             "lng": 139.767125
           },
           "notes": "根据航班或列车时间前往机场或车站，完成行程。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         }
       ]

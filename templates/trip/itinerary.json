@@ -1,7 +1,7 @@
 {
   "tripTitle": "New Trip",
   "timezone": "Asia/Tokyo",
-  "defaultTravelMode": "TRANSIT",
+  "defaultTravelMode": "DRIVING",
   "map": {
     "center": { "lat": 35.681236, "lng": 139.767125 },
     "zoom": 11
@@ -22,7 +22,7 @@
           "coords": { "lat": 35.681236, "lng": 139.767125 },
           "notes": "",
           "type": "destination",
-          "travelModeToNext": "TRANSIT"
+          "travelModeToNext": "DRIVING"
         }
       ]
     }

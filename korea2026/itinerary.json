@@ -1,7 +1,7 @@
 {
   "tripTitle": "韩国 2026 · 6/20-6/23",
   "timezone": "Asia/Seoul",
-  "defaultTravelMode": "TRANSIT",
+  "defaultTravelMode": "DRIVING",
   "map": {
     "center": {
       "lat": 37.5665,
@@ -42,7 +42,7 @@
             "lng": 126.9864
           },
           "notes": "先放行李；正式入住时间等订好酒店后再调整。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
@@ -84,7 +84,7 @@
             "lng": 126.9853
           },
           "notes": "茶馆、传统工艺店和小吃集中，适合作为抵达日的慢节奏下午。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -147,7 +147,7 @@
             "lng": 126.9777
           },
           "notes": "传统市场，适合买小吃、生活杂货和纪念品。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -161,7 +161,7 @@
             "lng": 126.9882
           },
           "notes": "看首尔城市景观；天气好时再上塔，天气一般就只走南山区域。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "sight"
         },
         {
@@ -175,7 +175,7 @@
             "lng": 126.9946
           },
           "notes": "咖啡、买手店和餐厅选择多，适合下午休息。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -189,7 +189,7 @@
             "lng": 126.9959
           },
           "notes": "傍晚看汉江，彩虹喷泉和夜景是否开放以当天现场为准。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "sight"
         },
         {
@@ -203,7 +203,7 @@
             "lng": 126.9236
           },
           "notes": "年轻人街区，适合逛店、街头表演和轻松夜宵。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -238,7 +238,7 @@
             "lng": 126.9864
           },
           "notes": "最后一个完整游玩日，安排潮流街区和市场。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
@@ -252,7 +252,7 @@
             "lng": 127.0558
           },
           "notes": "首尔近年很热门的潮流街区，适合咖啡、品牌快闪和生活方式店。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -280,7 +280,7 @@
             "lng": 127.0576
           },
           "notes": "江南高楼旁的传统寺院，和 COEX 形成很强反差。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "sight"
         },
         {
@@ -294,7 +294,7 @@
             "lng": 127.0228
           },
           "notes": "咖啡、服饰和美妆店集中，可按体力调整停留时间。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
@@ -308,7 +308,7 @@
             "lng": 126.9996
           },
           "notes": "尝试绿豆煎饼、紫菜包饭、辣炒年糕等市场小吃。",
-          "travelModeToNext": "TRANSIT",
+          "travelModeToNext": "DRIVING",
           "type": "restaurant"
         },
         {

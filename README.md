@@ -70,7 +70,7 @@ The GitHub Action in `.github/workflows/precompute-route-cache.yml` runs the sha
 
 `TRAIN`, `SHINKANSEN`, and `FLIGHT` are intentionally skipped by the route generator. Use those values in `travelModeToNext` when a leg should display as train/high-speed rail/flight without spending API calls on a route.
 
-For each eligible leg, the generator calls Directions once. If that request fails, it stores a fallback line and does not retry with another departure time or travel mode.
+The generator merges consecutive `WALKING` or `DRIVING` legs within the same day into one Directions request with waypoints, up to 25 intermediate waypoints. If that grouped request fails, each leg in the group gets a fallback line and the generator does not retry with another departure time or travel mode.
 
 ## Google API Setup
 
@@ -103,6 +103,6 @@ Each stop should include:
 - `place`: Google-recognized place name
 - `coords`: `{ "lat": 35.681236, "lng": 139.767125 }`
 - `type`: `hotel`, `station`, `restaurant`, `sight`, `area`, or `destination`
-- `travelModeToNext`: `TRANSIT`, `WALKING`, `DRIVING`, `BICYCLING`, `TRAIN`, `SHINKANSEN`, or `FLIGHT`
+- `travelModeToNext`: `WALKING`, `DRIVING`, `BICYCLING`, `TRAIN`, `SHINKANSEN`, or `FLIGHT`
 
 If `coords` is missing, the app can try to geocode `place` or `title`, but explicit coordinates are more reliable.

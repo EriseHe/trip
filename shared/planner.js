@@ -14,7 +14,7 @@ const UNBOXED_STOP_TYPES = new Set(["hotel", "station"]);
 const DEFAULT_ITINERARY = {
   tripTitle: TRIP_CONFIG.title || "Trip Planner",
   timezone: TRIP_CONFIG.timezone || "Asia/Tokyo",
-  defaultTravelMode: "TRANSIT",
+  defaultTravelMode: "DRIVING",
   map: {
     center: TRIP_CONFIG.map?.center || { lat: 35.681236, lng: 139.767125 },
     zoom: TRIP_CONFIG.map?.zoom || 11,
@@ -311,7 +311,7 @@ function normalizeItinerary(rawItinerary) {
   itinerary.tripTitle = itinerary.tripTitle || TRIP_CONFIG.title || "Trip Planner";
   itinerary.timezone = itinerary.timezone || TRIP_CONFIG.timezone || "Asia/Tokyo";
   itinerary.timezoneOffset = itinerary.timezoneOffset || TRIP_CONFIG.timezoneOffset || "";
-  itinerary.defaultTravelMode = normalizeTravelMode(itinerary.defaultTravelMode || "TRANSIT");
+  itinerary.defaultTravelMode = normalizeTravelMode(itinerary.defaultTravelMode || "DRIVING");
   itinerary.map = itinerary.map || {};
   itinerary.map.center =
     normalizeCoords(itinerary.map.center) || normalizeCoords(TRIP_CONFIG.map?.center) || DEFAULT_ITINERARY.map.center;
@@ -358,7 +358,7 @@ function normalizeStop(stop, day, stopIndex) {
     });
   }
   normalizedStop.travelModeToNext = normalizeTravelMode(
-    normalizedStop.travelModeToNext || day.defaultTravelMode || state.itinerary?.defaultTravelMode || "TRANSIT",
+    normalizedStop.travelModeToNext || day.defaultTravelMode || state.itinerary?.defaultTravelMode || "DRIVING",
   );
   normalizedStop.type = normalizeStopType(normalizedStop.type || inferStopType(normalizedStop));
 

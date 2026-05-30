@@ -22,12 +22,12 @@
   const skippedRouteModes = new Set(["TRAIN", "SHINKANSEN", "FLIGHT"]);
 
   function normalizeTravelMode(value) {
-    const mode = String(value || "TRANSIT").trim().toUpperCase();
+    const mode = String(value || "DRIVING").trim().toUpperCase();
     const normalizedMode = modeAliases[mode] || mode;
-    return allowedModes.has(normalizedMode) ? normalizedMode : "TRANSIT";
+    return allowedModes.has(normalizedMode) ? normalizedMode : "DRIVING";
   }
 
-  function isRouteCalculationSkipped(originStop, defaultTravelMode = "TRANSIT") {
+  function isRouteCalculationSkipped(originStop, defaultTravelMode = "DRIVING") {
     return skippedRouteModes.has(normalizeTravelMode(originStop?.travelModeToNext || defaultTravelMode));
   }
 
@@ -48,7 +48,7 @@
     return `${Number(coords.lat).toFixed(6)},${Number(coords.lng).toFixed(6)}`;
   }
 
-  function getRouteCacheKey(day, originStop, destinationStop, defaultTravelMode = "TRANSIT") {
+  function getRouteCacheKey(day, originStop, destinationStop, defaultTravelMode = "DRIVING") {
     const origin = getStopCoords(originStop);
     const destination = getStopCoords(destinationStop);
     const travelMode = normalizeTravelMode(originStop?.travelModeToNext || defaultTravelMode);

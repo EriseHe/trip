@@ -4,6 +4,8 @@ const statusNode = document.querySelector("#route-cache-status");
 const outputNode = document.querySelector("#route-cache-json");
 const routeHelpers = window.TripRouteCache;
 const routeParams = new URLSearchParams(window.location.search);
+const GROUPED_ROUTE_MODES = new Set(["DRIVING", "WALKING"]);
+const MAX_DIRECTIONS_WAYPOINTS = 25;
 
 function setGeneratorStatus(message) {
   statusNode.textContent = message;
@@ -41,28 +43,25 @@ async function main() {
     const directionsService = new DirectionsService();
     const routes = {};
     const failures = [];
-    const legs = collectLegs(itinerary);
+    const routeBatches = collectRouteBatches(itinerary);
 
-    for (const [index, leg] of legs.entries()) {
-      setGeneratorStatus(`正在计算 ${tripId} ${index + 1}/${legs.length}: ${leg.originStop.title} -> ${leg.destinationStop.title}`);
-      const cacheKey = routeHelpers.getRouteCacheKey(
-        leg.day,
-        leg.originStop,
-        leg.destinationStop,
-        itinerary.defaultTravelMode,
-      );
+    for (const [index, batch] of routeBatches.entries()) {
+      setGeneratorStatus(`正在计算 ${tripId} ${index + 1}/${routeBatches.length}: ${describeRouteBatch(batch)}`);
 
       try {
-        const directions = await requestDirectionsOnce(directionsService, itinerary, leg);
-        routes[cacheKey] = createRouteCacheEntry(leg, directions);
+        const directions = await requestDirectionsOnce(directionsService, itinerary, batch);
+        Object.assign(routes, createRouteCacheEntries(batch, directions, itinerary));
       } catch (error) {
-        failures.push({
-          cacheKey,
-          fromStopId: leg.originStop.id,
-          toStopId: leg.destinationStop.id,
-          message: error.message,
-        });
-        routes[cacheKey] = createFallbackRouteCacheEntry(leg, error.message);
+        for (const leg of batch.legs) {
+          const cacheKey = getRouteCacheKey(leg, itinerary);
+          failures.push({
+            cacheKey,
+            fromStopId: leg.originStop.id,
+            toStopId: leg.destinationStop.id,
+            message: error.message,
+          });
+          routes[cacheKey] = createFallbackRouteCacheEntry(leg, error.message);
+        }
       }
 
       await sleep(160);
@@ -74,6 +73,7 @@ async function main() {
       source: `${tripId}/itinerary.json`,
       itineraryHash,
       routeCount: Object.keys(routes).length,
+      requestCount: routeBatches.length,
       approximateCount: 0,
       fallbackCount: failures.length,
       failedCount: failures.length,
@@ -82,7 +82,9 @@ async function main() {
     };
     const json = JSON.stringify(cache, null, 2);
     outputNode.textContent = json;
-    setGeneratorStatus(`完成：${cache.routeCount - cache.failedCount} 段路线，${cache.failedCount} 段 fallback。`);
+    setGeneratorStatus(
+      `完成：${cache.requestCount} 次请求，${cache.routeCount - cache.failedCount} 段路线，${cache.failedCount} 段 fallback。`,
+    );
     setGeneratorResult({ done: true, data: cache });
   } catch (error) {
     outputNode.textContent = error.stack || error.message;
@@ -137,7 +139,7 @@ function applyTripDefaults(itinerary) {
     ...itinerary,
     timezone: itinerary.timezone || config.timezone,
     timezoneOffset: itinerary.timezoneOffset || config.timezoneOffset,
-    defaultTravelMode: itinerary.defaultTravelMode || "TRANSIT",
+    defaultTravelMode: itinerary.defaultTravelMode || "DRIVING",
   };
 }
 
@@ -170,48 +172,111 @@ function loadGoogleMapsScript(tripId, apiKey) {
   });
 }
 
-function collectLegs(itinerary) {
-  return itinerary.days.flatMap((day) =>
-    day.stops
-      .slice(0, -1)
-      .map((originStop, index) => ({
+function collectRouteBatches(itinerary) {
+  const batches = [];
+
+  for (const day of itinerary.days) {
+    let currentBatch = null;
+
+    for (let index = 0; index < day.stops.length - 1; index += 1) {
+      const originStop = day.stops[index];
+      const destinationStop = day.stops[index + 1];
+      const leg = {
         day,
         originStop,
-        destinationStop: day.stops[index + 1],
+        destinationStop,
         travelMode: routeHelpers.normalizeTravelMode(originStop.travelModeToNext || itinerary.defaultTravelMode),
-      }))
-      .filter((leg) => !routeHelpers.isRouteCalculationSkipped(leg.originStop, itinerary.defaultTravelMode)),
-  );
+      };
+
+      if (routeHelpers.isRouteCalculationSkipped(originStop, itinerary.defaultTravelMode)) {
+        currentBatch = flushRouteBatch(batches, currentBatch);
+        continue;
+      }
+
+      if (!canGroupRouteMode(leg.travelMode)) {
+        currentBatch = flushRouteBatch(batches, currentBatch);
+        batches.push(createRouteBatch(leg));
+        continue;
+      }
+
+      if (canAddLegToRouteBatch(currentBatch, leg)) {
+        currentBatch.legs.push(leg);
+        currentBatch.destinationStop = leg.destinationStop;
+      } else {
+        currentBatch = flushRouteBatch(batches, currentBatch);
+        currentBatch = createRouteBatch(leg);
+      }
+    }
+
+    flushRouteBatch(batches, currentBatch);
+  }
+
+  return batches;
 }
 
-async function requestDirectionsOnce(directionsService, itinerary, leg) {
+function createRouteBatch(leg) {
   return {
-    result: await requestDirections(directionsService, itinerary, leg, { usePlannedDeparture: true }),
+    day: leg.day,
+    originStop: leg.originStop,
+    destinationStop: leg.destinationStop,
     travelMode: leg.travelMode,
+    legs: [leg],
+  };
+}
+
+function flushRouteBatch(batches, batch) {
+  if (batch) {
+    batches.push(batch);
+  }
+  return null;
+}
+
+function canGroupRouteMode(travelMode) {
+  return GROUPED_ROUTE_MODES.has(travelMode);
+}
+
+function canAddLegToRouteBatch(batch, leg) {
+  if (!batch) return false;
+  if (batch.day.id !== leg.day.id) return false;
+  if (batch.travelMode !== leg.travelMode) return false;
+  return batch.legs.length < MAX_DIRECTIONS_WAYPOINTS + 1;
+}
+
+function describeRouteBatch(batch) {
+  const modeLabel = batch.travelMode.toLowerCase();
+  const segmentText = batch.legs.length === 1 ? "1 segment" : `${batch.legs.length} segments`;
+  return `${batch.originStop.title} -> ${batch.destinationStop.title} (${modeLabel}, ${segmentText})`;
+}
+
+async function requestDirectionsOnce(directionsService, itinerary, batch) {
+  return {
+    result: await requestDirections(directionsService, itinerary, batch, { usePlannedDeparture: true }),
+    travelMode: batch.travelMode,
     estimateSource: "planned-schedule",
   };
 }
 
-function requestDirections(directionsService, itinerary, leg, options) {
+function requestDirections(directionsService, itinerary, batch, options) {
   const request = {
-    origin: formatDirectionsLocation(leg.originStop, leg.travelMode),
-    destination: formatDirectionsLocation(leg.destinationStop, leg.travelMode),
-    travelMode: google.maps.TravelMode[leg.travelMode],
+    origin: formatDirectionsLocation(batch.originStop, batch.travelMode),
+    destination: formatDirectionsLocation(batch.destinationStop, batch.travelMode),
+    travelMode: google.maps.TravelMode[batch.travelMode],
     provideRouteAlternatives: false,
   };
+  const waypoints = getRouteBatchWaypoints(batch);
+  if (waypoints.length) {
+    if (waypoints.some((waypoint) => !waypoint.location)) {
+      return Promise.reject(new Error("缺少 waypoint 坐标，无法计算合并路线"));
+    }
+    request.waypoints = waypoints;
+  }
 
   if (!request.origin || !request.destination) {
     return Promise.reject(new Error("缺少坐标，无法计算路线"));
   }
-  if (leg.travelMode === "TRANSIT") {
+  if (batch.travelMode === "TRANSIT") {
     request.transitOptions = {
-      departureTime: getDepartureTime(itinerary, leg, options.usePlannedDeparture),
-    };
-  }
-  if (leg.travelMode === "DRIVING") {
-    request.drivingOptions = {
-      departureTime: getDepartureTime(itinerary, leg, options.usePlannedDeparture),
-      trafficModel: google.maps.TrafficModel.BEST_GUESS,
+      departureTime: getDepartureTime(itinerary, batch.legs[0], options.usePlannedDeparture),
     };
   }
 
@@ -231,6 +296,13 @@ function requestDirections(directionsService, itinerary, leg, options) {
   });
 }
 
+function getRouteBatchWaypoints(batch) {
+  return batch.legs.slice(0, -1).map((leg) => ({
+    location: formatDirectionsLocation(leg.destinationStop, batch.travelMode),
+    stopover: true,
+  }));
+}
+
 function formatDirectionsLocation(stop, travelMode) {
   const coords = routeHelpers.getStopCoords(stop);
   if (travelMode === "TRANSIT") {
@@ -246,9 +318,22 @@ function getDepartureTime(itinerary, leg, usePlannedDeparture) {
   return new Date(Date.now() + 10 * 60 * 1000);
 }
 
-function createRouteCacheEntry(leg, directions) {
+function createRouteCacheEntries(batch, directions, itinerary) {
   const { result: directionsResult } = directions;
-  const resultLeg = directionsResult.routes?.[0]?.legs?.[0];
+  const resultLegs = directionsResult.routes?.[0]?.legs || [];
+  if (resultLegs.length < batch.legs.length) {
+    throw new Error(`路线结果缺少分段：需要 ${batch.legs.length} 段，只返回 ${resultLegs.length} 段`);
+  }
+
+  return Object.fromEntries(
+    batch.legs.map((leg, index) => [
+      getRouteCacheKey(leg, itinerary),
+      createRouteCacheEntry(leg, directions, resultLegs[index]),
+    ]),
+  );
+}
+
+function createRouteCacheEntry(leg, directions, resultLeg) {
   const duration = resultLeg?.duration_in_traffic?.text || resultLeg?.duration?.text || "时间未知";
   const distance = resultLeg?.distance?.text || "距离未知";
   const departure = resultLeg?.departure_time?.text || leg.originStop.time || "";
@@ -256,7 +341,7 @@ function createRouteCacheEntry(leg, directions) {
 
   return {
     createdAt: new Date().toISOString(),
-    path: getDirectionsPath(directionsResult),
+    path: getDirectionsLegPath(resultLeg),
     summary: {
       fromStopId: leg.originStop.id,
       toStopId: leg.destinationStop.id,
@@ -273,11 +358,18 @@ function createRouteCacheEntry(leg, directions) {
   };
 }
 
-function getDirectionsPath(directionsResult) {
-  const overviewPath = directionsResult.routes?.[0]?.overview_path || [];
-  return overviewPath
-    .map((point) => ({ lat: point.lat(), lng: point.lng() }))
-    .filter((point) => Number.isFinite(point.lat) && Number.isFinite(point.lng));
+function getDirectionsLegPath(resultLeg) {
+  const stepPath = (resultLeg?.steps || []).flatMap((step) => step.path || []);
+  const path = stepPath.length ? stepPath : [resultLeg?.start_location, resultLeg?.end_location].filter(Boolean);
+  return path.map(latLngToPoint).filter(Boolean);
+}
+
+function latLngToPoint(point) {
+  if (!point) return null;
+  const lat = typeof point.lat === "function" ? point.lat() : point.lat;
+  const lng = typeof point.lng === "function" ? point.lng() : point.lng;
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+  return { lat, lng };
 }
 
 function createFallbackRouteCacheEntry(leg, errorMessage) {
@@ -294,6 +386,10 @@ function createFallbackRouteCacheEntry(leg, errorMessage) {
       note: routeHelpers.friendlyDirectionsError(errorMessage),
     },
   };
+}
+
+function getRouteCacheKey(leg, itinerary) {
+  return routeHelpers.getRouteCacheKey(leg.day, leg.originStop, leg.destinationStop, itinerary.defaultTravelMode);
 }
 
 function sleep(ms) {
