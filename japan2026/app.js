@@ -1000,11 +1000,9 @@ function getDayTabLabel(day) {
   const label = String(day.label || "");
   const labelMatch = /^(\d{1,2})\/(\d{1,2})(.*)$/.exec(label);
   if (labelMatch) {
-    const month = Number(labelMatch[1]);
     const dayOfMonth = Number(labelMatch[2]);
     const suffix = labelMatch[3] || "";
-    const dateText = month === 7 ? String(dayOfMonth) : `${month}/${dayOfMonth}`;
-    return `${dateText}${suffix}`;
+    return `${dayOfMonth}${suffix}`;
   }
   return label;
 }
