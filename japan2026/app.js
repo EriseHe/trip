@@ -359,7 +359,7 @@ function cacheElements() {
   els.editor = document.querySelector("#itinerary-json");
   els.applyJson = document.querySelector("#apply-json");
   els.downloadJson = document.querySelector("#download-json");
-  els.resetSample = document.querySelector("#reset-sample");
+  els.copyJson = document.querySelector("#copy-json");
   els.jsonFile = document.querySelector("#json-file");
   els.map = document.querySelector("#map");
   els.status = document.querySelector("#status");
@@ -376,10 +376,7 @@ function bindEvents() {
   });
   els.applyJson.addEventListener("click", applyJsonFromEditor);
   els.downloadJson.addEventListener("click", downloadItinerary);
-  els.resetSample.addEventListener("click", () => {
-    applyItinerary(state.defaultItinerary || DEFAULT_ITINERARY, { save: true });
-    setStatus("已重置为 Japan 2026 行程。");
-  });
+  els.copyJson.addEventListener("click", () => void copyItineraryCode());
   els.jsonFile.addEventListener("change", handleJsonFile);
   els.openGoogleMaps.addEventListener("click", openSelectedDayInGoogleMaps);
   els.locateMe.addEventListener("click", toggleLiveLocation);
@@ -1133,6 +1130,29 @@ function downloadItinerary() {
   anchor.click();
   anchor.remove();
   URL.revokeObjectURL(url);
+}
+
+async function copyItineraryCode() {
+  try {
+    await navigator.clipboard.writeText(els.editor.value);
+    showCopyFeedback("已复制");
+  } catch {
+    els.editor.focus();
+    els.editor.select();
+    const copied = document.execCommand("copy");
+    showCopyFeedback(copied ? "已复制" : "复制失败");
+    if (!copied) {
+      setStatus("复制失败，请手动复制编辑框里的代码。", true);
+    }
+  }
+}
+
+function showCopyFeedback(label) {
+  const originalLabel = "复制代码";
+  els.copyJson.textContent = label;
+  window.setTimeout(() => {
+    els.copyJson.textContent = originalLabel;
+  }, 1400);
 }
 
 function getVisibleDays() {
