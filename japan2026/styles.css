@@ -8,11 +8,11 @@
   --muted: #6b7280;
   --subtle: #9ca3af;
   --border: rgba(60, 60, 67, 0.14);
-  --accent: #007aff;
-  --accent-strong: #0062cc;
-  --accent-soft: rgba(0, 122, 255, 0.12);
-  --green: #34c759;
-  --orange: #ff9500;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --accent-soft: rgba(15, 118, 110, 0.12);
+  --green: #15803d;
+  --orange: #c2410c;
   --danger: #ff3b30;
   --shadow: none;
   --small-shadow: none;
@@ -74,7 +74,7 @@ button.secondary,
 
 button.secondary:hover,
 .file-button:hover {
-  border-color: rgba(0, 122, 255, 0.26);
+  border-color: rgba(15, 118, 110, 0.26);
   background: #fff;
 }
 
@@ -90,7 +90,7 @@ input:focus,
 textarea:focus,
 button:focus-visible,
 .stop-card:focus-visible {
-  outline: 4px solid rgba(0, 122, 255, 0.18);
+  outline: 4px solid rgba(15, 118, 110, 0.18);
   outline-offset: 2px;
 }
 
@@ -155,7 +155,7 @@ button:focus-visible,
 }
 
 .view-tab:hover {
-  background: rgba(0, 122, 255, 0.08);
+  background: rgba(15, 118, 110, 0.08);
 }
 
 .view-tab.active {
@@ -267,14 +267,14 @@ button:focus-visible,
 }
 
 .stop-card:hover {
-  border-color: rgba(0, 122, 255, 0.28);
+  border-color: rgba(15, 118, 110, 0.28);
   background: #fff;
   transform: translateY(-1px);
 }
 
 .stop-card.is-now {
-  border-color: rgba(0, 122, 255, 0.44);
-  background: rgba(0, 122, 255, 0.1);
+  border-color: rgba(15, 118, 110, 0.44);
+  background: rgba(15, 118, 110, 0.1);
 }
 
 .stop-card--plain {
@@ -286,7 +286,7 @@ button:focus-visible,
 
 .stop-card--plain:hover {
   border-color: transparent;
-  background: rgba(0, 122, 255, 0.08);
+  background: rgba(15, 118, 110, 0.08);
   transform: none;
 }
 

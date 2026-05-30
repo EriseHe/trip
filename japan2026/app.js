@@ -8,7 +8,7 @@ const STORAGE_KEYS = {
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
 const MAX_GOOGLE_MAPS_URL_WAYPOINTS = 9;
-const DAY_COLORS = ["#007aff", "#34c759", "#ff9500", "#af52de", "#ff2d55", "#5ac8fa"];
+const DAY_COLORS = ["#0f766e", "#2563eb", "#c2410c", "#7c3aed", "#be123c", "#15803d"];
 const UNBOXED_STOP_TYPES = new Set(["hotel", "station"]);
 
 const DEFAULT_ITINERARY = {
