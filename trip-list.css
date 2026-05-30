@@ -4,7 +4,7 @@
   --ink: #20242a;
   --muted: #667085;
   --border: #d8d2c6;
-  --accent: #0f766e;
+  --link: #0645ad;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -26,9 +26,9 @@ body {
 }
 
 .page-shell {
-  width: min(640px, calc(100% - 32px));
+  width: min(760px, calc(100% - 96px));
   margin: 0 auto;
-  padding: 56px 0;
+  padding: 64px 0;
 }
 
 .page-header {
@@ -76,23 +76,36 @@ h1 {
 }
 
 .trip-links a {
-  color: var(--ink);
+  display: inline-flex;
+  align-items: baseline;
   font-size: 18px;
-  font-weight: 650;
+  font-weight: 500;
+  gap: 12px;
   line-height: 1.45;
   text-decoration: none;
 }
 
-.trip-links a:hover {
-  color: var(--accent);
+.trip-name {
+  color: var(--link);
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 2px;
+}
+
+.trip-links a:hover .trip-name {
+  color: #0b57d0;
 }
 
 .trip-links a:focus-visible {
   border-radius: 4px;
   outline: 2px solid rgba(15, 118, 110, 0.35);
   outline-offset: 3px;
+}
+
+.trip-dates {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
 }
 
 .trip-empty {
@@ -103,7 +116,7 @@ h1 {
 
 @media (max-width: 620px) {
   .page-shell {
-    width: min(100% - 28px, 640px);
+    width: min(100% - 40px, 760px);
     padding: 32px 0;
   }
 
@@ -113,5 +126,10 @@ h1 {
 
   .trip-links a {
     font-size: 17px;
+    gap: 10px;
+  }
+
+  .trip-dates {
+    font-size: 14px;
   }
 }

@@ -63,7 +63,20 @@ function createTripLink(trip) {
   const item = document.createElement("li");
   const link = document.createElement("a");
   link.href = trip.href || `./${trip.id}/`;
-  link.textContent = getTripName(trip);
+
+  const name = document.createElement("span");
+  name.className = "trip-name";
+  name.textContent = getTripName(trip);
+  link.appendChild(name);
+
+  const dates = getTripDates(trip);
+  if (dates) {
+    const date = document.createElement("span");
+    date.className = "trip-dates";
+    date.textContent = dates;
+    link.appendChild(date);
+  }
+
   item.append(link);
   return item;
 }
@@ -76,4 +89,8 @@ function getTripYear(trip) {
 function getTripName(trip) {
   if (trip.name) return trip.name;
   return String(trip.title || trip.id || "Trip").replace(/\s*20\d{2}\s*$/, "");
+}
+
+function getTripDates(trip) {
+  return trip.dates || String(trip.meta || "").replace(/\b20\d{2}\s*·\s*/, "");
 }
