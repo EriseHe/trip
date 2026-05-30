@@ -26,7 +26,7 @@ body {
 }
 
 .page-shell {
-  width: min(760px, calc(100% - 96px));
+  width: min(560px, calc(100% - 160px));
   margin: 0 auto;
   padding: 64px 0;
 }
@@ -76,13 +76,15 @@ h1 {
 }
 
 .trip-links a {
-  display: inline-flex;
+  display: grid;
   align-items: baseline;
+  grid-template-columns: max-content 1fr;
   font-size: 18px;
   font-weight: 500;
-  gap: 12px;
+  column-gap: 24px;
   line-height: 1.45;
   text-decoration: none;
+  width: 100%;
 }
 
 .trip-name {
@@ -105,6 +107,8 @@ h1 {
   color: var(--muted);
   font-size: 15px;
   font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  justify-self: end;
   text-decoration: none;
 }
 
@@ -116,8 +120,8 @@ h1 {
 
 @media (max-width: 620px) {
   .page-shell {
-    width: min(100% - 40px, 760px);
-    padding: 32px 0;
+    width: min(100% - 88px, 560px);
+    padding: 48px 0;
   }
 
   h1 {
@@ -126,7 +130,7 @@ h1 {
 
   .trip-links a {
     font-size: 17px;
-    gap: 10px;
+    column-gap: 18px;
   }
 
   .trip-dates {

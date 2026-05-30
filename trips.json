@@ -6,8 +6,7 @@
       "year": 2026,
       "name": "Korea",
       "dates": "6/20–6/23",
-      "title": "Korea 2026",
-      "order": 1
+      "title": "Korea 2026"
     },
     {
       "id": "japan2026",
@@ -15,8 +14,7 @@
       "year": 2026,
       "name": "Japan",
       "dates": "6/25–7/4",
-      "title": "Japan 2026",
-      "order": 2
+      "title": "Japan 2026"
     }
   ]
 }

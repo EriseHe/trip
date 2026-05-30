@@ -32,7 +32,7 @@ function groupTripsByYear(trips) {
   const groups = new globalThis.Map();
   trips.forEach((trip, index) => {
     const year = getTripYear(trip);
-    const entry = { ...trip, order: Number(trip.order ?? index) };
+    const entry = { ...trip, originalIndex: index };
     groups.set(year, [...(groups.get(year) || []), entry]);
   });
 
@@ -40,8 +40,14 @@ function groupTripsByYear(trips) {
     .sort(([leftYear], [rightYear]) => Number(rightYear) - Number(leftYear))
     .map(([year, yearTrips]) => ({
       year,
-      trips: yearTrips.sort((left, right) => left.order - right.order),
+      trips: yearTrips.sort(compareTripsByDate),
     }));
+}
+
+function compareTripsByDate(left, right) {
+  const dateDifference = getTripStartDateValue(right) - getTripStartDateValue(left);
+  if (dateDifference !== 0) return dateDifference;
+  return left.originalIndex - right.originalIndex;
 }
 
 function createYearSection(year, trips) {
@@ -93,4 +99,12 @@ function getTripName(trip) {
 
 function getTripDates(trip) {
   return trip.dates || String(trip.meta || "").replace(/\b20\d{2}\s*·\s*/, "");
+}
+
+function getTripStartDateValue(trip) {
+  const year = Number(getTripYear(trip));
+  const dates = getTripDates(trip);
+  const match = String(dates).match(/(\d{1,2})\/(\d{1,2})/);
+  if (!Number.isFinite(year) || !match) return 0;
+  return new Date(Date.UTC(year, Number(match[1]) - 1, Number(match[2]))).getTime();
 }
