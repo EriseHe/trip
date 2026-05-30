@@ -8,7 +8,8 @@ const STORAGE_KEYS = {
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
 const MAX_GOOGLE_MAPS_URL_WAYPOINTS = 9;
-const DAY_COLORS = ["#0f766e", "#2563eb", "#c2410c", "#7c3aed", "#be123c", "#15803d"];
+const DAY_COLORS = ["#007aff", "#34c759", "#ff9500", "#af52de", "#ff2d55", "#5ac8fa"];
+const UNBOXED_STOP_TYPES = new Set(["hotel", "station"]);
 
 const DEFAULT_ITINERARY = {
   tripTitle: "日本 7 日样例行程",
@@ -278,9 +279,9 @@ async function initApp() {
 
   const localConfigApiKey = getLocalConfigApiKey();
   const configuredApiKey = getActiveApiKey();
-  if (localConfigApiKey) {
+  if (localConfigApiKey && els.apiKey) {
     els.apiKey.placeholder = "Using config.js";
-  } else if (configuredApiKey) {
+  } else if (configuredApiKey && els.apiKey) {
     els.apiKey.value = configuredApiKey;
   }
 
@@ -350,7 +351,7 @@ function cacheElements() {
 }
 
 function bindEvents() {
-  els.loadMap.addEventListener("click", () => void bootMap());
+  els.loadMap?.addEventListener("click", () => void bootMap());
   els.viewTabs.addEventListener("click", (event) => {
     const button = event.target.closest("[data-view-target]");
     if (!button) return;
@@ -379,7 +380,14 @@ function bindEvents() {
   els.timeline.addEventListener("click", (event) => {
     const stopNode = event.target.closest("[data-stop-id]");
     if (!stopNode) return;
-    panToStop(stopNode.dataset.dayId, stopNode.dataset.stopId);
+    openStopFromTimeline(stopNode.dataset.dayId, stopNode.dataset.stopId);
+  });
+  els.timeline.addEventListener("keydown", (event) => {
+    if (!["Enter", " "].includes(event.key)) return;
+    const stopNode = event.target.closest("[data-stop-id]");
+    if (!stopNode) return;
+    event.preventDefault();
+    openStopFromTimeline(stopNode.dataset.dayId, stopNode.dataset.stopId);
   });
 }
 
@@ -401,7 +409,7 @@ function applyJsonFromEditor() {
   try {
     const parsed = JSON.parse(els.editor.value);
     applyItinerary(parsed, { save: true });
-    setStatus("JSON 已应用。");
+    setStatus("行程已更新到当前浏览器。要永久更新 GitHub Pages，请同步修改 itinerary.json 并 push。");
   } catch (error) {
     setStatus(`JSON 解析失败：${error.message}`, true);
   }
@@ -491,6 +499,7 @@ function normalizeStop(stop, day, stopIndex) {
   normalizedStop.travelModeToNext = normalizeTravelMode(
     normalizedStop.travelModeToNext || day.defaultTravelMode || state.itinerary?.defaultTravelMode || "TRANSIT",
   );
+  normalizedStop.type = normalizeStopType(normalizedStop.type || inferStopType(normalizedStop));
 
   return normalizedStop;
 }
@@ -972,7 +981,7 @@ function renderDayTabs() {
   fragment.appendChild(createDayTab("all", "全部", state.selectedDayId === "all"));
 
   state.itinerary.days.forEach((day) => {
-    fragment.appendChild(createDayTab(day.id, day.label, state.selectedDayId === day.id));
+    fragment.appendChild(createDayTab(day.id, getDayTabLabel(day), state.selectedDayId === day.id));
   });
 
   els.dayTabs.replaceChildren(fragment);
@@ -985,6 +994,16 @@ function createDayTab(dayId, label, isActive) {
   button.dataset.dayId = dayId;
   button.textContent = label;
   return button;
+}
+
+function getDayTabLabel(day) {
+  const date = String(day.date || "");
+  const match = /-(\d{2})$/.exec(date);
+  if (match) {
+    return String(Number(match[1]));
+  }
+  const labelMatch = /^(\d{1,2})\/(\d{1,2})/.exec(String(day.label || ""));
+  return labelMatch ? labelMatch[2] : day.label;
 }
 
 function renderTimeline() {
@@ -1015,9 +1034,13 @@ function renderTimeline() {
 
 function createStopCard(day, stop) {
   const card = document.createElement("article");
-  card.className = `stop-card${isStopCurrent(day, stop) ? " is-now" : ""}`;
+  const stopType = normalizeStopType(stop.type || inferStopType(stop));
+  card.className = `stop-card stop-card--${stopType}${UNBOXED_STOP_TYPES.has(stopType) ? " stop-card--plain" : ""}${isStopCurrent(day, stop) ? " is-now" : ""}`;
   card.dataset.dayId = day.id;
   card.dataset.stopId = stop.id;
+  card.tabIndex = 0;
+  card.role = "link";
+  card.title = "在 Google Maps 中打开";
 
   const time = document.createElement("div");
   time.className = "stop-time";
@@ -1088,6 +1111,20 @@ function panToStop(dayId, stopId) {
     match.day.stops.findIndex((stop) => stop.id === stopId),
     match.marker,
   );
+}
+
+function openStopFromTimeline(dayId, stopId) {
+  const day = state.itinerary.days.find((candidate) => candidate.id === dayId);
+  const stop = day?.stops.find((candidate) => candidate.id === stopId);
+  if (!stop) return;
+  openStopInGoogleMaps(stop);
+}
+
+function openStopInGoogleMaps(stop) {
+  const url = new URL("https://www.google.com/maps/search/");
+  url.searchParams.set("api", "1");
+  url.searchParams.set("query", getStopMapsQuery(stop));
+  window.open(url.toString(), "_blank", "noopener,noreferrer");
 }
 
 function fitMapToDays(days) {
@@ -1271,6 +1308,10 @@ function getStopUrlQuery(stop) {
   return stop.place || stop.address || stop.title;
 }
 
+function getStopMapsQuery(stop) {
+  return stop.place || stop.address || stop.title || formatStopForMapsUrl(stop);
+}
+
 function formatStopForMapsUrl(stop) {
   const coords = getStopCoords(stop);
   if (coords) {
@@ -1401,6 +1442,28 @@ function normalizeTravelMode(value) {
   const mode = String(value || "TRANSIT").trim().toUpperCase();
   const allowedModes = new Set(["DRIVING", "WALKING", "BICYCLING", "TRANSIT"]);
   return allowedModes.has(mode) ? mode : "TRANSIT";
+}
+
+function normalizeStopType(value) {
+  const type = String(value || "destination").trim().toLowerCase();
+  const allowedTypes = new Set(["hotel", "station", "restaurant", "sight", "area", "destination"]);
+  return allowedTypes.has(type) ? type : "destination";
+}
+
+function inferStopType(stop) {
+  const title = String(stop.title || "").toLowerCase();
+  const place = String(stop.place || "").toLowerCase();
+  const notes = String(stop.notes || "").toLowerCase();
+  const visibleText = [title, notes].filter(Boolean).join(" ");
+
+  if (/hotel|inn|onsen|酒店|大饭店|旅馆|温泉|花传抄|维亚/.test(title)) return "hotel";
+  if (/station|站|駅/.test(title)) return "station";
+  if (/area|周边|自由日|最后一天|待定/.test(visibleText)) return "area";
+  if (/restaurant|cafe|餐厅|咖啡|晚餐|午餐/.test(visibleText)) return "restaurant";
+  if (/park|temple|shrine|castle|museum|公园|寺|神社|城|博物馆|中华街|港未来/.test(visibleText)) return "sight";
+  if (/hotel|inn|onsen/.test(place)) return "hotel";
+  if (/station/.test(place)) return "station";
+  return "destination";
 }
 
 function modeLabel(mode) {

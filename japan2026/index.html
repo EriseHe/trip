@@ -12,18 +12,11 @@
         <p class="eyebrow">Japan trip planner</p>
         <h1>Live 行程地图</h1>
       </div>
-      <div class="api-controls" aria-label="Google Maps API controls">
-        <label class="api-key-field">
-          <span>Google Maps API Key</span>
-          <input id="api-key" type="password" autocomplete="off" placeholder="AIza..." />
-        </label>
-        <button id="load-map" type="button">加载地图</button>
-      </div>
     </header>
 
     <nav class="view-tabs" aria-label="Japan trip views">
       <button class="view-tab active" type="button" data-view-target="map-view">地图</button>
-      <button class="view-tab" type="button" data-view-target="editor-view">编辑 JSON</button>
+      <button class="view-tab" type="button" data-view-target="editor-view">编辑行程</button>
     </nav>
 
     <main id="map-view" class="app-shell view-panel">
@@ -44,7 +37,7 @@
       <section class="map-panel">
         <div id="map" class="map" role="application" aria-label="Google itinerary map">
           <div class="map-empty-state">
-            <strong>先输入 API key 并加载地图</strong>
+            <strong>正在加载地图</strong>
             <span>默认只显示地点和计划连线；需要真实路线时可打开 Google Maps 或手动计算并缓存。</span>
           </div>
         </div>
@@ -61,7 +54,7 @@
       <section class="panel-section editor-section">
         <div class="section-title-row">
           <div>
-            <p class="eyebrow">JSON</p>
+            <p class="eyebrow">Itinerary</p>
             <h2>编辑行程</h2>
           </div>
           <label class="file-button">
@@ -71,7 +64,7 @@
         </div>
         <textarea id="itinerary-json" spellcheck="false"></textarea>
         <div class="button-row">
-          <button id="apply-json" type="button">应用 JSON</button>
+          <button id="apply-json" type="button">更新</button>
           <button id="download-json" type="button" class="secondary">下载</button>
           <button id="reset-sample" type="button" class="secondary">重置行程</button>
         </div>
