@@ -1,0 +1,332 @@
+{
+  "tripTitle": "Japan 2026 · 6/25-7/4",
+  "timezone": "Asia/Tokyo",
+  "defaultTravelMode": "TRANSIT",
+  "map": {
+    "center": { "lat": 35.681236, "lng": 139.767125 },
+    "zoom": 11,
+    "mapId": "DEMO_MAP_ID"
+  },
+  "days": [
+    {
+      "id": "2026-06-25-tokyo-arrival",
+      "date": "2026-06-25",
+      "label": "6/25 · Tokyo",
+      "color": "#0f766e",
+      "stops": [
+        {
+          "id": "shinjuku-prince-checkin",
+          "time": "15:00",
+          "duration": "1h",
+          "title": "Shinjuku Prince Hotel",
+          "place": "Shinjuku Prince Hotel, 1-30-1 Kabukicho, Shinjuku City, Tokyo, Japan",
+          "coords": { "lat": 35.69475, "lng": 139.7005 },
+          "notes": "Check-in / Tokyo base hotel",
+          "travelModeToNext": "WALKING"
+        },
+        {
+          "id": "shinjuku-evening",
+          "time": "18:00",
+          "duration": "2h",
+          "title": "Shinjuku area",
+          "place": "Shinjuku Station, Tokyo, Japan",
+          "coords": { "lat": 35.690921, "lng": 139.700258 },
+          "notes": "Dinner / light first-night walk"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-26-tokyo",
+      "date": "2026-06-26",
+      "label": "6/26 · Tokyo",
+      "color": "#2563eb",
+      "stops": [
+        {
+          "id": "tokyo-free-day-1",
+          "time": "09:00",
+          "duration": "Full day",
+          "title": "Tokyo day · details TBD",
+          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
+          "coords": { "lat": 35.69475, "lng": 139.7005 },
+          "notes": "Add Tokyo stops here when the day plan is decided"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-27-tokyo",
+      "date": "2026-06-27",
+      "label": "6/27 · Tokyo",
+      "color": "#c2410c",
+      "stops": [
+        {
+          "id": "tokyo-free-day-2",
+          "time": "09:00",
+          "duration": "Full day",
+          "title": "Tokyo day · details TBD",
+          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
+          "coords": { "lat": 35.69475, "lng": 139.7005 },
+          "notes": "Add Tokyo stops here when the day plan is decided"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-28-tokyo-to-nagoya",
+      "date": "2026-06-28",
+      "label": "6/28 · Tokyo → Nagoya",
+      "color": "#7c3aed",
+      "stops": [
+        {
+          "id": "shinjuku-prince-checkout",
+          "time": "09:00",
+          "duration": "30m",
+          "title": "Shinjuku Prince Hotel",
+          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
+          "coords": { "lat": 35.69475, "lng": 139.7005 },
+          "notes": "Checkout",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "tokyo-station-to-nagoya",
+          "time": "10:00",
+          "duration": "30m",
+          "title": "Tokyo Station",
+          "place": "Tokyo Station, Tokyo, Japan",
+          "coords": { "lat": 35.681236, "lng": 139.767125 },
+          "notes": "Shinkansen to Nagoya",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "nagoya-station-arrival",
+          "time": "12:30",
+          "duration": "30m",
+          "title": "Nagoya Station",
+          "place": "Nagoya Station, Nagoya, Aichi, Japan",
+          "coords": { "lat": 35.170915, "lng": 136.881537 },
+          "notes": "Arrive in Nagoya",
+          "travelModeToNext": "WALKING"
+        },
+        {
+          "id": "via-inn-nagoya",
+          "time": "13:15",
+          "duration": "Overnight",
+          "title": "VIA INN NAGOYA EKIMAE TSUBAKICHO",
+          "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, 9-13 Tsubakicho, Nakamura Ward, Nagoya, Aichi, Japan",
+          "coords": { "lat": 35.1695482, "lng": 136.8782109 },
+          "notes": "Nagoya hotel"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-29-nagoya-to-kyoto",
+      "date": "2026-06-29",
+      "label": "6/29 · Nagoya → Kyoto",
+      "color": "#be123c",
+      "stops": [
+        {
+          "id": "via-inn-checkout",
+          "time": "09:00",
+          "duration": "30m",
+          "title": "VIA INN NAGOYA EKIMAE TSUBAKICHO",
+          "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, Nagoya, Japan",
+          "coords": { "lat": 35.1695482, "lng": 136.8782109 },
+          "notes": "Checkout",
+          "travelModeToNext": "WALKING"
+        },
+        {
+          "id": "nagoya-station-to-kyoto",
+          "time": "10:00",
+          "duration": "30m",
+          "title": "Nagoya Station",
+          "place": "Nagoya Station, Nagoya, Japan",
+          "coords": { "lat": 35.170915, "lng": 136.881537 },
+          "notes": "Shinkansen to Kyoto",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "kyoto-station-arrival",
+          "time": "11:15",
+          "duration": "45m",
+          "title": "Kyoto Station",
+          "place": "Kyoto Station, Kyoto, Japan",
+          "coords": { "lat": 34.985849, "lng": 135.758766 },
+          "notes": "Arrive in Kyoto",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "kadensho-checkin",
+          "time": "15:00",
+          "duration": "Overnight",
+          "title": "Kadensho Arashiyama Onsen",
+          "place": "Kyoto Arashiyama Onsen Kadensho, 5-4 Arashiyama Nishiichikawacho, Nishikyo Ward, Kyoto, Japan",
+          "coords": { "lat": 35.01069, "lng": 135.680376 },
+          "notes": "Kyoto / Arashiyama hotel"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-30-nara-day-trip",
+      "date": "2026-06-30",
+      "label": "6/30 · Nara day trip",
+      "color": "#15803d",
+      "stops": [
+        {
+          "id": "kadensho-start-nara",
+          "time": "08:30",
+          "duration": "20m",
+          "title": "Kadensho Arashiyama Onsen",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": { "lat": 35.01069, "lng": 135.680376 },
+          "notes": "Start from Kyoto hotel",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "kyoto-station-nara-transfer",
+          "time": "09:30",
+          "duration": "20m",
+          "title": "Kyoto Station",
+          "place": "Kyoto Station, Kyoto, Japan",
+          "coords": { "lat": 34.985849, "lng": 135.758766 },
+          "notes": "Train toward Nara",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "nara-park",
+          "time": "11:00",
+          "duration": "2h",
+          "title": "Nara Park",
+          "place": "Nara Park, Nara, Japan",
+          "coords": { "lat": 34.685087, "lng": 135.843012 },
+          "notes": "Day trip anchor",
+          "travelModeToNext": "WALKING"
+        },
+        {
+          "id": "todai-ji",
+          "time": "13:30",
+          "duration": "1h 30m",
+          "title": "Todai-ji",
+          "place": "Todai-ji, Nara, Japan",
+          "coords": { "lat": 34.688986, "lng": 135.839816 },
+          "notes": "Optional if you want to build out the Nara day",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "kadensho-return-nara",
+          "time": "18:30",
+          "duration": "Overnight",
+          "title": "Kadensho Arashiyama Onsen",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": { "lat": 35.01069, "lng": 135.680376 },
+          "notes": "Return to Kyoto hotel"
+        }
+      ]
+    },
+    {
+      "id": "2026-07-01-kyoto",
+      "date": "2026-07-01",
+      "label": "7/1 · Kyoto",
+      "color": "#0f766e",
+      "stops": [
+        {
+          "id": "kadensho-kyoto-day",
+          "time": "09:00",
+          "duration": "Full day",
+          "title": "Kyoto day · details TBD",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": { "lat": 35.01069, "lng": 135.680376 },
+          "notes": "Add Kyoto stops here when the day plan is decided"
+        }
+      ]
+    },
+    {
+      "id": "2026-07-02-kyoto",
+      "date": "2026-07-02",
+      "label": "7/2 · Kyoto",
+      "color": "#2563eb",
+      "stops": [
+        {
+          "id": "kadensho-kyoto-day-2",
+          "time": "09:00",
+          "duration": "Full day",
+          "title": "Kyoto day · details TBD",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": { "lat": 35.01069, "lng": 135.680376 },
+          "notes": "Add Kyoto stops here when the day plan is decided"
+        }
+      ]
+    },
+    {
+      "id": "2026-07-03-yokohama-day-trip",
+      "date": "2026-07-03",
+      "label": "7/3 · Yokohama day trip",
+      "color": "#c2410c",
+      "stops": [
+        {
+          "id": "kyoto-to-yokohama-start",
+          "time": "08:00",
+          "duration": "30m",
+          "title": "Kadensho Arashiyama Onsen",
+          "place": "Kyoto Arashiyama Onsen Kadensho, Kyoto, Japan",
+          "coords": { "lat": 35.01069, "lng": 135.680376 },
+          "notes": "Checkout / timing depends on whether you move to Tokyo the night before",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "shin-yokohama",
+          "time": "11:30",
+          "duration": "30m",
+          "title": "Shin-Yokohama Station",
+          "place": "Shin-Yokohama Station, Yokohama, Japan",
+          "coords": { "lat": 35.507456, "lng": 139.617585 },
+          "notes": "Shinkansen arrival point for Yokohama",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "minato-mirai",
+          "time": "13:00",
+          "duration": "2h",
+          "title": "Minato Mirai",
+          "place": "Minato Mirai, Yokohama, Japan",
+          "coords": { "lat": 35.457719, "lng": 139.631564 },
+          "notes": "Yokohama day trip anchor",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "yokohama-chinatown",
+          "time": "16:00",
+          "duration": "1h 30m",
+          "title": "Yokohama Chinatown",
+          "place": "Yokohama Chinatown, Yokohama, Japan",
+          "coords": { "lat": 35.443708, "lng": 139.645866 },
+          "notes": "Optional dinner / walk",
+          "travelModeToNext": "TRANSIT"
+        },
+        {
+          "id": "tokyo-return-hotel-tbd",
+          "time": "20:00",
+          "duration": "Overnight",
+          "title": "Tokyo hotel TBD",
+          "place": "Tokyo Station, Tokyo, Japan",
+          "coords": { "lat": 35.681236, "lng": 139.767125 },
+          "notes": "Return to Tokyo. Add final Tokyo hotel once booked."
+        }
+      ]
+    },
+    {
+      "id": "2026-07-04-tokyo-departure",
+      "date": "2026-07-04",
+      "label": "7/4 · Tokyo",
+      "color": "#7c3aed",
+      "stops": [
+        {
+          "id": "tokyo-final-day",
+          "time": "09:00",
+          "duration": "Full day",
+          "title": "Tokyo final day / departure TBD",
+          "place": "Tokyo Station, Tokyo, Japan",
+          "coords": { "lat": 35.681236, "lng": 139.767125 },
+          "notes": "Add final Tokyo hotel, airport, and flight time"
+        }
+      ]
+    }
+  ]
+}

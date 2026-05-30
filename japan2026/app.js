@@ -2,7 +2,7 @@
 
 const STORAGE_KEYS = {
   apiKey: "japan-itinerary-map:api-key",
-  itinerary: "japan-itinerary-map:itinerary",
+  itinerary: "japan2026-itinerary-map:itinerary:v1",
 };
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
@@ -255,6 +255,7 @@ const state = {
   routeRunId: 0,
   locationMarker: null,
   locationWatchId: null,
+  defaultItinerary: null,
 };
 
 const els = {};
@@ -266,9 +267,9 @@ window.gm_authFailure = () => {
   );
 };
 
-document.addEventListener("DOMContentLoaded", initApp);
+document.addEventListener("DOMContentLoaded", () => void initApp());
 
-function initApp() {
+async function initApp() {
   cacheElements();
   bindEvents();
 
@@ -280,8 +281,9 @@ function initApp() {
     els.apiKey.value = configuredApiKey;
   }
 
+  state.defaultItinerary = await loadDefaultItinerary();
   const savedItinerary = parseJsonSafely(localStorage.getItem(STORAGE_KEYS.itinerary));
-  applyItinerary(savedItinerary || DEFAULT_ITINERARY, { save: false });
+  applyItinerary(savedItinerary || state.defaultItinerary, { save: false });
   updateJapanClock();
   setInterval(updateJapanClock, 30000);
 
@@ -310,6 +312,19 @@ function shouldAutoLoadMap() {
   return window.JAPAN_MAP_CONFIG?.autoLoadMap !== false;
 }
 
+async function loadDefaultItinerary() {
+  try {
+    const response = await fetch("./itinerary.json", { cache: "no-cache" });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    setStatus(`无法读取 itinerary.json，使用内建示例：${error.message}`, true);
+    return DEFAULT_ITINERARY;
+  }
+}
+
 function cacheElements() {
   els.apiKey = document.querySelector("#api-key");
   els.loadMap = document.querySelector("#load-map");
@@ -333,8 +348,8 @@ function bindEvents() {
   els.applyJson.addEventListener("click", applyJsonFromEditor);
   els.downloadJson.addEventListener("click", downloadItinerary);
   els.resetSample.addEventListener("click", () => {
-    applyItinerary(DEFAULT_ITINERARY, { save: true });
-    setStatus("已重置为示例行程。");
+    applyItinerary(state.defaultItinerary || DEFAULT_ITINERARY, { save: true });
+    setStatus("已重置为 Japan 2026 行程。");
   });
   els.jsonFile.addEventListener("change", handleJsonFile);
   els.openGoogleMaps.addEventListener("click", openSelectedDayInGoogleMaps);

@@ -6,6 +6,7 @@ GitHub Pages trip hub. The root page lists available trips, and each trip lives 
 
 - Root trip list: `https://erisehe.github.io/trip/`
 - Japan 2026 itinerary map: `https://erisehe.github.io/trip/japan2026/`
+- Japan 2026 dates: June 25, 2026 to July 4, 2026
 
 ## Run Locally
 
@@ -29,6 +30,8 @@ http://localhost:5173/japan2026/
 ## Add Another Trip
 
 Create a new subdirectory next to `japan2026`, copy the map app files or add a new page, then add one card to the root `index.html`.
+
+To update Japan 2026, edit `japan2026/itinerary.json`. The app loads that file first, and the in-browser JSON editor can still override it for quick experiments.
 
 ## Google API Setup
 
