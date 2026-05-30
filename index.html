@@ -3,74 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Japan Live Itinerary Map</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <title>Trips</title>
+    <link rel="stylesheet" href="./trip-list.css" />
   </head>
   <body>
-    <header class="app-header">
-      <div>
-        <p class="eyebrow">Japan trip planner</p>
-        <h1>Live 行程地图</h1>
-      </div>
-      <div class="api-controls" aria-label="Google Maps API controls">
-        <label class="api-key-field">
-          <span>Google Maps API Key</span>
-          <input id="api-key" type="password" autocomplete="off" placeholder="AIza..." />
-        </label>
-        <button id="load-map" type="button">加载地图</button>
-      </div>
-    </header>
+    <main class="page-shell">
+      <header class="page-header">
+        <p class="eyebrow">Trip planner</p>
+        <h1>Trips</h1>
+        <p class="intro">选择一个行程打开实时地图、每日路线和地点时间表。</p>
+      </header>
 
-    <main class="app-shell">
-      <aside class="planner-panel">
-        <section class="panel-section">
-          <div class="section-title-row">
-            <div>
-              <p class="eyebrow">Itinerary</p>
-              <h2 id="trip-title">行程</h2>
-            </div>
-            <div id="japan-clock" class="clock" aria-live="polite">Japan time --:--</div>
+      <section class="trip-grid" aria-label="Trip options">
+        <a class="trip-card" href="./japan2026/">
+          <div>
+            <p class="trip-meta">2026 · Japan</p>
+            <h2>Japan 2026</h2>
+            <p>东京、富士山河口湖、京都、大阪 / 奈良的 live itinerary map。</p>
           </div>
-          <div id="day-tabs" class="day-tabs" aria-label="Choose itinerary day"></div>
-          <div id="timeline" class="timeline"></div>
-        </section>
-
-        <section class="panel-section editor-section">
-          <div class="section-title-row">
-            <div>
-              <p class="eyebrow">JSON</p>
-              <h2>编辑行程</h2>
-            </div>
-            <label class="file-button">
-              导入
-              <input id="json-file" type="file" accept="application/json,.json" />
-            </label>
-          </div>
-          <textarea id="itinerary-json" spellcheck="false"></textarea>
-          <div class="button-row">
-            <button id="apply-json" type="button">应用 JSON</button>
-            <button id="download-json" type="button" class="secondary">下载</button>
-            <button id="reset-sample" type="button" class="secondary">重置示例</button>
-          </div>
-        </section>
-      </aside>
-
-      <section class="map-panel">
-        <div id="map" class="map" role="application" aria-label="Google itinerary map">
-          <div class="map-empty-state">
-            <strong>先输入 API key 并加载地图</strong>
-            <span>左边可以直接改行程 JSON；有坐标会更准，没有坐标时会尝试用地点名补全。</span>
-          </div>
-        </div>
-        <div class="map-toolbar">
-          <button id="locate-me" type="button" class="secondary">定位我</button>
-          <button id="open-google-maps" type="button">打开 Google Maps 路线</button>
-        </div>
-        <div id="status" class="status" role="status" aria-live="polite"></div>
+          <span class="open-label">Open map</span>
+        </a>
       </section>
     </main>
-
-    <script src="./config.js"></script>
-    <script src="./app.js" defer></script>
   </body>
 </html>
