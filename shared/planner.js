@@ -526,7 +526,7 @@ async function ensureCoordinatesForDays(days) {
 }
 
 function buildGeocodeQuery(stop, day) {
-  const query = stop.place || stop.address || stop.title;
+  const query = getStopUrlQuery(stop);
   if (queryIncludesCountry(query)) {
     return query;
   }
@@ -1044,19 +1044,25 @@ function getStopCoords(stop) {
 }
 
 function getStopUrlQuery(stop) {
-  return stop.place || stop.address || stop.title;
+  return stop.mapsQuery || stop.address || stop.place || stop.title;
 }
 
 function getStopMapsQuery(stop) {
-  return stop.place || stop.address || stop.title || formatStopForMapsUrl(stop);
+  return getStopUrlQuery(stop) || formatStopForMapsUrl(stop);
 }
 
 function formatStopForMapsUrl(stop) {
+  const query = getStopUrlQuery(stop);
+  if (query) {
+    return query;
+  }
+
   const coords = getStopCoords(stop);
   if (coords) {
     return `${coords.lat},${coords.lng}`;
   }
-  return getStopUrlQuery(stop);
+
+  return "";
 }
 
 function getRouteCacheKey(day, originStop, destinationStop) {
