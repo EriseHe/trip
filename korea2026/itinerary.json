@@ -1,7 +1,7 @@
 {
-  "tripTitle": "韩国 2026 · 6/20-6/23",
+  "tripTitle": "韩国首尔 2026 · 6/20-6/23",
   "timezone": "Asia/Seoul",
-  "defaultTravelMode": "DRIVING",
+  "defaultTravelMode": "TRAIN",
   "map": {
     "center": {
       "lat": 37.5665,
@@ -12,56 +12,56 @@
   },
   "days": [
     {
-      "id": "2026-06-20-seoul-arrival",
+      "id": "2026-06-20-seoul-arrival-classic",
       "date": "2026-06-20",
-      "label": "6/20 · 首尔抵达 / 明洞",
+      "label": "6/20 · 抵达首尔 / 景福宫 · 北村 · 明洞 · 东大门",
       "color": "#0f766e",
       "stops": [
         {
-          "id": "icn-arrival-oz223",
+          "id": "icn-t2-arrival-oz223",
           "time": "06:05",
-          "duration": "2h",
+          "duration": "2h 30m",
           "title": "抵达首尔 ICN T2",
           "place": "Incheon International Airport Terminal 2, Incheon, South Korea",
           "coords": {
             "lat": 37.4688,
             "lng": 126.4337
           },
-          "notes": "OZ223 从 New York JFK 抵达首尔；预留入境、取行李、早餐和进城时间。",
+          "notes": "OZ223 抵达仁川机场 T2。预留入境、取行李、买 T-money、取少量韩元和吃早餐的时间。今天是落地日，带妈妈不要排太满。",
           "travelModeToNext": "TRAIN",
           "type": "station"
         },
         {
-          "id": "myeongdong-hotel-bag-drop",
-          "time": "09:30",
+          "id": "seoul-hotel-bag-drop",
+          "time": "09:45",
           "duration": "45m",
-          "title": "明洞酒店待定",
-          "place": "Myeong-dong Station, Seoul, South Korea",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
           "coords": {
-            "lat": 37.5609,
-            "lng": 126.9864
+            "lat": 37.5725614,
+            "lng": 126.9841493
           },
-          "notes": "先放行李；正式入住时间等订好酒店后再调整。",
+          "notes": "抵达后前往酒店寄存行李；正式入住前先轻装游览。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
           "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
-          "id": "gyeongbokgung",
+          "id": "gyeongbokgung-palace",
           "time": "11:00",
-          "duration": "1h 45m",
+          "duration": "1h 30m",
           "title": "景福宫",
           "place": "Gyeongbokgung Palace, Seoul, South Korea",
           "coords": {
             "lat": 37.5796,
             "lng": 126.977
           },
-          "notes": "首尔代表性宫殿；抵达日安排得轻一点，适合慢慢恢复体力。",
+          "notes": "第一天先走首尔最经典的宫殿区。景福宫、北村、安国/仁寺洞都在同一片区域，路线顺，不用来回折返。带妈妈建议只逛主要区域，不要全宫暴走。",
           "travelModeToNext": "WALKING",
           "type": "sight"
         },
         {
-          "id": "bukchon-hanok",
-          "time": "13:15",
+          "id": "bukchon-hanok-village",
+          "time": "13:00",
           "duration": "1h 15m",
           "title": "北村韩屋村",
           "place": "Bukchon Hanok Village, Seoul, South Korea",
@@ -69,237 +69,169 @@
             "lat": 37.5826,
             "lng": 126.983
           },
-          "notes": "传统韩屋街区，注意控制音量并尊重居民；适合白天参观。",
+          "notes": "传统韩屋街区，适合拍照和散步。但这里有坡、也需要走路；妈妈累的话可以只看入口附近，或者直接跳过去安国/仁寺洞休息。",
           "travelModeToNext": "WALKING",
-          "type": "sight"
+          "type": "sight",
+          "optional": true,
+          "color": "#9ca3af"
         },
         {
-          "id": "insadong-anguk",
-          "time": "15:00",
+          "id": "anguk-insadong",
+          "time": "14:30",
           "duration": "1h 30m",
-          "title": "仁寺洞 / 安国",
+          "title": "安国 / 仁寺洞",
           "place": "Insadong, Seoul, South Korea",
           "coords": {
             "lat": 37.5744,
             "lng": 126.9853
           },
-          "notes": "茶馆、传统工艺店和小吃集中，适合作为抵达日的慢节奏下午。",
+          "notes": "从北村往下走就是安国、仁寺洞一带。这里适合喝咖啡、传统茶馆、工艺小店和轻松休息。比继续暴走更适合抵达日。",
           "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
-          "id": "myeongdong-dinner",
-          "time": "17:30",
+          "id": "hotel-checkin-rest",
+          "time": "16:30",
+          "duration": "1h",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
+          "coords": {
+            "lat": 37.5725614,
+            "lng": 126.9841493
+          },
+          "notes": "办理入住并休息。你们早上 6 点多落地，这段休息时间建议保留。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        },
+        {
+          "id": "myeongdong-shopping-dinner",
+          "time": "18:00",
           "duration": "2h",
-          "title": "明洞晚餐 / 街头小吃",
+          "title": "明洞购物 / 晚餐",
           "place": "Myeongdong, Seoul, South Korea",
           "coords": {
             "lat": 37.5638,
             "lng": 126.985
           },
-          "notes": "第一晚安排在酒店附近吃饭和简单采购，方便早点休息。",
-          "travelModeToNext": "WALKING",
-          "type": "restaurant"
+          "notes": "第一晚安排明洞晚餐、药妆、便利店和街头小吃；结束后返回仁寺洞的 AMID HOTEL SEOUL。",
+          "travelModeToNext": "TRAIN",
+          "type": "area"
         },
         {
-          "id": "myeongdong-hotel-return-0620",
-          "time": "20:00",
-          "duration": "过夜",
-          "title": "明洞酒店待定",
-          "place": "Myeong-dong Station, Seoul, South Korea",
+          "id": "dongdaemun-ddp-night",
+          "time": "20:30",
+          "duration": "1h 30m",
+          "title": "东大门 / DDP 夜景",
+          "place": "Dongdaemun Design Plaza, Seoul, South Korea",
           "coords": {
-            "lat": 37.5609,
-            "lng": 126.9864
+            "lat": 37.5665,
+            "lng": 127.009
           },
-          "notes": "回酒店休息，调整时差。",
+          "notes": "可选项。年轻人会觉得晚上去东大门、DDP 夜景不错；但带妈妈且当天刚落地，这一站很可能太累。建议作为 optional，体力好再去。",
+          "travelModeToNext": "TRAIN",
+          "type": "area",
+          "optional": true,
+          "color": "#9ca3af"
+        },
+        {
+          "id": "hotel-return-0620",
+          "time": "22:30",
+          "duration": "过夜",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
+          "coords": {
+            "lat": 37.5725614,
+            "lng": 126.9841493
+          },
+          "notes": "返回酒店休息。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
+          "travelModeToNext": "WALKING",
           "type": "hotel"
         }
       ]
     },
     {
-      "id": "2026-06-21-seoul-classic",
+      "id": "2026-06-21-seongsu-hannam-market",
       "date": "2026-06-21",
-      "label": "6/21 · 首尔经典 / 南山 · 弘大",
+      "label": "6/21 · 圣水洞 · 首尔森林 · 汉南洞 · 广藏市场",
       "color": "#2563eb",
       "stops": [
         {
-          "id": "myeongdong-hotel-start-0621",
-          "time": "09:30",
+          "id": "hotel-start-0621",
+          "time": "09:45",
           "duration": "15m",
-          "title": "明洞酒店待定",
-          "place": "Myeong-dong Station, Seoul, South Korea",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
           "coords": {
-            "lat": 37.5609,
-            "lng": 126.9864
+            "lat": 37.5725614,
+            "lng": 126.9841493
           },
-          "notes": "从明洞出发，今天以市中心和夜生活为主。",
-          "travelModeToNext": "WALKING",
-          "type": "hotel"
-        },
-        {
-          "id": "namdaemun-market",
-          "time": "10:00",
-          "duration": "1h 30m",
-          "title": "南大门市场",
-          "place": "Namdaemun Market, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5592,
-            "lng": 126.9777
-          },
-          "notes": "传统市场，适合买小吃、生活杂货和纪念品。",
-          "travelModeToNext": "DRIVING",
-          "type": "area"
-        },
-        {
-          "id": "n-seoul-tower",
-          "time": "12:30",
-          "duration": "2h",
-          "title": "N首尔塔 / 南山",
-          "place": "N Seoul Tower, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5512,
-            "lng": 126.9882
-          },
-          "notes": "看首尔城市景观；天气好时再上塔，天气一般就只走南山区域。",
-          "travelModeToNext": "DRIVING",
-          "type": "sight"
-        },
-        {
-          "id": "itaewon-hannam",
-          "time": "15:30",
-          "duration": "1h 30m",
-          "title": "梨泰院 / 汉南洞",
-          "place": "Itaewon, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5345,
-            "lng": 126.9946
-          },
-          "notes": "咖啡、买手店和餐厅选择多，适合下午休息。",
-          "travelModeToNext": "DRIVING",
-          "type": "area"
-        },
-        {
-          "id": "banpo-hangang",
-          "time": "18:00",
-          "duration": "1h 30m",
-          "title": "盘浦汉江公园",
-          "place": "Banpo Hangang Park, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5107,
-            "lng": 126.9959
-          },
-          "notes": "傍晚看汉江，彩虹喷泉和夜景是否开放以当天现场为准。",
-          "travelModeToNext": "DRIVING",
-          "type": "sight"
-        },
-        {
-          "id": "hongdae-evening",
-          "time": "20:30",
-          "duration": "2h",
-          "title": "弘大夜间散步",
-          "place": "Hongdae Street, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5563,
-            "lng": 126.9236
-          },
-          "notes": "年轻人街区，适合逛店、街头表演和轻松夜宵。",
-          "travelModeToNext": "DRIVING",
-          "type": "area"
-        },
-        {
-          "id": "myeongdong-hotel-return-0621",
-          "time": "23:00",
-          "duration": "过夜",
-          "title": "明洞酒店待定",
-          "place": "Myeong-dong Station, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5609,
-            "lng": 126.9864
-          },
-          "notes": "返回酒店休息。",
-          "type": "hotel"
-        }
-      ]
-    },
-    {
-      "id": "2026-06-22-seongsu-gangnam",
-      "date": "2026-06-22",
-      "label": "6/22 · 圣水 / 江南 · 广藏市场",
-      "color": "#c2410c",
-      "stops": [
-        {
-          "id": "myeongdong-hotel-start-0622",
-          "time": "09:30",
-          "duration": "20m",
-          "title": "明洞酒店待定",
-          "place": "Myeong-dong Station, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5609,
-            "lng": 126.9864
-          },
-          "notes": "最后一个完整游玩日，安排潮流街区和市场。",
+          "notes": "从酒店出发，今天走圣水洞、首尔森林、汉南洞和广藏市场路线。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
           "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
           "id": "seongsu-cafe-street",
-          "time": "10:30",
-          "duration": "2h",
-          "title": "圣水洞咖啡街 / 快闪店",
+          "time": "10:45",
+          "duration": "1h 30m",
+          "title": "圣水洞咖啡街",
           "place": "Seongsu-dong Cafe Street, Seoul, South Korea",
           "coords": {
             "lat": 37.5446,
             "lng": 127.0558
           },
-          "notes": "首尔近年很热门的潮流街区，适合咖啡、品牌快闪和生活方式店。",
-          "travelModeToNext": "DRIVING",
-          "type": "area"
-        },
-        {
-          "id": "coex-starfield-library",
-          "time": "13:30",
-          "duration": "1h 15m",
-          "title": "COEX Starfield Library",
-          "place": "Starfield Library, COEX Mall, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5117,
-            "lng": 127.0592
-          },
-          "notes": "室内地标，适合拍照和避暑；旁边就是 COEX 商场。",
+          "notes": "首尔很热门的咖啡、品牌快闪、生活方式店区域。适合慢慢逛，不要只打一个点。带妈妈可以把重点放在咖啡店和休息，而不是疯狂逛店。",
           "travelModeToNext": "WALKING",
-          "type": "sight"
+          "type": "area"
         },
         {
-          "id": "bongeunsa",
-          "time": "15:00",
-          "duration": "1h",
-          "title": "奉恩寺",
-          "place": "Bongeunsa Temple, Seoul, South Korea",
-          "coords": {
-            "lat": 37.515,
-            "lng": 127.0576
-          },
-          "notes": "江南高楼旁的传统寺院，和 COEX 形成很强反差。",
-          "travelModeToNext": "DRIVING",
-          "type": "sight"
-        },
-        {
-          "id": "garosu-gil-gangnam",
-          "time": "16:30",
+          "id": "seongsu-shopping",
+          "time": "12:30",
           "duration": "1h 30m",
-          "title": "新沙洞 Garosu-gil / 江南",
-          "place": "Garosu-gil, Sinsa-dong, Seoul, South Korea",
+          "title": "圣水洞购物 / Object / NYU NYU / 快闪店",
+          "place": "Seongsu-dong, Seoul, South Korea",
           "coords": {
-            "lat": 37.5207,
-            "lng": 127.0228
+            "lat": 37.5438,
+            "lng": 127.054
           },
-          "notes": "咖啡、服饰和美妆店集中，可按体力调整停留时间。",
+          "notes": "可选项。这个更偏年轻人购物、快闪、生活方式店。妈妈可能兴趣一般；体力好就逛，体力一般就缩短或跳过。",
+          "travelModeToNext": "WALKING",
+          "type": "area",
+          "optional": true,
+          "color": "#9ca3af"
+        },
+        {
+          "id": "seoul-forest",
+          "time": "14:15",
+          "duration": "1h",
+          "title": "首尔森林",
+          "place": "Seoul Forest, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5443,
+            "lng": 127.0374
+          },
+          "notes": "可选项。圣水洞旁边的大公园，作为购物中间的缓冲。天气好、体力好可以去；天气不好或已经累了就跳过，直接去汉南洞坐咖啡店。",
+          "travelModeToNext": "DRIVING",
+          "type": "sight",
+          "optional": true,
+          "color": "#9ca3af"
+        },
+        {
+          "id": "hannam-dong",
+          "time": "16:00",
+          "duration": "2h",
+          "title": "汉南洞逛街 / 咖啡 / 买手店",
+          "place": "Hannam-dong, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5353,
+            "lng": 127.0002
+          },
+          "notes": "汉南洞适合下午去，咖啡、买手店、餐厅比较集中，也比弘大更安静。带妈妈建议找一两个点坐下来，不要把它当 city walk。",
           "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
-          "id": "gwangjang-market",
-          "time": "19:00",
+          "id": "gwangjang-market-dinner",
+          "time": "18:45",
           "duration": "1h 30m",
           "title": "广藏市场晚餐",
           "place": "Gwangjang Market, Seoul, South Korea",
@@ -307,21 +239,160 @@
             "lat": 37.57,
             "lng": 126.9996
           },
-          "notes": "尝试绿豆煎饼、紫菜包饭、辣炒年糕等市场小吃。",
+          "notes": "晚餐吃市场小吃：绿豆煎饼、紫菜包饭、辣炒年糕、鱼饼汤等。传统市场很多摊位现金更方便。人会比较多，妈妈不喜欢拥挤的话可以缩短停留。",
+          "travelModeToNext": "WALKING",
+          "type": "restaurant"
+        },
+        {
+          "id": "cheonggyecheon-night-walk",
+          "time": "20:30",
+          "duration": "1h",
+          "title": "清溪川夜间散步",
+          "place": "Cheonggyecheon Stream, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5689,
+            "lng": 126.999
+          },
+          "notes": "可选项。广藏市场旁边顺路散步，不用再跨城跑。妈妈累了就取消，直接回酒店。",
+          "travelModeToNext": "TRAIN",
+          "type": "area",
+          "optional": true,
+          "color": "#9ca3af"
+        },
+        {
+          "id": "hotel-return-0621",
+          "time": "22:00",
+          "duration": "过夜",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
+          "coords": {
+            "lat": 37.5725614,
+            "lng": 126.9841493
+          },
+          "notes": "返回酒店休息。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-22-traditional-culture-easy",
+      "date": "2026-06-22",
+      "label": "6/22 · 昌德宫 · 后苑 · 仁寺洞 · 宗庙 · 明洞",
+      "color": "#c2410c",
+      "stops": [
+        {
+          "id": "hotel-start-0622",
+          "time": "09:30",
+          "duration": "15m",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
+          "coords": {
+            "lat": 37.5725614,
+            "lng": 126.9841493
+          },
+          "notes": "从酒店出发，今天走昌德宫、仁寺洞和宗庙的传统文化路线。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
+          "travelModeToNext": "DRIVING",
+          "type": "hotel"
+        },
+        {
+          "id": "changdeokgung-palace",
+          "time": "10:00",
+          "duration": "1h 30m",
+          "title": "昌德宫",
+          "place": "Changdeokgung Palace, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5794,
+            "lng": 126.991
+          },
+          "notes": "比景福宫更安静、有园林感，很适合喜欢传统文化的人。先逛主宫殿区，不要一开始就走太猛。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "changdeokgung-huwon-optional",
+          "time": "11:45",
+          "duration": "1h 15m",
+          "title": "昌德宫后苑 / Secret Garden 可选",
+          "place": "Huwon Secret Garden, Changdeokgung Palace, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5808,
+            "lng": 126.9931
+          },
+          "notes": "可选项。后苑很美，但比主宫殿区更费体力。妈妈体力好就去；如果已经累了，直接跳过这一站，去仁寺洞吃饭和喝茶。",
+          "travelModeToNext": "DRIVING",
+          "type": "sight",
+          "optional": true,
+          "color": "#9ca3af"
+        },
+        {
+          "id": "insadong-lunch-tea",
+          "time": "13:15",
+          "duration": "2h",
+          "title": "仁寺洞午餐 / 传统茶馆",
+          "place": "Insadong, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5744,
+            "lng": 126.9853
+          },
+          "notes": "这站是给妈妈休息的重点。仁寺洞有传统茶、韩式甜点、工艺品、小店，比弘大更适合她。午餐后找茶馆坐一会儿，不要一直走。",
           "travelModeToNext": "DRIVING",
           "type": "restaurant"
         },
         {
-          "id": "myeongdong-hotel-return-0622",
-          "time": "21:30",
-          "duration": "过夜",
-          "title": "明洞酒店待定",
-          "place": "Myeong-dong Station, Seoul, South Korea",
+          "id": "jongmyo-shrine",
+          "time": "15:45",
+          "duration": "1h",
+          "title": "宗庙",
+          "place": "Jongmyo Shrine, Seoul, South Korea",
           "coords": {
-            "lat": 37.5609,
-            "lng": 126.9864
+            "lat": 37.5747,
+            "lng": 126.9941
           },
-          "notes": "回酒店整理行李，第二天早上去机场。",
+          "notes": "传统、安静、历史感强，和昌德宫/仁寺洞在同一片区域，路线顺。这里不是热闹打卡点，更适合真正喜欢传统文化的人。",
+          "travelModeToNext": "DRIVING",
+          "type": "sight"
+        },
+        {
+          "id": "hotel-rest-0622",
+          "time": "17:15",
+          "duration": "1h 15m",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
+          "coords": {
+            "lat": 37.5725614,
+            "lng": 126.9841493
+          },
+          "notes": "返回酒店休息并整理行李，晚上再轻松出门吃饭。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
+          "travelModeToNext": "WALKING",
+          "type": "hotel"
+        },
+        {
+          "id": "myeongdong-final-dinner-shopping",
+          "time": "18:45",
+          "duration": "2h",
+          "title": "明洞最后晚餐 / 补买东西",
+          "place": "Myeongdong, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5638,
+            "lng": 126.985
+          },
+          "notes": "最后一晚在明洞吃饭并补买药妆、零食和日用品；结束后返回仁寺洞的 AMID HOTEL SEOUL。",
+          "travelModeToNext": "WALKING",
+          "type": "restaurant"
+        },
+        {
+          "id": "hotel-return-0622",
+          "time": "21:00",
+          "duration": "过夜",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
+          "coords": {
+            "lat": 37.5725614,
+            "lng": 126.9841493
+          },
+          "notes": "返回酒店休息，第二天早上按航班时间前往机场。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
+          "travelModeToNext": "WALKING",
           "type": "hotel"
         }
       ]
@@ -336,13 +407,13 @@
           "id": "myeongdong-hotel-checkout",
           "time": "06:30",
           "duration": "30m",
-          "title": "明洞酒店待定",
-          "place": "Myeong-dong Station, Seoul, South Korea",
+          "title": "AMID HOTEL SEOUL",
+          "place": "AMID HOTEL SEOUL, 38 Insadong 5-gil, Jongno-gu, Seoul 03149, South Korea",
           "coords": {
-            "lat": 37.5609,
-            "lng": 126.9864
+            "lat": 37.5725614,
+            "lng": 126.9841493
           },
-          "notes": "退房，预留足够时间前往仁川机场 T2。",
+          "notes": "办理退房，预留足够时间前往仁川机场 T2。酒店地址：38 Insadong 5-gil, Jongno-gu；距 Jonggak 站步行约 4 分钟。",
           "travelModeToNext": "TRAIN",
           "type": "hotel"
         },
@@ -385,9 +456,11 @@
             "lng": 121.8083
           },
           "notes": "韩国 stopover 结束，进入下一段行程。",
-          "type": "station"
+          "type": "station",
+          "travelModeToNext": "DRIVING"
         }
       ]
     }
-  ]
+  ],
+  "timezoneOffset": "+09:00"
 }
