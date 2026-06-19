@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Trip Itinerary Map</title>
-    <link rel="stylesheet" href="../shared/planner.css?v=20260530-shared" />
+    <link rel="stylesheet" href="../shared/planner.css?v=20260619-header" />
   </head>
   <body>
     <header class="app-header">
@@ -12,7 +12,10 @@
         <p id="trip-eyebrow" class="eyebrow">Trip planner</p>
         <h1 id="trip-heading">Trip Planner</h1>
       </div>
-      <button id="editor-toggle" class="header-link" type="button">编辑行程</button>
+      <div class="header-actions">
+        <div id="trip-clock" class="clock" aria-live="polite">当地时间 --:--</div>
+        <button id="editor-toggle" class="header-link" type="button">编辑行程</button>
+      </div>
     </header>
 
     <div class="trip-controls">
@@ -20,7 +23,6 @@
         <button class="mobile-view-tab active" type="button" data-mobile-view="planner">行程</button>
         <button class="mobile-view-tab" type="button" data-mobile-view="map">地图</button>
       </nav>
-      <div id="trip-clock" class="clock" aria-live="polite">当地时间 --:--</div>
     </div>
 
     <main id="map-view" class="app-shell view-panel" data-mobile-view="planner">
