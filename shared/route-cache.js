@@ -43,6 +43,76 @@
     return normalizeCoords(stop?.coords) || normalizeCoords(stop?.location);
   }
 
+  function estimateRouteBetweenStops(originStop, destinationStop, travelMode, profile = {}) {
+    const origin = getStopCoords(originStop);
+    const destination = getStopCoords(destinationStop);
+    if (!origin || !destination) return null;
+
+    const mode = normalizeTravelMode(travelMode);
+    const directDistanceKm = distanceBetweenCoordsKm(origin, destination);
+    const distanceFactor = positiveNumber(profile.distanceFactor) || defaultDistanceFactor(mode, directDistanceKm);
+    const speedKph = positiveNumber(profile.speedKph) || defaultSpeedKph(mode, directDistanceKm);
+    const distanceKm = directDistanceKm * distanceFactor;
+    const durationMinutes = Math.max(mode === "DRIVING" ? 2 : 1, Math.round((distanceKm / speedKph) * 60));
+
+    return {
+      path: [origin, destination],
+      distance: formatEstimatedDistance(distanceKm),
+      duration: formatEstimatedDuration(durationMinutes),
+      distanceKm,
+      durationMinutes,
+    };
+  }
+
+  function distanceBetweenCoordsKm(origin, destination) {
+    const earthRadiusKm = 6371;
+    const toRadians = (degrees) => (degrees * Math.PI) / 180;
+    const latDelta = toRadians(destination.lat - origin.lat);
+    const lngDelta = toRadians(destination.lng - origin.lng);
+    const originLat = toRadians(origin.lat);
+    const destinationLat = toRadians(destination.lat);
+    const haversine =
+      Math.sin(latDelta / 2) ** 2 +
+      Math.cos(originLat) * Math.cos(destinationLat) * Math.sin(lngDelta / 2) ** 2;
+    return 2 * earthRadiusKm * Math.asin(Math.sqrt(haversine));
+  }
+
+  function defaultDistanceFactor(mode, directDistanceKm) {
+    if (mode === "WALKING") return 1.15;
+    if (mode === "DRIVING") return directDistanceKm >= 20 ? 1.18 : 1.25;
+    return 1;
+  }
+
+  function defaultSpeedKph(mode, directDistanceKm) {
+    if (mode === "WALKING") return 4.5;
+    if (mode === "DRIVING") {
+      if (directDistanceKm >= 20) return 50;
+      if (directDistanceKm >= 5) return 28;
+      return 22;
+    }
+    return 25;
+  }
+
+  function positiveNumber(value) {
+    const number = Number(value);
+    return Number.isFinite(number) && number > 0 ? number : null;
+  }
+
+  function formatEstimatedDistance(distanceKm) {
+    if (distanceKm < 1) {
+      const meters = Math.max(50, Math.round((distanceKm * 1000) / 50) * 50);
+      return `约 ${meters} 米`;
+    }
+    return `约 ${distanceKm.toFixed(1)} 公里`;
+  }
+
+  function formatEstimatedDuration(durationMinutes) {
+    if (durationMinutes < 60) return `约 ${durationMinutes} 分钟`;
+    const hours = Math.floor(durationMinutes / 60);
+    const minutes = durationMinutes % 60;
+    return minutes ? `约 ${hours} 小时 ${minutes} 分钟` : `约 ${hours} 小时`;
+  }
+
   function formatCoordsForCache(coords) {
     if (!coords) return "missing";
     return `${Number(coords.lat).toFixed(6)},${Number(coords.lng).toFixed(6)}`;
@@ -91,6 +161,7 @@
   }
 
   const helpers = {
+    estimateRouteBetweenStops,
     friendlyDirectionsError,
     getDepartureDate,
     getRouteCacheKey,

@@ -1,168 +1,17 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-19T01:05:06.927Z",
+  "generatedAt": "2026-06-19T01:13:18.197Z",
   "source": "korea2026/itinerary.json",
   "itineraryHash": "68c68d9ea4b369a74b2b0432398f9f6f11de9a05205b77e0a0b35ff1da9e894f",
   "routeCount": 25,
-  "requestCount": 17,
-  "approximateCount": 0,
-  "fallbackCount": 25,
-  "failedCount": 25,
-  "failures": [
-    {
-      "cacheKey": "2026-06-20|06:05|DRIVING|37.468800,126.433700|37.572561,126.984149",
-      "fromStopId": "icn-t2-arrival-oz223",
-      "toStopId": "seoul-hotel-bag-drop",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-20|09:45|DRIVING|37.572561,126.984149|37.575919,126.976816",
-      "fromStopId": "seoul-hotel-bag-drop",
-      "toStopId": "gyeongbokgung-palace",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-20|11:00|WALKING|37.575919,126.976816|37.579046,126.986388",
-      "fromStopId": "gyeongbokgung-palace",
-      "toStopId": "bukchon-hanok-village",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-20|13:00|WALKING|37.579046,126.986388|37.574223,126.984729",
-      "fromStopId": "bukchon-hanok-village",
-      "toStopId": "anguk-insadong",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-20|14:30|DRIVING|37.574223,126.984729|37.572561,126.984149",
-      "fromStopId": "anguk-insadong",
-      "toStopId": "hotel-checkin-rest",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-20|16:30|WALKING|37.572561,126.984149|37.564119,126.985166",
-      "fromStopId": "hotel-checkin-rest",
-      "toStopId": "myeongdong-shopping-dinner",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-20|18:00|DRIVING|37.564119,126.985166|37.567069,127.009899",
-      "fromStopId": "myeongdong-shopping-dinner",
-      "toStopId": "dongdaemun-ddp-night",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-20|20:30|DRIVING|37.567069,127.009899|37.572561,126.984149",
-      "fromStopId": "dongdaemun-ddp-night",
-      "toStopId": "hotel-return-0620",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|09:45|DRIVING|37.572561,126.984149|37.541825,127.056459",
-      "fromStopId": "hotel-start-0621",
-      "toStopId": "seongsu-cafe-street",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|10:45|WALKING|37.541825,127.056459|37.540480,127.056010",
-      "fromStopId": "seongsu-cafe-street",
-      "toStopId": "nyunyu-seongsu",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|12:15|WALKING|37.540480,127.056010|37.547819,127.041311",
-      "fromStopId": "nyunyu-seongsu",
-      "toStopId": "object-seongsu",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|13:15|WALKING|37.547819,127.041311|37.544300,127.037400",
-      "fromStopId": "object-seongsu",
-      "toStopId": "seoul-forest",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|14:15|DRIVING|37.544300,127.037400|37.533708,127.002049",
-      "fromStopId": "seoul-forest",
-      "toStopId": "hannam-dong",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|16:00|DRIVING|37.533708,127.002049|37.570290,126.998743",
-      "fromStopId": "hannam-dong",
-      "toStopId": "gwangjang-market-dinner",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|18:45|WALKING|37.570290,126.998743|37.568900,126.999000",
-      "fromStopId": "gwangjang-market-dinner",
-      "toStopId": "cheonggyecheon-night-walk",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|20:30|DRIVING|37.568900,126.999000|37.572561,126.984149",
-      "fromStopId": "cheonggyecheon-night-walk",
-      "toStopId": "hotel-return-0621",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|09:30|DRIVING|37.572561,126.984149|37.577861,126.989981",
-      "fromStopId": "hotel-start-0622",
-      "toStopId": "changdeokgung-palace",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|10:00|WALKING|37.577861,126.989981|37.580800,126.993100",
-      "fromStopId": "changdeokgung-palace",
-      "toStopId": "changdeokgung-huwon-optional",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|11:45|DRIVING|37.580800,126.993100|37.574372,126.985974",
-      "fromStopId": "changdeokgung-huwon-optional",
-      "toStopId": "gaeseong-mandu-koong-lunch",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|13:15|WALKING|37.574372,126.985974|37.574556,126.985476",
-      "fromStopId": "gaeseong-mandu-koong-lunch",
-      "toStopId": "insadong-jeontong-dawon",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|14:20|DRIVING|37.574556,126.985476|37.570721,126.994377",
-      "fromStopId": "insadong-jeontong-dawon",
-      "toStopId": "jongmyo-shrine",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|15:45|DRIVING|37.570721,126.994377|37.572561,126.984149",
-      "fromStopId": "jongmyo-shrine",
-      "toStopId": "hotel-rest-0622",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|17:15|WALKING|37.572561,126.984149|37.564119,126.985166",
-      "fromStopId": "hotel-rest-0622",
-      "toStopId": "myeongdong-final-dinner-shopping",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|18:45|WALKING|37.564119,126.985166|37.572561,126.984149",
-      "fromStopId": "myeongdong-final-dinner-shopping",
-      "toStopId": "hotel-return-0622",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-23|06:30|DRIVING|37.572561,126.984149|37.468800,126.433700",
-      "fromStopId": "myeongdong-hotel-checkout",
-      "toStopId": "icn-terminal-2-checkin",
-      "message": "路线计算失败：ZERO_RESULTS"
-    }
-  ],
+  "requestCount": 0,
+  "approximateCount": 25,
+  "fallbackCount": 0,
+  "failedCount": 0,
+  "failures": [],
   "routes": {
     "2026-06-20|06:05|DRIVING|37.468800,126.433700|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:05:02.237Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.4688,
@@ -177,14 +26,15 @@
         "fromStopId": "icn-t2-arrival-oz223",
         "toStopId": "seoul-hotel-bag-drop",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 1 小时 11 分钟",
+        "distance": "约 58.9 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-20|09:45|DRIVING|37.572561,126.984149|37.575919,126.976816": {
-      "createdAt": "2026-06-19T01:05:02.237Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5725614,
@@ -199,14 +49,15 @@
         "fromStopId": "seoul-hotel-bag-drop",
         "toStopId": "gyeongbokgung-palace",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 3 分钟",
+        "distance": "约 950 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-20|11:00|WALKING|37.575919,126.976816|37.579046,126.986388": {
-      "createdAt": "2026-06-19T01:05:02.547Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5759194,
@@ -221,14 +72,15 @@
         "fromStopId": "gyeongbokgung-palace",
         "toStopId": "bukchon-hanok-village",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 14 分钟",
+        "distance": "约 1.0 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-20|13:00|WALKING|37.579046,126.986388|37.574223,126.984729": {
-      "createdAt": "2026-06-19T01:05:02.547Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.579046,
@@ -243,14 +95,15 @@
         "fromStopId": "bukchon-hanok-village",
         "toStopId": "anguk-insadong",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 9 分钟",
+        "distance": "约 650 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-20|14:30|DRIVING|37.574223,126.984729|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:05:02.774Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5742228,
@@ -265,14 +118,15 @@
         "fromStopId": "anguk-insadong",
         "toStopId": "hotel-checkin-rest",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 2 分钟",
+        "distance": "约 250 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-20|16:30|WALKING|37.572561,126.984149|37.564119,126.985166": {
-      "createdAt": "2026-06-19T01:05:03.079Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5725614,
@@ -287,14 +141,15 @@
         "fromStopId": "hotel-checkin-rest",
         "toStopId": "myeongdong-shopping-dinner",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 14 分钟",
+        "distance": "约 1.1 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-20|18:00|DRIVING|37.564119,126.985166|37.567069,127.009899": {
-      "createdAt": "2026-06-19T01:05:03.395Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5641193,
@@ -309,14 +164,15 @@
         "fromStopId": "myeongdong-shopping-dinner",
         "toStopId": "dongdaemun-ddp-night",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 8 分钟",
+        "distance": "约 2.8 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-20|20:30|DRIVING|37.567069,127.009899|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:05:03.395Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5670686,
@@ -331,14 +187,15 @@
         "fromStopId": "dongdaemun-ddp-night",
         "toStopId": "hotel-return-0620",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 8 分钟",
+        "distance": "约 2.9 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-21|09:45|DRIVING|37.572561,126.984149|37.541825,127.056459": {
-      "createdAt": "2026-06-19T01:05:03.691Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5725614,
@@ -353,14 +210,15 @@
         "fromStopId": "hotel-start-0621",
         "toStopId": "seongsu-cafe-street",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 19 分钟",
+        "distance": "约 9.0 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-21|10:45|WALKING|37.541825,127.056459|37.540480,127.056010": {
-      "createdAt": "2026-06-19T01:05:04.023Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5418247,
@@ -375,14 +233,15 @@
         "fromStopId": "seongsu-cafe-street",
         "toStopId": "nyunyu-seongsu",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 2 分钟",
+        "distance": "约 200 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-21|12:15|WALKING|37.540480,127.056010|37.547819,127.041311": {
-      "createdAt": "2026-06-19T01:05:04.023Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.54048,
@@ -397,14 +256,15 @@
         "fromStopId": "nyunyu-seongsu",
         "toStopId": "object-seongsu",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 23 分钟",
+        "distance": "约 1.8 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-21|13:15|WALKING|37.547819,127.041311|37.544300,127.037400": {
-      "createdAt": "2026-06-19T01:05:04.023Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5478189,
@@ -419,14 +279,15 @@
         "fromStopId": "object-seongsu",
         "toStopId": "seoul-forest",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 8 分钟",
+        "distance": "约 600 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-21|14:15|DRIVING|37.544300,127.037400|37.533708,127.002049": {
-      "createdAt": "2026-06-19T01:05:04.388Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5443,
@@ -441,14 +302,15 @@
         "fromStopId": "seoul-forest",
         "toStopId": "hannam-dong",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 11 分钟",
+        "distance": "约 4.2 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-21|16:00|DRIVING|37.533708,127.002049|37.570290,126.998743": {
-      "createdAt": "2026-06-19T01:05:04.388Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5337083,
@@ -463,14 +325,15 @@
         "fromStopId": "hannam-dong",
         "toStopId": "gwangjang-market-dinner",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 14 分钟",
+        "distance": "约 5.1 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-21|18:45|WALKING|37.570290,126.998743|37.568900,126.999000": {
-      "createdAt": "2026-06-19T01:05:04.690Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5702899,
@@ -485,14 +348,15 @@
         "fromStopId": "gwangjang-market-dinner",
         "toStopId": "cheonggyecheon-night-walk",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 2 分钟",
+        "distance": "约 200 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-21|20:30|DRIVING|37.568900,126.999000|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:05:04.920Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5689,
@@ -507,14 +371,15 @@
         "fromStopId": "cheonggyecheon-night-walk",
         "toStopId": "hotel-return-0621",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 5 分钟",
+        "distance": "约 1.7 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-22|09:30|DRIVING|37.572561,126.984149|37.577861,126.989981": {
-      "createdAt": "2026-06-19T01:05:05.183Z",
+      "createdAt": "2026-06-19T01:13:18.196Z",
       "path": [
         {
           "lat": 37.5725614,
@@ -529,14 +394,15 @@
         "fromStopId": "hotel-start-0622",
         "toStopId": "changdeokgung-palace",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 3 分钟",
+        "distance": "约 1000 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-22|10:00|WALKING|37.577861,126.989981|37.580800,126.993100": {
-      "createdAt": "2026-06-19T01:05:05.454Z",
+      "createdAt": "2026-06-19T01:13:18.197Z",
       "path": [
         {
           "lat": 37.5778607,
@@ -551,14 +417,15 @@
         "fromStopId": "changdeokgung-palace",
         "toStopId": "changdeokgung-huwon-optional",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 7 分钟",
+        "distance": "约 500 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-22|11:45|DRIVING|37.580800,126.993100|37.574372,126.985974": {
-      "createdAt": "2026-06-19T01:05:05.735Z",
+      "createdAt": "2026-06-19T01:13:18.197Z",
       "path": [
         {
           "lat": 37.5808,
@@ -573,14 +440,15 @@
         "fromStopId": "changdeokgung-huwon-optional",
         "toStopId": "gaeseong-mandu-koong-lunch",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 3 分钟",
+        "distance": "约 1.2 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-22|13:15|WALKING|37.574372,126.985974|37.574556,126.985476": {
-      "createdAt": "2026-06-19T01:05:06.019Z",
+      "createdAt": "2026-06-19T01:13:18.197Z",
       "path": [
         {
           "lat": 37.5743718,
@@ -595,14 +463,15 @@
         "fromStopId": "gaeseong-mandu-koong-lunch",
         "toStopId": "insadong-jeontong-dawon",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 1 分钟",
+        "distance": "约 50 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-22|14:20|DRIVING|37.574556,126.985476|37.570721,126.994377": {
-      "createdAt": "2026-06-19T01:05:06.319Z",
+      "createdAt": "2026-06-19T01:13:18.197Z",
       "path": [
         {
           "lat": 37.5745558,
@@ -617,14 +486,15 @@
         "fromStopId": "insadong-jeontong-dawon",
         "toStopId": "jongmyo-shrine",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 3 分钟",
+        "distance": "约 1.1 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-22|15:45|DRIVING|37.570721,126.994377|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:05:06.319Z",
+      "createdAt": "2026-06-19T01:13:18.197Z",
       "path": [
         {
           "lat": 37.5707207,
@@ -639,14 +509,15 @@
         "fromStopId": "jongmyo-shrine",
         "toStopId": "hotel-rest-0622",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 3 分钟",
+        "distance": "约 1.2 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-22|17:15|WALKING|37.572561,126.984149|37.564119,126.985166": {
-      "createdAt": "2026-06-19T01:05:06.540Z",
+      "createdAt": "2026-06-19T01:13:18.197Z",
       "path": [
         {
           "lat": 37.5725614,
@@ -661,14 +532,15 @@
         "fromStopId": "hotel-rest-0622",
         "toStopId": "myeongdong-final-dinner-shopping",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 14 分钟",
+        "distance": "约 1.1 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-22|18:45|WALKING|37.564119,126.985166|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:05:06.540Z",
+      "createdAt": "2026-06-19T01:13:18.197Z",
       "path": [
         {
           "lat": 37.5641193,
@@ -683,14 +555,15 @@
         "fromStopId": "myeongdong-final-dinner-shopping",
         "toStopId": "hotel-return-0622",
         "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "WALKING",
+        "duration": "约 14 分钟",
+        "distance": "约 1.1 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     },
     "2026-06-23|06:30|DRIVING|37.572561,126.984149|37.468800,126.433700": {
-      "createdAt": "2026-06-19T01:05:06.767Z",
+      "createdAt": "2026-06-19T01:13:18.197Z",
       "path": [
         {
           "lat": 37.5725614,
@@ -705,10 +578,11 @@
         "fromStopId": "myeongdong-hotel-checkout",
         "toStopId": "icn-terminal-2-checkin",
         "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 1 小时 11 分钟",
+        "distance": "约 58.9 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
       }
     }
   }

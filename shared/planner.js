@@ -638,7 +638,7 @@ function drawCachedRoute(routeCacheEntry, color) {
   const path = routeCacheEntry.path?.length ? routeCacheEntry.path : null;
   if (!path) return;
 
-  if (routeCacheEntry.summary?.fallback) {
+  if (routeCacheEntry.summary?.fallback || routeCacheEntry.summary?.approximate) {
     drawConnectionLine({ coords: path[0] }, { coords: path[path.length - 1] }, color, true);
     return;
   }

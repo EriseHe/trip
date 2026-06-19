@@ -13,6 +13,9 @@ window.TRIP_PLANNER_CONFIG = {
     center: { lat: 37.5665, lng: 126.978 },
     zoom: 11,
   },
+  routing: {
+    unavailableModes: ["DRIVING", "WALKING"],
+  },
   geocode: {
     countryCode: "KR",
     defaultCountry: "South Korea",

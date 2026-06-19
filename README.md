@@ -72,6 +72,8 @@ The GitHub Action in `.github/workflows/precompute-route-cache.yml` runs the sha
 
 The generator merges consecutive `WALKING` or `DRIVING` legs within the same day into one Directions request with waypoints, up to 25 intermediate waypoints. If that grouped request fails, each leg in the group gets a fallback line and the generator does not retry with another departure time or travel mode.
 
+For countries where Google does not provide a route mode, list it in `trip-config.js` under `routing.unavailableModes`. Those legs use cached straight-line distance/time estimates and make no Directions API request. Korea currently uses this for `DRIVING` and `WALKING`.
+
 ## Google API Setup
 
 Trips read the shared key from `site-config.js`; a trip can still override it with `map.apiKey` in `trip-config.js`. In Google Cloud Console, enable:

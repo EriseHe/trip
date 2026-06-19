@@ -33,22 +33,36 @@ async function main() {
     const itineraryText = await readItineraryText(tripId);
     const itinerary = applyTripDefaults(JSON.parse(itineraryText));
     const itineraryHash = await sha256Hex(itineraryText);
-    const apiKey = getApiKey();
-    if (!apiKey) {
-      throw new Error("缺少 Google Maps API key");
-    }
 
-    await loadGoogleMapsScript(tripId, apiKey);
-    const { DirectionsService } = await google.maps.importLibrary("routes");
-    const directionsService = new DirectionsService();
     const routes = {};
     const failures = [];
     const routeBatches = collectRouteBatches(itinerary);
+    const requestableBatches = routeBatches.filter((batch) => !isRouteModeUnavailable(batch.travelMode));
+    let directionsService = null;
+    let requestCount = 0;
+    let approximateCount = 0;
+
+    if (requestableBatches.length) {
+      const apiKey = getApiKey();
+      if (!apiKey) {
+        throw new Error("缺少 Google Maps API key");
+      }
+      await loadGoogleMapsScript(tripId, apiKey);
+      const { DirectionsService } = await google.maps.importLibrary("routes");
+      directionsService = new DirectionsService();
+    }
 
     for (const [index, batch] of routeBatches.entries()) {
       setGeneratorStatus(`正在计算 ${tripId} ${index + 1}/${routeBatches.length}: ${describeRouteBatch(batch)}`);
 
+      if (isRouteModeUnavailable(batch.travelMode)) {
+        Object.assign(routes, createEstimatedRouteCacheEntries(batch, itinerary));
+        approximateCount += batch.legs.length;
+        continue;
+      }
+
       try {
+        requestCount += 1;
         const directions = await requestDirectionsOnce(directionsService, itinerary, batch);
         Object.assign(routes, createRouteCacheEntries(batch, directions, itinerary));
       } catch (error) {
@@ -73,8 +87,8 @@ async function main() {
       source: `${tripId}/itinerary.json`,
       itineraryHash,
       routeCount: Object.keys(routes).length,
-      requestCount: routeBatches.length,
-      approximateCount: 0,
+      requestCount,
+      approximateCount,
       fallbackCount: failures.length,
       failedCount: failures.length,
       failures,
@@ -83,7 +97,7 @@ async function main() {
     const json = JSON.stringify(cache, null, 2);
     outputNode.textContent = json;
     setGeneratorStatus(
-      `完成：${cache.requestCount} 次请求，${cache.routeCount - cache.failedCount} 段路线，${cache.failedCount} 段 fallback。`,
+      `完成：${cache.requestCount} 次请求，${cache.routeCount - cache.failedCount - cache.approximateCount} 段路线，${cache.approximateCount} 段估算，${cache.failedCount} 段 fallback。`,
     );
     setGeneratorResult({ done: true, data: cache });
   } catch (error) {
@@ -246,6 +260,46 @@ function describeRouteBatch(batch) {
   const modeLabel = batch.travelMode.toLowerCase();
   const segmentText = batch.legs.length === 1 ? "1 segment" : `${batch.legs.length} segments`;
   return `${batch.originStop.title} -> ${batch.destinationStop.title} (${modeLabel}, ${segmentText})`;
+}
+
+function isRouteModeUnavailable(travelMode) {
+  const unavailableModes = window.TRIP_PLANNER_CONFIG?.routing?.unavailableModes || [];
+  return unavailableModes.map(routeHelpers.normalizeTravelMode).includes(travelMode);
+}
+
+function createEstimatedRouteCacheEntries(batch, itinerary) {
+  const profile = window.TRIP_PLANNER_CONFIG?.routing?.estimateProfiles?.[batch.travelMode] || {};
+  return Object.fromEntries(
+    batch.legs.map((leg) => {
+      const estimate = routeHelpers.estimateRouteBetweenStops(
+        leg.originStop,
+        leg.destinationStop,
+        leg.travelMode,
+        profile,
+      );
+      if (!estimate) {
+        throw new Error(`缺少坐标，无法估算 ${leg.originStop.id} -> ${leg.destinationStop.id}`);
+      }
+      return [getRouteCacheKey(leg, itinerary), createEstimatedRouteCacheEntry(leg, estimate)];
+    }),
+  );
+}
+
+function createEstimatedRouteCacheEntry(leg, estimate) {
+  return {
+    createdAt: new Date().toISOString(),
+    path: estimate.path,
+    summary: {
+      fromStopId: leg.originStop.id,
+      toStopId: leg.destinationStop.id,
+      travelMode: leg.travelMode,
+      requestedTravelMode: leg.travelMode,
+      duration: estimate.duration,
+      distance: estimate.distance,
+      approximate: true,
+      estimateSource: "straight-line",
+    },
+  };
 }
 
 async function requestDirectionsOnce(directionsService, itinerary, batch) {
