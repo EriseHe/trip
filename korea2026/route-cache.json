@@ -1,124 +1,130 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-30T21:29:14.542Z",
+  "generatedAt": "2026-06-19T00:39:08.002Z",
   "source": "korea2026/itinerary.json",
-  "itineraryHash": "f2dd4dcd5e0b8d55cae34cbcee13295354aca53aefdf6206c60f531a37b88559",
-  "routeCount": 17,
-  "requestCount": 9,
+  "itineraryHash": "f7ec5401ac6470291368b2c6429d34c2f92ca9ca33b3fb8cd66c5c78d0416eb5",
+  "routeCount": 18,
+  "requestCount": 12,
   "approximateCount": 0,
-  "fallbackCount": 17,
-  "failedCount": 17,
+  "fallbackCount": 18,
+  "failedCount": 18,
   "failures": [
     {
-      "cacheKey": "2026-06-20|09:30|DRIVING|37.560900,126.986400|37.579600,126.977000",
-      "fromStopId": "myeongdong-hotel-bag-drop",
-      "toStopId": "gyeongbokgung",
+      "cacheKey": "2026-06-20|09:45|DRIVING|37.572561,126.984149|37.579600,126.977000",
+      "fromStopId": "seoul-hotel-bag-drop",
+      "toStopId": "gyeongbokgung-palace",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
       "cacheKey": "2026-06-20|11:00|WALKING|37.579600,126.977000|37.582600,126.983000",
-      "fromStopId": "gyeongbokgung",
-      "toStopId": "bukchon-hanok",
+      "fromStopId": "gyeongbokgung-palace",
+      "toStopId": "bukchon-hanok-village",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-20|13:15|WALKING|37.582600,126.983000|37.574400,126.985300",
-      "fromStopId": "bukchon-hanok",
-      "toStopId": "insadong-anguk",
+      "cacheKey": "2026-06-20|13:00|WALKING|37.582600,126.983000|37.574400,126.985300",
+      "fromStopId": "bukchon-hanok-village",
+      "toStopId": "anguk-insadong",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-20|15:00|DRIVING|37.574400,126.985300|37.563800,126.985000",
-      "fromStopId": "insadong-anguk",
-      "toStopId": "myeongdong-dinner",
+      "cacheKey": "2026-06-20|14:30|DRIVING|37.574400,126.985300|37.572561,126.984149",
+      "fromStopId": "anguk-insadong",
+      "toStopId": "hotel-checkin-rest",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-20|17:30|WALKING|37.563800,126.985000|37.560900,126.986400",
-      "fromStopId": "myeongdong-dinner",
-      "toStopId": "myeongdong-hotel-return-0620",
+      "cacheKey": "2026-06-20|16:30|WALKING|37.572561,126.984149|37.563800,126.985000",
+      "fromStopId": "hotel-checkin-rest",
+      "toStopId": "myeongdong-shopping-dinner",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-21|09:30|WALKING|37.560900,126.986400|37.559200,126.977700",
-      "fromStopId": "myeongdong-hotel-start-0621",
-      "toStopId": "namdaemun-market",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|10:00|DRIVING|37.559200,126.977700|37.551200,126.988200",
-      "fromStopId": "namdaemun-market",
-      "toStopId": "n-seoul-tower",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|12:30|DRIVING|37.551200,126.988200|37.534500,126.994600",
-      "fromStopId": "n-seoul-tower",
-      "toStopId": "itaewon-hannam",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|15:30|DRIVING|37.534500,126.994600|37.510700,126.995900",
-      "fromStopId": "itaewon-hannam",
-      "toStopId": "banpo-hangang",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|18:00|DRIVING|37.510700,126.995900|37.556300,126.923600",
-      "fromStopId": "banpo-hangang",
-      "toStopId": "hongdae-evening",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-21|20:30|DRIVING|37.556300,126.923600|37.560900,126.986400",
-      "fromStopId": "hongdae-evening",
-      "toStopId": "myeongdong-hotel-return-0621",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-22|09:30|DRIVING|37.560900,126.986400|37.544600,127.055800",
-      "fromStopId": "myeongdong-hotel-start-0622",
+      "cacheKey": "2026-06-21|09:45|DRIVING|37.572561,126.984149|37.544600,127.055800",
+      "fromStopId": "hotel-start-0621",
       "toStopId": "seongsu-cafe-street",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-22|10:30|DRIVING|37.544600,127.055800|37.511700,127.059200",
+      "cacheKey": "2026-06-21|10:45|WALKING|37.544600,127.055800|37.543800,127.054000",
       "fromStopId": "seongsu-cafe-street",
-      "toStopId": "coex-starfield-library",
+      "toStopId": "seongsu-shopping",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-22|13:30|WALKING|37.511700,127.059200|37.515000,127.057600",
-      "fromStopId": "coex-starfield-library",
-      "toStopId": "bongeunsa",
+      "cacheKey": "2026-06-21|12:30|WALKING|37.543800,127.054000|37.544300,127.037400",
+      "fromStopId": "seongsu-shopping",
+      "toStopId": "seoul-forest",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-22|15:00|DRIVING|37.515000,127.057600|37.520700,127.022800",
-      "fromStopId": "bongeunsa",
-      "toStopId": "garosu-gil-gangnam",
+      "cacheKey": "2026-06-21|14:15|DRIVING|37.544300,127.037400|37.535300,127.000200",
+      "fromStopId": "seoul-forest",
+      "toStopId": "hannam-dong",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-22|16:30|DRIVING|37.520700,127.022800|37.570000,126.999600",
-      "fromStopId": "garosu-gil-gangnam",
-      "toStopId": "gwangjang-market",
+      "cacheKey": "2026-06-21|16:00|DRIVING|37.535300,127.000200|37.570000,126.999600",
+      "fromStopId": "hannam-dong",
+      "toStopId": "gwangjang-market-dinner",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
-      "cacheKey": "2026-06-22|19:00|DRIVING|37.570000,126.999600|37.560900,126.986400",
-      "fromStopId": "gwangjang-market",
-      "toStopId": "myeongdong-hotel-return-0622",
+      "cacheKey": "2026-06-21|18:45|WALKING|37.570000,126.999600|37.568900,126.999000",
+      "fromStopId": "gwangjang-market-dinner",
+      "toStopId": "cheonggyecheon-night-walk",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-22|09:30|DRIVING|37.572561,126.984149|37.579400,126.991000",
+      "fromStopId": "hotel-start-0622",
+      "toStopId": "changdeokgung-palace",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-22|10:00|WALKING|37.579400,126.991000|37.580800,126.993100",
+      "fromStopId": "changdeokgung-palace",
+      "toStopId": "changdeokgung-huwon-optional",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-22|11:45|DRIVING|37.580800,126.993100|37.574400,126.985300",
+      "fromStopId": "changdeokgung-huwon-optional",
+      "toStopId": "insadong-lunch-tea",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-22|13:15|DRIVING|37.574400,126.985300|37.574700,126.994100",
+      "fromStopId": "insadong-lunch-tea",
+      "toStopId": "jongmyo-shrine",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-22|15:45|DRIVING|37.574700,126.994100|37.572561,126.984149",
+      "fromStopId": "jongmyo-shrine",
+      "toStopId": "hotel-rest-0622",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-22|17:15|WALKING|37.572561,126.984149|37.563800,126.985000",
+      "fromStopId": "hotel-rest-0622",
+      "toStopId": "myeongdong-final-dinner-shopping",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-22|18:45|WALKING|37.563800,126.985000|37.572561,126.984149",
+      "fromStopId": "myeongdong-final-dinner-shopping",
+      "toStopId": "hotel-return-0622",
       "message": "路线计算失败：ZERO_RESULTS"
     }
   ],
   "routes": {
-    "2026-06-20|09:30|DRIVING|37.560900,126.986400|37.579600,126.977000": {
-      "createdAt": "2026-05-30T21:29:12.398Z",
+    "2026-06-20|09:45|DRIVING|37.572561,126.984149|37.579600,126.977000": {
+      "createdAt": "2026-06-19T00:39:04.029Z",
       "path": [
         {
-          "lat": 37.5609,
-          "lng": 126.9864
+          "lat": 37.5725614,
+          "lng": 126.9841493
         },
         {
           "lat": 37.5796,
@@ -126,8 +132,8 @@
         }
       ],
       "summary": {
-        "fromStopId": "myeongdong-hotel-bag-drop",
-        "toStopId": "gyeongbokgung",
+        "fromStopId": "seoul-hotel-bag-drop",
+        "toStopId": "gyeongbokgung-palace",
         "travelMode": "DRIVING",
         "duration": "未找到路线",
         "distance": "已显示直线",
@@ -136,7 +142,7 @@
       }
     },
     "2026-06-20|11:00|WALKING|37.579600,126.977000|37.582600,126.983000": {
-      "createdAt": "2026-05-30T21:29:12.584Z",
+      "createdAt": "2026-06-19T00:39:04.416Z",
       "path": [
         {
           "lat": 37.5796,
@@ -148,8 +154,8 @@
         }
       ],
       "summary": {
-        "fromStopId": "gyeongbokgung",
-        "toStopId": "bukchon-hanok",
+        "fromStopId": "gyeongbokgung-palace",
+        "toStopId": "bukchon-hanok-village",
         "travelMode": "WALKING",
         "duration": "未找到路线",
         "distance": "已显示直线",
@@ -157,8 +163,8 @@
         "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
       }
     },
-    "2026-06-20|13:15|WALKING|37.582600,126.983000|37.574400,126.985300": {
-      "createdAt": "2026-05-30T21:29:12.584Z",
+    "2026-06-20|13:00|WALKING|37.582600,126.983000|37.574400,126.985300": {
+      "createdAt": "2026-06-19T00:39:04.416Z",
       "path": [
         {
           "lat": 37.5826,
@@ -170,8 +176,8 @@
         }
       ],
       "summary": {
-        "fromStopId": "bukchon-hanok",
-        "toStopId": "insadong-anguk",
+        "fromStopId": "bukchon-hanok-village",
+        "toStopId": "anguk-insadong",
         "travelMode": "WALKING",
         "duration": "未找到路线",
         "distance": "已显示直线",
@@ -179,21 +185,21 @@
         "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
       }
     },
-    "2026-06-20|15:00|DRIVING|37.574400,126.985300|37.563800,126.985000": {
-      "createdAt": "2026-05-30T21:29:12.772Z",
+    "2026-06-20|14:30|DRIVING|37.574400,126.985300|37.572561,126.984149": {
+      "createdAt": "2026-06-19T00:39:04.679Z",
       "path": [
         {
           "lat": 37.5744,
           "lng": 126.9853
         },
         {
-          "lat": 37.5638,
-          "lng": 126.985
+          "lat": 37.5725614,
+          "lng": 126.9841493
         }
       ],
       "summary": {
-        "fromStopId": "insadong-anguk",
-        "toStopId": "myeongdong-dinner",
+        "fromStopId": "anguk-insadong",
+        "toStopId": "hotel-checkin-rest",
         "travelMode": "DRIVING",
         "duration": "未找到路线",
         "distance": "已显示直线",
@@ -201,21 +207,21 @@
         "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
       }
     },
-    "2026-06-20|17:30|WALKING|37.563800,126.985000|37.560900,126.986400": {
-      "createdAt": "2026-05-30T21:29:12.965Z",
+    "2026-06-20|16:30|WALKING|37.572561,126.984149|37.563800,126.985000": {
+      "createdAt": "2026-06-19T00:39:05.051Z",
       "path": [
+        {
+          "lat": 37.5725614,
+          "lng": 126.9841493
+        },
         {
           "lat": 37.5638,
           "lng": 126.985
-        },
-        {
-          "lat": 37.5609,
-          "lng": 126.9864
         }
       ],
       "summary": {
-        "fromStopId": "myeongdong-dinner",
-        "toStopId": "myeongdong-hotel-return-0620",
+        "fromStopId": "hotel-checkin-rest",
+        "toStopId": "myeongdong-shopping-dinner",
         "travelMode": "WALKING",
         "duration": "未找到路线",
         "distance": "已显示直线",
@@ -223,144 +229,12 @@
         "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
       }
     },
-    "2026-06-21|09:30|WALKING|37.560900,126.986400|37.559200,126.977700": {
-      "createdAt": "2026-05-30T21:29:13.153Z",
+    "2026-06-21|09:45|DRIVING|37.572561,126.984149|37.544600,127.055800": {
+      "createdAt": "2026-06-19T00:39:05.468Z",
       "path": [
         {
-          "lat": 37.5609,
-          "lng": 126.9864
-        },
-        {
-          "lat": 37.5592,
-          "lng": 126.9777
-        }
-      ],
-      "summary": {
-        "fromStopId": "myeongdong-hotel-start-0621",
-        "toStopId": "namdaemun-market",
-        "travelMode": "WALKING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
-      }
-    },
-    "2026-06-21|10:00|DRIVING|37.559200,126.977700|37.551200,126.988200": {
-      "createdAt": "2026-05-30T21:29:13.478Z",
-      "path": [
-        {
-          "lat": 37.5592,
-          "lng": 126.9777
-        },
-        {
-          "lat": 37.5512,
-          "lng": 126.9882
-        }
-      ],
-      "summary": {
-        "fromStopId": "namdaemun-market",
-        "toStopId": "n-seoul-tower",
-        "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
-      }
-    },
-    "2026-06-21|12:30|DRIVING|37.551200,126.988200|37.534500,126.994600": {
-      "createdAt": "2026-05-30T21:29:13.478Z",
-      "path": [
-        {
-          "lat": 37.5512,
-          "lng": 126.9882
-        },
-        {
-          "lat": 37.5345,
-          "lng": 126.9946
-        }
-      ],
-      "summary": {
-        "fromStopId": "n-seoul-tower",
-        "toStopId": "itaewon-hannam",
-        "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
-      }
-    },
-    "2026-06-21|15:30|DRIVING|37.534500,126.994600|37.510700,126.995900": {
-      "createdAt": "2026-05-30T21:29:13.478Z",
-      "path": [
-        {
-          "lat": 37.5345,
-          "lng": 126.9946
-        },
-        {
-          "lat": 37.5107,
-          "lng": 126.9959
-        }
-      ],
-      "summary": {
-        "fromStopId": "itaewon-hannam",
-        "toStopId": "banpo-hangang",
-        "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
-      }
-    },
-    "2026-06-21|18:00|DRIVING|37.510700,126.995900|37.556300,126.923600": {
-      "createdAt": "2026-05-30T21:29:13.478Z",
-      "path": [
-        {
-          "lat": 37.5107,
-          "lng": 126.9959
-        },
-        {
-          "lat": 37.5563,
-          "lng": 126.9236
-        }
-      ],
-      "summary": {
-        "fromStopId": "banpo-hangang",
-        "toStopId": "hongdae-evening",
-        "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
-      }
-    },
-    "2026-06-21|20:30|DRIVING|37.556300,126.923600|37.560900,126.986400": {
-      "createdAt": "2026-05-30T21:29:13.478Z",
-      "path": [
-        {
-          "lat": 37.5563,
-          "lng": 126.9236
-        },
-        {
-          "lat": 37.5609,
-          "lng": 126.9864
-        }
-      ],
-      "summary": {
-        "fromStopId": "hongdae-evening",
-        "toStopId": "myeongdong-hotel-return-0621",
-        "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
-      }
-    },
-    "2026-06-22|09:30|DRIVING|37.560900,126.986400|37.544600,127.055800": {
-      "createdAt": "2026-05-30T21:29:13.786Z",
-      "path": [
-        {
-          "lat": 37.5609,
-          "lng": 126.9864
+          "lat": 37.5725614,
+          "lng": 126.9841493
         },
         {
           "lat": 37.5446,
@@ -368,7 +242,7 @@
         }
       ],
       "summary": {
-        "fromStopId": "myeongdong-hotel-start-0622",
+        "fromStopId": "hotel-start-0621",
         "toStopId": "seongsu-cafe-street",
         "travelMode": "DRIVING",
         "duration": "未找到路线",
@@ -377,43 +251,21 @@
         "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
       }
     },
-    "2026-06-22|10:30|DRIVING|37.544600,127.055800|37.511700,127.059200": {
-      "createdAt": "2026-05-30T21:29:13.786Z",
+    "2026-06-21|10:45|WALKING|37.544600,127.055800|37.543800,127.054000": {
+      "createdAt": "2026-06-19T00:39:05.862Z",
       "path": [
         {
           "lat": 37.5446,
           "lng": 127.0558
         },
         {
-          "lat": 37.5117,
-          "lng": 127.0592
+          "lat": 37.5438,
+          "lng": 127.054
         }
       ],
       "summary": {
         "fromStopId": "seongsu-cafe-street",
-        "toStopId": "coex-starfield-library",
-        "travelMode": "DRIVING",
-        "duration": "未找到路线",
-        "distance": "已显示直线",
-        "fallback": true,
-        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
-      }
-    },
-    "2026-06-22|13:30|WALKING|37.511700,127.059200|37.515000,127.057600": {
-      "createdAt": "2026-05-30T21:29:13.976Z",
-      "path": [
-        {
-          "lat": 37.5117,
-          "lng": 127.0592
-        },
-        {
-          "lat": 37.515,
-          "lng": 127.0576
-        }
-      ],
-      "summary": {
-        "fromStopId": "coex-starfield-library",
-        "toStopId": "bongeunsa",
+        "toStopId": "seongsu-shopping",
         "travelMode": "WALKING",
         "duration": "未找到路线",
         "distance": "已显示直线",
@@ -421,21 +273,43 @@
         "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
       }
     },
-    "2026-06-22|15:00|DRIVING|37.515000,127.057600|37.520700,127.022800": {
-      "createdAt": "2026-05-30T21:29:14.382Z",
+    "2026-06-21|12:30|WALKING|37.543800,127.054000|37.544300,127.037400": {
+      "createdAt": "2026-06-19T00:39:05.862Z",
       "path": [
         {
-          "lat": 37.515,
-          "lng": 127.0576
+          "lat": 37.5438,
+          "lng": 127.054
         },
         {
-          "lat": 37.5207,
-          "lng": 127.0228
+          "lat": 37.5443,
+          "lng": 127.0374
         }
       ],
       "summary": {
-        "fromStopId": "bongeunsa",
-        "toStopId": "garosu-gil-gangnam",
+        "fromStopId": "seongsu-shopping",
+        "toStopId": "seoul-forest",
+        "travelMode": "WALKING",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+      }
+    },
+    "2026-06-21|14:15|DRIVING|37.544300,127.037400|37.535300,127.000200": {
+      "createdAt": "2026-06-19T00:39:06.351Z",
+      "path": [
+        {
+          "lat": 37.5443,
+          "lng": 127.0374
+        },
+        {
+          "lat": 37.5353,
+          "lng": 127.0002
+        }
+      ],
+      "summary": {
+        "fromStopId": "seoul-forest",
+        "toStopId": "hannam-dong",
         "travelMode": "DRIVING",
         "duration": "未找到路线",
         "distance": "已显示直线",
@@ -443,12 +317,12 @@
         "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
       }
     },
-    "2026-06-22|16:30|DRIVING|37.520700,127.022800|37.570000,126.999600": {
-      "createdAt": "2026-05-30T21:29:14.382Z",
+    "2026-06-21|16:00|DRIVING|37.535300,127.000200|37.570000,126.999600": {
+      "createdAt": "2026-06-19T00:39:06.351Z",
       "path": [
         {
-          "lat": 37.5207,
-          "lng": 127.0228
+          "lat": 37.5353,
+          "lng": 127.0002
         },
         {
           "lat": 37.57,
@@ -456,8 +330,8 @@
         }
       ],
       "summary": {
-        "fromStopId": "garosu-gil-gangnam",
-        "toStopId": "gwangjang-market",
+        "fromStopId": "hannam-dong",
+        "toStopId": "gwangjang-market-dinner",
         "travelMode": "DRIVING",
         "duration": "未找到路线",
         "distance": "已显示直线",
@@ -465,22 +339,176 @@
         "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
       }
     },
-    "2026-06-22|19:00|DRIVING|37.570000,126.999600|37.560900,126.986400": {
-      "createdAt": "2026-05-30T21:29:14.382Z",
+    "2026-06-21|18:45|WALKING|37.570000,126.999600|37.568900,126.999000": {
+      "createdAt": "2026-06-19T00:39:06.730Z",
       "path": [
         {
           "lat": 37.57,
           "lng": 126.9996
         },
         {
-          "lat": 37.5609,
-          "lng": 126.9864
+          "lat": 37.5689,
+          "lng": 126.999
         }
       ],
       "summary": {
-        "fromStopId": "gwangjang-market",
-        "toStopId": "myeongdong-hotel-return-0622",
+        "fromStopId": "gwangjang-market-dinner",
+        "toStopId": "cheonggyecheon-night-walk",
+        "travelMode": "WALKING",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+      }
+    },
+    "2026-06-22|09:30|DRIVING|37.572561,126.984149|37.579400,126.991000": {
+      "createdAt": "2026-06-19T00:39:07.002Z",
+      "path": [
+        {
+          "lat": 37.5725614,
+          "lng": 126.9841493
+        },
+        {
+          "lat": 37.5794,
+          "lng": 126.991
+        }
+      ],
+      "summary": {
+        "fromStopId": "hotel-start-0622",
+        "toStopId": "changdeokgung-palace",
         "travelMode": "DRIVING",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+      }
+    },
+    "2026-06-22|10:00|WALKING|37.579400,126.991000|37.580800,126.993100": {
+      "createdAt": "2026-06-19T00:39:07.252Z",
+      "path": [
+        {
+          "lat": 37.5794,
+          "lng": 126.991
+        },
+        {
+          "lat": 37.5808,
+          "lng": 126.9931
+        }
+      ],
+      "summary": {
+        "fromStopId": "changdeokgung-palace",
+        "toStopId": "changdeokgung-huwon-optional",
+        "travelMode": "WALKING",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+      }
+    },
+    "2026-06-22|11:45|DRIVING|37.580800,126.993100|37.574400,126.985300": {
+      "createdAt": "2026-06-19T00:39:07.638Z",
+      "path": [
+        {
+          "lat": 37.5808,
+          "lng": 126.9931
+        },
+        {
+          "lat": 37.5744,
+          "lng": 126.9853
+        }
+      ],
+      "summary": {
+        "fromStopId": "changdeokgung-huwon-optional",
+        "toStopId": "insadong-lunch-tea",
+        "travelMode": "DRIVING",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+      }
+    },
+    "2026-06-22|13:15|DRIVING|37.574400,126.985300|37.574700,126.994100": {
+      "createdAt": "2026-06-19T00:39:07.638Z",
+      "path": [
+        {
+          "lat": 37.5744,
+          "lng": 126.9853
+        },
+        {
+          "lat": 37.5747,
+          "lng": 126.9941
+        }
+      ],
+      "summary": {
+        "fromStopId": "insadong-lunch-tea",
+        "toStopId": "jongmyo-shrine",
+        "travelMode": "DRIVING",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+      }
+    },
+    "2026-06-22|15:45|DRIVING|37.574700,126.994100|37.572561,126.984149": {
+      "createdAt": "2026-06-19T00:39:07.638Z",
+      "path": [
+        {
+          "lat": 37.5747,
+          "lng": 126.9941
+        },
+        {
+          "lat": 37.5725614,
+          "lng": 126.9841493
+        }
+      ],
+      "summary": {
+        "fromStopId": "jongmyo-shrine",
+        "toStopId": "hotel-rest-0622",
+        "travelMode": "DRIVING",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+      }
+    },
+    "2026-06-22|17:15|WALKING|37.572561,126.984149|37.563800,126.985000": {
+      "createdAt": "2026-06-19T00:39:07.842Z",
+      "path": [
+        {
+          "lat": 37.5725614,
+          "lng": 126.9841493
+        },
+        {
+          "lat": 37.5638,
+          "lng": 126.985
+        }
+      ],
+      "summary": {
+        "fromStopId": "hotel-rest-0622",
+        "toStopId": "myeongdong-final-dinner-shopping",
+        "travelMode": "WALKING",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "note": "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。"
+      }
+    },
+    "2026-06-22|18:45|WALKING|37.563800,126.985000|37.572561,126.984149": {
+      "createdAt": "2026-06-19T00:39:07.842Z",
+      "path": [
+        {
+          "lat": 37.5638,
+          "lng": 126.985
+        },
+        {
+          "lat": 37.5725614,
+          "lng": 126.9841493
+        }
+      ],
+      "summary": {
+        "fromStopId": "myeongdong-final-dinner-shopping",
+        "toStopId": "hotel-return-0622",
+        "travelMode": "WALKING",
         "duration": "未找到路线",
         "distance": "已显示直线",
         "fallback": true,
