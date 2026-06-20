@@ -206,26 +206,24 @@
           "color": "#9ca3af"
         },
         {
-          "id": "object-seongsu",
-          "time": "15:55",
-          "duration": "45m",
-          "title": "Object / Poset 圣水",
-          "place": "Poset 圣水（原 Object 地址）",
-          "address": "韩国首尔特别市城东区首尔林街 36，2 层",
-          "mapsQuery": "포셋 성수，36 Seoulsup-gil, Seongdong-gu, Seoul, South Korea",
+          "id": "gentle-monster-haus-nowhere-seoul",
+          "time": "15:35",
+          "duration": "1h 15m",
+          "title": "Gentle Monster HAUS NOWHERE SEOUL",
+          "place": "Gentle Monster HAUS NOWHERE SEOUL（2 层）",
+          "address": "韩国首尔特别市城东区纛岛路 433，2 层",
+          "mapsQuery": "젠틀몬스터 하우스 노웨어 서울，433 Ttukseom-ro, Seongdong-gu, Seoul, South Korea",
           "coords": {
-            "lat": 37.5478189,
-            "lng": 127.0413106
+            "lat": 37.538302,
+            "lng": 127.058899
           },
-          "notes": "同址现显示为 Poset；逛明信片和设计杂货。",
+          "notes": "重点购买眼镜；预留试戴、挑选和镜架调整时间。",
           "travelModeToNext": "WALKING",
-          "type": "area",
-          "optional": true,
-          "color": "#9ca3af"
+          "type": "area"
         },
         {
           "id": "seoul-forest",
-          "time": "16:55",
+          "time": "17:20",
           "duration": "45m",
           "title": "首尔森林",
           "place": "首尔森林游客中心",
@@ -243,7 +241,7 @@
         },
         {
           "id": "hannam-dong",
-          "time": "18:35",
+          "time": "18:55",
           "duration": "2h 15m",
           "title": "Sounds Hannam",
           "place": "Sounds Hannam 文化商业空间",
