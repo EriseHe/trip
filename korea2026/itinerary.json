@@ -30,7 +30,7 @@
             "lng": 126.4337
           },
           "notes": "OZ223 抵达；实际约 16:00 到达酒店。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "station"
         },
         {
@@ -46,7 +46,7 @@
             "lng": 126.9841493
           },
           "notes": "办理入住，16:30 左右轻装出发。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -62,7 +62,7 @@
             "lng": 126.9847289
           },
           "notes": "先逛工艺小店；Ssamziegil 营业至 20:30。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "area"
         },
         {
@@ -78,7 +78,7 @@
             "lng": 126.9851661
           },
           "notes": "吃晚餐并逛街；Olive Young 营业至 22:30。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "area"
         },
         {
@@ -94,7 +94,7 @@
             "lng": 126.9987434
           },
           "notes": "美食街营业至 23:00；吃绿豆煎饼、紫菜包饭或鱼饼汤。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
         {
@@ -110,7 +110,7 @@
             "lng": 126.9841493
           },
           "notes": "返回酒店休息。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         }
       ]
@@ -134,7 +134,7 @@
             "lng": 126.9841493
           },
           "notes": "出发前往昌德宫；周一休宫，所以安排在今天。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -150,7 +150,7 @@
             "lng": 126.9899805
           },
           "notes": "从敦化门进入，先逛主宫殿区。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "sight"
         },
         {
@@ -166,7 +166,7 @@
             "lng": 126.9931
           },
           "notes": "可选；需要按预约场次入场，没票就延长主宫游览。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "sight",
           "optional": true,
           "color": "#9ca3af"
@@ -184,7 +184,7 @@
             "lng": 127.0564591
           },
           "notes": "在圣水洞吃午餐、喝咖啡并稍作休息。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "area"
         },
         {
@@ -200,7 +200,7 @@
             "lng": 127.05601
           },
           "notes": "可选；逛配饰、包袋和服装。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "area",
           "optional": true,
           "color": "#9ca3af"
@@ -218,7 +218,7 @@
             "lng": 127.0413106
           },
           "notes": "同址现显示为 Poset；逛明信片和设计杂货。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "area",
           "optional": true,
           "color": "#9ca3af"
@@ -236,7 +236,7 @@
             "lng": 127.0374
           },
           "notes": "可选；天气或体力不合适可跳过。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "sight",
           "optional": true,
           "color": "#9ca3af"
@@ -254,7 +254,7 @@
             "lng": 127.0020493
           },
           "notes": "集中逛书店、买手店和咖啡馆，并在附近吃晚餐。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "area"
         },
         {
@@ -270,7 +270,7 @@
             "lng": 127.009899
           },
           "notes": "可选；体力足够再去看夜景。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "area",
           "optional": true,
           "color": "#9ca3af"
@@ -288,7 +288,7 @@
             "lng": 126.9841493
           },
           "notes": "返回酒店休息。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         }
       ]
@@ -312,7 +312,7 @@
             "lng": 126.9841493
           },
           "notes": "出发前往景福宫。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -328,7 +328,7 @@
             "lng": 126.9768156
           },
           "notes": "从光化门进入，优先游览主要宫殿区。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "sight"
         },
         {
@@ -344,7 +344,7 @@
             "lng": 126.9863882
           },
           "notes": "周一可访；避开 17:00 后的限制时段。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "sight",
           "optional": true,
           "color": "#9ca3af"
@@ -362,7 +362,7 @@
             "lng": 126.9859742
           },
           "notes": "吃开城式手工饺子；热门时段可能排队。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
         {
@@ -378,7 +378,7 @@
             "lng": 126.9854755
           },
           "notes": "在韩屋庭院喝传统茶并休息。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
         {
@@ -394,7 +394,7 @@
             "lng": 126.9943771
           },
           "notes": "从钟路正门进入，游览主要祭祀建筑。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "sight"
         },
         {
@@ -410,7 +410,7 @@
             "lng": 126.9841493
           },
           "notes": "休息并整理行李。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -426,7 +426,7 @@
             "lng": 126.9851661
           },
           "notes": "补买药妆、零食和日用品，附近吃晚餐。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
         {
@@ -442,7 +442,7 @@
             "lng": 126.9841493
           },
           "notes": "返回酒店休息。",
-          "travelModeToNext": "WALKING",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         }
       ]
@@ -466,7 +466,7 @@
             "lng": 126.9841493
           },
           "notes": "退房后前往仁川机场 T2。",
-          "travelModeToNext": "DRIVING",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -515,7 +515,7 @@
           },
           "notes": "韩国转机行程结束。",
           "type": "station",
-          "travelModeToNext": "DRIVING"
+          "travelModeToNext": "TRANSIT"
         }
       ]
     }
