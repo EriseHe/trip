@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-19T01:14:12.918Z",
+  "generatedAt": "2026-06-20T07:13:08.690Z",
   "source": "korea2026/itinerary.json",
-  "itineraryHash": "68c68d9ea4b369a74b2b0432398f9f6f11de9a05205b77e0a0b35ff1da9e894f",
-  "routeCount": 25,
+  "itineraryHash": "a4b568594b2348e4d3bcf4d7fd05e53e5cf649c8095e352a338854f1ba6af153",
+  "routeCount": 23,
   "requestCount": 0,
-  "approximateCount": 25,
+  "approximateCount": 23,
   "fallbackCount": 0,
   "failedCount": 0,
   "failures": [],
   "routes": {
     "2026-06-20|06:05|DRIVING|37.468800,126.433700|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:14:12.916Z",
+      "createdAt": "2026-06-20T07:13:08.687Z",
       "path": [
         {
           "lat": 37.4688,
@@ -33,343 +33,67 @@
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-20|09:45|DRIVING|37.572561,126.984149|37.575919,126.976816": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
+    "2026-06-20|16:00|WALKING|37.572561,126.984149|37.574223,126.984729": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5725614,
           "lng": 126.9841493
         },
         {
-          "lat": 37.5759194,
-          "lng": 126.9768156
+          "lat": 37.5742228,
+          "lng": 126.9847289
         }
       ],
       "summary": {
         "fromStopId": "seoul-hotel-bag-drop",
-        "toStopId": "gyeongbokgung-palace",
-        "travelMode": "DRIVING",
-        "requestedTravelMode": "DRIVING",
-        "duration": "约 3 分钟",
-        "distance": "约 950 米",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-20|11:00|WALKING|37.575919,126.976816|37.579046,126.986388": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5759194,
-          "lng": 126.9768156
-        },
-        {
-          "lat": 37.579046,
-          "lng": 126.9863882
-        }
-      ],
-      "summary": {
-        "fromStopId": "gyeongbokgung-palace",
-        "toStopId": "bukchon-hanok-village",
-        "travelMode": "WALKING",
-        "requestedTravelMode": "WALKING",
-        "duration": "约 14 分钟",
-        "distance": "约 1.0 公里",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-20|13:00|WALKING|37.579046,126.986388|37.574223,126.984729": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.579046,
-          "lng": 126.9863882
-        },
-        {
-          "lat": 37.5742228,
-          "lng": 126.9847289
-        }
-      ],
-      "summary": {
-        "fromStopId": "bukchon-hanok-village",
         "toStopId": "anguk-insadong",
         "travelMode": "WALKING",
         "requestedTravelMode": "WALKING",
-        "duration": "约 9 分钟",
-        "distance": "约 650 米",
+        "duration": "约 3 分钟",
+        "distance": "约 200 米",
         "approximate": true,
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-20|14:30|DRIVING|37.574223,126.984729|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
+    "2026-06-20|16:40|DRIVING|37.574223,126.984729|37.564119,126.985166": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5742228,
           "lng": 126.9847289
         },
         {
-          "lat": 37.5725614,
-          "lng": 126.9841493
+          "lat": 37.5641193,
+          "lng": 126.9851661
         }
       ],
       "summary": {
         "fromStopId": "anguk-insadong",
-        "toStopId": "hotel-checkin-rest",
+        "toStopId": "myeongdong-shopping-dinner",
         "travelMode": "DRIVING",
         "requestedTravelMode": "DRIVING",
-        "duration": "约 2 分钟",
-        "distance": "约 250 米",
+        "duration": "约 4 分钟",
+        "distance": "约 1.4 公里",
         "approximate": true,
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-20|16:30|WALKING|37.572561,126.984149|37.564119,126.985166": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5725614,
-          "lng": 126.9841493
-        },
-        {
-          "lat": 37.5641193,
-          "lng": 126.9851661
-        }
-      ],
-      "summary": {
-        "fromStopId": "hotel-checkin-rest",
-        "toStopId": "myeongdong-shopping-dinner",
-        "travelMode": "WALKING",
-        "requestedTravelMode": "WALKING",
-        "duration": "约 14 分钟",
-        "distance": "约 1.1 公里",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-20|18:00|DRIVING|37.564119,126.985166|37.567069,127.009899": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
+    "2026-06-20|18:15|DRIVING|37.564119,126.985166|37.570290,126.998743": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5641193,
           "lng": 126.9851661
         },
         {
-          "lat": 37.5670686,
-          "lng": 127.009899
+          "lat": 37.5702899,
+          "lng": 126.9987434
         }
       ],
       "summary": {
         "fromStopId": "myeongdong-shopping-dinner",
-        "toStopId": "dongdaemun-ddp-night",
-        "travelMode": "DRIVING",
-        "requestedTravelMode": "DRIVING",
-        "duration": "约 8 分钟",
-        "distance": "约 2.8 公里",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-20|20:30|DRIVING|37.567069,127.009899|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5670686,
-          "lng": 127.009899
-        },
-        {
-          "lat": 37.5725614,
-          "lng": 126.9841493
-        }
-      ],
-      "summary": {
-        "fromStopId": "dongdaemun-ddp-night",
-        "toStopId": "hotel-return-0620",
-        "travelMode": "DRIVING",
-        "requestedTravelMode": "DRIVING",
-        "duration": "约 8 分钟",
-        "distance": "约 2.9 公里",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-21|09:45|DRIVING|37.572561,126.984149|37.541825,127.056459": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5725614,
-          "lng": 126.9841493
-        },
-        {
-          "lat": 37.5418247,
-          "lng": 127.0564591
-        }
-      ],
-      "summary": {
-        "fromStopId": "hotel-start-0621",
-        "toStopId": "seongsu-cafe-street",
-        "travelMode": "DRIVING",
-        "requestedTravelMode": "DRIVING",
-        "duration": "约 19 分钟",
-        "distance": "约 9.0 公里",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-21|10:45|WALKING|37.541825,127.056459|37.540480,127.056010": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5418247,
-          "lng": 127.0564591
-        },
-        {
-          "lat": 37.54048,
-          "lng": 127.05601
-        }
-      ],
-      "summary": {
-        "fromStopId": "seongsu-cafe-street",
-        "toStopId": "nyunyu-seongsu",
-        "travelMode": "WALKING",
-        "requestedTravelMode": "WALKING",
-        "duration": "约 2 分钟",
-        "distance": "约 200 米",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-21|12:15|WALKING|37.540480,127.056010|37.547819,127.041311": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.54048,
-          "lng": 127.05601
-        },
-        {
-          "lat": 37.5478189,
-          "lng": 127.0413106
-        }
-      ],
-      "summary": {
-        "fromStopId": "nyunyu-seongsu",
-        "toStopId": "object-seongsu",
-        "travelMode": "WALKING",
-        "requestedTravelMode": "WALKING",
-        "duration": "约 23 分钟",
-        "distance": "约 1.8 公里",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-21|13:15|WALKING|37.547819,127.041311|37.544300,127.037400": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5478189,
-          "lng": 127.0413106
-        },
-        {
-          "lat": 37.5443,
-          "lng": 127.0374
-        }
-      ],
-      "summary": {
-        "fromStopId": "object-seongsu",
-        "toStopId": "seoul-forest",
-        "travelMode": "WALKING",
-        "requestedTravelMode": "WALKING",
-        "duration": "约 8 分钟",
-        "distance": "约 600 米",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-21|14:15|DRIVING|37.544300,127.037400|37.533708,127.002049": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5443,
-          "lng": 127.0374
-        },
-        {
-          "lat": 37.5337083,
-          "lng": 127.0020493
-        }
-      ],
-      "summary": {
-        "fromStopId": "seoul-forest",
-        "toStopId": "hannam-dong",
-        "travelMode": "DRIVING",
-        "requestedTravelMode": "DRIVING",
-        "duration": "约 11 分钟",
-        "distance": "约 4.2 公里",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-21|16:00|DRIVING|37.533708,127.002049|37.570290,126.998743": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5337083,
-          "lng": 127.0020493
-        },
-        {
-          "lat": 37.5702899,
-          "lng": 126.9987434
-        }
-      ],
-      "summary": {
-        "fromStopId": "hannam-dong",
         "toStopId": "gwangjang-market-dinner",
-        "travelMode": "DRIVING",
-        "requestedTravelMode": "DRIVING",
-        "duration": "约 14 分钟",
-        "distance": "约 5.1 公里",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-21|18:45|WALKING|37.570290,126.998743|37.568900,126.999000": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5702899,
-          "lng": 126.9987434
-        },
-        {
-          "lat": 37.5689,
-          "lng": 126.999
-        }
-      ],
-      "summary": {
-        "fromStopId": "gwangjang-market-dinner",
-        "toStopId": "cheonggyecheon-night-walk",
-        "travelMode": "WALKING",
-        "requestedTravelMode": "WALKING",
-        "duration": "约 2 分钟",
-        "distance": "约 200 米",
-        "approximate": true,
-        "estimateSource": "straight-line"
-      }
-    },
-    "2026-06-21|20:30|DRIVING|37.568900,126.999000|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
-      "path": [
-        {
-          "lat": 37.5689,
-          "lng": 126.999
-        },
-        {
-          "lat": 37.5725614,
-          "lng": 126.9841493
-        }
-      ],
-      "summary": {
-        "fromStopId": "cheonggyecheon-night-walk",
-        "toStopId": "hotel-return-0621",
         "travelMode": "DRIVING",
         "requestedTravelMode": "DRIVING",
         "duration": "约 5 分钟",
@@ -378,8 +102,31 @@
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-22|09:30|DRIVING|37.572561,126.984149|37.577861,126.989981": {
-      "createdAt": "2026-06-19T01:14:12.917Z",
+    "2026-06-20|20:45|DRIVING|37.570290,126.998743|37.572561,126.984149": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.5702899,
+          "lng": 126.9987434
+        },
+        {
+          "lat": 37.5725614,
+          "lng": 126.9841493
+        }
+      ],
+      "summary": {
+        "fromStopId": "gwangjang-market-dinner",
+        "toStopId": "hotel-return-0620",
+        "travelMode": "DRIVING",
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 4 分钟",
+        "distance": "约 1.6 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-21|08:45|DRIVING|37.572561,126.984149|37.577861,126.989981": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5725614,
@@ -391,7 +138,7 @@
         }
       ],
       "summary": {
-        "fromStopId": "hotel-start-0622",
+        "fromStopId": "hotel-start-0621",
         "toStopId": "changdeokgung-palace",
         "travelMode": "DRIVING",
         "requestedTravelMode": "DRIVING",
@@ -401,8 +148,8 @@
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-22|10:00|WALKING|37.577861,126.989981|37.580800,126.993100": {
-      "createdAt": "2026-06-19T01:14:12.918Z",
+    "2026-06-21|09:15|WALKING|37.577861,126.989981|37.580800,126.993100": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5778607,
@@ -424,12 +171,219 @@
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-22|11:45|DRIVING|37.580800,126.993100|37.574372,126.985974": {
-      "createdAt": "2026-06-19T01:14:12.918Z",
+    "2026-06-21|10:45|DRIVING|37.580800,126.993100|37.541825,127.056459": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5808,
           "lng": 126.9931
+        },
+        {
+          "lat": 37.5418247,
+          "lng": 127.0564591
+        }
+      ],
+      "summary": {
+        "fromStopId": "changdeokgung-huwon-optional",
+        "toStopId": "seongsu-cafe-street",
+        "travelMode": "DRIVING",
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 19 分钟",
+        "distance": "约 8.8 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-21|12:45|WALKING|37.541825,127.056459|37.540480,127.056010": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.5418247,
+          "lng": 127.0564591
+        },
+        {
+          "lat": 37.54048,
+          "lng": 127.05601
+        }
+      ],
+      "summary": {
+        "fromStopId": "seongsu-cafe-street",
+        "toStopId": "nyunyu-seongsu",
+        "travelMode": "WALKING",
+        "requestedTravelMode": "WALKING",
+        "duration": "约 2 分钟",
+        "distance": "约 200 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-21|14:15|WALKING|37.540480,127.056010|37.547819,127.041311": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.54048,
+          "lng": 127.05601
+        },
+        {
+          "lat": 37.5478189,
+          "lng": 127.0413106
+        }
+      ],
+      "summary": {
+        "fromStopId": "nyunyu-seongsu",
+        "toStopId": "object-seongsu",
+        "travelMode": "WALKING",
+        "requestedTravelMode": "WALKING",
+        "duration": "约 23 分钟",
+        "distance": "约 1.8 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-21|15:15|WALKING|37.547819,127.041311|37.544300,127.037400": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.5478189,
+          "lng": 127.0413106
+        },
+        {
+          "lat": 37.5443,
+          "lng": 127.0374
+        }
+      ],
+      "summary": {
+        "fromStopId": "object-seongsu",
+        "toStopId": "seoul-forest",
+        "travelMode": "WALKING",
+        "requestedTravelMode": "WALKING",
+        "duration": "约 8 分钟",
+        "distance": "约 600 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-21|16:15|DRIVING|37.544300,127.037400|37.533708,127.002049": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.5443,
+          "lng": 127.0374
+        },
+        {
+          "lat": 37.5337083,
+          "lng": 127.0020493
+        }
+      ],
+      "summary": {
+        "fromStopId": "seoul-forest",
+        "toStopId": "hannam-dong",
+        "travelMode": "DRIVING",
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 11 分钟",
+        "distance": "约 4.2 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-21|17:45|DRIVING|37.533708,127.002049|37.567069,127.009899": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.5337083,
+          "lng": 127.0020493
+        },
+        {
+          "lat": 37.5670686,
+          "lng": 127.009899
+        }
+      ],
+      "summary": {
+        "fromStopId": "hannam-dong",
+        "toStopId": "dongdaemun-ddp-night",
+        "travelMode": "DRIVING",
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 13 分钟",
+        "distance": "约 4.7 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-21|20:45|DRIVING|37.567069,127.009899|37.572561,126.984149": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.5670686,
+          "lng": 127.009899
+        },
+        {
+          "lat": 37.5725614,
+          "lng": 126.9841493
+        }
+      ],
+      "summary": {
+        "fromStopId": "dongdaemun-ddp-night",
+        "toStopId": "hotel-return-0621",
+        "travelMode": "DRIVING",
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 8 分钟",
+        "distance": "约 2.9 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-22|08:45|DRIVING|37.572561,126.984149|37.575919,126.976816": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.5725614,
+          "lng": 126.9841493
+        },
+        {
+          "lat": 37.5759194,
+          "lng": 126.9768156
+        }
+      ],
+      "summary": {
+        "fromStopId": "hotel-start-0622",
+        "toStopId": "gyeongbokgung-palace",
+        "travelMode": "DRIVING",
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 3 分钟",
+        "distance": "约 950 米",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-22|09:15|WALKING|37.575919,126.976816|37.579046,126.986388": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.5759194,
+          "lng": 126.9768156
+        },
+        {
+          "lat": 37.579046,
+          "lng": 126.9863882
+        }
+      ],
+      "summary": {
+        "fromStopId": "gyeongbokgung-palace",
+        "toStopId": "bukchon-hanok-village",
+        "travelMode": "WALKING",
+        "requestedTravelMode": "WALKING",
+        "duration": "约 14 分钟",
+        "distance": "约 1.0 公里",
+        "approximate": true,
+        "estimateSource": "straight-line"
+      }
+    },
+    "2026-06-22|11:00|WALKING|37.579046,126.986388|37.574372,126.985974": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
+      "path": [
+        {
+          "lat": 37.579046,
+          "lng": 126.9863882
         },
         {
           "lat": 37.5743718,
@@ -437,18 +391,18 @@
         }
       ],
       "summary": {
-        "fromStopId": "changdeokgung-huwon-optional",
+        "fromStopId": "bukchon-hanok-village",
         "toStopId": "gaeseong-mandu-koong-lunch",
-        "travelMode": "DRIVING",
-        "requestedTravelMode": "DRIVING",
-        "duration": "约 3 分钟",
-        "distance": "约 1.2 公里",
+        "travelMode": "WALKING",
+        "requestedTravelMode": "WALKING",
+        "duration": "约 8 分钟",
+        "distance": "约 600 米",
         "approximate": true,
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-22|13:15|WALKING|37.574372,126.985974|37.574556,126.985476": {
-      "createdAt": "2026-06-19T01:14:12.918Z",
+    "2026-06-22|12:15|WALKING|37.574372,126.985974|37.574556,126.985476": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5743718,
@@ -470,8 +424,8 @@
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-22|14:20|DRIVING|37.574556,126.985476|37.570721,126.994377": {
-      "createdAt": "2026-06-19T01:14:12.918Z",
+    "2026-06-22|13:20|DRIVING|37.574556,126.985476|37.570721,126.994377": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5745558,
@@ -493,8 +447,8 @@
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-22|15:45|DRIVING|37.570721,126.994377|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:14:12.918Z",
+    "2026-06-22|14:45|DRIVING|37.570721,126.994377|37.572561,126.984149": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5707207,
@@ -516,8 +470,8 @@
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-22|17:15|WALKING|37.572561,126.984149|37.564119,126.985166": {
-      "createdAt": "2026-06-19T01:14:12.918Z",
+    "2026-06-22|16:30|WALKING|37.572561,126.984149|37.564119,126.985166": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5725614,
@@ -539,8 +493,8 @@
         "estimateSource": "straight-line"
       }
     },
-    "2026-06-22|18:45|WALKING|37.564119,126.985166|37.572561,126.984149": {
-      "createdAt": "2026-06-19T01:14:12.918Z",
+    "2026-06-22|18:15|WALKING|37.564119,126.985166|37.572561,126.984149": {
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5641193,
@@ -563,7 +517,7 @@
       }
     },
     "2026-06-23|06:30|DRIVING|37.572561,126.984149|37.468800,126.433700": {
-      "createdAt": "2026-06-19T01:14:12.918Z",
+      "createdAt": "2026-06-20T07:13:08.690Z",
       "path": [
         {
           "lat": 37.5725614,

@@ -14,13 +14,13 @@
     {
       "id": "2026-06-20-seoul-arrival-classic",
       "date": "2026-06-20",
-      "label": "6/20 · 抵达首尔 / 景福宫 · 北村 · 明洞 · 东大门",
+      "label": "6/20 · 仁寺洞 · 明洞购物 · 广藏市场夜食",
       "color": "#0f766e",
       "stops": [
         {
           "id": "icn-t2-arrival-oz223",
           "time": "06:05",
-          "duration": "2h 30m",
+          "duration": "抵达",
           "title": "抵达首尔 ICN T2",
           "place": "仁川国际机场第二航站楼",
           "address": "韩国仁川广域市中区第二航站楼大路 446",
@@ -29,14 +29,14 @@
             "lat": 37.4688,
             "lng": 126.4337
           },
-          "notes": "OZ223 抵达；预留入境、取行李和早餐时间。",
+          "notes": "OZ223 抵达；实际约 16:00 到达酒店。",
           "travelModeToNext": "DRIVING",
           "type": "station"
         },
         {
           "id": "seoul-hotel-bag-drop",
-          "time": "09:45",
-          "duration": "45m",
+          "time": "16:00",
+          "duration": "30m",
           "title": "AMID HOTEL SEOUL",
           "place": "AMID HOTEL SEOUL（首尔阿米德酒店）",
           "address": "韩国首尔特别市钟路区仁寺洞 5 街 38",
@@ -45,48 +45,14 @@
             "lat": 37.5725614,
             "lng": 126.9841493
           },
-          "notes": "寄存行李后轻装出发。",
-          "travelModeToNext": "DRIVING",
+          "notes": "办理入住，16:30 左右轻装出发。",
+          "travelModeToNext": "WALKING",
           "type": "hotel"
         },
         {
-          "id": "gyeongbokgung-palace",
-          "time": "11:00",
-          "duration": "1h 30m",
-          "title": "景福宫",
-          "place": "景福宫（光化门入口）",
-          "address": "韩国首尔特别市钟路区社稷路 161",
-          "mapsQuery": "景福宫，161 Sajik-ro, Jongno-gu, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5759194,
-            "lng": 126.9768156
-          },
-          "notes": "从光化门进入，优先游览主要宫殿区。",
-          "travelModeToNext": "WALKING",
-          "type": "sight"
-        },
-        {
-          "id": "bukchon-hanok-village",
-          "time": "13:00",
-          "duration": "1h 15m",
-          "title": "北村文化中心 / 北村韩屋村",
-          "place": "北村文化中心",
-          "address": "韩国首尔特别市钟路区桂洞街 37",
-          "mapsQuery": "北村文化中心，37 Gyedong-gil, Jongno-gu, Seoul, South Korea",
-          "coords": {
-            "lat": 37.579046,
-            "lng": 126.9863882
-          },
-          "notes": "从文化中心开始逛；体力不足可只走入口附近。",
-          "travelModeToNext": "WALKING",
-          "type": "sight",
-          "optional": true,
-          "color": "#9ca3af"
-        },
-        {
           "id": "anguk-insadong",
-          "time": "14:30",
-          "duration": "1h 30m",
+          "time": "16:40",
+          "duration": "1h 15m",
           "title": "仁寺洞 Ssamziegil",
           "place": "仁寺洞 Ssamziegil（人人商场）",
           "address": "韩国首尔特别市钟路区仁寺洞街 44",
@@ -95,30 +61,14 @@
             "lat": 37.5742228,
             "lng": 126.9847289
           },
-          "notes": "逛工艺小店，途中安排咖啡或传统茶。",
+          "notes": "先逛工艺小店；Ssamziegil 营业至 20:30。",
           "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
-          "id": "hotel-checkin-rest",
-          "time": "16:30",
-          "duration": "1h",
-          "title": "AMID HOTEL SEOUL",
-          "place": "AMID HOTEL SEOUL（首尔阿米德酒店）",
-          "address": "韩国首尔特别市钟路区仁寺洞 5 街 38",
-          "mapsQuery": "首尔阿米德酒店 AMID HOTEL SEOUL，38 Insadong 5-gil, Jongno-gu, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5725614,
-            "lng": 126.9841493
-          },
-          "notes": "办理入住并休息。",
-          "travelModeToNext": "WALKING",
-          "type": "hotel"
-        },
-        {
           "id": "myeongdong-shopping-dinner",
-          "time": "18:00",
-          "duration": "2h",
+          "time": "18:15",
+          "duration": "2h 15m",
           "title": "Olive Young 明洞旗舰店 / 晚餐",
           "place": "Olive Young 明洞旗舰店",
           "address": "韩国首尔特别市中区明洞街 53",
@@ -127,27 +77,25 @@
             "lat": 37.5641193,
             "lng": 126.9851661
           },
-          "notes": "以旗舰店为定位点，顺路逛明洞并吃晚餐。",
+          "notes": "吃晚餐并逛街；Olive Young 营业至 22:30。",
           "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
-          "id": "dongdaemun-ddp-night",
-          "time": "20:30",
+          "id": "gwangjang-market-dinner",
+          "time": "20:45",
           "duration": "1h 30m",
-          "title": "东大门设计广场 DDP 夜景",
-          "place": "东大门设计广场 DDP",
-          "address": "韩国首尔特别市中区乙支路 281",
-          "mapsQuery": "东大门设计广场 DDP，281 Eulji-ro, Jung-gu, Seoul, South Korea",
+          "title": "广藏市场美食街",
+          "place": "广藏市场南门",
+          "address": "韩国首尔特别市钟路区昌庆宫路 88",
+          "mapsQuery": "广藏市场，88 Changgyeonggung-ro, Jongno-gu, Seoul, South Korea",
           "coords": {
-            "lat": 37.5670686,
-            "lng": 127.009899
+            "lat": 37.5702899,
+            "lng": 126.9987434
           },
-          "notes": "可选；体力足够再去看夜景。",
+          "notes": "美食街营业至 23:00；吃绿豆煎饼、紫菜包饭或鱼饼汤。",
           "travelModeToNext": "DRIVING",
-          "type": "area",
-          "optional": true,
-          "color": "#9ca3af"
+          "type": "restaurant"
         },
         {
           "id": "hotel-return-0620",
@@ -170,12 +118,12 @@
     {
       "id": "2026-06-21-seongsu-hannam-market",
       "date": "2026-06-21",
-      "label": "6/21 · 圣水洞 · 首尔森林 · 汉南洞 · 广藏市场",
+      "label": "6/21 · 昌德宫 · 后苑 · 圣水洞 · 汉南洞 · DDP",
       "color": "#2563eb",
       "stops": [
         {
           "id": "hotel-start-0621",
-          "time": "09:45",
+          "time": "08:45",
           "duration": "15m",
           "title": "AMID HOTEL SEOUL",
           "place": "AMID HOTEL SEOUL（首尔阿米德酒店）",
@@ -185,13 +133,47 @@
             "lat": 37.5725614,
             "lng": 126.9841493
           },
-          "notes": "出发前往圣水洞。",
+          "notes": "出发前往昌德宫；周一休宫，所以安排在今天。",
           "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
-          "id": "seongsu-cafe-street",
+          "id": "changdeokgung-palace",
+          "time": "09:15",
+          "duration": "1h 15m",
+          "title": "昌德宫（敦化门入口）",
+          "place": "昌德宫敦化门",
+          "address": "韩国首尔特别市钟路区栗谷路 99",
+          "mapsQuery": "昌德宫，99 Yulgok-ro, Jongno-gu, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5778607,
+            "lng": 126.9899805
+          },
+          "notes": "从敦化门进入，先逛主宫殿区。",
+          "travelModeToNext": "WALKING",
+          "type": "sight"
+        },
+        {
+          "id": "changdeokgung-huwon-optional",
           "time": "10:45",
+          "duration": "1h 15m",
+          "title": "昌德宫后苑 Secret Garden",
+          "place": "昌德宫后苑入口",
+          "address": "韩国首尔特别市钟路区栗谷路 99（昌德宫内）",
+          "mapsQuery": "昌德宫后苑 Secret Garden，99 Yulgok-ro, Jongno-gu, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5808,
+            "lng": 126.9931
+          },
+          "notes": "可选；需要按预约场次入场，没票就延长主宫游览。",
+          "travelModeToNext": "DRIVING",
+          "type": "sight",
+          "optional": true,
+          "color": "#9ca3af"
+        },
+        {
+          "id": "seongsu-cafe-street",
+          "time": "12:45",
           "duration": "1h 15m",
           "title": "大林仓库 Gallery CO:LUMN",
           "place": "大林仓库 Gallery CO:LUMN",
@@ -201,13 +183,13 @@
             "lat": 37.5418247,
             "lng": 127.0564591
           },
-          "notes": "从这家仓库咖啡馆开始逛圣水洞。",
+          "notes": "在圣水洞吃午餐、喝咖啡并稍作休息。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
         {
           "id": "nyunyu-seongsu",
-          "time": "12:15",
+          "time": "14:15",
           "duration": "45m",
           "title": "NYUNYU 圣水店",
           "place": "NYUNYU 圣水店",
@@ -225,7 +207,7 @@
         },
         {
           "id": "object-seongsu",
-          "time": "13:15",
+          "time": "15:15",
           "duration": "45m",
           "title": "Object / Poset 圣水",
           "place": "Poset 圣水（原 Object 地址）",
@@ -243,8 +225,8 @@
         },
         {
           "id": "seoul-forest",
-          "time": "14:15",
-          "duration": "1h",
+          "time": "16:15",
+          "duration": "45m",
           "title": "首尔森林",
           "place": "首尔森林游客中心",
           "address": "韩国首尔特别市城东区纛岛路 273",
@@ -261,8 +243,8 @@
         },
         {
           "id": "hannam-dong",
-          "time": "16:00",
-          "duration": "2h",
+          "time": "17:45",
+          "duration": "2h 15m",
           "title": "Sounds Hannam",
           "place": "Sounds Hannam 文化商业空间",
           "address": "韩国首尔特别市龙山区大使馆路 35",
@@ -271,39 +253,23 @@
             "lat": 37.5337083,
             "lng": 127.0020493
           },
-          "notes": "集中逛书店、画廊、买手店和咖啡馆。",
+          "notes": "集中逛书店、买手店和咖啡馆，并在附近吃晚餐。",
           "travelModeToNext": "DRIVING",
           "type": "area"
         },
         {
-          "id": "gwangjang-market-dinner",
-          "time": "18:45",
-          "duration": "1h 30m",
-          "title": "广藏市场晚餐",
-          "place": "广藏市场南门",
-          "address": "韩国首尔特别市钟路区昌庆宫路 88",
-          "mapsQuery": "广藏市场，88 Changgyeonggung-ro, Jongno-gu, Seoul, South Korea",
+          "id": "dongdaemun-ddp-night",
+          "time": "20:45",
+          "duration": "45m",
+          "title": "东大门设计广场 DDP 夜景",
+          "place": "东大门设计广场 DDP",
+          "address": "韩国首尔特别市中区乙支路 281",
+          "mapsQuery": "东大门设计广场 DDP，281 Eulji-ro, Jung-gu, Seoul, South Korea",
           "coords": {
-            "lat": 37.5702899,
-            "lng": 126.9987434
+            "lat": 37.5670686,
+            "lng": 127.009899
           },
-          "notes": "吃绿豆煎饼、紫菜包饭和鱼饼汤；备少量现金。",
-          "travelModeToNext": "WALKING",
-          "type": "restaurant"
-        },
-        {
-          "id": "cheonggyecheon-night-walk",
-          "time": "20:30",
-          "duration": "1h",
-          "title": "清溪川（广藏市场入口）",
-          "place": "清溪川广藏市场入口",
-          "address": "韩国首尔特别市钟路区钟路 5 街清溪川沿岸",
-          "mapsQuery": "清溪川广藏市场入口，Jongno 5-ga, Jongno-gu, Seoul, South Korea",
-          "coords": {
-            "lat": 37.5689,
-            "lng": 126.999
-          },
-          "notes": "可选；沿市场旁河段短途散步。",
+          "notes": "可选；体力足够再去看夜景。",
           "travelModeToNext": "DRIVING",
           "type": "area",
           "optional": true,
@@ -330,12 +296,12 @@
     {
       "id": "2026-06-22-traditional-culture-easy",
       "date": "2026-06-22",
-      "label": "6/22 · 昌德宫 · 后苑 · 仁寺洞 · 宗庙 · 明洞",
+      "label": "6/22 · 景福宫 · 北村 · 仁寺洞 · 宗庙 · 明洞",
       "color": "#c2410c",
       "stops": [
         {
           "id": "hotel-start-0622",
-          "time": "09:30",
+          "time": "08:45",
           "duration": "15m",
           "title": "AMID HOTEL SEOUL",
           "place": "AMID HOTEL SEOUL（首尔阿米德酒店）",
@@ -345,47 +311,47 @@
             "lat": 37.5725614,
             "lng": 126.9841493
           },
-          "notes": "出发前往昌德宫。",
+          "notes": "出发前往景福宫。",
           "travelModeToNext": "DRIVING",
           "type": "hotel"
         },
         {
-          "id": "changdeokgung-palace",
-          "time": "10:00",
+          "id": "gyeongbokgung-palace",
+          "time": "09:15",
           "duration": "1h 30m",
-          "title": "昌德宫（敦化门入口）",
-          "place": "昌德宫敦化门",
-          "address": "韩国首尔特别市钟路区栗谷路 99",
-          "mapsQuery": "昌德宫，99 Yulgok-ro, Jongno-gu, Seoul, South Korea",
+          "title": "景福宫",
+          "place": "景福宫（光化门入口）",
+          "address": "韩国首尔特别市钟路区社稷路 161",
+          "mapsQuery": "景福宫，161 Sajik-ro, Jongno-gu, Seoul, South Korea",
           "coords": {
-            "lat": 37.5778607,
-            "lng": 126.9899805
+            "lat": 37.5759194,
+            "lng": 126.9768156
           },
-          "notes": "从敦化门进入，先逛主宫殿区。",
+          "notes": "从光化门进入，优先游览主要宫殿区。",
           "travelModeToNext": "WALKING",
           "type": "sight"
         },
         {
-          "id": "changdeokgung-huwon-optional",
-          "time": "11:45",
-          "duration": "1h 15m",
-          "title": "昌德宫后苑 Secret Garden",
-          "place": "昌德宫后苑入口",
-          "address": "韩国首尔特别市钟路区栗谷路 99（昌德宫内）",
-          "mapsQuery": "昌德宫后苑 Secret Garden，99 Yulgok-ro, Jongno-gu, Seoul, South Korea",
+          "id": "bukchon-hanok-village",
+          "time": "11:00",
+          "duration": "1h",
+          "title": "北村文化中心 / 北村韩屋村",
+          "place": "北村文化中心",
+          "address": "韩国首尔特别市钟路区桂洞街 37",
+          "mapsQuery": "北村文化中心，37 Gyedong-gil, Jongno-gu, Seoul, South Korea",
           "coords": {
-            "lat": 37.5808,
-            "lng": 126.9931
+            "lat": 37.579046,
+            "lng": 126.9863882
           },
-          "notes": "可选；通常需要按预约场次入场。",
-          "travelModeToNext": "DRIVING",
+          "notes": "周一可访；避开 17:00 后的限制时段。",
+          "travelModeToNext": "WALKING",
           "type": "sight",
           "optional": true,
           "color": "#9ca3af"
         },
         {
           "id": "gaeseong-mandu-koong-lunch",
-          "time": "13:15",
+          "time": "12:15",
           "duration": "1h",
           "title": "开城饺子宫午餐",
           "place": "开城饺子宫 Gaeseong Mandu Koong",
@@ -401,7 +367,7 @@
         },
         {
           "id": "insadong-jeontong-dawon",
-          "time": "14:20",
+          "time": "13:20",
           "duration": "1h",
           "title": "仁寺洞传统茶院",
           "place": "仁寺洞传统茶院 Jeontong Dawon",
@@ -417,8 +383,8 @@
         },
         {
           "id": "jongmyo-shrine",
-          "time": "15:45",
-          "duration": "1h",
+          "time": "14:45",
+          "duration": "1h 15m",
           "title": "宗庙（正门入口）",
           "place": "宗庙正门",
           "address": "韩国首尔特别市钟路区钟路 157",
@@ -433,7 +399,7 @@
         },
         {
           "id": "hotel-rest-0622",
-          "time": "17:15",
+          "time": "16:30",
           "duration": "1h 15m",
           "title": "AMID HOTEL SEOUL",
           "place": "AMID HOTEL SEOUL（首尔阿米德酒店）",
@@ -449,7 +415,7 @@
         },
         {
           "id": "myeongdong-final-dinner-shopping",
-          "time": "18:45",
+          "time": "18:15",
           "duration": "2h",
           "title": "Olive Young 明洞旗舰店 / 最后采购",
           "place": "Olive Young 明洞旗舰店",
@@ -465,7 +431,7 @@
         },
         {
           "id": "hotel-return-0622",
-          "time": "21:00",
+          "time": "20:30",
           "duration": "过夜",
           "title": "AMID HOTEL SEOUL",
           "place": "AMID HOTEL SEOUL（首尔阿米德酒店）",
