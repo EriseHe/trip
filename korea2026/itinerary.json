@@ -36,7 +36,7 @@
         {
           "id": "seoul-hotel-bag-drop",
           "time": "16:00",
-          "duration": "30m",
+          "duration": "55m",
           "title": "AMID HOTEL SEOUL",
           "place": "AMID HOTEL SEOUL（首尔阿米德酒店）",
           "address": "韩国首尔特别市钟路区仁寺洞 5 街 38",
@@ -45,13 +45,13 @@
             "lat": 37.5725614,
             "lng": 126.9841493
           },
-          "notes": "办理入住，16:30 左右轻装出发。",
+          "notes": "办理入住，实际 16:55 从酒店出发。",
           "travelModeToNext": "WALKING",
           "type": "hotel"
         },
         {
           "id": "anguk-insadong",
-          "time": "16:40",
+          "time": "17:05",
           "duration": "1h 15m",
           "title": "仁寺洞 Ssamziegil",
           "place": "仁寺洞 Ssamziegil（人人商场）",
@@ -67,7 +67,7 @@
         },
         {
           "id": "myeongdong-shopping-dinner",
-          "time": "18:25",
+          "time": "18:50",
           "duration": "2h 15m",
           "title": "Olive Young 明洞旗舰店 / 晚餐",
           "place": "Olive Young 明洞旗舰店",
@@ -83,7 +83,7 @@
         },
         {
           "id": "gwangjang-market-dinner",
-          "time": "21:10",
+          "time": "21:35",
           "duration": "1h 15m",
           "title": "广藏市场美食街",
           "place": "广藏市场南门",
@@ -99,7 +99,7 @@
         },
         {
           "id": "hotel-return-0620",
-          "time": "22:50",
+          "time": "23:15",
           "duration": "过夜",
           "title": "AMID HOTEL SEOUL",
           "place": "AMID HOTEL SEOUL（首尔阿米德酒店）",
