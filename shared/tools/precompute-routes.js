@@ -359,10 +359,7 @@ function getRouteBatchWaypoints(batch) {
 
 function formatDirectionsLocation(stop, travelMode) {
   const coords = routeHelpers.getStopCoords(stop);
-  if (travelMode === "TRANSIT") {
-    return stop.place || stop.address || stop.title || coords;
-  }
-  return coords || stop.place || stop.address || stop.title;
+  return coords || stop.mapsQuery || stop.address || stop.place || stop.title;
 }
 
 function getDepartureTime(itinerary, leg, usePlannedDeparture) {
