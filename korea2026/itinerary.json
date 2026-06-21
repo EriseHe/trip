@@ -172,34 +172,68 @@
           "color": "#9ca3af"
         },
         {
-          "id": "seongsu-cafe-street",
+          "id": "seongsu-station-exit-3",
           "time": "13:15",
-          "duration": "1h 15m",
-          "title": "大林仓库 Gallery CO:LUMN",
-          "place": "大林仓库 Gallery CO:LUMN",
-          "address": "韩国首尔特别市城东区圣水二路 78",
-          "mapsQuery": "大林仓库 Gallery CO:LUMN，78 Seongsui-ro, Seongdong-gu, Seoul, South Korea",
+          "duration": "5m",
+          "title": "圣水站 3 号出口",
+          "place": "圣水站 3 号出口",
+          "address": "韩国首尔特别市城东区峨嵯山路 100",
+          "mapsQuery": "성수역 3번출구，100 Achasan-ro, Seongdong-gu, Seoul, South Korea",
           "coords": {
-            "lat": 37.5418247,
-            "lng": 127.0564591
+            "lat": 37.544443,
+            "lng": 127.056329
           },
-          "notes": "在圣水洞吃午餐、喝咖啡并稍作休息。",
+          "notes": "从 3 号出口开始，按东南再向西的 U 型路线逛。",
+          "travelModeToNext": "WALKING",
+          "type": "station"
+        },
+        {
+          "id": "musinsa-empty-seongsu",
+          "time": "13:25",
+          "duration": "25m",
+          "title": "MUSINSA EMPTY 圣水",
+          "place": "MUSINSA EMPTY Seongsu",
+          "address": "韩国首尔特别市城东区圣水二路 97，1-4 层",
+          "mapsQuery": "무신사 엠프티 성수，97 Seongsui-ro, Seongdong-gu, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5436282,
+            "lng": 127.0566446
+          },
+          "notes": "先逛设计师品牌和潮牌买手店。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
         {
-          "id": "nyunyu-seongsu",
-          "time": "14:40",
-          "duration": "45m",
-          "title": "NYUNYU 圣水店",
-          "place": "NYUNYU 圣水店",
-          "address": "韩国首尔特别市城东区练武场街 89，2-3 层",
-          "mapsQuery": "뉴뉴 성수，89 Yeonmujang-gil, Seongdong-gu, Seoul, South Korea",
+          "id": "seongsu-brand-cluster",
+          "time": "13:55",
+          "duration": "30m",
+          "title": "LINE FRIENDS / LUSH / Aesop / ADERERROR",
+          "place": "ADERERROR Seongsu Space",
+          "address": "韩国首尔特别市城东区圣水二路 82",
+          "mapsQuery": "아더에러 성수 스페이스，82 Seongsui-ro, Seongdong-gu, Seoul, South Korea",
           "coords": {
-            "lat": 37.54048,
-            "lng": 127.05601
+            "lat": 37.5422211,
+            "lng": 127.0565311
           },
-          "notes": "可选；逛配饰、包袋和服装。",
+          "notes": "可选店群；沿路看到感兴趣的再进，不必逐店打卡。",
+          "travelModeToNext": "WALKING",
+          "type": "area",
+          "optional": true,
+          "color": "#9ca3af"
+        },
+        {
+          "id": "hince-fwee-seongsu",
+          "time": "14:30",
+          "duration": "25m",
+          "title": "HINCE / fwee 美妆店群",
+          "place": "fwee Agit Seongsu",
+          "address": "韩国首尔特别市城东区圣水二路 7 街 10",
+          "mapsQuery": "퓌 아지트 성수，10 Seongsui-ro 7ga-gil, Seongdong-gu, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5409857,
+            "lng": 127.0551593
+          },
+          "notes": "可选；HINCE 在同一条街 15 号，先看 HINCE 再到 fwee。",
           "travelModeToNext": "WALKING",
           "type": "area",
           "optional": true,
@@ -207,9 +241,9 @@
         },
         {
           "id": "gentle-monster-haus-nowhere-seoul",
-          "time": "15:35",
-          "duration": "1h 15m",
-          "title": "Gentle Monster HAUS NOWHERE SEOUL",
+          "time": "15:05",
+          "duration": "1h",
+          "title": "Gentle Monster / NUDAKE HAUS NOWHERE",
           "place": "Gentle Monster HAUS NOWHERE SEOUL（2 层）",
           "address": "韩国首尔特别市城东区纛岛路 433，2 层",
           "mapsQuery": "젠틀몬스터 하우스 노웨어 서울，433 Ttukseom-ro, Seongdong-gu, Seoul, South Korea",
@@ -217,32 +251,66 @@
             "lat": 37.538302,
             "lng": 127.058899
           },
-          "notes": "重点购买眼镜；预留试戴、挑选和镜架调整时间。",
+          "notes": "重点购买眼镜并试戴；NUDAKE Tea House 在 5 层。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
         {
-          "id": "seoul-forest",
-          "time": "17:20",
-          "duration": "45m",
-          "title": "首尔森林",
-          "place": "首尔森林游客中心",
-          "address": "韩国首尔特别市城东区纛岛路 273",
-          "mapsQuery": "首尔森林，273 Ttukseom-ro, Seongdong-gu, Seoul, South Korea",
+          "id": "rockfish-weatherwear-seongsu",
+          "time": "16:20",
+          "duration": "20m",
+          "title": "ROCKFISH WEATHERWEAR 圣水店",
+          "place": "ROCKFISH WEATHERWEAR Seongsu",
+          "address": "韩国首尔特别市城东区练武场街 40",
+          "mapsQuery": "락피쉬 웨더웨어 성수점，40 Yeonmujang-gil, Seongdong-gu, Seoul, South Korea",
           "coords": {
-            "lat": 37.5443,
-            "lng": 127.0374
+            "lat": 37.5427914,
+            "lng": 127.0538466
           },
-          "notes": "可选；天气或体力不合适可跳过。",
+          "notes": "可选；看鞋、包、雨靴和英伦风配饰。",
+          "travelModeToNext": "WALKING",
+          "type": "area",
+          "optional": true,
+          "color": "#9ca3af"
+        },
+        {
+          "id": "somunnan-seongsu-gamjatang",
+          "time": "16:45",
+          "duration": "50m",
+          "title": "圣水脊骨土豆汤",
+          "place": "소문난성수감자탕",
+          "address": "韩国首尔特别市城东区练武场街 45",
+          "mapsQuery": "소문난성수감자탕，45 Yeonmujang-gil, Seongdong-gu, Seoul, South Korea",
+          "coords": {
+            "lat": 37.5428241,
+            "lng": 127.0543732
+          },
+          "notes": "在西侧吃饭休息；常需排队，队伍太长就改吃附近咖啡或盐面包。",
+          "travelModeToNext": "WALKING",
+          "type": "restaurant"
+        },
+        {
+          "id": "marhenj-happier-mart-seongsu",
+          "time": "17:45",
+          "duration": "30m",
+          "title": "MARHEN.J / HAPPIER MART",
+          "place": "MARHEN.J Seongsu Flagship Store",
+          "address": "韩国首尔特别市城东区练武场 5 街 4，1-3 层",
+          "mapsQuery": "마르헨제이 성수，4 Yeonmujang 5-gil, Seongdong-gu, Seoul, South Korea",
+          "coords": {
+            "lat": 37.543482,
+            "lng": 127.0521201
+          },
+          "notes": "可选收尾；先看 MARHEN.J 包袋，再去练武场街 3 号的 HAPPIER MART。",
           "travelModeToNext": "TRANSIT",
-          "type": "sight",
+          "type": "area",
           "optional": true,
           "color": "#9ca3af"
         },
         {
           "id": "hannam-dong",
-          "time": "18:55",
-          "duration": "2h 15m",
+          "time": "19:15",
+          "duration": "1h 45m",
           "title": "Sounds Hannam",
           "place": "Sounds Hannam 文化商业空间",
           "address": "韩国首尔特别市龙山区大使馆路 35",
