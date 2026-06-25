@@ -2,9 +2,6 @@
 
 const TRIP_CONFIG = window.TRIP_PLANNER_CONFIG || {};
 const TRIP_ID = TRIP_CONFIG.id || inferTripId();
-const STORAGE_KEYS = {
-  itinerary: `${TRIP_ID}-itinerary-map:itinerary:v1`,
-};
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
 const MAX_GOOGLE_MAPS_URL_WAYPOINTS = 9;
@@ -79,8 +76,7 @@ async function initApp() {
   const configuredApiKey = getActiveApiKey();
   state.defaultItinerary = await loadDefaultItinerary();
   state.routeCacheMeta = await loadRouteCacheFile();
-  const savedItinerary = parseJsonSafely(localStorage.getItem(STORAGE_KEYS.itinerary));
-  applyItinerary(savedItinerary || state.defaultItinerary, { save: false });
+  applyItinerary(state.defaultItinerary);
   updateTripClock();
   setInterval(updateTripClock, 30000);
 
@@ -131,11 +127,7 @@ function shouldAutoLoadMap() {
 
 async function loadDefaultItinerary() {
   try {
-    const response = await fetch("./itinerary.json", { cache: "no-cache" });
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-    return await response.json();
+    return await fetchTripJson("./itinerary.json");
   } catch (error) {
     setStatus(`无法读取 itinerary.json，使用内建示例：${error.message}`, true);
     return DEFAULT_ITINERARY;
@@ -144,12 +136,7 @@ async function loadDefaultItinerary() {
 
 async function loadRouteCacheFile() {
   try {
-    const response = await fetch("./route-cache.json", { cache: "no-cache" });
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const parsed = await response.json();
+    const parsed = await fetchTripJson("./route-cache.json");
     const routes = parsed?.routes && typeof parsed.routes === "object" ? parsed.routes : parsed;
     state.routeCache = routes && typeof routes === "object" && !Array.isArray(routes) ? routes : {};
     return {
@@ -171,6 +158,16 @@ async function loadRouteCacheFile() {
       version: 1,
     };
   }
+}
+
+async function fetchTripJson(path) {
+  const url = new URL(path, window.location.href);
+  url.searchParams.set("v", String(Date.now()));
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+  return response.json();
 }
 
 function cacheElements() {
@@ -210,7 +207,7 @@ function bindEvents() {
   els.locateMe.addEventListener("click", toggleLiveLocation);
   els.dayTabs.addEventListener("click", (event) => {
     const button = event.target.closest("[data-day-id]");
-    if (!button) return;
+    if (!button || button.disabled) return;
 
     state.selectedDayId = state.selectedDayId === button.dataset.dayId ? "all" : button.dataset.dayId;
     renderPlan();
@@ -265,14 +262,14 @@ function setMobileView(view) {
 function applyJsonFromEditor() {
   try {
     const parsed = JSON.parse(els.editor.value);
-    applyItinerary(parsed, { save: true });
+    applyItinerary(parsed);
     setStatus("行程已更新到当前浏览器。同步到 GitHub 后会重新生成路线缓存。");
   } catch (error) {
     setStatus(`JSON 解析失败：${error.message}`, true);
   }
 }
 
-function applyItinerary(rawItinerary, options = { save: true }) {
+function applyItinerary(rawItinerary) {
   try {
     state.itinerary = normalizeItinerary(rawItinerary);
   } catch (error) {
@@ -287,9 +284,6 @@ function applyItinerary(rawItinerary, options = { save: true }) {
   }
   state.legSummariesByDay.clear();
 
-  if (options.save) {
-    saveItinerary();
-  }
   syncEditorFromItinerary();
   renderPlan();
 
@@ -521,7 +515,6 @@ async function ensureCoordinatesForDays(days) {
     }
   }
 
-  saveItinerary();
   syncEditorFromItinerary();
 }
 
@@ -687,19 +680,30 @@ function renderDayTabs() {
   const fragment = document.createDocumentFragment();
 
   state.itinerary.days.forEach((day) => {
-    fragment.appendChild(createDayTab(day.id, getDayTabLabel(day), state.selectedDayId === day.id));
+    fragment.appendChild(createDayTab(day, state.selectedDayId === day.id));
   });
 
   els.dayTabs.replaceChildren(fragment);
 }
 
-function createDayTab(dayId, label, isActive) {
+function createDayTab(day, isActive) {
+  const isPast = isDayPast(day);
   const button = document.createElement("button");
   button.type = "button";
-  button.className = `day-tab${isActive ? " active" : ""}`;
-  button.dataset.dayId = dayId;
-  button.textContent = label;
+  button.className = `day-tab${isActive && !isPast ? " active" : ""}${isPast ? " past" : ""}`;
+  button.dataset.dayId = day.id;
+  button.textContent = getDayTabLabel(day);
+  button.disabled = isPast;
+  if (isPast) {
+    button.setAttribute("aria-label", `${button.textContent}，已结束`);
+  }
   return button;
+}
+
+function isDayPast(day) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(day.date || ""))) return false;
+  const timezone = state.itinerary?.timezone || TRIP_CONFIG.timezone || "Asia/Tokyo";
+  return day.date < getZonedDateParts(timezone).date;
 }
 
 function getDayTabLabel(day) {
@@ -1101,7 +1105,15 @@ function updateTripClock() {
     hour12: false,
   });
   els.tripClock.textContent = `${getClockLabel()} ${formatter.format(new Date())}`;
-  renderTimeline();
+  const selectedDay = getSelectedDay();
+  const selectionChanged = Boolean(selectedDay && isDayPast(selectedDay));
+  if (selectionChanged) {
+    state.selectedDayId = "all";
+  }
+  renderPlan();
+  if (selectionChanged && state.map) {
+    void renderMapForSelection();
+  }
 }
 
 function getZonedDateParts(timezone) {
@@ -1222,19 +1234,6 @@ function createLocationDot() {
 
 function syncEditorFromItinerary() {
   els.editor.value = JSON.stringify(state.itinerary, null, 2);
-}
-
-function saveItinerary() {
-  localStorage.setItem(STORAGE_KEYS.itinerary, JSON.stringify(state.itinerary));
-}
-
-function parseJsonSafely(value) {
-  if (!value) return null;
-  try {
-    return JSON.parse(value);
-  } catch {
-    return null;
-  }
 }
 
 function setStatus(message, isError = false) {

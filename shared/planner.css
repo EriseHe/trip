@@ -273,6 +273,15 @@ button:focus-visible,
   color: #fff;
 }
 
+.day-tab:disabled,
+.day-tab.past {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.38;
+}
+
 .timeline {
   display: grid;
   gap: 8px;
