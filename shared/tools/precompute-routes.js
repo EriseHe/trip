@@ -74,7 +74,7 @@ async function main() {
             toStopId: leg.destinationStop.id,
             message: error.message,
           });
-          routes[cacheKey] = createFallbackRouteCacheEntry(leg, error.message);
+          routes[cacheKey] = createFallbackRouteCacheEntry(leg);
         }
       }
 
@@ -404,9 +404,29 @@ function createRouteCacheEntry(leg, directions, resultLeg) {
       arrival,
       estimateSource: directions.estimateSource,
       approximate: directions.approximate || false,
-      note: directions.note || "",
+      navigation: createDirectionsNavigation(resultLeg),
     },
   };
+}
+
+function createDirectionsNavigation(resultLeg) {
+  const transitSegments = (resultLeg?.steps || [])
+    .map((step) => formatTransitStep(step.transit))
+    .filter(Boolean);
+  return transitSegments.join("；");
+}
+
+function formatTransitStep(transit) {
+  if (!transit) return "";
+
+  const line = transit.line?.short_name || transit.line?.name || transit.line?.vehicle?.name || "";
+  const departure = transit.departure_stop?.name || "";
+  const arrival = transit.arrival_stop?.name || "";
+  const stops = Number(transit.num_stops);
+  const route = departure && arrival ? `${departure} → ${arrival}` : departure || arrival;
+  const stopCount = Number.isFinite(stops) && stops > 0 ? `${stops}站` : "";
+
+  return [line, route, stopCount].filter(Boolean).join(" · ");
 }
 
 function getDirectionsLegPath(resultLeg) {
@@ -423,7 +443,8 @@ function latLngToPoint(point) {
   return { lat, lng };
 }
 
-function createFallbackRouteCacheEntry(leg, errorMessage) {
+function createFallbackRouteCacheEntry(leg) {
+  const manualDuration = String(leg.originStop.travelDurationToNext || "").trim();
   return {
     createdAt: new Date().toISOString(),
     path: [routeHelpers.getStopCoords(leg.originStop), routeHelpers.getStopCoords(leg.destinationStop)].filter(Boolean),
@@ -431,10 +452,11 @@ function createFallbackRouteCacheEntry(leg, errorMessage) {
       fromStopId: leg.originStop.id,
       toStopId: leg.destinationStop.id,
       travelMode: leg.travelMode,
-      duration: "未找到路线",
+      duration: manualDuration || "未找到路线",
       distance: "已显示直线",
       fallback: true,
-      note: routeHelpers.friendlyDirectionsError(errorMessage),
+      manualEstimate: Boolean(manualDuration),
+      navigation: leg.originStop.navigationToNext || "",
     },
   };
 }

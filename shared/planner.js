@@ -14,8 +14,10 @@ const STORAGE_KEYS = {
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
 const MAX_GOOGLE_MAPS_URL_WAYPOINTS = 9;
+const LONG_TRANSPORT_MINUTES = 30;
 const DAY_COLORS = ["#0f766e", "#2563eb", "#c2410c", "#7c3aed", "#be123c", "#15803d"];
 const UNBOXED_STOP_TYPES = new Set(["hotel", "station"]);
+const DEDICATED_TRANSPORT_MODES = new Set(["TRAIN", "SHINKANSEN", "FLIGHT"]);
 
 const DEFAULT_ITINERARY = {
   tripTitle: TRIP_CONFIG.title || "Trip Planner",
@@ -640,13 +642,21 @@ function renderCachedRoutesOrPlanned(days) {
       const cacheKey = getRouteCacheKey(day, originStop, destinationStop);
       const cachedRoute = state.routeCache[cacheKey];
       if (shouldSkipRouteCalculation(originStop)) {
-        summaries.push(null);
+        summaries.push(createPlannedLegSummary(originStop, destinationStop));
         continue;
       }
 
       if (cachedRoute) {
         drawCachedRoute(cachedRoute, day.color);
-        summaries.push({ ...cachedRoute.summary, cached: true });
+        summaries.push({
+          ...cachedRoute.summary,
+          duration:
+            cachedRoute.summary?.fallback && originStop.travelDurationToNext
+              ? originStop.travelDurationToNext
+              : cachedRoute.summary?.duration,
+          navigation: originStop.navigationToNext || cachedRoute.summary?.navigation || "",
+          cached: true,
+        });
       } else {
         drawConnectionLine(originStop, destinationStop, day.color, true);
         summaries.push(createPlannedLegSummary(originStop, destinationStop));
@@ -664,6 +674,7 @@ function createPlannedLegSummary(originStop, destinationStop) {
     travelMode: normalizeTravelMode(originStop.travelModeToNext || state.itinerary.defaultTravelMode),
     duration: "未计算",
     distance: "计划连线",
+    navigation: originStop.navigationToNext || "",
     planned: true,
   };
 }
@@ -802,7 +813,7 @@ function renderTimeline() {
 
       const summary = summaries[index];
       if (summary) {
-        fragment.appendChild(createLegSummaryNode(summary));
+        fragment.appendChild(createLegNode(summary, stop, day.stops[index + 1]));
       }
     });
   });
@@ -839,17 +850,128 @@ function createStopCard(day, stop) {
   return card;
 }
 
-function createLegSummaryNode(summary) {
+function createLegNode(summary, originStop, destinationStop) {
+  if (shouldUseTransportEntry(summary, originStop, destinationStop)) {
+    return createTransportEntryNode(summary, originStop, destinationStop);
+  }
+  return createCompactLegSummaryNode(summary);
+}
+
+function shouldUseTransportEntry(summary, originStop, destinationStop) {
+  if (DEDICATED_TRANSPORT_MODES.has(normalizeTravelMode(summary.travelMode))) return true;
+  return getLegDurationMinutes(summary, originStop, destinationStop) >= LONG_TRANSPORT_MINUTES;
+}
+
+function createTransportEntryNode(summary, originStop, destinationStop) {
+  const node = document.createElement("section");
+  node.className = "transport-entry";
+
+  const mode = document.createElement("div");
+  mode.className = "transport-entry-mode";
+  mode.textContent = modeLabel(summary.travelMode);
+
+  const content = document.createElement("div");
+  content.className = "transport-entry-content";
+
+  const route = document.createElement("div");
+  route.className = "transport-entry-route";
+  const from = document.createElement("strong");
+  from.textContent = originStop.transportFrom || originStop.title;
+  const arrow = document.createElement("span");
+  arrow.textContent = "→";
+  const to = document.createElement("strong");
+  to.textContent = originStop.transportTo || destinationStop.title;
+  route.append(from, arrow, to);
+
+  const meta = document.createElement("div");
+  meta.className = "transport-entry-meta";
+  meta.textContent = formatTransportMeta(summary, originStop, destinationStop);
+
+  content.append(route, meta);
+  if (summary.navigation) {
+    const navigation = document.createElement("p");
+    navigation.className = "transport-entry-navigation";
+    navigation.textContent = summary.navigation;
+    content.appendChild(navigation);
+  }
+
+  node.append(mode, content);
+  return node;
+}
+
+function formatTransportMeta(summary, originStop, destinationStop) {
+  const departure = getLegDepartureTime(originStop);
+  const arrival = destinationStop.time || summary.arrival || "";
+  const duration = getLegDurationText(summary, originStop, destinationStop);
+  return [
+    departure ? `${departure} 出发` : "",
+    arrival ? `${arrival} 到达` : "",
+    duration,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
+function getLegDurationText(summary, originStop, destinationStop) {
+  if (summary.duration && summary.duration !== "未计算" && summary.duration !== "未找到路线") {
+    return summary.duration;
+  }
+  if (originStop.travelDurationToNext) return originStop.travelDurationToNext;
+  const minutes = getScheduledTravelMinutes(originStop, destinationStop);
+  return minutes ? formatMinutes(minutes) : "";
+}
+
+function getLegDurationMinutes(summary, originStop, destinationStop) {
+  return (
+    parseDurationMinutes(summary.duration) ||
+    parseDurationMinutes(originStop.travelDurationToNext) ||
+    getScheduledTravelMinutes(originStop, destinationStop) ||
+    0
+  );
+}
+
+function getScheduledTravelMinutes(originStop, destinationStop) {
+  const departure = parseClockMinutes(getLegDepartureTime(originStop));
+  const arrival = parseClockMinutes(destinationStop.time);
+  if (departure === null || arrival === null || arrival < departure) return 0;
+  return arrival - departure;
+}
+
+function getLegDepartureTime(stop) {
+  if (stop.departAt) return stop.departAt;
+  const start = parseClockMinutes(stop.time);
+  const duration = parseDurationMinutes(stop.duration);
+  if (start === null || duration === null) return stop.time || "";
+  return formatClockMinutes(start + duration);
+}
+
+function formatClockMinutes(totalMinutes) {
+  const hours = Math.floor(totalMinutes / 60) % 24;
+  const minutes = totalMinutes % 60;
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+}
+
+function formatMinutes(totalMinutes) {
+  if (totalMinutes < 60) return `${totalMinutes} 分钟`;
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return minutes ? `${hours} 小时 ${minutes} 分钟` : `${hours} 小时`;
+}
+
+function createCompactLegSummaryNode(summary) {
   const node = document.createElement("div");
-  node.className = `leg-summary${summary.fallback || summary.error ? " error" : ""}${summary.cached && !summary.fallback ? " cached" : ""}`;
+  node.className = `leg-summary${summary.fallback ? " fallback" : ""}${summary.cached && !summary.fallback ? " cached" : ""}`;
 
   const connector = document.createElement("span");
+  connector.className = "leg-summary-arrow";
   connector.textContent = "↓";
 
-  const text = document.createElement("span");
-  if (summary.error) {
-    text.textContent = summary.error;
-  } else if (summary.planned) {
+  const content = document.createElement("div");
+  content.className = "leg-summary-content";
+
+  const text = document.createElement("div");
+  text.className = "leg-summary-metrics";
+  if (summary.planned) {
     text.textContent = `${modeLabel(summary.travelMode)} · 未计算路线 · 显示计划连线`;
   } else if (summary.fallback) {
     text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration}`;
@@ -857,7 +979,15 @@ function createLegSummaryNode(summary) {
     text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration} · ${summary.distance}`;
   }
 
-  node.append(connector, text);
+  content.appendChild(text);
+  if (summary.navigation) {
+    const navigation = document.createElement("p");
+    navigation.className = "leg-summary-navigation";
+    navigation.textContent = summary.navigation;
+    content.appendChild(navigation);
+  }
+
+  node.append(connector, content);
   return node;
 }
 

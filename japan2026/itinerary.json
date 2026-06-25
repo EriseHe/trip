@@ -112,6 +112,7 @@
         {
           "id": "shinjuku-prince-start-0626",
           "time": "09:30",
+          "departAt": "09:40",
           "duration": "20m",
           "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel",
@@ -121,13 +122,15 @@
             "lat": 35.69475,
             "lng": 139.7005
           },
-          "notes": "步行前往新宿站西口地下的京王 Mall。",
+          "notes": "09:40 前准备完毕，从酒店步行去 brunch。",
+          "navigationToNext": "从酒店正门向新宿站西口方向走，经西武新宿站南口一带进入地下通道，按“京王线 / 京王 Mall”指示前进。",
           "travelModeToNext": "WALKING",
           "type": "hotel"
         },
         {
           "id": "keio-mall-brunch",
           "time": "10:00",
+          "departAt": "11:00",
           "duration": "1h",
           "title": "京王 Mall · Brunch",
           "place": "Keio Mall",
@@ -137,13 +140,18 @@
             "lat": 35.689756,
             "lng": 139.69937
           },
-          "notes": "已确定的 brunch；11:00 左右出发前往浅草。",
-          "travelModeToNext": "TRAIN",
+          "notes": "已确定的 brunch；建议 10:55 结账，11:00 出发。",
+          "travelDurationToNext": "约 45 分钟",
+          "transportFrom": "新宿站",
+          "transportTo": "浅草站",
+          "navigationToNext": "从新宿站乘 JR 中央线快速到神田站，换乘东京 Metro 银座线到浅草站；从 1 号出口出站，过马路即到雷门对面的观光中心。换乘和步行合计预留约 45–50 分钟。",
+          "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
         {
           "id": "asakusa-culture-center",
           "time": "12:00",
+          "departAt": "12:25",
           "duration": "25m",
           "title": "浅草文化观光中心 8F 展望台",
           "place": "Asakusa Culture Tourist Information Center",
@@ -153,13 +161,15 @@
             "lat": 35.710686,
             "lng": 139.796374
           },
-          "notes": "免费俯拍雷门、仲见世与晴空塔，先拍全景再进入浅草寺。",
+          "notes": "乘电梯到 8F 免费展望台，俯拍雷门、仲见世与晴空塔。",
+          "navigationToNext": "下楼后过马路到雷门，从雷门进入仲见世商店街，沿主街直走前往宝藏门与浅草寺本堂。",
           "travelModeToNext": "WALKING",
           "type": "sight"
         },
         {
           "id": "sensoji-photo-route-0626",
           "time": "12:30",
+          "departAt": "15:00",
           "duration": "2h 30m",
           "title": "浅草寺拍照路线",
           "place": "Senso-ji",
@@ -169,13 +179,15 @@
             "lat": 35.714765,
             "lng": 139.796655
           },
-          "notes": "雷门 → 仲见世商店街 → 宝藏门 → 五重塔 → 本堂；预留换角度和拍照时间。",
+          "notes": "拍照顺序：雷门正面 → 仲见世 → 宝藏门 → 五重塔 → 本堂；预留换角度、购物和参拜时间。",
+          "navigationToNext": "从本堂沿仲见世方向往回走，在浅草寺东南侧进入浅草 1 丁目；咖啡店位于 Chateau Amour 2F，预约前 10 分钟到店。",
           "travelModeToNext": "WALKING",
           "type": "sight"
         },
         {
           "id": "mipig-cafe-asakusa",
           "time": "15:10",
+          "departAt": "16:05",
           "duration": "55m",
           "title": "mipig cafe 浅草店",
           "place": "mipig cafe 浅草店",
@@ -185,13 +197,18 @@
             "lat": 35.7125681,
             "lng": 139.7970236
           },
-          "notes": "必须提前网上预约；请在预约时间前 10 分钟到店。",
-          "travelModeToNext": "TRAIN",
+          "notes": "必须提前网上预约；15:00 前到店办理入场。",
+          "travelDurationToNext": "约 25 分钟",
+          "transportFrom": "筑波快线浅草站",
+          "transportTo": "秋叶原站",
+          "navigationToNext": "步行到筑波快线浅草站，乘筑波快线往秋叶原方向，经过新御徒町后在秋叶原站下车；按“JR 秋叶原站 / 电气街口”方向出站，再步行约 6 分钟到 Radio Kaikan。",
+          "travelModeToNext": "TRANSIT",
           "type": "area"
         },
         {
           "id": "akihabara-radio-kaikan",
           "time": "16:45",
+          "departAt": "17:45",
           "duration": "1h",
           "title": "秋叶原 Radio Kaikan",
           "place": "Akihabara Radio Kaikan",
@@ -202,12 +219,14 @@
             "lng": 139.7719412
           },
           "notes": "秋叶原代表性打卡楼；优先逛 4F AmiAmi、5F 海洋堂与周边店。",
+          "navigationToNext": "从 Radio Kaikan 北侧出来，穿过 JR 秋叶原站电气街口前方街区，沿中央通方向步行到北林大厦；SUPER POTATO 在 3F–5F。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
         {
           "id": "super-potato-akihabara",
           "time": "17:55",
+          "departAt": "18:35",
           "duration": "40m",
           "title": "SUPER POTATO 秋叶原店",
           "place": "Super Potato Akihabara",
@@ -217,13 +236,15 @@
             "lat": 35.6993585,
             "lng": 139.7707015
           },
-          "notes": "复古游戏名店；3F-4F 看主机与卡带，5F 是怀旧街机区。20:00 关门。",
+          "notes": "复古游戏名店；3F–4F 看主机与卡带，5F 是怀旧街机区，20:00 关门。",
+          "navigationToNext": "返回中央通并向北走，在外神田 3 丁目转入侧街；扭蛋会馆位于 MN 大厦 1F。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
         {
           "id": "akihabara-gachapon-kaikan",
           "time": "18:45",
+          "departAt": "19:20",
           "duration": "35m",
           "title": "秋叶原扭蛋会馆",
           "place": "Akihabara Gachapon Kaikan",
@@ -234,12 +255,14 @@
             "lng": 139.7712256
           },
           "notes": "老牌扭蛋店；周五营业至 22:00，适合轻松挑纪念品。",
+          "navigationToNext": "沿中央通向南返回万世桥方向，在外神田 1 丁目进入土屋大厦；餐厅位于 B1F，门口可能排队。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
         {
           "id": "roast-beef-ohno-akihabara",
           "time": "19:35",
+          "departAt": "20:45",
           "duration": "1h 10m",
           "title": "Roast Beef 大野 · 晚餐",
           "place": "Roast Beef Ohno Akihabara",
@@ -250,12 +273,14 @@
             "lng": 139.7706076
           },
           "notes": "网红和牛烤牛肉饭；座位少，已预留排队时间。",
+          "navigationToNext": "饭后沿中央通向北步行约 3 分钟；GiGO 3 号馆在红色大楼内，可只拍夜景后直接返程。",
           "travelModeToNext": "WALKING",
           "type": "restaurant"
         },
         {
           "id": "gigo-akihabara-3-optional",
           "time": "20:55",
+          "departAt": "21:35",
           "duration": "40m",
           "title": "GiGO 秋叶原 3号馆",
           "place": "GiGO Akihabara Building 3",
@@ -266,7 +291,11 @@
             "lng": 139.7709387
           },
           "notes": "可选；拍霓虹街景、玩抓娃娃或去高层体验复古街机。",
-          "travelModeToNext": "TRAIN",
+          "travelDurationToNext": "约 35 分钟",
+          "transportFrom": "JR 秋叶原站",
+          "transportTo": "JR 新宿站",
+          "navigationToNext": "步行到 JR 秋叶原站电气街口，乘 JR 中央·总武线各站停车直达新宿站；从东口方向出站，再步行约 8 分钟回酒店。",
+          "travelModeToNext": "TRANSIT",
           "type": "area",
           "optional": true,
           "color": "#9ca3af"
@@ -440,7 +469,10 @@
             "lng": 139.767125
           },
           "notes": "搭乘新干线前往名古屋，约1小时40分抵达。",
-          "travelModeToNext": "TRAIN",
+          "departAt": "10:20",
+          "travelDurationToNext": "约 1 小时 40 分钟",
+          "navigationToNext": "在东京站进入东海道新干线区域，乘往名古屋方向的列车；抵达名古屋站后按樱通口 / 太阁通口指示出站。",
+          "travelModeToNext": "SHINKANSEN",
           "type": "station"
         },
         {
@@ -588,7 +620,10 @@
             "lng": 136.881537
           },
           "notes": "乘坐新干线前往京都。",
-          "travelModeToNext": "TRAIN",
+          "departAt": "10:05",
+          "travelDurationToNext": "约 40 分钟",
+          "navigationToNext": "在名古屋站乘东海道新干线往新大阪方向，京都站下车。",
+          "travelModeToNext": "SHINKANSEN",
           "type": "station"
         },
         {
@@ -1096,7 +1131,10 @@
             "lng": 135.758766
           },
           "notes": "乘坐新干线前往新横滨。",
-          "travelModeToNext": "TRAIN",
+          "departAt": "09:30",
+          "travelDurationToNext": "约 2 小时",
+          "navigationToNext": "在京都站乘东海道新干线往东京方向，新横滨站下车；不要继续坐到东京站。",
+          "travelModeToNext": "SHINKANSEN",
           "type": "station"
         },
         {

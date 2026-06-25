@@ -153,16 +153,8 @@
     return null;
   }
 
-  function friendlyDirectionsError(errorMessage) {
-    if (String(errorMessage).includes("ZERO_RESULTS")) {
-      return "Google 没有返回这段的可画路线；可用“打开 Google Maps 路线”查看。";
-    }
-    return "路线服务暂时没有结果；已保留计划连线。";
-  }
-
   const helpers = {
     estimateRouteBetweenStops,
-    friendlyDirectionsError,
     getDepartureDate,
     getRouteCacheKey,
     getStopCoords,

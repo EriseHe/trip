@@ -70,6 +70,8 @@ The GitHub Action in `.github/workflows/precompute-route-cache.yml` runs the sha
 
 `TRAIN`, `SHINKANSEN`, and `FLIGHT` are intentionally skipped by the route generator. Use those values in `travelModeToNext` when a leg should display as train/high-speed rail/flight without spending API calls on a route.
 
+The planner renders `TRAIN`, `SHINKANSEN`, and `FLIGHT` as dedicated transport entries. Other modes become dedicated entries when the cached or scheduled travel time is at least 30 minutes; shorter legs stay as compact connectors.
+
 The generator merges consecutive `WALKING` or `DRIVING` legs within the same day into one Directions request with waypoints, up to 25 intermediate waypoints. If that grouped request fails, each leg in the group gets a fallback line and the generator does not retry with another departure time or travel mode.
 
 For countries where Google does not provide a route mode, list it in `trip-config.js` under `routing.unavailableModes`. Those legs use cached straight-line distance/time estimates and make no Directions API request. Korea currently uses this for `DRIVING` and `WALKING`.
@@ -105,6 +107,9 @@ Each stop should include:
 - `place`: Google-recognized place name
 - `coords`: `{ "lat": 35.681236, "lng": 139.767125 }`
 - `type`: `hotel`, `station`, `restaurant`, `sight`, `area`, or `destination`
-- `travelModeToNext`: `WALKING`, `DRIVING`, `BICYCLING`, `TRAIN`, `SHINKANSEN`, or `FLIGHT`
+- `travelModeToNext`: `WALKING`, `DRIVING`, `BICYCLING`, `TRANSIT`, `TRAIN`, `SHINKANSEN`, or `FLIGHT`
+- `travelDurationToNext`: optional fallback travel time shown when the route API returns no result
+- `navigationToNext`: optional stable navigation instructions such as station entrances, transfers, exits, and the final walk
+- `transportFrom` / `transportTo`: optional precise station or airport labels for the dedicated transport entry
 
 If `coords` is missing, the app can try to geocode `place` or `title`, but explicit coordinates are more reliable.

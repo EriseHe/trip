@@ -1,17 +1,36 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-25T13:12:03.644Z",
+  "generatedAt": "2026-06-25T13:49:37.280Z",
   "source": "japan2026/itinerary.json",
-  "itineraryHash": "f409b7873b739f34a2b4173f6572087b939a4abed274f7fe0dcf74ac33adba57",
-  "routeCount": 52,
-  "requestCount": 25,
+  "itineraryHash": "29b42e16b6e8c5f87b1c86cd288a52b369a2e132a6b94adb18aac1e4c4a65305",
+  "routeCount": 55,
+  "requestCount": 28,
   "approximateCount": 0,
-  "fallbackCount": 0,
-  "failedCount": 0,
-  "failures": [],
+  "fallbackCount": 3,
+  "failedCount": 3,
+  "failures": [
+    {
+      "cacheKey": "2026-06-26|10:00|TRANSIT|35.689756,139.699370|35.710686,139.796374",
+      "fromStopId": "keio-mall-brunch",
+      "toStopId": "asakusa-culture-center",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-26|15:10|TRANSIT|35.712568,139.797024|35.697890,139.771941",
+      "fromStopId": "mipig-cafe-asakusa",
+      "toStopId": "akihabara-radio-kaikan",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-26|20:55|TRANSIT|35.699246,139.770939|35.694750,139.700500",
+      "fromStopId": "gigo-akihabara-3-optional",
+      "toStopId": "shinjuku-prince-return-0626",
+      "message": "路线计算失败：ZERO_RESULTS"
+    }
+  ],
   "routes": {
     "2026-06-25|15:00|WALKING|35.694750,139.700500|35.695884,139.700634": {
-      "createdAt": "2026-06-25T13:11:56.129Z",
+      "createdAt": "2026-06-25T13:49:28.373Z",
       "path": [
         {
           "lat": 35.6948,
@@ -101,11 +120,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-25|17:00|WALKING|35.695884,139.700634|35.693840,139.699590": {
-      "createdAt": "2026-06-25T13:11:56.129Z",
+      "createdAt": "2026-06-25T13:49:28.376Z",
       "path": [
         {
           "lat": 35.695820000000005,
@@ -271,11 +290,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-25|18:30|WALKING|35.693840,139.699590|35.690921,139.700258": {
-      "createdAt": "2026-06-25T13:11:56.129Z",
+      "createdAt": "2026-06-25T13:49:28.376Z",
       "path": [
         {
           "lat": 35.693810000000006,
@@ -529,11 +548,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-25|20:30|WALKING|35.690921,139.700258|35.693700,139.704100": {
-      "createdAt": "2026-06-25T13:11:56.129Z",
+      "createdAt": "2026-06-25T13:49:28.376Z",
       "path": [
         {
           "lat": 35.69089,
@@ -851,11 +870,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-25|22:00|WALKING|35.693700,139.704100|35.694750,139.700500": {
-      "createdAt": "2026-06-25T13:11:56.129Z",
+      "createdAt": "2026-06-25T13:49:28.376Z",
       "path": [
         {
           "lat": 35.69368,
@@ -1105,11 +1124,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-26|09:30|WALKING|35.694750,139.700500|35.689756,139.699370": {
-      "createdAt": "2026-06-25T13:11:56.573Z",
+      "createdAt": "2026-06-25T13:49:28.728Z",
       "path": [
         {
           "lat": 35.6948,
@@ -1527,11 +1546,34 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
+      }
+    },
+    "2026-06-26|10:00|TRANSIT|35.689756,139.699370|35.710686,139.796374": {
+      "createdAt": "2026-06-25T13:49:29.014Z",
+      "path": [
+        {
+          "lat": 35.689756,
+          "lng": 139.69937
+        },
+        {
+          "lat": 35.710686,
+          "lng": 139.796374
+        }
+      ],
+      "summary": {
+        "fromStopId": "keio-mall-brunch",
+        "toStopId": "asakusa-culture-center",
+        "travelMode": "TRANSIT",
+        "duration": "约 45 分钟",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": true,
+        "navigation": "从新宿站乘 JR 中央线快速到神田站，换乘东京 Metro 银座线到浅草站；从 1 号出口出站，过马路即到雷门对面的观光中心。换乘和步行合计预留约 45–50 分钟。"
       }
     },
     "2026-06-26|12:00|WALKING|35.710686,139.796374|35.714765,139.796655": {
-      "createdAt": "2026-06-25T13:11:56.880Z",
+      "createdAt": "2026-06-25T13:49:29.392Z",
       "path": [
         {
           "lat": 35.71069,
@@ -1789,11 +1831,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-26|12:30|WALKING|35.714765,139.796655|35.712568,139.797024": {
-      "createdAt": "2026-06-25T13:11:56.880Z",
+      "createdAt": "2026-06-25T13:49:29.393Z",
       "path": [
         {
           "lat": 35.71472,
@@ -1951,11 +1993,34 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
+      }
+    },
+    "2026-06-26|15:10|TRANSIT|35.712568,139.797024|35.697890,139.771941": {
+      "createdAt": "2026-06-25T13:49:29.697Z",
+      "path": [
+        {
+          "lat": 35.7125681,
+          "lng": 139.7970236
+        },
+        {
+          "lat": 35.6978895,
+          "lng": 139.7719412
+        }
+      ],
+      "summary": {
+        "fromStopId": "mipig-cafe-asakusa",
+        "toStopId": "akihabara-radio-kaikan",
+        "travelMode": "TRANSIT",
+        "duration": "约 25 分钟",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": true,
+        "navigation": "步行到筑波快线浅草站，乘筑波快线往秋叶原方向，经过新御徒町后在秋叶原站下车；按“JR 秋叶原站 / 电气街口”方向出站，再步行约 6 分钟到 Radio Kaikan。"
       }
     },
     "2026-06-26|16:45|WALKING|35.697890,139.771941|35.699359,139.770702": {
-      "createdAt": "2026-06-25T13:11:57.240Z",
+      "createdAt": "2026-06-25T13:49:30.157Z",
       "path": [
         {
           "lat": 35.69789,
@@ -2057,11 +2122,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-26|17:55|WALKING|35.699359,139.770702|35.701842,139.771226": {
-      "createdAt": "2026-06-25T13:11:57.240Z",
+      "createdAt": "2026-06-25T13:49:30.157Z",
       "path": [
         {
           "lat": 35.69935,
@@ -2199,11 +2264,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-26|18:45|WALKING|35.701842,139.771226|35.698441,139.770608": {
-      "createdAt": "2026-06-25T13:11:57.240Z",
+      "createdAt": "2026-06-25T13:49:30.157Z",
       "path": [
         {
           "lat": 35.701910000000005,
@@ -2397,11 +2462,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-26|19:35|WALKING|35.698441,139.770608|35.699246,139.770939": {
-      "createdAt": "2026-06-25T13:11:57.240Z",
+      "createdAt": "2026-06-25T13:49:30.157Z",
       "path": [
         {
           "lat": 35.69849,
@@ -2467,11 +2532,34 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
+      }
+    },
+    "2026-06-26|20:55|TRANSIT|35.699246,139.770939|35.694750,139.700500": {
+      "createdAt": "2026-06-25T13:49:30.385Z",
+      "path": [
+        {
+          "lat": 35.6992461,
+          "lng": 139.7709387
+        },
+        {
+          "lat": 35.69475,
+          "lng": 139.7005
+        }
+      ],
+      "summary": {
+        "fromStopId": "gigo-akihabara-3-optional",
+        "toStopId": "shinjuku-prince-return-0626",
+        "travelMode": "TRANSIT",
+        "duration": "约 35 分钟",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": true,
+        "navigation": "步行到 JR 秋叶原站电气街口，乘 JR 中央·总武线各站停车直达新宿站；从东口方向出站，再步行约 8 分钟回酒店。"
       }
     },
     "2026-06-27|09:00|DRIVING|35.694750,139.700500|35.676397,139.699326": {
-      "createdAt": "2026-06-25T13:11:57.487Z",
+      "createdAt": "2026-06-25T13:49:30.680Z",
       "path": [
         {
           "lat": 35.694810000000004,
@@ -3357,11 +3445,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-27|10:00|WALKING|35.676397,139.699326|35.671702,139.703001": {
-      "createdAt": "2026-06-25T13:11:57.785Z",
+      "createdAt": "2026-06-25T13:49:30.990Z",
       "path": [
         {
           "lat": 35.67681,
@@ -3687,11 +3775,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-27|12:00|WALKING|35.671702,139.703001|35.665247,139.712314": {
-      "createdAt": "2026-06-25T13:11:57.785Z",
+      "createdAt": "2026-06-25T13:49:30.990Z",
       "path": [
         {
           "lat": 35.6717,
@@ -4281,11 +4369,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-27|14:00|DRIVING|35.665247,139.712314|35.659500,139.700500": {
-      "createdAt": "2026-06-25T13:11:58.136Z",
+      "createdAt": "2026-06-25T13:49:31.378Z",
       "path": [
         {
           "lat": 35.665240000000004,
@@ -4895,11 +4983,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-27|16:00|WALKING|35.659500,139.700500|35.658446,139.702182": {
-      "createdAt": "2026-06-25T13:11:58.510Z",
+      "createdAt": "2026-06-25T13:49:31.619Z",
       "path": [
         {
           "lat": 35.65952,
@@ -5057,11 +5145,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-27|20:00|DRIVING|35.660600,139.711600|35.694750,139.700500": {
-      "createdAt": "2026-06-25T13:11:58.778Z",
+      "createdAt": "2026-06-25T13:49:32.083Z",
       "path": [
         {
           "lat": 35.66062,
@@ -6919,11 +7007,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-28|12:00|WALKING|35.170915,136.881537|35.169548,136.878211": {
-      "createdAt": "2026-06-25T13:11:59.087Z",
+      "createdAt": "2026-06-25T13:49:32.355Z",
       "path": [
         {
           "lat": 35.17047,
@@ -7045,11 +7133,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-28|12:45|DRIVING|35.169548,136.878211|35.185575,136.899000": {
-      "createdAt": "2026-06-25T13:11:59.387Z",
+      "createdAt": "2026-06-25T13:49:32.778Z",
       "path": [
         {
           "lat": 35.169360000000005,
@@ -7727,11 +7815,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-28|14:30|DRIVING|35.185575,136.899000|35.159563,136.905968": {
-      "createdAt": "2026-06-25T13:11:59.387Z",
+      "createdAt": "2026-06-25T13:49:32.778Z",
       "path": [
         {
           "lat": 35.187520000000006,
@@ -10093,11 +10181,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-28|17:00|WALKING|35.159563,136.905968|35.158704,136.904813": {
-      "createdAt": "2026-06-25T13:11:59.668Z",
+      "createdAt": "2026-06-25T13:49:33.105Z",
       "path": [
         {
           "lat": 35.159560000000006,
@@ -10155,11 +10243,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-28|18:00|DRIVING|35.158704,136.904813|35.170278,136.909717": {
-      "createdAt": "2026-06-25T13:12:00.003Z",
+      "createdAt": "2026-06-25T13:49:33.414Z",
       "path": [
         {
           "lat": 35.1587,
@@ -10465,11 +10553,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-28|22:00|DRIVING|35.170900,136.909000|35.169548,136.878211": {
-      "createdAt": "2026-06-25T13:12:00.315Z",
+      "createdAt": "2026-06-25T13:49:33.826Z",
       "path": [
         {
           "lat": 35.17085,
@@ -11019,11 +11107,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-29|08:30|WALKING|35.169548,136.878211|35.170915,136.881537": {
-      "createdAt": "2026-06-25T13:12:00.541Z",
+      "createdAt": "2026-06-25T13:49:34.175Z",
       "path": [
         {
           "lat": 35.1694,
@@ -11145,11 +11233,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-29|12:00|WALKING|35.010690,135.680376|35.013118,135.676237": {
-      "createdAt": "2026-06-25T13:12:00.853Z",
+      "createdAt": "2026-06-25T13:49:34.562Z",
       "path": [
         {
           "lat": 35.010560000000005,
@@ -11523,11 +11611,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-29|13:00|WALKING|35.013118,135.676237|35.015790,135.673640": {
-      "createdAt": "2026-06-25T13:12:00.853Z",
+      "createdAt": "2026-06-25T13:49:34.562Z",
       "path": [
         {
           "lat": 35.01341,
@@ -11989,11 +12077,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-29|14:00|WALKING|35.015790,135.673640|35.017209,135.671400": {
-      "createdAt": "2026-06-25T13:12:00.853Z",
+      "createdAt": "2026-06-25T13:49:34.562Z",
       "path": [
         {
           "lat": 35.01579,
@@ -12531,11 +12619,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-29|15:30|WALKING|35.017209,135.671400|35.010690,135.680376": {
-      "createdAt": "2026-06-25T13:12:00.853Z",
+      "createdAt": "2026-06-25T13:49:34.562Z",
       "path": [
         {
           "lat": 35.01749,
@@ -13489,11 +13577,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-29|17:00|WALKING|35.010690,135.680376|35.004000,135.770000": {
-      "createdAt": "2026-06-25T13:12:00.853Z",
+      "createdAt": "2026-06-25T13:49:34.562Z",
       "path": [
         {
           "lat": 35.010560000000005,
@@ -16759,11 +16847,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-29|20:30|DRIVING|35.004000,135.770000|35.010690,135.680376": {
-      "createdAt": "2026-06-25T13:12:01.084Z",
+      "createdAt": "2026-06-25T13:49:34.935Z",
       "path": [
         {
           "lat": 35.00379,
@@ -19297,11 +19385,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-30|10:00|WALKING|34.684367,135.827571|34.685087,135.843012": {
-      "createdAt": "2026-06-25T13:12:01.370Z",
+      "createdAt": "2026-06-25T13:49:35.187Z",
       "path": [
         {
           "lat": 34.68437,
@@ -19919,11 +20007,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-30|10:30|WALKING|34.685087,135.843012|34.688986,135.839816": {
-      "createdAt": "2026-06-25T13:12:01.370Z",
+      "createdAt": "2026-06-25T13:49:35.187Z",
       "path": [
         {
           "lat": 34.68509,
@@ -20157,11 +20245,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-30|12:30|WALKING|34.688986,135.839816|34.681386,135.848392": {
-      "createdAt": "2026-06-25T13:12:01.370Z",
+      "createdAt": "2026-06-25T13:49:35.187Z",
       "path": [
         {
           "lat": 34.68865,
@@ -20763,11 +20851,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-06-30|14:30|WALKING|34.681386,135.848392|34.681604,135.827839": {
-      "createdAt": "2026-06-25T13:12:01.370Z",
+      "createdAt": "2026-06-25T13:49:35.187Z",
       "path": [
         {
           "lat": 34.681340000000006,
@@ -21341,11 +21429,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-01|08:00|DRIVING|35.010690,135.680376|35.012700,135.760400": {
-      "createdAt": "2026-06-25T13:12:01.637Z",
+      "createdAt": "2026-06-25T13:49:35.460Z",
       "path": [
         {
           "lat": 35.01053,
@@ -23251,11 +23339,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-01|09:00|DRIVING|35.012700,135.760400|34.994856,135.785046": {
-      "createdAt": "2026-06-25T13:12:01.638Z",
+      "createdAt": "2026-06-25T13:49:35.460Z",
       "path": [
         {
           "lat": 35.0127,
@@ -24433,11 +24521,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-01|11:00|WALKING|34.994856,135.785046|34.996323,135.780887": {
-      "createdAt": "2026-06-25T13:12:01.945Z",
+      "createdAt": "2026-06-25T13:49:35.716Z",
       "path": [
         {
           "lat": 34.994870000000006,
@@ -24827,11 +24915,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-01|12:45|WALKING|34.996323,135.780887|35.003656,135.778556": {
-      "createdAt": "2026-06-25T13:12:01.945Z",
+      "createdAt": "2026-06-25T13:49:35.716Z",
       "path": [
         {
           "lat": 34.99633,
@@ -25373,11 +25461,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-01|14:00|WALKING|35.003656,135.778556|35.003722,135.775097": {
-      "createdAt": "2026-06-25T13:12:01.945Z",
+      "createdAt": "2026-06-25T13:49:35.716Z",
       "path": [
         {
           "lat": 35.00367,
@@ -25607,11 +25695,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-01|15:00|WALKING|35.003722,135.775097|35.005008,135.764892": {
-      "createdAt": "2026-06-25T13:12:01.945Z",
+      "createdAt": "2026-06-25T13:49:35.716Z",
       "path": [
         {
           "lat": 35.00383,
@@ -26173,11 +26261,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-01|16:30|WALKING|35.005008,135.764892|35.007655,135.770159": {
-      "createdAt": "2026-06-25T13:12:01.945Z",
+      "createdAt": "2026-06-25T13:49:35.716Z",
       "path": [
         {
           "lat": 35.005,
@@ -26443,11 +26531,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-02|12:00|WALKING|34.890489,135.800817|34.889268,135.807681": {
-      "createdAt": "2026-06-25T13:12:02.209Z",
+      "createdAt": "2026-06-25T13:49:35.986Z",
       "path": [
         {
           "lat": 34.890620000000006,
@@ -27113,11 +27201,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-02|12:30|WALKING|34.889268,135.807681|34.889521,135.809442": {
-      "createdAt": "2026-06-25T13:12:02.209Z",
+      "createdAt": "2026-06-25T13:49:35.986Z",
       "path": [
         {
           "lat": 34.889010000000006,
@@ -27531,11 +27619,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-02|14:00|WALKING|34.889521,135.809442|34.892086,135.802037": {
-      "createdAt": "2026-06-25T13:12:02.209Z",
+      "createdAt": "2026-06-25T13:49:35.986Z",
       "path": [
         {
           "lat": 34.88946,
@@ -28089,11 +28177,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-03|12:30|WALKING|35.457600,139.636900|35.452416,139.642447": {
-      "createdAt": "2026-06-25T13:12:02.517Z",
+      "createdAt": "2026-06-25T13:49:36.244Z",
       "path": [
         {
           "lat": 35.45776,
@@ -28547,11 +28635,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-03|14:30|WALKING|35.452416,139.642447|35.445911,139.650103": {
-      "createdAt": "2026-06-25T13:12:02.517Z",
+      "createdAt": "2026-06-25T13:49:36.244Z",
       "path": [
         {
           "lat": 35.45237,
@@ -29113,11 +29201,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-03|16:00|WALKING|35.445911,139.650103|35.443708,139.645866": {
-      "createdAt": "2026-06-25T13:12:02.517Z",
+      "createdAt": "2026-06-25T13:49:36.244Z",
       "path": [
         {
           "lat": 35.4459,
@@ -29371,11 +29459,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-03|20:30|WALKING|35.694750,139.700500|35.695500,139.704000": {
-      "createdAt": "2026-06-25T13:12:02.915Z",
+      "createdAt": "2026-06-25T13:49:36.520Z",
       "path": [
         {
           "lat": 35.6948,
@@ -29581,11 +29669,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-03|21:30|WALKING|35.695500,139.704000|35.694750,139.700500": {
-      "createdAt": "2026-06-25T13:12:02.915Z",
+      "createdAt": "2026-06-25T13:49:36.520Z",
       "path": [
         {
           "lat": 35.695530000000005,
@@ -29791,11 +29879,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-04|09:00|WALKING|35.694750,139.700500|35.690921,139.700258": {
-      "createdAt": "2026-06-25T13:12:03.166Z",
+      "createdAt": "2026-06-25T13:49:36.822Z",
       "path": [
         {
           "lat": 35.6948,
@@ -30161,11 +30249,11 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     },
     "2026-07-04|15:00|DRIVING|35.671999,139.763366|35.681236,139.767125": {
-      "createdAt": "2026-06-25T13:12:03.484Z",
+      "createdAt": "2026-06-25T13:49:37.117Z",
       "path": [
         {
           "lat": 35.672050000000006,
@@ -30863,7 +30951,7 @@
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
-        "note": ""
+        "navigation": ""
       }
     }
   }
