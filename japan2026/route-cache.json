@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-25T13:51:23.033Z",
+  "generatedAt": "2026-06-25T14:27:45.168Z",
   "source": "japan2026/itinerary.json",
-  "itineraryHash": "29b42e16b6e8c5f87b1c86cd288a52b369a2e132a6b94adb18aac1e4c4a65305",
-  "routeCount": 55,
-  "requestCount": 28,
+  "itineraryHash": "656081934541a4f2166eb8aa6f401a3b68be2def308644642daa9223ecfff3e3",
+  "routeCount": 68,
+  "requestCount": 40,
   "approximateCount": 0,
-  "fallbackCount": 3,
-  "failedCount": 3,
+  "fallbackCount": 14,
+  "failedCount": 14,
   "failures": [
     {
       "cacheKey": "2026-06-26|10:00|TRANSIT|35.689756,139.699370|35.710686,139.796374",
@@ -26,11 +26,77 @@
       "fromStopId": "gigo-akihabara-3-optional",
       "toStopId": "shinjuku-prince-return-0626",
       "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-28|08:30|TRANSIT|35.694750,139.700500|35.681236,139.767125",
+      "fromStopId": "shinjuku-prince-checkout",
+      "toStopId": "tokyo-station-to-nagoya",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-29|10:45|TRANSIT|34.985849,135.758766|35.010690,135.680376",
+      "fromStopId": "kyoto-station-arrival-0629",
+      "toStopId": "kadensho-bag-drop",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-06-30|08:00|TRANSIT|35.010690,135.680376|34.985849,135.758766",
+      "fromStopId": "kadensho-start-nara",
+      "toStopId": "kyoto-station-nara-transfer",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-07-01|18:00|TRANSIT|35.007655,135.770159|35.010690,135.680376",
+      "fromStopId": "pontocho",
+      "toStopId": "kadensho-return-0701",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-07-02|08:00|TRANSIT|35.010690,135.680376|34.967140,135.772672",
+      "fromStopId": "kadensho-start-0702",
+      "toStopId": "fushimi-inari",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-07-03|07:30|TRANSIT|35.010690,135.680376|34.985849,135.758766",
+      "fromStopId": "kadensho-checkout-0703",
+      "toStopId": "kyoto-station-to-shin-yokohama",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-07-03|11:30|TRANSIT|35.507456,139.617585|35.457600,139.636900",
+      "fromStopId": "shin-yokohama-arrival",
+      "toStopId": "cup-noodles-museum",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-07-03|17:30|TRANSIT|35.443708,139.645866|35.694750,139.700500",
+      "fromStopId": "yokohama-chinatown",
+      "toStopId": "shinjuku-prince-checkin-0703",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-07-04|09:30|TRANSIT|35.690921,139.700258|35.707500,139.665900",
+      "fromStopId": "shinjuku-final-shopping",
+      "toStopId": "nakano-broadway",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-07-04|11:30|TRANSIT|35.707500,139.665900|35.681236,139.767125",
+      "fromStopId": "nakano-broadway",
+      "toStopId": "tokyo-station-character-street",
+      "message": "路线计算失败：ZERO_RESULTS"
+    },
+    {
+      "cacheKey": "2026-07-04|13:30|TRANSIT|35.681236,139.767125|35.671999,139.763366",
+      "fromStopId": "tokyo-station-character-street",
+      "toStopId": "ginza-final",
+      "message": "路线计算失败：ZERO_RESULTS"
     }
   ],
   "routes": {
     "2026-06-25|15:00|WALKING|35.694750,139.700500|35.695884,139.700634": {
-      "createdAt": "2026-06-25T13:51:12.884Z",
+      "createdAt": "2026-06-25T14:27:30.271Z",
       "path": [
         {
           "lat": 35.6948,
@@ -119,12 +185,11 @@
         "departure": "15:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-25|17:00|WALKING|35.695884,139.700634|35.693840,139.699590": {
-      "createdAt": "2026-06-25T13:51:12.885Z",
+      "createdAt": "2026-06-25T14:27:30.273Z",
       "path": [
         {
           "lat": 35.695820000000005,
@@ -289,12 +354,11 @@
         "departure": "17:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-25|18:30|WALKING|35.693840,139.699590|35.690921,139.700258": {
-      "createdAt": "2026-06-25T13:51:12.885Z",
+      "createdAt": "2026-06-25T14:27:30.273Z",
       "path": [
         {
           "lat": 35.693810000000006,
@@ -547,12 +611,11 @@
         "departure": "18:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-25|20:30|WALKING|35.690921,139.700258|35.693700,139.704100": {
-      "createdAt": "2026-06-25T13:51:12.885Z",
+      "createdAt": "2026-06-25T14:27:30.273Z",
       "path": [
         {
           "lat": 35.69089,
@@ -869,12 +932,11 @@
         "departure": "20:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-25|22:00|WALKING|35.693700,139.704100|35.694750,139.700500": {
-      "createdAt": "2026-06-25T13:51:12.885Z",
+      "createdAt": "2026-06-25T14:27:30.273Z",
       "path": [
         {
           "lat": 35.69368,
@@ -1123,12 +1185,11 @@
         "departure": "22:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-26|09:30|WALKING|35.694750,139.700500|35.689756,139.699370": {
-      "createdAt": "2026-06-25T13:51:13.368Z",
+      "createdAt": "2026-06-25T14:27:30.791Z",
       "path": [
         {
           "lat": 35.6948,
@@ -1545,12 +1606,11 @@
         "departure": "09:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-26|10:00|TRANSIT|35.689756,139.699370|35.710686,139.796374": {
-      "createdAt": "2026-06-25T13:51:13.712Z",
+      "createdAt": "2026-06-25T14:27:31.171Z",
       "path": [
         {
           "lat": 35.689756,
@@ -1568,12 +1628,11 @@
         "duration": "约 45 分钟",
         "distance": "已显示直线",
         "fallback": true,
-        "manualEstimate": true,
-        "navigation": "从新宿站乘 JR 中央线快速到神田站，换乘东京 Metro 银座线到浅草站；从 1 号出口出站，过马路即到雷门对面的观光中心。换乘和步行合计预留约 45–50 分钟。"
+        "manualEstimate": true
       }
     },
     "2026-06-26|12:00|WALKING|35.710686,139.796374|35.714765,139.796655": {
-      "createdAt": "2026-06-25T13:51:14.014Z",
+      "createdAt": "2026-06-25T14:27:31.508Z",
       "path": [
         {
           "lat": 35.71069,
@@ -1830,12 +1889,11 @@
         "departure": "12:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-26|12:30|WALKING|35.714765,139.796655|35.712568,139.797024": {
-      "createdAt": "2026-06-25T13:51:14.014Z",
+      "createdAt": "2026-06-25T14:27:31.508Z",
       "path": [
         {
           "lat": 35.71472,
@@ -1992,12 +2050,11 @@
         "departure": "12:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-26|15:10|TRANSIT|35.712568,139.797024|35.697890,139.771941": {
-      "createdAt": "2026-06-25T13:51:14.349Z",
+      "createdAt": "2026-06-25T14:27:31.899Z",
       "path": [
         {
           "lat": 35.7125681,
@@ -2015,12 +2072,11 @@
         "duration": "约 25 分钟",
         "distance": "已显示直线",
         "fallback": true,
-        "manualEstimate": true,
-        "navigation": "步行到筑波快线浅草站，乘筑波快线往秋叶原方向，经过新御徒町后在秋叶原站下车；按“JR 秋叶原站 / 电气街口”方向出站，再步行约 6 分钟到 Radio Kaikan。"
+        "manualEstimate": true
       }
     },
     "2026-06-26|16:45|WALKING|35.697890,139.771941|35.699359,139.770702": {
-      "createdAt": "2026-06-25T13:51:14.696Z",
+      "createdAt": "2026-06-25T14:27:32.359Z",
       "path": [
         {
           "lat": 35.69789,
@@ -2121,12 +2177,11 @@
         "departure": "16:45",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-26|17:55|WALKING|35.699359,139.770702|35.701842,139.771226": {
-      "createdAt": "2026-06-25T13:51:14.696Z",
+      "createdAt": "2026-06-25T14:27:32.360Z",
       "path": [
         {
           "lat": 35.69935,
@@ -2263,12 +2318,11 @@
         "departure": "17:55",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-26|18:45|WALKING|35.701842,139.771226|35.698441,139.770608": {
-      "createdAt": "2026-06-25T13:51:14.696Z",
+      "createdAt": "2026-06-25T14:27:32.360Z",
       "path": [
         {
           "lat": 35.701910000000005,
@@ -2461,12 +2515,11 @@
         "departure": "18:45",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-26|19:35|WALKING|35.698441,139.770608|35.699246,139.770939": {
-      "createdAt": "2026-06-25T13:51:14.696Z",
+      "createdAt": "2026-06-25T14:27:32.360Z",
       "path": [
         {
           "lat": 35.69849,
@@ -2531,12 +2584,11 @@
         "departure": "19:35",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-26|20:55|TRANSIT|35.699246,139.770939|35.694750,139.700500": {
-      "createdAt": "2026-06-25T13:51:14.879Z",
+      "createdAt": "2026-06-25T14:27:32.760Z",
       "path": [
         {
           "lat": 35.6992461,
@@ -2554,12 +2606,11 @@
         "duration": "约 35 分钟",
         "distance": "已显示直线",
         "fallback": true,
-        "manualEstimate": true,
-        "navigation": "步行到 JR 秋叶原站电气街口，乘 JR 中央·总武线各站停车直达新宿站；从东口方向出站，再步行约 8 分钟回酒店。"
+        "manualEstimate": true
       }
     },
     "2026-06-27|09:00|DRIVING|35.694750,139.700500|35.676397,139.699326": {
-      "createdAt": "2026-06-25T13:51:15.440Z",
+      "createdAt": "2026-06-25T14:27:33.092Z",
       "path": [
         {
           "lat": 35.694810000000004,
@@ -3444,12 +3495,11 @@
         "departure": "09:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-27|10:00|WALKING|35.676397,139.699326|35.671702,139.703001": {
-      "createdAt": "2026-06-25T13:51:15.859Z",
+      "createdAt": "2026-06-25T14:27:33.428Z",
       "path": [
         {
           "lat": 35.67681,
@@ -3774,12 +3824,11 @@
         "departure": "10:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-27|12:00|WALKING|35.671702,139.703001|35.665247,139.712314": {
-      "createdAt": "2026-06-25T13:51:15.859Z",
+      "createdAt": "2026-06-25T14:27:33.428Z",
       "path": [
         {
           "lat": 35.6717,
@@ -4368,12 +4417,11 @@
         "departure": "12:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-27|14:00|DRIVING|35.665247,139.712314|35.659500,139.700500": {
-      "createdAt": "2026-06-25T13:51:16.208Z",
+      "createdAt": "2026-06-25T14:27:33.812Z",
       "path": [
         {
           "lat": 35.665240000000004,
@@ -4982,12 +5030,11 @@
         "departure": "14:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-27|16:00|WALKING|35.659500,139.700500|35.658446,139.702182": {
-      "createdAt": "2026-06-25T13:51:16.598Z",
+      "createdAt": "2026-06-25T14:27:34.296Z",
       "path": [
         {
           "lat": 35.65952,
@@ -5144,12 +5191,504 @@
         "departure": "16:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-06-27|18:00|WALKING|35.658446,139.702182|35.660600,139.711600": {
+      "createdAt": "2026-06-25T14:27:34.296Z",
+      "path": [
+        {
+          "lat": 35.658640000000005,
+          "lng": 139.7023
+        },
+        {
+          "lat": 35.658640000000005,
+          "lng": 139.7023
+        },
+        {
+          "lat": 35.65863,
+          "lng": 139.7023
+        },
+        {
+          "lat": 35.6586,
+          "lng": 139.70232000000001
+        },
+        {
+          "lat": 35.6586,
+          "lng": 139.70232000000001
+        },
+        {
+          "lat": 35.6586,
+          "lng": 139.70232000000001
+        },
+        {
+          "lat": 35.658620000000006,
+          "lng": 139.70237
+        },
+        {
+          "lat": 35.6582,
+          "lng": 139.70257
+        },
+        {
+          "lat": 35.6582,
+          "lng": 139.70257
+        },
+        {
+          "lat": 35.65816,
+          "lng": 139.70259000000001
+        },
+        {
+          "lat": 35.65816,
+          "lng": 139.70259000000001
+        },
+        {
+          "lat": 35.658170000000005,
+          "lng": 139.70265
+        },
+        {
+          "lat": 35.65818,
+          "lng": 139.70270000000002
+        },
+        {
+          "lat": 35.658170000000005,
+          "lng": 139.70276
+        },
+        {
+          "lat": 35.658030000000004,
+          "lng": 139.7029
+        },
+        {
+          "lat": 35.657920000000004,
+          "lng": 139.70302
+        },
+        {
+          "lat": 35.65789,
+          "lng": 139.70306000000002
+        },
+        {
+          "lat": 35.65786,
+          "lng": 139.70312
+        },
+        {
+          "lat": 35.65785,
+          "lng": 139.70316000000003
+        },
+        {
+          "lat": 35.65785,
+          "lng": 139.7032
+        },
+        {
+          "lat": 35.65785,
+          "lng": 139.70323000000002
+        },
+        {
+          "lat": 35.65787,
+          "lng": 139.70326
+        },
+        {
+          "lat": 35.657880000000006,
+          "lng": 139.7033
+        },
+        {
+          "lat": 35.65789,
+          "lng": 139.70333000000002
+        },
+        {
+          "lat": 35.657900000000005,
+          "lng": 139.70335
+        },
+        {
+          "lat": 35.65791,
+          "lng": 139.70337
+        },
+        {
+          "lat": 35.65793,
+          "lng": 139.70339
+        },
+        {
+          "lat": 35.65795,
+          "lng": 139.70340000000002
+        },
+        {
+          "lat": 35.65793,
+          "lng": 139.70345
+        },
+        {
+          "lat": 35.657920000000004,
+          "lng": 139.70352
+        },
+        {
+          "lat": 35.65793,
+          "lng": 139.70368000000002
+        },
+        {
+          "lat": 35.657970000000006,
+          "lng": 139.70418
+        },
+        {
+          "lat": 35.657970000000006,
+          "lng": 139.70431000000002
+        },
+        {
+          "lat": 35.657970000000006,
+          "lng": 139.70431000000002
+        },
+        {
+          "lat": 35.657970000000006,
+          "lng": 139.70431000000002
+        },
+        {
+          "lat": 35.65798,
+          "lng": 139.70435
+        },
+        {
+          "lat": 35.657990000000005,
+          "lng": 139.70467000000002
+        },
+        {
+          "lat": 35.657990000000005,
+          "lng": 139.70474000000002
+        },
+        {
+          "lat": 35.658,
+          "lng": 139.70474000000002
+        },
+        {
+          "lat": 35.658,
+          "lng": 139.70509
+        },
+        {
+          "lat": 35.658030000000004,
+          "lng": 139.70522000000003
+        },
+        {
+          "lat": 35.658030000000004,
+          "lng": 139.70525
+        },
+        {
+          "lat": 35.65807,
+          "lng": 139.70602000000002
+        },
+        {
+          "lat": 35.65807,
+          "lng": 139.70609000000002
+        },
+        {
+          "lat": 35.65805,
+          "lng": 139.70609000000002
+        },
+        {
+          "lat": 35.65805,
+          "lng": 139.70616
+        },
+        {
+          "lat": 35.65807,
+          "lng": 139.70616
+        },
+        {
+          "lat": 35.65809,
+          "lng": 139.70663000000002
+        },
+        {
+          "lat": 35.65809,
+          "lng": 139.70665000000002
+        },
+        {
+          "lat": 35.658080000000005,
+          "lng": 139.70681000000002
+        },
+        {
+          "lat": 35.65809,
+          "lng": 139.70685
+        },
+        {
+          "lat": 35.65809,
+          "lng": 139.70702
+        },
+        {
+          "lat": 35.65809,
+          "lng": 139.70703
+        },
+        {
+          "lat": 35.65809,
+          "lng": 139.70718000000002
+        },
+        {
+          "lat": 35.65811,
+          "lng": 139.70717000000002
+        },
+        {
+          "lat": 35.65813,
+          "lng": 139.70751
+        },
+        {
+          "lat": 35.658120000000004,
+          "lng": 139.70761000000002
+        },
+        {
+          "lat": 35.65814,
+          "lng": 139.70798000000002
+        },
+        {
+          "lat": 35.65816,
+          "lng": 139.70809
+        },
+        {
+          "lat": 35.658170000000005,
+          "lng": 139.70819
+        },
+        {
+          "lat": 35.65816,
+          "lng": 139.70819
+        },
+        {
+          "lat": 35.658120000000004,
+          "lng": 139.70816000000002
+        },
+        {
+          "lat": 35.658120000000004,
+          "lng": 139.70819
+        },
+        {
+          "lat": 35.658120000000004,
+          "lng": 139.70834000000002
+        },
+        {
+          "lat": 35.658120000000004,
+          "lng": 139.70838
+        },
+        {
+          "lat": 35.65818,
+          "lng": 139.70841000000001
+        },
+        {
+          "lat": 35.65818,
+          "lng": 139.70841000000001
+        },
+        {
+          "lat": 35.658300000000004,
+          "lng": 139.70846
+        },
+        {
+          "lat": 35.658350000000006,
+          "lng": 139.70848
+        },
+        {
+          "lat": 35.65838,
+          "lng": 139.70850000000002
+        },
+        {
+          "lat": 35.658460000000005,
+          "lng": 139.70855
+        },
+        {
+          "lat": 35.65858,
+          "lng": 139.70865
+        },
+        {
+          "lat": 35.65858,
+          "lng": 139.70865
+        },
+        {
+          "lat": 35.65861,
+          "lng": 139.70899
+        },
+        {
+          "lat": 35.65863,
+          "lng": 139.70928
+        },
+        {
+          "lat": 35.658640000000005,
+          "lng": 139.70931000000002
+        },
+        {
+          "lat": 35.65865,
+          "lng": 139.70948
+        },
+        {
+          "lat": 35.658660000000005,
+          "lng": 139.70952
+        },
+        {
+          "lat": 35.65867,
+          "lng": 139.70961
+        },
+        {
+          "lat": 35.65867,
+          "lng": 139.70962
+        },
+        {
+          "lat": 35.65869,
+          "lng": 139.70978000000002
+        },
+        {
+          "lat": 35.658710000000006,
+          "lng": 139.71004000000002
+        },
+        {
+          "lat": 35.65872,
+          "lng": 139.71014000000002
+        },
+        {
+          "lat": 35.658730000000006,
+          "lng": 139.71031000000002
+        },
+        {
+          "lat": 35.658750000000005,
+          "lng": 139.71053
+        },
+        {
+          "lat": 35.658770000000004,
+          "lng": 139.71072
+        },
+        {
+          "lat": 35.658770000000004,
+          "lng": 139.71075000000002
+        },
+        {
+          "lat": 35.65879,
+          "lng": 139.71097
+        },
+        {
+          "lat": 35.65881,
+          "lng": 139.71119000000002
+        },
+        {
+          "lat": 35.65883,
+          "lng": 139.71131
+        },
+        {
+          "lat": 35.658840000000005,
+          "lng": 139.7114
+        },
+        {
+          "lat": 35.658840000000005,
+          "lng": 139.71143
+        },
+        {
+          "lat": 35.65885,
+          "lng": 139.71155000000002
+        },
+        {
+          "lat": 35.658860000000004,
+          "lng": 139.71159
+        },
+        {
+          "lat": 35.658860000000004,
+          "lng": 139.71163
+        },
+        {
+          "lat": 35.65888,
+          "lng": 139.71185
+        },
+        {
+          "lat": 35.65888,
+          "lng": 139.71186
+        },
+        {
+          "lat": 35.65889,
+          "lng": 139.71196
+        },
+        {
+          "lat": 35.6589,
+          "lng": 139.71200000000002
+        },
+        {
+          "lat": 35.6589,
+          "lng": 139.71205
+        },
+        {
+          "lat": 35.658910000000006,
+          "lng": 139.71212
+        },
+        {
+          "lat": 35.658930000000005,
+          "lng": 139.71231
+        },
+        {
+          "lat": 35.658930000000005,
+          "lng": 139.71231
+        },
+        {
+          "lat": 35.65901,
+          "lng": 139.71227000000002
+        },
+        {
+          "lat": 35.6591,
+          "lng": 139.71222
+        },
+        {
+          "lat": 35.65943,
+          "lng": 139.71207
+        },
+        {
+          "lat": 35.65955,
+          "lng": 139.71202000000002
+        },
+        {
+          "lat": 35.659650000000006,
+          "lng": 139.71199000000001
+        },
+        {
+          "lat": 35.65984,
+          "lng": 139.71195
+        },
+        {
+          "lat": 35.6599,
+          "lng": 139.71194
+        },
+        {
+          "lat": 35.65997,
+          "lng": 139.71192000000002
+        },
+        {
+          "lat": 35.66001,
+          "lng": 139.71192000000002
+        },
+        {
+          "lat": 35.66029,
+          "lng": 139.71194
+        },
+        {
+          "lat": 35.66039,
+          "lng": 139.71194
+        },
+        {
+          "lat": 35.66046,
+          "lng": 139.71195
+        },
+        {
+          "lat": 35.660470000000004,
+          "lng": 139.71195
+        },
+        {
+          "lat": 35.66051,
+          "lng": 139.71195
+        },
+        {
+          "lat": 35.66057,
+          "lng": 139.71195
+        },
+        {
+          "lat": 35.66062,
+          "lng": 139.71195
+        }
+      ],
+      "summary": {
+        "fromStopId": "shibuya-sky",
+        "toStopId": "blue-note-tokyo",
+        "travelMode": "WALKING",
+        "requestedTravelMode": "WALKING",
+        "duration": "19分钟",
+        "distance": "1.2 公里",
+        "departure": "18:00",
+        "arrival": "",
+        "estimateSource": "planned-schedule",
+        "approximate": false
       }
     },
     "2026-06-27|20:00|DRIVING|35.660600,139.711600|35.694750,139.700500": {
-      "createdAt": "2026-06-25T13:51:17.012Z",
+      "createdAt": "2026-06-25T14:27:34.561Z",
       "path": [
         {
           "lat": 35.66062,
@@ -7006,12 +7545,33 @@
         "departure": "20:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-06-28|08:30|TRANSIT|35.694750,139.700500|35.681236,139.767125": {
+      "createdAt": "2026-06-25T14:27:34.839Z",
+      "path": [
+        {
+          "lat": 35.69475,
+          "lng": 139.7005
+        },
+        {
+          "lat": 35.681236,
+          "lng": 139.767125
+        }
+      ],
+      "summary": {
+        "fromStopId": "shinjuku-prince-checkout",
+        "toStopId": "tokyo-station-to-nagoya",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
       }
     },
     "2026-06-28|12:00|WALKING|35.170915,136.881537|35.169548,136.878211": {
-      "createdAt": "2026-06-25T13:51:17.332Z",
+      "createdAt": "2026-06-25T14:27:35.235Z",
       "path": [
         {
           "lat": 35.17047,
@@ -7132,12 +7692,11 @@
         "departure": "12:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-28|12:45|DRIVING|35.169548,136.878211|35.185575,136.899000": {
-      "createdAt": "2026-06-25T13:51:17.640Z",
+      "createdAt": "2026-06-25T14:27:35.795Z",
       "path": [
         {
           "lat": 35.169360000000005,
@@ -7814,12 +8373,11 @@
         "departure": "12:45",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-28|14:30|DRIVING|35.185575,136.899000|35.159563,136.905968": {
-      "createdAt": "2026-06-25T13:51:17.640Z",
+      "createdAt": "2026-06-25T14:27:35.795Z",
       "path": [
         {
           "lat": 35.187520000000006,
@@ -10180,12 +10738,11 @@
         "departure": "14:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-28|17:00|WALKING|35.159563,136.905968|35.158704,136.904813": {
-      "createdAt": "2026-06-25T13:51:18.071Z",
+      "createdAt": "2026-06-25T14:27:36.227Z",
       "path": [
         {
           "lat": 35.159560000000006,
@@ -10242,12 +10799,11 @@
         "departure": "17:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-28|18:00|DRIVING|35.158704,136.904813|35.170278,136.909717": {
-      "createdAt": "2026-06-25T13:51:18.819Z",
+      "createdAt": "2026-06-25T14:27:36.557Z",
       "path": [
         {
           "lat": 35.1587,
@@ -10552,12 +11108,104 @@
         "departure": "18:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-06-28|20:00|WALKING|35.170278,136.909717|35.170900,136.909000": {
+      "createdAt": "2026-06-25T14:27:36.895Z",
+      "path": [
+        {
+          "lat": 35.17029,
+          "lng": 136.90973000000002
+        },
+        {
+          "lat": 35.170280000000005,
+          "lng": 136.90971000000002
+        },
+        {
+          "lat": 35.17027,
+          "lng": 136.90968
+        },
+        {
+          "lat": 35.17027,
+          "lng": 136.90967
+        },
+        {
+          "lat": 35.17027,
+          "lng": 136.90966
+        },
+        {
+          "lat": 35.17025,
+          "lng": 136.90965
+        },
+        {
+          "lat": 35.170230000000004,
+          "lng": 136.90939
+        },
+        {
+          "lat": 35.17022,
+          "lng": 136.90916
+        },
+        {
+          "lat": 35.17022,
+          "lng": 136.90916
+        },
+        {
+          "lat": 35.17036,
+          "lng": 136.90914
+        },
+        {
+          "lat": 35.170370000000005,
+          "lng": 136.90913
+        },
+        {
+          "lat": 35.170370000000005,
+          "lng": 136.90913
+        },
+        {
+          "lat": 35.17036,
+          "lng": 136.90907
+        },
+        {
+          "lat": 35.17036,
+          "lng": 136.90907
+        },
+        {
+          "lat": 35.170440000000006,
+          "lng": 136.90906
+        },
+        {
+          "lat": 35.17049,
+          "lng": 136.90906
+        },
+        {
+          "lat": 35.17063,
+          "lng": 136.90904
+        },
+        {
+          "lat": 35.17081,
+          "lng": 136.90902
+        },
+        {
+          "lat": 35.17087,
+          "lng": 136.90902
+        }
+      ],
+      "summary": {
+        "fromStopId": "oasis-21-sakae",
+        "toStopId": "jazz-inn-lovely",
+        "travelMode": "WALKING",
+        "requestedTravelMode": "WALKING",
+        "duration": "2分钟",
+        "distance": "0.1 公里",
+        "departure": "20:00",
+        "arrival": "",
+        "estimateSource": "planned-schedule",
+        "approximate": false
       }
     },
     "2026-06-28|22:00|DRIVING|35.170900,136.909000|35.169548,136.878211": {
-      "createdAt": "2026-06-25T13:51:19.269Z",
+      "createdAt": "2026-06-25T14:27:37.283Z",
       "path": [
         {
           "lat": 35.17085,
@@ -11106,12 +11754,11 @@
         "departure": "22:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-29|08:30|WALKING|35.169548,136.878211|35.170915,136.881537": {
-      "createdAt": "2026-06-25T13:51:19.490Z",
+      "createdAt": "2026-06-25T14:27:37.603Z",
       "path": [
         {
           "lat": 35.1694,
@@ -11232,12 +11879,33 @@
         "departure": "08:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-06-29|10:45|TRANSIT|34.985849,135.758766|35.010690,135.680376": {
+      "createdAt": "2026-06-25T14:27:37.905Z",
+      "path": [
+        {
+          "lat": 34.985849,
+          "lng": 135.758766
+        },
+        {
+          "lat": 35.01069,
+          "lng": 135.680376
+        }
+      ],
+      "summary": {
+        "fromStopId": "kyoto-station-arrival-0629",
+        "toStopId": "kadensho-bag-drop",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
       }
     },
     "2026-06-29|12:00|WALKING|35.010690,135.680376|35.013118,135.676237": {
-      "createdAt": "2026-06-25T13:51:19.882Z",
+      "createdAt": "2026-06-25T14:27:38.328Z",
       "path": [
         {
           "lat": 35.010560000000005,
@@ -11610,12 +12278,11 @@
         "departure": "12:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-29|13:00|WALKING|35.013118,135.676237|35.015790,135.673640": {
-      "createdAt": "2026-06-25T13:51:19.882Z",
+      "createdAt": "2026-06-25T14:27:38.328Z",
       "path": [
         {
           "lat": 35.01341,
@@ -12076,12 +12743,11 @@
         "departure": "13:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-29|14:00|WALKING|35.015790,135.673640|35.017209,135.671400": {
-      "createdAt": "2026-06-25T13:51:19.882Z",
+      "createdAt": "2026-06-25T14:27:38.328Z",
       "path": [
         {
           "lat": 35.01579,
@@ -12618,12 +13284,11 @@
         "departure": "14:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-29|15:30|WALKING|35.017209,135.671400|35.010690,135.680376": {
-      "createdAt": "2026-06-25T13:51:19.882Z",
+      "createdAt": "2026-06-25T14:27:38.328Z",
       "path": [
         {
           "lat": 35.01749,
@@ -13576,12 +14241,11 @@
         "departure": "15:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-29|17:00|WALKING|35.010690,135.680376|35.004000,135.770000": {
-      "createdAt": "2026-06-25T13:51:19.882Z",
+      "createdAt": "2026-06-25T14:27:38.328Z",
       "path": [
         {
           "lat": 35.010560000000005,
@@ -16846,12 +17510,11 @@
         "departure": "17:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-29|20:30|DRIVING|35.004000,135.770000|35.010690,135.680376": {
-      "createdAt": "2026-06-25T13:51:20.091Z",
+      "createdAt": "2026-06-25T14:27:38.651Z",
       "path": [
         {
           "lat": 35.00379,
@@ -19384,12 +20047,33 @@
         "departure": "20:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-06-30|08:00|TRANSIT|35.010690,135.680376|34.985849,135.758766": {
+      "createdAt": "2026-06-25T14:27:38.932Z",
+      "path": [
+        {
+          "lat": 35.01069,
+          "lng": 135.680376
+        },
+        {
+          "lat": 34.985849,
+          "lng": 135.758766
+        }
+      ],
+      "summary": {
+        "fromStopId": "kadensho-start-nara",
+        "toStopId": "kyoto-station-nara-transfer",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
       }
     },
     "2026-06-30|10:00|WALKING|34.684367,135.827571|34.685087,135.843012": {
-      "createdAt": "2026-06-25T13:51:20.403Z",
+      "createdAt": "2026-06-25T14:27:39.336Z",
       "path": [
         {
           "lat": 34.68437,
@@ -20006,12 +20690,11 @@
         "departure": "10:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-30|10:30|WALKING|34.685087,135.843012|34.688986,135.839816": {
-      "createdAt": "2026-06-25T13:51:20.403Z",
+      "createdAt": "2026-06-25T14:27:39.336Z",
       "path": [
         {
           "lat": 34.68509,
@@ -20244,12 +20927,11 @@
         "departure": "10:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-30|12:30|WALKING|34.688986,135.839816|34.681386,135.848392": {
-      "createdAt": "2026-06-25T13:51:20.403Z",
+      "createdAt": "2026-06-25T14:27:39.336Z",
       "path": [
         {
           "lat": 34.68865,
@@ -20850,12 +21532,11 @@
         "departure": "12:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-06-30|14:30|WALKING|34.681386,135.848392|34.681604,135.827839": {
-      "createdAt": "2026-06-25T13:51:20.403Z",
+      "createdAt": "2026-06-25T14:27:39.336Z",
       "path": [
         {
           "lat": 34.681340000000006,
@@ -21428,12 +22109,11 @@
         "departure": "14:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-01|08:00|DRIVING|35.010690,135.680376|35.012700,135.760400": {
-      "createdAt": "2026-06-25T13:51:20.824Z",
+      "createdAt": "2026-06-25T14:27:39.701Z",
       "path": [
         {
           "lat": 35.01053,
@@ -23338,12 +24018,11 @@
         "departure": "08:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-01|09:00|DRIVING|35.012700,135.760400|34.994856,135.785046": {
-      "createdAt": "2026-06-25T13:51:20.824Z",
+      "createdAt": "2026-06-25T14:27:39.701Z",
       "path": [
         {
           "lat": 35.0127,
@@ -24520,12 +25199,11 @@
         "departure": "09:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-01|11:00|WALKING|34.994856,135.785046|34.996323,135.780887": {
-      "createdAt": "2026-06-25T13:51:21.227Z",
+      "createdAt": "2026-06-25T14:27:40.133Z",
       "path": [
         {
           "lat": 34.994870000000006,
@@ -24914,12 +25592,11 @@
         "departure": "11:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-01|12:45|WALKING|34.996323,135.780887|35.003656,135.778556": {
-      "createdAt": "2026-06-25T13:51:21.227Z",
+      "createdAt": "2026-06-25T14:27:40.133Z",
       "path": [
         {
           "lat": 34.99633,
@@ -25460,12 +26137,11 @@
         "departure": "12:45",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-01|14:00|WALKING|35.003656,135.778556|35.003722,135.775097": {
-      "createdAt": "2026-06-25T13:51:21.227Z",
+      "createdAt": "2026-06-25T14:27:40.133Z",
       "path": [
         {
           "lat": 35.00367,
@@ -25694,12 +26370,11 @@
         "departure": "14:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-01|15:00|WALKING|35.003722,135.775097|35.005008,135.764892": {
-      "createdAt": "2026-06-25T13:51:21.227Z",
+      "createdAt": "2026-06-25T14:27:40.133Z",
       "path": [
         {
           "lat": 35.00383,
@@ -26260,12 +26935,11 @@
         "departure": "15:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-01|16:30|WALKING|35.005008,135.764892|35.007655,135.770159": {
-      "createdAt": "2026-06-25T13:51:21.227Z",
+      "createdAt": "2026-06-25T14:27:40.133Z",
       "path": [
         {
           "lat": 35.005,
@@ -26530,12 +27204,55 @@
         "departure": "16:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-07-01|18:00|TRANSIT|35.007655,135.770159|35.010690,135.680376": {
+      "createdAt": "2026-06-25T14:27:40.509Z",
+      "path": [
+        {
+          "lat": 35.007655,
+          "lng": 135.770159
+        },
+        {
+          "lat": 35.01069,
+          "lng": 135.680376
+        }
+      ],
+      "summary": {
+        "fromStopId": "pontocho",
+        "toStopId": "kadensho-return-0701",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
+      }
+    },
+    "2026-07-02|08:00|TRANSIT|35.010690,135.680376|34.967140,135.772672": {
+      "createdAt": "2026-06-25T14:27:40.923Z",
+      "path": [
+        {
+          "lat": 35.01069,
+          "lng": 135.680376
+        },
+        {
+          "lat": 34.96714,
+          "lng": 135.772672
+        }
+      ],
+      "summary": {
+        "fromStopId": "kadensho-start-0702",
+        "toStopId": "fushimi-inari",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
       }
     },
     "2026-07-02|12:00|WALKING|34.890489,135.800817|34.889268,135.807681": {
-      "createdAt": "2026-06-25T13:51:21.549Z",
+      "createdAt": "2026-06-25T14:27:41.273Z",
       "path": [
         {
           "lat": 34.890620000000006,
@@ -27200,12 +27917,11 @@
         "departure": "12:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-02|12:30|WALKING|34.889268,135.807681|34.889521,135.809442": {
-      "createdAt": "2026-06-25T13:51:21.549Z",
+      "createdAt": "2026-06-25T14:27:41.273Z",
       "path": [
         {
           "lat": 34.889010000000006,
@@ -27618,12 +28334,11 @@
         "departure": "12:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-02|14:00|WALKING|34.889521,135.809442|34.892086,135.802037": {
-      "createdAt": "2026-06-25T13:51:21.549Z",
+      "createdAt": "2026-06-25T14:27:41.273Z",
       "path": [
         {
           "lat": 34.88946,
@@ -28176,12 +28891,55 @@
         "departure": "14:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-07-03|07:30|TRANSIT|35.010690,135.680376|34.985849,135.758766": {
+      "createdAt": "2026-06-25T14:27:41.622Z",
+      "path": [
+        {
+          "lat": 35.01069,
+          "lng": 135.680376
+        },
+        {
+          "lat": 34.985849,
+          "lng": 135.758766
+        }
+      ],
+      "summary": {
+        "fromStopId": "kadensho-checkout-0703",
+        "toStopId": "kyoto-station-to-shin-yokohama",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
+      }
+    },
+    "2026-07-03|11:30|TRANSIT|35.507456,139.617585|35.457600,139.636900": {
+      "createdAt": "2026-06-25T14:27:42.098Z",
+      "path": [
+        {
+          "lat": 35.507456,
+          "lng": 139.617585
+        },
+        {
+          "lat": 35.4576,
+          "lng": 139.6369
+        }
+      ],
+      "summary": {
+        "fromStopId": "shin-yokohama-arrival",
+        "toStopId": "cup-noodles-museum",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
       }
     },
     "2026-07-03|12:30|WALKING|35.457600,139.636900|35.452416,139.642447": {
-      "createdAt": "2026-06-25T13:51:21.921Z",
+      "createdAt": "2026-06-25T14:27:42.595Z",
       "path": [
         {
           "lat": 35.45776,
@@ -28634,12 +29392,11 @@
         "departure": "12:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-03|14:30|WALKING|35.452416,139.642447|35.445911,139.650103": {
-      "createdAt": "2026-06-25T13:51:21.921Z",
+      "createdAt": "2026-06-25T14:27:42.595Z",
       "path": [
         {
           "lat": 35.45237,
@@ -29200,12 +29957,11 @@
         "departure": "14:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-03|16:00|WALKING|35.445911,139.650103|35.443708,139.645866": {
-      "createdAt": "2026-06-25T13:51:21.921Z",
+      "createdAt": "2026-06-25T14:27:42.595Z",
       "path": [
         {
           "lat": 35.4459,
@@ -29458,12 +30214,33 @@
         "departure": "16:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-07-03|17:30|TRANSIT|35.443708,139.645866|35.694750,139.700500": {
+      "createdAt": "2026-06-25T14:27:42.974Z",
+      "path": [
+        {
+          "lat": 35.443708,
+          "lng": 139.645866
+        },
+        {
+          "lat": 35.69475,
+          "lng": 139.7005
+        }
+      ],
+      "summary": {
+        "fromStopId": "yokohama-chinatown",
+        "toStopId": "shinjuku-prince-checkin-0703",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
       }
     },
     "2026-07-03|20:30|WALKING|35.694750,139.700500|35.695500,139.704000": {
-      "createdAt": "2026-06-25T13:51:22.274Z",
+      "createdAt": "2026-06-25T14:27:43.338Z",
       "path": [
         {
           "lat": 35.6948,
@@ -29668,12 +30445,11 @@
         "departure": "20:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-03|21:30|WALKING|35.695500,139.704000|35.694750,139.700500": {
-      "createdAt": "2026-06-25T13:51:22.274Z",
+      "createdAt": "2026-06-25T14:27:43.338Z",
       "path": [
         {
           "lat": 35.695530000000005,
@@ -29878,12 +30654,11 @@
         "departure": "21:30",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     },
     "2026-07-04|09:00|WALKING|35.694750,139.700500|35.690921,139.700258": {
-      "createdAt": "2026-06-25T13:51:22.515Z",
+      "createdAt": "2026-06-25T14:27:43.634Z",
       "path": [
         {
           "lat": 35.6948,
@@ -30248,12 +31023,77 @@
         "departure": "09:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
+      }
+    },
+    "2026-07-04|09:30|TRANSIT|35.690921,139.700258|35.707500,139.665900": {
+      "createdAt": "2026-06-25T14:27:43.957Z",
+      "path": [
+        {
+          "lat": 35.690921,
+          "lng": 139.700258
+        },
+        {
+          "lat": 35.7075,
+          "lng": 139.6659
+        }
+      ],
+      "summary": {
+        "fromStopId": "shinjuku-final-shopping",
+        "toStopId": "nakano-broadway",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
+      }
+    },
+    "2026-07-04|11:30|TRANSIT|35.707500,139.665900|35.681236,139.767125": {
+      "createdAt": "2026-06-25T14:27:44.202Z",
+      "path": [
+        {
+          "lat": 35.7075,
+          "lng": 139.6659
+        },
+        {
+          "lat": 35.681236,
+          "lng": 139.767125
+        }
+      ],
+      "summary": {
+        "fromStopId": "nakano-broadway",
+        "toStopId": "tokyo-station-character-street",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
+      }
+    },
+    "2026-07-04|13:30|TRANSIT|35.681236,139.767125|35.671999,139.763366": {
+      "createdAt": "2026-06-25T14:27:44.524Z",
+      "path": [
+        {
+          "lat": 35.681236,
+          "lng": 139.767125
+        },
+        {
+          "lat": 35.671999,
+          "lng": 139.763366
+        }
+      ],
+      "summary": {
+        "fromStopId": "tokyo-station-character-street",
+        "toStopId": "ginza-final",
+        "travelMode": "TRANSIT",
+        "duration": "未找到路线",
+        "distance": "已显示直线",
+        "fallback": true,
+        "manualEstimate": false
       }
     },
     "2026-07-04|15:00|DRIVING|35.671999,139.763366|35.681236,139.767125": {
-      "createdAt": "2026-06-25T13:51:22.873Z",
+      "createdAt": "2026-06-25T14:27:45.007Z",
       "path": [
         {
           "lat": 35.672050000000006,
@@ -30950,8 +31790,7 @@
         "departure": "15:00",
         "arrival": "",
         "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
+        "approximate": false
       }
     }
   }

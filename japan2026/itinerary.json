@@ -123,7 +123,6 @@
             "lng": 139.7005
           },
           "notes": "09:40 前准备完毕，从酒店步行去 brunch。",
-          "navigationToNext": "从酒店正门向新宿站西口方向走，经西武新宿站南口一带进入地下通道，按“京王线 / 京王 Mall”指示前进。",
           "travelModeToNext": "WALKING",
           "type": "hotel"
         },
@@ -144,7 +143,9 @@
           "travelDurationToNext": "约 45 分钟",
           "transportFrom": "新宿站",
           "transportTo": "浅草站",
-          "navigationToNext": "从新宿站乘 JR 中央线快速到神田站，换乘东京 Metro 银座线到浅草站；从 1 号出口出站，过马路即到雷门对面的观光中心。换乘和步行合计预留约 45–50 分钟。",
+          "transportFromMapsQuery": "新宿站，Tokyo, Japan",
+          "transportToMapsQuery": "浅草站，Tokyo, Japan",
+          "arriveAt": "12:00",
           "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
@@ -162,7 +163,6 @@
             "lng": 139.796374
           },
           "notes": "乘电梯到 8F 免费展望台，俯拍雷门、仲见世与晴空塔。",
-          "navigationToNext": "下楼后过马路到雷门，从雷门进入仲见世商店街，沿主街直走前往宝藏门与浅草寺本堂。",
           "travelModeToNext": "WALKING",
           "type": "sight"
         },
@@ -180,7 +180,6 @@
             "lng": 139.796655
           },
           "notes": "拍照顺序：雷门正面 → 仲见世 → 宝藏门 → 五重塔 → 本堂；预留换角度、购物和参拜时间。",
-          "navigationToNext": "从本堂沿仲见世方向往回走，在浅草寺东南侧进入浅草 1 丁目；咖啡店位于 Chateau Amour 2F，预约前 10 分钟到店。",
           "travelModeToNext": "WALKING",
           "type": "sight"
         },
@@ -201,7 +200,9 @@
           "travelDurationToNext": "约 25 分钟",
           "transportFrom": "筑波快线浅草站",
           "transportTo": "秋叶原站",
-          "navigationToNext": "步行到筑波快线浅草站，乘筑波快线往秋叶原方向，经过新御徒町后在秋叶原站下车；按“JR 秋叶原站 / 电气街口”方向出站，再步行约 6 分钟到 Radio Kaikan。",
+          "transportFromMapsQuery": "筑波快线 浅草站，Tokyo, Japan",
+          "transportToMapsQuery": "秋叶原站，Tokyo, Japan",
+          "arriveAt": "16:45",
           "travelModeToNext": "TRANSIT",
           "type": "area"
         },
@@ -219,7 +220,6 @@
             "lng": 139.7719412
           },
           "notes": "秋叶原代表性打卡楼；优先逛 4F AmiAmi、5F 海洋堂与周边店。",
-          "navigationToNext": "从 Radio Kaikan 北侧出来，穿过 JR 秋叶原站电气街口前方街区，沿中央通方向步行到北林大厦；SUPER POTATO 在 3F–5F。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
@@ -237,7 +237,6 @@
             "lng": 139.7707015
           },
           "notes": "复古游戏名店；3F–4F 看主机与卡带，5F 是怀旧街机区，20:00 关门。",
-          "navigationToNext": "返回中央通并向北走，在外神田 3 丁目转入侧街；扭蛋会馆位于 MN 大厦 1F。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
@@ -255,7 +254,6 @@
             "lng": 139.7712256
           },
           "notes": "老牌扭蛋店；周五营业至 22:00，适合轻松挑纪念品。",
-          "navigationToNext": "沿中央通向南返回万世桥方向，在外神田 1 丁目进入土屋大厦；餐厅位于 B1F，门口可能排队。",
           "travelModeToNext": "WALKING",
           "type": "area"
         },
@@ -273,7 +271,6 @@
             "lng": 139.7706076
           },
           "notes": "网红和牛烤牛肉饭；座位少，已预留排队时间。",
-          "navigationToNext": "饭后沿中央通向北步行约 3 分钟；GiGO 3 号馆在红色大楼内，可只拍夜景后直接返程。",
           "travelModeToNext": "WALKING",
           "type": "restaurant"
         },
@@ -294,7 +291,9 @@
           "travelDurationToNext": "约 35 分钟",
           "transportFrom": "JR 秋叶原站",
           "transportTo": "JR 新宿站",
-          "navigationToNext": "步行到 JR 秋叶原站电气街口，乘 JR 中央·总武线各站停车直达新宿站；从东口方向出站，再步行约 8 分钟回酒店。",
+          "transportFromMapsQuery": "JR 秋叶原站，Tokyo, Japan",
+          "transportToMapsQuery": "JR 新宿站，Tokyo, Japan",
+          "arriveAt": "22:20",
           "travelModeToNext": "TRANSIT",
           "type": "area",
           "optional": true,
@@ -405,7 +404,7 @@
             "lng": 139.702182
           },
           "notes": "摩天楼展望台，俯瞰东京夜景。建议提前预约黄昏时段。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "WALKING",
           "type": "sight"
         },
         {
@@ -455,7 +454,7 @@
             "lng": 139.7005
           },
           "notes": "办理退房。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -470,8 +469,13 @@
           },
           "notes": "搭乘新干线前往名古屋，约1小时40分抵达。",
           "departAt": "10:20",
+          "arriveAt": "12:00",
           "travelDurationToNext": "约 1 小时 40 分钟",
-          "navigationToNext": "在东京站进入东海道新干线区域，乘往名古屋方向的列车；抵达名古屋站后按樱通口 / 太阁通口指示出站。",
+          "transportFrom": "东京站",
+          "transportTo": "名古屋站",
+          "transportFromMapsQuery": "东京站，Tokyo, Japan",
+          "transportToMapsQuery": "名古屋站，Nagoya, Japan",
+          "transportNote": "在东京站进入东海道新干线区域，乘往名古屋方向的列车；抵达后按樱通口 / 太阁通口指示出站。",
           "travelModeToNext": "SHINKANSEN",
           "type": "station"
         },
@@ -556,7 +560,7 @@
             "lng": 136.909717
           },
           "notes": "夜景优美的现代建筑，可散步观赏光之水盘。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "WALKING",
           "type": "area"
         },
         {
@@ -621,8 +625,13 @@
           },
           "notes": "乘坐新干线前往京都。",
           "departAt": "10:05",
+          "arriveAt": "10:45",
           "travelDurationToNext": "约 40 分钟",
-          "navigationToNext": "在名古屋站乘东海道新干线往新大阪方向，京都站下车。",
+          "transportFrom": "名古屋站",
+          "transportTo": "京都站",
+          "transportFromMapsQuery": "名古屋站，Nagoya, Japan",
+          "transportToMapsQuery": "京都站，Kyoto, Japan",
+          "transportNote": "在名古屋站乘东海道新干线往新大阪方向，京都站下车。",
           "travelModeToNext": "SHINKANSEN",
           "type": "station"
         },
@@ -637,7 +646,7 @@
             "lng": 135.758766
           },
           "notes": "抵达京都。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "station"
         },
         {
@@ -757,7 +766,7 @@
             "lng": 135.680376
           },
           "notes": "出发前往奈良。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -771,6 +780,14 @@
             "lng": 135.758766
           },
           "notes": "乘车前往奈良。",
+          "departAt": "09:20",
+          "arriveAt": "10:00",
+          "travelDurationToNext": "约 40 分钟",
+          "transportFrom": "京都站",
+          "transportTo": "近铁奈良站",
+          "transportFromMapsQuery": "京都站，Kyoto, Japan",
+          "transportToMapsQuery": "近铁奈良站，Nara, Japan",
+          "transportNote": "从京都站乘近铁京都线前往近铁奈良站；如乘急行，途中无需离开车站。",
           "travelModeToNext": "TRAIN",
           "type": "station"
         },
@@ -841,6 +858,14 @@
             "lng": 135.827839
           },
           "notes": "品尝刚出炉的草莓大福，观看飞快捣年糕的演示。",
+          "departAt": "17:20",
+          "arriveAt": "18:50",
+          "travelDurationToNext": "约 1 小时 30 分钟",
+          "transportFrom": "近铁奈良站",
+          "transportTo": "阪急岚山站",
+          "transportFromMapsQuery": "近铁奈良站，Nara, Japan",
+          "transportToMapsQuery": "阪急岚山站，Kyoto, Japan",
+          "transportNote": "步行回近铁奈良站，乘车返回京都方向，再换乘前往阪急岚山站；预留换乘时间。",
           "travelModeToNext": "TRAIN",
           "type": "restaurant"
         },
@@ -975,7 +1000,7 @@
             "lng": 135.770159
           },
           "notes": "沿鸭川的餐饮街，可在老屋餐厅享用晚餐。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
         {
@@ -1011,7 +1036,7 @@
             "lng": 135.680376
           },
           "notes": "出发前往伏见稻荷。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -1025,6 +1050,14 @@
             "lng": 135.772672
           },
           "notes": "千本鸟居步道，建议早去避开拥挤。",
+          "departAt": "11:30",
+          "arriveAt": "12:00",
+          "travelDurationToNext": "约 30 分钟",
+          "transportFrom": "JR 稻荷站",
+          "transportTo": "JR 宇治站",
+          "transportFromMapsQuery": "JR 稻荷站，Kyoto, Japan",
+          "transportToMapsQuery": "JR 宇治站，Kyoto, Japan",
+          "transportNote": "从 JR 稻荷站乘奈良线往宇治方向，在 JR 宇治站下车。",
           "travelModeToNext": "TRAIN",
           "type": "sight"
         },
@@ -1081,6 +1114,14 @@
             "lng": 135.802037
           },
           "notes": "宇治最有名的抹茶甜品店之一，可能需要排队。",
+          "departAt": "17:00",
+          "arriveAt": "19:15",
+          "travelDurationToNext": "约 2 小时 15 分钟",
+          "transportFrom": "JR 宇治站",
+          "transportTo": "阪急岚山站",
+          "transportFromMapsQuery": "JR 宇治站，Kyoto, Japan",
+          "transportToMapsQuery": "阪急岚山站，Kyoto, Japan",
+          "transportNote": "从 JR 宇治站返回京都市区，再换乘前往阪急岚山站；晚间班次较少，预留换乘时间。",
           "travelModeToNext": "TRAIN",
           "type": "restaurant"
         },
@@ -1117,7 +1158,7 @@
             "lng": 135.680376
           },
           "notes": "退房并可使用行李宅急便将大件行李运送到东京酒店。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "hotel"
         },
         {
@@ -1132,8 +1173,13 @@
           },
           "notes": "乘坐新干线前往新横滨。",
           "departAt": "09:30",
+          "arriveAt": "11:30",
           "travelDurationToNext": "约 2 小时",
-          "navigationToNext": "在京都站乘东海道新干线往东京方向，新横滨站下车；不要继续坐到东京站。",
+          "transportFrom": "京都站",
+          "transportTo": "新横滨站",
+          "transportFromMapsQuery": "京都站，Kyoto, Japan",
+          "transportToMapsQuery": "新横滨站，Yokohama, Japan",
+          "transportNote": "在京都站乘东海道新干线往东京方向，新横滨站下车；不要继续坐到东京站。",
           "travelModeToNext": "SHINKANSEN",
           "type": "station"
         },
@@ -1148,7 +1194,7 @@
             "lng": 139.617585
           },
           "notes": "抵达横滨。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "station"
         },
         {
@@ -1204,7 +1250,7 @@
             "lng": 139.645866
           },
           "notes": "品尝中式美食，漫步彩门与灯笼之间。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
         {
@@ -1282,7 +1328,7 @@
             "lng": 139.700258
           },
           "notes": "购买纪念品、药妆和免税商品。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "area"
         },
         {
@@ -1296,7 +1342,7 @@
             "lng": 139.6659
           },
           "notes": "这座购物中心被称为宅文化天堂，二三层汇聚了十多家Mandarake等动漫、手办、偶像周边店。从新宿乘中央线5分钟即可到达。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "shopping"
         },
         {
@@ -1310,7 +1356,7 @@
             "lng": 139.767125
           },
           "notes": "在东京站一番街的角色街逛卡通专门店，可到官方Pokémon Store购买限定周边。该店位于东京站内的购物街，营业时间10:00-20:30。",
-          "travelModeToNext": "TRAIN",
+          "travelModeToNext": "TRANSIT",
           "type": "shopping"
         },
         {

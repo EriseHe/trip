@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "routes:cache": "node shared/tools/precompute-routes.mjs",
-    "precompute:all": "npm run routes:cache"
+    "precompute:all": "npm run routes:cache",
+    "test:timeline": "node shared/tools/test-timeline-model.mjs"
   },
   "devDependencies": {
     "playwright": "^1.52.0"

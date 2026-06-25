@@ -552,7 +552,10 @@
           "travelDurationToNext": "2 小时",
           "transportFrom": "仁川机场 ICN T2",
           "transportTo": "上海浦东机场 PVG T2",
-          "navigationToNext": "韩亚航空 OZ363；仁川机场 T2 登机，上海浦东机场 T2 下机。",
+          "transportFromMapsQuery": "仁川国际机场第二航站楼，Incheon, South Korea",
+          "transportToMapsQuery": "上海浦东国际机场第二航站楼，Shanghai, China",
+          "arriveAt": "11:45",
+          "transportNote": "韩亚航空 OZ363；仁川机场 T2 登机，上海浦东机场 T2 下机。",
           "travelModeToNext": "FLIGHT",
           "type": "station"
         },
