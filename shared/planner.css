@@ -120,6 +120,17 @@ button:focus-visible,
   gap: 16px;
 }
 
+.source-indicator {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.source-indicator.local {
+  color: var(--orange);
+}
+
 .app-header h1 {
   margin: 2px 0 0;
   letter-spacing: 0;
@@ -232,6 +243,49 @@ button:focus-visible,
   align-items: center;
   justify-content: space-between;
   margin-bottom: 14px;
+}
+
+.source-editor {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.source-switch {
+  display: inline-flex;
+  justify-self: start;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel-muted);
+}
+
+.source-option {
+  min-height: 32px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  padding: 0 12px;
+  font-size: 13px;
+}
+
+.source-option:hover {
+  background: rgba(15, 118, 110, 0.08);
+}
+
+.source-option.active {
+  background: var(--panel-solid);
+  color: var(--accent);
+}
+
+.source-description {
+  min-height: 18px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .clock {
@@ -436,7 +490,7 @@ button:focus-visible,
 
 .editor-section {
   display: grid;
-  grid-template-rows: auto minmax(420px, 1fr) auto;
+  grid-template-rows: auto auto minmax(420px, 1fr) auto;
   gap: 12px;
   height: 100%;
   border: 1px solid var(--border);
@@ -476,7 +530,7 @@ button:focus-visible,
 
 .button-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -623,6 +677,10 @@ button:focus-visible,
     gap: 10px;
   }
 
+  .source-indicator {
+    font-size: 10px;
+  }
+
   .trip-controls {
     display: flex;
     justify-content: flex-start;
@@ -669,6 +727,14 @@ button:focus-visible,
     min-height: 0;
     margin: 0 12px 12px;
     padding: 10px;
+  }
+
+  .button-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .button-row button {
+    padding: 0 10px;
   }
 
   .map {

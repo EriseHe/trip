@@ -2,6 +2,15 @@
 
 const TRIP_CONFIG = window.TRIP_PLANNER_CONFIG || {};
 const TRIP_ID = TRIP_CONFIG.id || inferTripId();
+const ITINERARY_SOURCES = {
+  official: "official",
+  local: "local",
+};
+const STORAGE_KEYS = {
+  localVersion: `${TRIP_ID}-itinerary-map:local-version:v2`,
+  activeSource: `${TRIP_ID}-itinerary-map:active-source:v2`,
+  legacyItinerary: `${TRIP_ID}-itinerary-map:itinerary:v1`,
+};
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
 const MAX_GOOGLE_MAPS_URL_WAYPOINTS = 9;
@@ -54,6 +63,9 @@ const state = {
   locationMarker: null,
   locationWatchId: null,
   defaultItinerary: null,
+  localVersion: null,
+  activeSource: ITINERARY_SOURCES.official,
+  editorSource: ITINERARY_SOURCES.official,
   mobileView: "planner",
 };
 
@@ -76,7 +88,13 @@ async function initApp() {
   const configuredApiKey = getActiveApiKey();
   state.defaultItinerary = await loadDefaultItinerary();
   state.routeCacheMeta = await loadRouteCacheFile();
-  applyItinerary(state.defaultItinerary);
+  state.localVersion = loadLocalVersion();
+  const preferredSource = readStoredValue(STORAGE_KEYS.activeSource);
+  const initialSource =
+    preferredSource === ITINERARY_SOURCES.local && state.localVersion
+      ? ITINERARY_SOURCES.local
+      : ITINERARY_SOURCES.official;
+  activateItinerarySource(initialSource, { persist: false });
   updateTripClock();
   setInterval(updateTripClock, 30000);
 
@@ -177,6 +195,7 @@ function cacheElements() {
   els.mapView = document.querySelector("#map-view");
   els.editorView = document.querySelector("#editor-view");
   els.tripClock = document.querySelector("#trip-clock");
+  els.sourceIndicator = document.querySelector("#source-indicator");
   els.tripEyebrow = document.querySelector("#trip-eyebrow");
   els.tripHeading = document.querySelector("#trip-heading");
   els.dayTabs = document.querySelector("#day-tabs");
@@ -185,6 +204,9 @@ function cacheElements() {
   els.applyJson = document.querySelector("#apply-json");
   els.downloadJson = document.querySelector("#download-json");
   els.copyJson = document.querySelector("#copy-json");
+  els.deleteLocalVersion = document.querySelector("#delete-local-version");
+  els.sourceSwitch = document.querySelector("#itinerary-source-switch");
+  els.sourceDescription = document.querySelector("#source-description");
   els.jsonFile = document.querySelector("#json-file");
   els.map = document.querySelector("#map");
   els.status = document.querySelector("#status");
@@ -202,6 +224,8 @@ function bindEvents() {
   els.applyJson.addEventListener("click", applyJsonFromEditor);
   els.downloadJson.addEventListener("click", downloadItinerary);
   els.copyJson.addEventListener("click", () => void copyItineraryCode());
+  els.deleteLocalVersion.addEventListener("click", deleteLocalVersion);
+  els.sourceSwitch.addEventListener("click", handleSourceSwitch);
   els.jsonFile.addEventListener("change", handleJsonFile);
   els.openGoogleMaps.addEventListener("click", openSelectedDayInGoogleMaps);
   els.locateMe.addEventListener("click", toggleLiveLocation);
@@ -240,6 +264,12 @@ function setEditorVisible(isVisible) {
   els.topControls.hidden = isVisible;
   els.editorToggle.textContent = isVisible ? "返回行程" : "编辑行程";
 
+  if (isVisible) {
+    state.editorSource = state.activeSource;
+    syncEditorFromSource();
+    updateSourceUi();
+  }
+
   if (!isVisible && state.map) {
     google.maps.event.trigger(state.map, "resize");
     fitMapToDays(getVisibleDays());
@@ -262,8 +292,16 @@ function setMobileView(view) {
 function applyJsonFromEditor() {
   try {
     const parsed = JSON.parse(els.editor.value);
-    applyItinerary(parsed);
-    setStatus("行程已更新到当前浏览器。同步到 GitHub 后会重新生成路线缓存。");
+    const localItinerary = normalizeItinerary(parsed);
+    if (!saveLocalVersion(localItinerary)) {
+      throw new Error("浏览器无法保存本地版本，请检查隐私或存储设置");
+    }
+    state.activeSource = ITINERARY_SOURCES.local;
+    state.editorSource = ITINERARY_SOURCES.local;
+    writeStoredValue(STORAGE_KEYS.activeSource, state.activeSource);
+    applyItinerary(state.localVersion.itinerary);
+    updateSourceUi();
+    setStatus("本地版本已保存到这个浏览器。官方行程没有被修改。");
   } catch (error) {
     setStatus(`JSON 解析失败：${error.message}`, true);
   }
@@ -515,6 +553,9 @@ async function ensureCoordinatesForDays(days) {
     }
   }
 
+  if (state.activeSource === ITINERARY_SOURCES.local) {
+    saveLocalVersion(state.itinerary);
+  }
   syncEditorFromItinerary();
 }
 
@@ -981,6 +1022,7 @@ function handleJsonFile(event) {
   file
     .text()
     .then((text) => {
+      state.editorSource = ITINERARY_SOURCES.local;
       els.editor.value = text;
       applyJsonFromEditor();
     })
@@ -1234,6 +1276,160 @@ function createLocationDot() {
 
 function syncEditorFromItinerary() {
   els.editor.value = JSON.stringify(state.itinerary, null, 2);
+}
+
+function activateItinerarySource(source, options = { persist: true }) {
+  const isLocal = source === ITINERARY_SOURCES.local;
+  if (isLocal && !state.localVersion) return false;
+
+  state.activeSource = isLocal ? ITINERARY_SOURCES.local : ITINERARY_SOURCES.official;
+  state.editorSource = state.activeSource;
+  applyItinerary(isLocal ? state.localVersion.itinerary : state.defaultItinerary);
+
+  if (options.persist !== false) {
+    writeStoredValue(STORAGE_KEYS.activeSource, state.activeSource);
+  }
+  updateSourceUi();
+  return true;
+}
+
+function handleSourceSwitch(event) {
+  const button = event.target.closest("[data-itinerary-source]");
+  if (!button) return;
+
+  const source = button.dataset.itinerarySource;
+  state.editorSource =
+    source === ITINERARY_SOURCES.local ? ITINERARY_SOURCES.local : ITINERARY_SOURCES.official;
+
+  if (!activateItinerarySource(state.editorSource)) {
+    syncEditorFromSource();
+    updateSourceUi();
+    setStatus("还没有本地版本。可以编辑官方行程或导入 JSON，然后创建本地版本。");
+  }
+}
+
+function syncEditorFromSource() {
+  const itinerary =
+    state.editorSource === ITINERARY_SOURCES.local
+      ? state.localVersion?.itinerary || state.defaultItinerary
+      : state.defaultItinerary;
+  els.editor.value = JSON.stringify(itinerary, null, 2);
+}
+
+function updateSourceUi() {
+  const isLocalActive = state.activeSource === ITINERARY_SOURCES.local;
+  const isLocalEditor = state.editorSource === ITINERARY_SOURCES.local;
+
+  els.sourceIndicator.textContent = isLocalActive ? "本地版本" : "官方行程";
+  els.sourceIndicator.classList.toggle("local", isLocalActive);
+
+  els.sourceSwitch.querySelectorAll("[data-itinerary-source]").forEach((button) => {
+    const isActive = button.dataset.itinerarySource === state.editorSource;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+  });
+
+  if (!isLocalEditor) {
+    els.sourceDescription.textContent = "实时读取 GitHub Pages 上的 itinerary.json；这里的编辑会另存为本地版本。";
+    els.applyJson.textContent = "保存为本地版本";
+  } else if (state.localVersion) {
+    els.sourceDescription.textContent = `仅保存在这个浏览器 · ${formatLocalVersionTime(state.localVersion.savedAt)}`;
+    els.applyJson.textContent = "更新本地版本";
+  } else {
+    els.sourceDescription.textContent = "尚未创建；当前编辑框以官方行程作为起点。";
+    els.applyJson.textContent = "创建本地版本";
+  }
+
+  els.deleteLocalVersion.hidden = !isLocalEditor || !state.localVersion;
+}
+
+function loadLocalVersion() {
+  const storedVersion = readStoredJson(STORAGE_KEYS.localVersion);
+  if (storedVersion?.itinerary) {
+    return storedVersion;
+  }
+
+  const legacyItinerary = readStoredJson(STORAGE_KEYS.legacyItinerary);
+  if (!legacyItinerary) return null;
+
+  return {
+    itinerary: legacyItinerary,
+    savedAt: "",
+    migratedFromLegacy: true,
+  };
+}
+
+function saveLocalVersion(itinerary) {
+  const localVersion = {
+    itinerary: clone(itinerary),
+    savedAt: new Date().toISOString(),
+  };
+  if (!writeStoredValue(STORAGE_KEYS.localVersion, JSON.stringify(localVersion))) {
+    return false;
+  }
+  state.localVersion = localVersion;
+  removeStoredValue(STORAGE_KEYS.legacyItinerary);
+  return true;
+}
+
+function deleteLocalVersion() {
+  if (!window.confirm("删除这个浏览器里的本地版本？官方行程不会受影响。")) return;
+
+  state.localVersion = null;
+  removeStoredValue(STORAGE_KEYS.localVersion);
+  removeStoredValue(STORAGE_KEYS.legacyItinerary);
+  state.editorSource = ITINERARY_SOURCES.official;
+  activateItinerarySource(ITINERARY_SOURCES.official);
+  setStatus("本地版本已删除，当前显示官方行程。");
+}
+
+function readStoredJson(key) {
+  const value = readStoredValue(key);
+  if (!value) return null;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
+function readStoredValue(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredValue(key, value) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function removeStoredValue(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // Storage can be unavailable in private browsing modes.
+  }
+}
+
+function formatLocalVersionTime(value) {
+  if (!value) return "由旧版浏览器缓存迁移";
+  const date = new Date(value);
+  if (Number.isNaN(date.valueOf())) return "保存时间未知";
+  return new Intl.DateTimeFormat("zh-CN", {
+    timeZone: state.itinerary?.timezone || TRIP_CONFIG.timezone || "Asia/Tokyo",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(date);
 }
 
 function setStatus(message, isError = false) {
