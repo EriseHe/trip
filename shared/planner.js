@@ -814,7 +814,7 @@ function renderTimeline() {
       defaultTravelMode: state.itinerary.defaultTravelMode,
     });
     blocks.forEach((block, index) => {
-      fragment.appendChild(createTimelineBlockNode(day, block, index, blocks.length));
+      fragment.appendChild(createTimelineBlockNode(day, block));
       if (index < blocks.length - 1) {
         fragment.appendChild(createTimelineConnectorNode(block.connectionToNext));
       }
@@ -824,11 +824,10 @@ function renderTimeline() {
   els.timeline.replaceChildren(fragment);
 }
 
-function createTimelineBlockNode(day, block, index, blockCount) {
+function createTimelineBlockNode(day, block) {
   const node = document.createElement("section");
   const hasHotel = block.items.some((item) => getTimelineItemType(item) === "hotel");
-  node.className = `timeline-block${index === 0 ? " is-day-first" : ""}${index === blockCount - 1 ? " is-day-last" : ""}${hasHotel ? " has-hotel" : ""}`;
-  const rail = createTimelineRailNode(true);
+  node.className = `timeline-block${hasHotel ? " has-hotel" : ""}`;
 
   const time = document.createElement("div");
   time.className = "timeline-time";
@@ -840,7 +839,7 @@ function createTimelineBlockNode(day, block, index, blockCount) {
     items.appendChild(createTimelineItemNode(day, item));
   });
 
-  node.append(rail, time, items);
+  node.append(time, items);
   return node;
 }
 
@@ -877,28 +876,10 @@ function getTimelineItemType(item) {
   return normalizeStopType(stop.type || inferStopType(stop));
 }
 
-function createTimelineRailNode(hasDot = false) {
-  const rail = document.createElement("span");
-  rail.className = `timeline-rail${hasDot ? " timeline-rail--stop" : ""}`;
-  rail.setAttribute("aria-hidden", "true");
-
-  if (hasDot) {
-    const dot = document.createElement("span");
-    dot.className = "timeline-dot";
-    rail.appendChild(dot);
-  }
-
-  return rail;
-}
-
 function createTimelineConnectorNode(connection) {
   const node = document.createElement("div");
   const travelMode = normalizeTravelMode(connection?.summary?.travelMode || connection?.mode);
   node.className = `timeline-connector timeline-connector--${travelMode.toLowerCase()}${connection?.detailed ? " is-detailed" : ""}`;
-  const rail = createTimelineRailNode();
-
-  const spacer = document.createElement("div");
-  spacer.className = "timeline-connector-spacer";
 
   const content = document.createElement("div");
   content.className = "timeline-connector-content";
@@ -916,7 +897,7 @@ function createTimelineConnectorNode(connection) {
     }
   }
 
-  node.append(rail, spacer, content);
+  node.append(content);
   return node;
 }
 

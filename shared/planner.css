@@ -339,6 +339,7 @@ button:focus-visible,
 .timeline {
   display: grid;
   gap: 0;
+  --timeline-time-column: 64px;
 }
 
 .day-heading {
@@ -353,74 +354,27 @@ button:focus-visible,
 .timeline-block,
 .timeline-connector {
   display: grid;
-  grid-template-columns: 15px 72px minmax(0, 1fr);
+  grid-template-columns: var(--timeline-time-column) minmax(0, 1fr);
   gap: 0;
   position: relative;
 }
 
 .timeline-block {
   align-items: start;
-  padding: 5px 14px 5px 0;
-  --timeline-dot-center: 9px;
-  --timeline-dot-top: 5px;
+  padding: 5px 0;
 }
 
 .timeline-block.has-hotel {
   margin-right: -18px;
   margin-left: -18px;
-  padding-right: 32px;
+  padding-right: 18px;
   padding-left: 18px;
   background: rgba(15, 118, 110, 0.14);
 }
 
-.timeline-block.is-day-first .timeline-rail::before {
-  top: var(--timeline-dot-center);
-}
-
-.timeline-block.is-day-last .timeline-rail::before {
-  bottom: calc(100% - var(--timeline-dot-center));
-}
-
-.timeline-block.has-hotel .timeline-dot {
-  background: var(--time-hotel);
-}
-
-.timeline-rail {
-  grid-column: 1;
-  position: relative;
-  align-self: stretch;
-  width: 12px;
-  min-height: 100%;
-  pointer-events: none;
-}
-
-.timeline-rail::before {
-  position: absolute;
-  top: -5px;
-  bottom: -5px;
-  left: 50%;
-  width: 2px;
-  background: rgba(37, 99, 235, 0.22);
-  content: "";
-  transform: translateX(-50%);
-}
-
-.timeline-dot {
-  position: absolute;
-  top: var(--timeline-dot-top);
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  background: var(--time-station);
-  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.22);
-  transform: translateX(-50%);
-}
-
 .timeline-time {
-  grid-column: 2;
-  justify-self: center;
+  grid-column: 1;
+  justify-self: start;
   color: var(--time-destination);
   font-size: 14px;
   font-weight: 850;
@@ -434,11 +388,11 @@ button:focus-visible,
 }
 
 .timeline-items {
-  grid-column: 3;
+  grid-column: 2;
   display: grid;
   gap: 7px;
   min-width: 0;
-  margin-left: 10px;
+  margin-left: 0;
 }
 
 .timeline-item {
@@ -508,7 +462,7 @@ button:focus-visible,
 
 .timeline-connector {
   min-height: 26px;
-  padding: 0 14px 0 0;
+  padding: 0;
   color: var(--subtle);
 }
 
@@ -516,15 +470,11 @@ button:focus-visible,
   min-height: 64px;
 }
 
-.timeline-connector-spacer {
-  grid-column: 2;
-}
-
 .timeline-connector-content {
-  grid-column: 3;
+  grid-column: 2;
   align-self: center;
   min-width: 0;
-  margin-left: 10px;
+  margin-left: 0;
   padding: 3px 0;
 }
 
@@ -544,7 +494,7 @@ button:focus-visible,
 .timeline-connector--train .timeline-connector-content,
 .timeline-connector--shinkansen .timeline-connector-content,
 .timeline-connector--flight .timeline-connector-content {
-  margin-left: -4px;
+  margin-left: -14px;
   padding: 8px 14px;
   border-top: 1px solid rgba(37, 99, 235, 0.18);
   border-bottom: 1px solid rgba(37, 99, 235, 0.18);
@@ -809,6 +759,11 @@ button:focus-visible,
 
   .panel-section {
     max-height: none;
+    padding: 14px;
+  }
+
+  .timeline {
+    --timeline-time-column: 58px;
   }
 
   .editor-page {
