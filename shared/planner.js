@@ -14,8 +14,10 @@ const STORAGE_KEYS = {
 
 const DEFAULT_MAP_ID = "DEMO_MAP_ID";
 const MAX_GOOGLE_MAPS_URL_WAYPOINTS = 9;
+const LONG_TRANSPORT_MINUTES = 30;
 const DAY_COLORS = ["#0f766e", "#2563eb", "#c2410c", "#7c3aed", "#be123c", "#15803d"];
 const UNBOXED_STOP_TYPES = new Set(["hotel", "station"]);
+const DEDICATED_TRANSPORT_MODES = new Set(["TRAIN", "SHINKANSEN", "FLIGHT"]);
 
 const DEFAULT_ITINERARY = {
   tripTitle: TRIP_CONFIG.title || "Trip Planner",
@@ -240,16 +242,16 @@ function bindEvents() {
     }
   });
   els.timeline.addEventListener("click", (event) => {
-    const itemNode = event.target.closest("[data-stop-id], [data-maps-query]");
-    if (!itemNode) return;
-    openTimelineItem(itemNode);
+    const stopNode = event.target.closest("[data-stop-id]");
+    if (!stopNode) return;
+    openStopFromTimeline(stopNode.dataset.dayId, stopNode.dataset.stopId);
   });
   els.timeline.addEventListener("keydown", (event) => {
     if (!["Enter", " "].includes(event.key)) return;
-    const itemNode = event.target.closest("[data-stop-id], [data-maps-query]");
-    if (!itemNode) return;
+    const stopNode = event.target.closest("[data-stop-id]");
+    if (!stopNode) return;
     event.preventDefault();
-    openTimelineItem(itemNode);
+    openStopFromTimeline(stopNode.dataset.dayId, stopNode.dataset.stopId);
   });
 }
 
@@ -810,13 +812,13 @@ function renderTimeline() {
       fragment.appendChild(heading);
     }
 
-    const blocks = window.TripTimelineModel.buildTimelineBlocks(day, state.legSummariesByDay.get(day.id) || [], {
-      defaultTravelMode: state.itinerary.defaultTravelMode,
-    });
-    blocks.forEach((block, index) => {
-      fragment.appendChild(createTimelineBlockNode(day, block, index, blocks.length));
-      if (index < blocks.length - 1) {
-        fragment.appendChild(createTimelineConnectorNode(block.connectionToNext));
+    const summaries = state.legSummariesByDay.get(day.id) || [];
+    day.stops.forEach((stop, index) => {
+      fragment.appendChild(createStopCard(day, stop));
+
+      const summary = summaries[index];
+      if (summary) {
+        fragment.appendChild(createLegNode(summary, stop, day.stops[index + 1]));
       }
     });
   });
@@ -824,110 +826,174 @@ function renderTimeline() {
   els.timeline.replaceChildren(fragment);
 }
 
-function createTimelineBlockNode(day, block, index, blockCount) {
-  const node = document.createElement("section");
-  const hasHotel = block.items.some((item) => getTimelineItemType(item) === "hotel");
-  node.className = `timeline-block${index === 0 ? " is-day-first" : ""}${index === blockCount - 1 ? " is-day-last" : ""}${hasHotel ? " has-hotel" : ""}`;
-  const rail = createTimelineRailNode(true);
+function createStopCard(day, stop) {
+  const card = document.createElement("article");
+  const stopType = normalizeStopType(stop.type || inferStopType(stop));
+  card.className = `stop-card stop-card--${stopType}${UNBOXED_STOP_TYPES.has(stopType) ? " stop-card--plain" : ""}${isStopCurrent(day, stop) ? " is-now" : ""}`;
+  card.dataset.dayId = day.id;
+  card.dataset.stopId = stop.id;
+  card.tabIndex = 0;
+  card.role = "link";
+  card.title = "在 Google Maps 中打开";
 
   const time = document.createElement("div");
-  time.className = "timeline-time";
-  time.textContent = block.time;
+  time.className = "stop-time";
+  time.textContent = stop.time || "--:--";
 
-  const items = document.createElement("div");
-  items.className = "timeline-items";
-  block.items.forEach((item) => {
-    items.appendChild(createTimelineItemNode(day, item));
-  });
-
-  node.append(rail, time, items);
-  return node;
-}
-
-function createTimelineItemNode(day, item) {
-  const stop = item.stop || item;
-  const stopType = getTimelineItemType(item);
-  const node = document.createElement("article");
-  node.className = `timeline-item timeline-item--${stopType}${UNBOXED_STOP_TYPES.has(stopType) ? " timeline-item--plain" : ""}${item.stop && isStopCurrent(day, item.stop) ? " is-now" : ""}`;
-  node.tabIndex = 0;
-  node.role = "link";
-  node.title = "在 Google Maps 中打开";
-  if (item.stopId) {
-    node.dataset.dayId = day.id;
-    node.dataset.stopId = item.stopId;
-  } else {
-    node.dataset.mapsQuery = item.mapsQuery || item.title;
-  }
+  const body = document.createElement("div");
+  body.className = "stop-body";
 
   const title = document.createElement("h3");
-  title.textContent = item.title;
-  node.appendChild(title);
+  title.textContent = stop.title;
 
-  const detailParts = [item.duration, item.notes, stop.geocodeError].filter(Boolean);
-  if (detailParts.length) {
-    const details = document.createElement("p");
-    details.textContent = detailParts.join(" · ");
-    node.appendChild(details);
+  const details = document.createElement("p");
+  const detailParts = [stop.duration, stop.notes, stop.geocodeError].filter(Boolean);
+  details.textContent = detailParts.join(" · ");
+
+  body.append(title, details);
+  card.append(time, body);
+  return card;
+}
+
+function createLegNode(summary, originStop, destinationStop) {
+  if (shouldUseTransportEntry(summary, originStop, destinationStop)) {
+    return createTransportEntryNode(summary, originStop, destinationStop);
   }
-  return node;
+  return createCompactLegSummaryNode(summary);
 }
 
-function getTimelineItemType(item) {
-  const stop = item.stop || item;
-  return normalizeStopType(stop.type || inferStopType(stop));
+function shouldUseTransportEntry(summary, originStop, destinationStop) {
+  if (DEDICATED_TRANSPORT_MODES.has(normalizeTravelMode(summary.travelMode))) return true;
+  return getLegDurationMinutes(summary, originStop, destinationStop) >= LONG_TRANSPORT_MINUTES;
 }
 
-function createTimelineRailNode(hasDot = false) {
-  const rail = document.createElement("span");
-  rail.className = `timeline-rail${hasDot ? " timeline-rail--stop" : ""}`;
-  rail.setAttribute("aria-hidden", "true");
+function createTransportEntryNode(summary, originStop, destinationStop) {
+  const node = document.createElement("section");
+  node.className = "transport-entry";
 
-  if (hasDot) {
-    const dot = document.createElement("span");
-    dot.className = "timeline-dot";
-    rail.appendChild(dot);
-  }
-
-  return rail;
-}
-
-function createTimelineConnectorNode(connection) {
-  const node = document.createElement("div");
-  const travelMode = normalizeTravelMode(connection?.summary?.travelMode || connection?.mode);
-  node.className = `timeline-connector timeline-connector--${travelMode.toLowerCase()}${connection?.detailed ? " is-detailed" : ""}`;
-  const rail = createTimelineRailNode();
-
-  const spacer = document.createElement("div");
-  spacer.className = "timeline-connector-spacer";
+  const mode = document.createElement("div");
+  mode.className = "transport-entry-mode";
+  mode.textContent = modeLabel(summary.travelMode);
 
   const content = document.createElement("div");
-  content.className = "timeline-connector-content";
-  if (connection?.showDetails) {
-    const metrics = document.createElement("div");
-    metrics.className = "timeline-connector-metrics";
-    metrics.textContent = formatLegMetrics(connection.summary, modeLabel(travelMode));
-    content.appendChild(metrics);
+  content.className = "transport-entry-content";
 
-    if (connection.detailed && connection.note) {
-      const note = document.createElement("p");
-      note.className = "timeline-connector-note";
-      note.textContent = connection.note;
-      content.appendChild(note);
-    }
+  const route = document.createElement("div");
+  route.className = "transport-entry-route";
+  const from = document.createElement("strong");
+  from.textContent = originStop.transportFrom || originStop.title;
+  const arrow = document.createElement("span");
+  arrow.textContent = "→";
+  const to = document.createElement("strong");
+  to.textContent = originStop.transportTo || destinationStop.title;
+  route.append(from, arrow, to);
+
+  const meta = document.createElement("div");
+  meta.className = "transport-entry-meta";
+  meta.textContent = formatTransportMeta(summary, originStop, destinationStop);
+
+  content.append(route, meta);
+  if (summary.navigation) {
+    const navigation = document.createElement("p");
+    navigation.className = "transport-entry-navigation";
+    navigation.textContent = summary.navigation;
+    content.appendChild(navigation);
   }
 
-  node.append(rail, spacer, content);
+  node.append(mode, content);
   return node;
 }
 
-function formatLegMetrics(summary = {}, mode = "") {
-  if (summary.planned) {
-    const duration = summary.duration && summary.duration !== "未计算" ? summary.duration : "未计算路线";
-    return [mode, duration].filter(Boolean).join(" · ");
+function formatTransportMeta(summary, originStop, destinationStop) {
+  const departure = getLegDepartureTime(originStop);
+  const arrival = destinationStop.time || summary.arrival || "";
+  const duration = getLegDurationText(summary, originStop, destinationStop);
+  return [
+    departure ? `${departure} 出发` : "",
+    arrival ? `${arrival} 到达` : "",
+    duration,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
+function getLegDurationText(summary, originStop, destinationStop) {
+  if (summary.duration && summary.duration !== "未计算" && summary.duration !== "未找到路线") {
+    return summary.duration;
   }
-  const duration = summary.duration && summary.duration !== "未计算" ? summary.duration : "";
-  const distance = summary.distance && !summary.fallback && summary.distance !== "计划连线" ? summary.distance : "";
-  return [mode, duration, distance].filter(Boolean).join(" · ");
+  if (originStop.travelDurationToNext) return originStop.travelDurationToNext;
+  const minutes = getScheduledTravelMinutes(originStop, destinationStop);
+  return minutes ? formatMinutes(minutes) : "";
+}
+
+function getLegDurationMinutes(summary, originStop, destinationStop) {
+  return (
+    parseDurationMinutes(summary.duration) ||
+    parseDurationMinutes(originStop.travelDurationToNext) ||
+    getScheduledTravelMinutes(originStop, destinationStop) ||
+    0
+  );
+}
+
+function getScheduledTravelMinutes(originStop, destinationStop) {
+  const departure = parseClockMinutes(getLegDepartureTime(originStop));
+  const arrival = parseClockMinutes(destinationStop.time);
+  if (departure === null || arrival === null || arrival < departure) return 0;
+  return arrival - departure;
+}
+
+function getLegDepartureTime(stop) {
+  if (stop.departAt) return stop.departAt;
+  const start = parseClockMinutes(stop.time);
+  const duration = parseDurationMinutes(stop.duration);
+  if (start === null || duration === null) return stop.time || "";
+  return formatClockMinutes(start + duration);
+}
+
+function formatClockMinutes(totalMinutes) {
+  const hours = Math.floor(totalMinutes / 60) % 24;
+  const minutes = totalMinutes % 60;
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+}
+
+function formatMinutes(totalMinutes) {
+  if (totalMinutes < 60) return `${totalMinutes} 分钟`;
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return minutes ? `${hours} 小时 ${minutes} 分钟` : `${hours} 小时`;
+}
+
+function createCompactLegSummaryNode(summary) {
+  const node = document.createElement("div");
+  node.className = `leg-summary${summary.fallback ? " fallback" : ""}${summary.cached && !summary.fallback ? " cached" : ""}`;
+
+  const connector = document.createElement("span");
+  connector.className = "leg-summary-arrow";
+  connector.textContent = "↓";
+
+  const content = document.createElement("div");
+  content.className = "leg-summary-content";
+
+  const text = document.createElement("div");
+  text.className = "leg-summary-metrics";
+  if (summary.planned) {
+    text.textContent = `${modeLabel(summary.travelMode)} · 未计算路线 · 显示计划连线`;
+  } else if (summary.fallback) {
+    text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration}`;
+  } else {
+    text.textContent = `${modeLabel(summary.travelMode)} · ${summary.duration} · ${summary.distance}`;
+  }
+
+  content.appendChild(text);
+  if (summary.navigation) {
+    const navigation = document.createElement("p");
+    navigation.className = "leg-summary-navigation";
+    navigation.textContent = summary.navigation;
+    content.appendChild(navigation);
+  }
+
+  node.append(connector, content);
+  return node;
 }
 
 function openStopInfoWindow(day, stop, stopIndex, marker) {
@@ -950,20 +1016,6 @@ function openStopFromTimeline(dayId, stopId) {
   const stop = day?.stops.find((candidate) => candidate.id === stopId);
   if (!stop) return;
   openStopInGoogleMaps(stop);
-}
-
-function openTimelineItem(itemNode) {
-  if (itemNode.dataset.stopId) {
-    openStopFromTimeline(itemNode.dataset.dayId, itemNode.dataset.stopId);
-    return;
-  }
-
-  const query = itemNode.dataset.mapsQuery;
-  if (!query) return;
-  const url = new URL("https://www.google.com/maps/search/");
-  url.searchParams.set("api", "1");
-  url.searchParams.set("query", query);
-  window.open(url.toString(), "_blank", "noopener,noreferrer");
 }
 
 function openStopInGoogleMaps(stop) {

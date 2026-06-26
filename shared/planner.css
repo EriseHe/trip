@@ -92,7 +92,7 @@ textarea {
 input:focus,
 textarea:focus,
 button:focus-visible,
-.timeline-item:focus-visible {
+.stop-card:focus-visible {
   outline: 4px solid rgba(15, 118, 110, 0.18);
   outline-offset: 2px;
 }
@@ -338,7 +338,7 @@ button:focus-visible,
 
 .timeline {
   display: grid;
-  gap: 0;
+  gap: 8px;
 }
 
 .day-heading {
@@ -350,98 +350,11 @@ button:focus-visible,
   text-transform: uppercase;
 }
 
-.timeline-block,
-.timeline-connector {
+.stop-card {
   display: grid;
-  grid-template-columns: 15px 72px minmax(0, 1fr);
-  gap: 0;
-  position: relative;
-}
-
-.timeline-block {
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
   align-items: start;
-  padding: 5px 14px 5px 0;
-  --timeline-dot-center: 9px;
-  --timeline-dot-top: 5px;
-}
-
-.timeline-block.has-hotel {
-  margin-right: -18px;
-  margin-left: -18px;
-  padding-right: 32px;
-  padding-left: 18px;
-  background: rgba(15, 118, 110, 0.14);
-}
-
-.timeline-block.is-day-first .timeline-rail::before {
-  top: var(--timeline-dot-center);
-}
-
-.timeline-block.is-day-last .timeline-rail::before {
-  bottom: calc(100% - var(--timeline-dot-center));
-}
-
-.timeline-block.has-hotel .timeline-dot {
-  background: var(--time-hotel);
-}
-
-.timeline-rail {
-  grid-column: 1;
-  position: relative;
-  align-self: stretch;
-  width: 12px;
-  min-height: 100%;
-  pointer-events: none;
-}
-
-.timeline-rail::before {
-  position: absolute;
-  top: -5px;
-  bottom: -5px;
-  left: 50%;
-  width: 2px;
-  background: rgba(37, 99, 235, 0.22);
-  content: "";
-  transform: translateX(-50%);
-}
-
-.timeline-dot {
-  position: absolute;
-  top: var(--timeline-dot-top);
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  background: var(--time-station);
-  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.22);
-  transform: translateX(-50%);
-}
-
-.timeline-time {
-  grid-column: 2;
-  justify-self: center;
-  color: var(--time-destination);
-  font-size: 14px;
-  font-weight: 850;
-  line-height: 1.25;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.timeline-block.has-hotel .timeline-time {
-  color: var(--time-hotel);
-}
-
-.timeline-items {
-  grid-column: 3;
-  display: grid;
-  gap: 7px;
-  min-width: 0;
-  margin-left: 10px;
-}
-
-.timeline-item {
   border: 1px solid var(--border);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.84);
@@ -449,117 +362,184 @@ button:focus-visible,
   padding: 13px 14px;
 }
 
-.timeline-item:not(.timeline-item--plain) {
-  margin-left: -14px;
-}
-
-.timeline-item:hover {
+.stop-card:hover {
   border-color: var(--border);
   background: rgba(255, 255, 255, 0.84);
 }
 
-.timeline-item.is-now {
+.stop-card.is-now {
   border-color: rgba(15, 118, 110, 0.44);
   background: rgba(15, 118, 110, 0.1);
 }
 
-.timeline-item--plain {
+.stop-card--plain {
   border-color: transparent;
   border-radius: 12px;
   background: transparent;
-  padding: 0;
+  padding: 7px 14px;
 }
 
-.timeline-item--plain:hover {
+.stop-card--plain:hover {
   border-color: transparent;
   background: transparent;
   transform: none;
 }
 
-.timeline-item--hotel,
-.timeline-item--hotel:hover,
-.timeline-item--hotel.is-now {
+.stop-card--hotel,
+.stop-card--hotel:hover,
+.stop-card--hotel.is-now {
+  margin-right: -18px;
+  margin-left: -18px;
   border-color: transparent;
   border-radius: 0;
-  background: transparent;
-  padding: 0;
+  background: rgba(15, 118, 110, 0.14);
+  padding-right: 32px;
+  padding-left: 32px;
 }
 
-.timeline-item--hotel h3 {
+.stop-card--hotel:hover {
+  background: rgba(15, 118, 110, 0.18);
+}
+
+.stop-card--hotel .stop-time {
   color: var(--time-hotel);
 }
 
-.timeline-item--station h3 {
+.stop-card--station .stop-time {
   color: var(--time-station);
 }
 
-.timeline-item h3 {
+.stop-card--hotel .stop-body h3 {
+  color: var(--time-hotel);
+}
+
+.stop-card--station .stop-body h3 {
+  color: var(--time-station);
+}
+
+.stop-card--destination .stop-time,
+.stop-card--sight .stop-time {
+  color: var(--time-destination);
+}
+
+.stop-card--restaurant .stop-time {
+  color: var(--time-restaurant);
+}
+
+.stop-card--area .stop-time {
+  color: var(--time-area);
+}
+
+.stop-time {
+  color: var(--time-destination);
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.stop-body {
+  min-width: 0;
+}
+
+.stop-body h3 {
   margin: 0 0 4px;
   font-size: 15px;
   line-height: 1.25;
 }
 
-.timeline-item p {
+.stop-body p {
   margin: 0;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.4;
 }
 
-.timeline-connector {
-  min-height: 26px;
-  padding: 0 14px 0 0;
+.leg-summary {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+  margin: -2px 0;
   color: var(--subtle);
+  font-size: 12px;
 }
 
-.timeline-connector.is-detailed {
-  min-height: 64px;
+.leg-summary-arrow {
+  text-align: center;
 }
 
-.timeline-connector-spacer {
-  grid-column: 2;
-}
-
-.timeline-connector-content {
-  grid-column: 3;
-  align-self: center;
+.leg-summary-content {
   min-width: 0;
-  margin-left: 10px;
-  padding: 3px 0;
 }
 
-.timeline-connector-metrics {
+.leg-summary-metrics {
+  line-height: 1.4;
+}
+
+.leg-summary-navigation {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.leg-summary.fallback {
+  color: var(--muted);
+}
+
+.leg-summary.cached {
   color: var(--green);
+}
+
+.transport-entry {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+  border-top: 1px solid rgba(37, 99, 235, 0.18);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.18);
+  background: rgba(37, 99, 235, 0.06);
+  padding: 12px 14px;
+}
+
+.transport-entry-mode {
+  color: var(--time-station);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.transport-entry-content {
+  min-width: 0;
+}
+
+.transport-entry-route {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+  align-items: baseline;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.transport-entry-route strong {
+  font-weight: 850;
+}
+
+.transport-entry-route span {
+  color: var(--time-station);
+}
+
+.transport-entry-meta {
+  margin-top: 3px;
+  color: var(--time-station);
   font-size: 12px;
   font-weight: 750;
   line-height: 1.4;
 }
 
-.timeline-connector.is-detailed .timeline-connector-metrics {
-  color: var(--time-station);
-  font-weight: 850;
-}
-
-.timeline-connector--transit .timeline-connector-content,
-.timeline-connector--train .timeline-connector-content,
-.timeline-connector--shinkansen .timeline-connector-content,
-.timeline-connector--flight .timeline-connector-content {
-  margin-left: -4px;
-  padding: 8px 14px;
-  border-top: 1px solid rgba(37, 99, 235, 0.18);
-  border-bottom: 1px solid rgba(37, 99, 235, 0.18);
-  background: rgba(37, 99, 235, 0.06);
-}
-
-.timeline-connector--transit .timeline-connector-metrics,
-.timeline-connector--train .timeline-connector-metrics,
-.timeline-connector--shinkansen .timeline-connector-metrics,
-.timeline-connector--flight .timeline-connector-metrics {
-  color: var(--time-station);
-  font-weight: 850;
-}
-
-.timeline-connector-note {
+.transport-entry-navigation {
   margin: 4px 0 0;
   color: var(--muted);
   font-size: 12px;
