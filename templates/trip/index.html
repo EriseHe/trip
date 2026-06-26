@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Trip Itinerary Map</title>
-    <link rel="stylesheet" href="../shared/planner.css?v=20260619-header" />
+    <link rel="stylesheet" href="../shared/planner.css?v=20260625-editor-actions" />
   </head>
   <body>
     <header class="app-header">
@@ -13,6 +13,7 @@
         <h1 id="trip-heading">Trip Planner</h1>
       </div>
       <div class="header-actions">
+        <span id="source-indicator" class="source-indicator" aria-live="polite">官方行程</span>
         <div id="trip-clock" class="clock" aria-live="polite">当地时间 --:--</div>
         <button id="editor-toggle" class="header-link" type="button">编辑行程</button>
       </div>
@@ -56,15 +57,39 @@
             <h2>编辑行程</h2>
           </div>
           <label class="file-button">
-            导入
+            导入本地 JSON
             <input id="json-file" type="file" accept="application/json,.json" />
           </label>
         </div>
+        <div class="source-editor">
+          <div id="itinerary-source-switch" class="source-switch" role="tablist" aria-label="行程版本">
+            <button
+              class="source-option active"
+              type="button"
+              role="tab"
+              data-itinerary-source="official"
+              aria-selected="true"
+            >
+              官方
+            </button>
+            <button
+              class="source-option"
+              type="button"
+              role="tab"
+              data-itinerary-source="local"
+              aria-selected="false"
+            >
+              本地
+            </button>
+          </div>
+          <p id="source-description" class="source-description"></p>
+        </div>
         <textarea id="itinerary-json" spellcheck="false"></textarea>
         <div class="button-row">
-          <button id="apply-json" type="button">更新</button>
+          <button id="apply-json" type="button" hidden>更新</button>
           <button id="download-json" type="button" class="secondary">下载</button>
           <button id="copy-json" type="button" class="secondary">复制代码</button>
+          <button id="delete-local-version" type="button" class="secondary" hidden>删除</button>
         </div>
       </section>
     </main>
@@ -73,6 +98,6 @@
     <script src="./trip-config.js"></script>
     <script src="../shared/route-cache.js?v=20260530-shared"></script>
     <script src="../shared/timeline-model.js?v=20260625-vertical-timeline"></script>
-    <script src="../shared/planner.js?v=20260625-vertical-timeline" defer></script>
+    <script src="../shared/planner.js?v=20260625-editor-actions" defer></script>
   </body>
 </html>

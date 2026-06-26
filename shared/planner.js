@@ -290,18 +290,23 @@ function setMobileView(view) {
 }
 
 function applyJsonFromEditor() {
+  if (state.editorSource === ITINERARY_SOURCES.official) {
+    setStatus("官方行程只能下载或复制；切到本地行程后再更新。", true);
+    return;
+  }
+
   try {
     const parsed = JSON.parse(els.editor.value);
     const localItinerary = normalizeItinerary(parsed);
     if (!saveLocalVersion(localItinerary)) {
-      throw new Error("浏览器无法保存本地版本，请检查隐私或存储设置");
+      throw new Error("浏览器无法保存本地行程，请检查隐私或存储设置");
     }
     state.activeSource = ITINERARY_SOURCES.local;
     state.editorSource = ITINERARY_SOURCES.local;
     writeStoredValue(STORAGE_KEYS.activeSource, state.activeSource);
     applyItinerary(state.localVersion.itinerary);
     updateSourceUi();
-    setStatus("本地版本已保存到这个浏览器。官方行程没有被修改。");
+    setStatus("本地行程已更新到这个浏览器。官方行程没有被修改。");
   } catch (error) {
     setStatus(`JSON 解析失败：${error.message}`, true);
   }
@@ -1096,11 +1101,20 @@ function handleJsonFile(event) {
 }
 
 function downloadItinerary() {
-  const blob = new Blob([JSON.stringify(state.itinerary, null, 2)], { type: "application/json" });
+  const jsonText = els.editorView.hidden ? JSON.stringify(state.itinerary, null, 2) : els.editor.value;
+  let tripTitle = state.itinerary.tripTitle;
+
+  try {
+    tripTitle = JSON.parse(jsonText).tripTitle || tripTitle;
+  } catch {
+    // Invalid editor JSON can still be downloaded for manual recovery.
+  }
+
+  const blob = new Blob([jsonText], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = `${slugify(state.itinerary.tripTitle)}.json`;
+  anchor.download = `${slugify(tripTitle)}.json`;
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();
@@ -1365,7 +1379,7 @@ function handleSourceSwitch(event) {
   if (!activateItinerarySource(state.editorSource)) {
     syncEditorFromSource();
     updateSourceUi();
-    setStatus("还没有本地版本。可以编辑官方行程或导入 JSON，然后创建本地版本。");
+    setStatus("还没有本地行程。切到本地后可以粘贴或导入 JSON，再点更新。");
   }
 }
 
@@ -1381,7 +1395,7 @@ function updateSourceUi() {
   const isLocalActive = state.activeSource === ITINERARY_SOURCES.local;
   const isLocalEditor = state.editorSource === ITINERARY_SOURCES.local;
 
-  els.sourceIndicator.textContent = isLocalActive ? "本地版本" : "官方行程";
+  els.sourceIndicator.textContent = isLocalActive ? "本地行程" : "官方行程";
   els.sourceIndicator.classList.toggle("local", isLocalActive);
 
   els.sourceSwitch.querySelectorAll("[data-itinerary-source]").forEach((button) => {
@@ -1391,16 +1405,20 @@ function updateSourceUi() {
   });
 
   if (!isLocalEditor) {
-    els.sourceDescription.textContent = "实时读取 GitHub Pages 上的 itinerary.json；这里的编辑会另存为本地版本。";
-    els.applyJson.textContent = "保存为本地版本";
+    els.sourceDescription.textContent = "官方行程来自 GitHub Pages；这里只能下载或复制。";
   } else if (state.localVersion) {
     els.sourceDescription.textContent = `仅保存在这个浏览器 · ${formatLocalVersionTime(state.localVersion.savedAt)}`;
-    els.applyJson.textContent = "更新本地版本";
+    els.applyJson.textContent = "更新";
   } else {
-    els.sourceDescription.textContent = "尚未创建；当前编辑框以官方行程作为起点。";
-    els.applyJson.textContent = "创建本地版本";
+    els.sourceDescription.textContent = "尚未创建；可以粘贴或导入 JSON 后更新。";
+    els.applyJson.textContent = "更新";
   }
 
+  els.editor.readOnly = !isLocalEditor;
+  els.applyJson.hidden = !isLocalEditor;
+  els.downloadJson.textContent = "下载";
+  els.copyJson.textContent = "复制代码";
+  els.deleteLocalVersion.textContent = "删除";
   els.deleteLocalVersion.hidden = !isLocalEditor || !state.localVersion;
 }
 
@@ -1434,14 +1452,14 @@ function saveLocalVersion(itinerary) {
 }
 
 function deleteLocalVersion() {
-  if (!window.confirm("删除这个浏览器里的本地版本？官方行程不会受影响。")) return;
+  if (!window.confirm("删除这个浏览器里的本地行程？官方行程不会受影响。")) return;
 
   state.localVersion = null;
   removeStoredValue(STORAGE_KEYS.localVersion);
   removeStoredValue(STORAGE_KEYS.legacyItinerary);
   state.editorSource = ITINERARY_SOURCES.official;
   activateItinerarySource(ITINERARY_SOURCES.official);
-  setStatus("本地版本已删除，当前显示官方行程。");
+  setStatus("本地行程已删除，当前显示官方行程。");
 }
 
 function readStoredJson(key) {
