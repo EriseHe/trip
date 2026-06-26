@@ -816,7 +816,10 @@ function renderTimeline() {
     blocks.forEach((block, index) => {
       fragment.appendChild(createTimelineBlockNode(day, block));
       if (index < blocks.length - 1) {
-        fragment.appendChild(createTimelineConnectorNode(block.connectionToNext));
+        const connector = createTimelineConnectorNode(block.connectionToNext);
+        if (connector) {
+          fragment.appendChild(connector);
+        }
       }
     });
   });
@@ -877,25 +880,31 @@ function getTimelineItemType(item) {
 }
 
 function createTimelineConnectorNode(connection) {
+  if (!connection?.showDetails) return null;
+
   const node = document.createElement("div");
   const travelMode = normalizeTravelMode(connection?.summary?.travelMode || connection?.mode);
   node.className = `timeline-connector timeline-connector--${travelMode.toLowerCase()}${connection?.detailed ? " is-detailed" : ""}`;
 
   const content = document.createElement("div");
   content.className = "timeline-connector-content";
-  if (connection?.showDetails) {
+
+  const metricsText = formatLegMetrics(connection.summary, modeLabel(travelMode));
+  if (metricsText) {
     const metrics = document.createElement("div");
     metrics.className = "timeline-connector-metrics";
-    metrics.textContent = formatLegMetrics(connection.summary, modeLabel(travelMode));
+    metrics.textContent = metricsText;
     content.appendChild(metrics);
-
-    if (connection.detailed && connection.note) {
-      const note = document.createElement("p");
-      note.className = "timeline-connector-note";
-      note.textContent = connection.note;
-      content.appendChild(note);
-    }
   }
+
+  if (connection.detailed && connection.note) {
+    const note = document.createElement("p");
+    note.className = "timeline-connector-note";
+    note.textContent = connection.note;
+    content.appendChild(note);
+  }
+
+  if (!content.hasChildNodes()) return null;
 
   node.append(content);
   return node;
