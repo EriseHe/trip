@@ -111,9 +111,8 @@
       "stops": [
         {
           "id": "shinjuku-prince-start-0626",
-          "time": "09:30",
-          "departAt": "09:40",
-          "duration": "20m",
+          "time": "10:00",
+          "duration": "出发",
           "title": "新宿王子大饭店",
           "place": "Shinjuku Prince Hotel",
           "address": "东京都新宿区歌舞伎町 1-30-1",
@@ -122,15 +121,15 @@
             "lat": 35.69475,
             "lng": 139.7005
           },
-          "notes": "09:40 前准备完毕，从酒店步行去 brunch。",
+          "notes": "从酒店出发，步行去京王 Mall。",
           "travelModeToNext": "WALKING",
           "type": "hotel"
         },
         {
           "id": "keio-mall-brunch",
-          "time": "10:00",
+          "time": "10:15",
           "departAt": "11:00",
-          "duration": "1h",
+          "duration": "45m",
           "title": "京王 Mall · Brunch",
           "place": "Keio Mall",
           "address": "东京都新宿区西新宿 1 丁目南口地下街 1 号",
@@ -139,7 +138,7 @@
             "lat": 35.689756,
             "lng": 139.69937
           },
-          "notes": "已确定的 brunch；建议 10:55 结账，11:00 出发。",
+          "notes": "brunch；建议 10:55 结账，11:00 出发。",
           "travelDurationToNext": "约 45 分钟",
           "transportFrom": "新宿站",
           "transportTo": "浅草站",

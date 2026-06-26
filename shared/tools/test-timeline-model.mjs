@@ -57,7 +57,7 @@ function testCompactTransport() {
   const blocks = buildTimelineBlocks(day, summaries, {
     defaultTravelMode: japan.defaultTravelMode,
   });
-  const walkingConnection = blocks.find((block) => block.time === "09:30").connectionToNext;
+  const walkingConnection = blocks.find((block) => block.time === "10:00").connectionToNext;
   assert.equal(walkingConnection.mode, "WALKING");
   assert.equal(walkingConnection.detailed, false);
   assert.equal(walkingConnection.note, "");

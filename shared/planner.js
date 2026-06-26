@@ -827,19 +827,13 @@ function createTimelineBlockNode(day, block, index, blockCount) {
   time.className = "timeline-time";
   time.textContent = block.time;
 
-  const rail = document.createElement("div");
-  rail.className = "timeline-rail";
-  const dot = document.createElement("span");
-  dot.className = "timeline-dot";
-  rail.appendChild(dot);
-
   const items = document.createElement("div");
   items.className = "timeline-items";
   block.items.forEach((item) => {
     items.appendChild(createTimelineItemNode(day, item));
   });
 
-  node.append(time, rail, items);
+  node.append(time, items);
   return node;
 }
 
@@ -883,9 +877,6 @@ function createTimelineConnectorNode(connection) {
   const time = document.createElement("div");
   time.className = "timeline-connector-time";
 
-  const rail = document.createElement("div");
-  rail.className = "timeline-connector-rail";
-
   const content = document.createElement("div");
   content.className = "timeline-connector-content";
   if (connection?.showDetails) {
@@ -902,7 +893,7 @@ function createTimelineConnectorNode(connection) {
     }
   }
 
-  node.append(time, rail, content);
+  node.append(time, content);
   return node;
 }
 
