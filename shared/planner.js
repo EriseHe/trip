@@ -814,7 +814,7 @@ function renderTimeline() {
 
     const summaries = state.legSummariesByDay.get(day.id) || [];
     day.stops.forEach((stop, index) => {
-      fragment.appendChild(createStopCard(day, stop));
+      fragment.appendChild(createStopCard(day, stop, index, day.stops.length));
 
       const summary = summaries[index];
       if (summary) {
@@ -826,15 +826,17 @@ function renderTimeline() {
   els.timeline.replaceChildren(fragment);
 }
 
-function createStopCard(day, stop) {
+function createStopCard(day, stop, index = 0, stopCount = 1) {
   const card = document.createElement("article");
   const stopType = normalizeStopType(stop.type || inferStopType(stop));
-  card.className = `stop-card stop-card--${stopType}${UNBOXED_STOP_TYPES.has(stopType) ? " stop-card--plain" : ""}${isStopCurrent(day, stop) ? " is-now" : ""}`;
+  card.className = `stop-card stop-card--${stopType}${UNBOXED_STOP_TYPES.has(stopType) ? " stop-card--plain" : ""}${isStopCurrent(day, stop) ? " is-now" : ""}${index === 0 ? " is-day-first" : ""}${index === stopCount - 1 ? " is-day-last" : ""}`;
   card.dataset.dayId = day.id;
   card.dataset.stopId = stop.id;
   card.tabIndex = 0;
   card.role = "link";
   card.title = "在 Google Maps 中打开";
+
+  const rail = createTimelineRailNode(true);
 
   const time = document.createElement("div");
   time.className = "stop-time";
@@ -851,8 +853,22 @@ function createStopCard(day, stop) {
   details.textContent = detailParts.join(" · ");
 
   body.append(title, details);
-  card.append(time, body);
+  card.append(rail, time, body);
   return card;
+}
+
+function createTimelineRailNode(hasDot = false) {
+  const rail = document.createElement("span");
+  rail.className = `timeline-rail${hasDot ? " timeline-rail--stop" : ""}`;
+  rail.setAttribute("aria-hidden", "true");
+
+  if (hasDot) {
+    const dot = document.createElement("span");
+    dot.className = "timeline-dot";
+    rail.appendChild(dot);
+  }
+
+  return rail;
 }
 
 function createLegNode(summary, originStop, destinationStop) {
@@ -874,6 +890,8 @@ function createTransportEntryNode(summary, originStop, destinationStop) {
   const mode = document.createElement("div");
   mode.className = "transport-entry-mode";
   mode.textContent = modeLabel(summary.travelMode);
+
+  const rail = createTimelineRailNode();
 
   const content = document.createElement("div");
   content.className = "transport-entry-content";
@@ -900,7 +918,7 @@ function createTransportEntryNode(summary, originStop, destinationStop) {
     content.appendChild(navigation);
   }
 
-  node.append(mode, content);
+  node.append(rail, mode, content);
   return node;
 }
 
@@ -971,6 +989,8 @@ function createCompactLegSummaryNode(summary) {
   connector.className = "leg-summary-arrow";
   connector.textContent = "↓";
 
+  const rail = createTimelineRailNode();
+
   const content = document.createElement("div");
   content.className = "leg-summary-content";
 
@@ -992,7 +1012,7 @@ function createCompactLegSummaryNode(summary) {
     content.appendChild(navigation);
   }
 
-  node.append(connector, content);
+  node.append(rail, connector, content);
   return node;
 }
 

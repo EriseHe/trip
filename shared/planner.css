@@ -351,15 +351,18 @@ button:focus-visible,
 }
 
 .stop-card {
+  position: relative;
   display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: 15px 58px minmax(0, 1fr);
+  gap: 0;
   align-items: start;
   border: 1px solid var(--border);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.84);
   cursor: pointer;
-  padding: 13px 14px;
+  padding: 13px 14px 13px 0;
+  --timeline-dot-center: 22px;
+  --timeline-dot-top: 18px;
 }
 
 .stop-card:hover {
@@ -376,7 +379,9 @@ button:focus-visible,
   border-color: transparent;
   border-radius: 12px;
   background: transparent;
-  padding: 7px 14px;
+  padding: 7px 14px 7px 0;
+  --timeline-dot-center: 16px;
+  --timeline-dot-top: 12px;
 }
 
 .stop-card--plain:hover {
@@ -394,11 +399,56 @@ button:focus-visible,
   border-radius: 0;
   background: rgba(15, 118, 110, 0.14);
   padding-right: 32px;
-  padding-left: 32px;
+  padding-left: 18px;
 }
 
 .stop-card--hotel:hover {
   background: rgba(15, 118, 110, 0.18);
+}
+
+.timeline-rail {
+  position: relative;
+  grid-column: 1;
+  align-self: stretch;
+  width: 12px;
+  min-height: 100%;
+  pointer-events: none;
+}
+
+.timeline-rail::before {
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  left: 50%;
+  width: 2px;
+  background: rgba(37, 99, 235, 0.22);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.timeline-dot {
+  position: absolute;
+  top: var(--timeline-dot-top);
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--time-station);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.22);
+  transform: translateX(-50%);
+}
+
+.stop-card.is-day-first .timeline-rail::before {
+  top: var(--timeline-dot-center);
+}
+
+.stop-card.is-day-last .timeline-rail::before {
+  bottom: calc(100% - var(--timeline-dot-center));
+}
+
+.stop-card--hotel .timeline-dot {
+  background: var(--time-hotel);
 }
 
 .stop-card--hotel .stop-time {
@@ -431,6 +481,7 @@ button:focus-visible,
 }
 
 .stop-time {
+  grid-column: 2;
   color: var(--time-destination);
   font-size: 14px;
   font-weight: 850;
@@ -439,7 +490,9 @@ button:focus-visible,
 }
 
 .stop-body {
+  grid-column: 3;
   min-width: 0;
+  margin-left: 12px;
 }
 
 .stop-body h3 {
@@ -456,20 +509,24 @@ button:focus-visible,
 }
 
 .leg-summary {
+  position: relative;
   display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: 15px 58px minmax(0, 1fr);
+  gap: 0;
   margin: -2px 0;
   color: var(--subtle);
   font-size: 12px;
 }
 
 .leg-summary-arrow {
+  grid-column: 2;
   text-align: center;
 }
 
 .leg-summary-content {
+  grid-column: 3;
   min-width: 0;
+  margin-left: 12px;
 }
 
 .leg-summary-metrics {
@@ -492,16 +549,18 @@ button:focus-visible,
 }
 
 .transport-entry {
+  position: relative;
   display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: 15px 58px minmax(0, 1fr);
+  gap: 0;
   border-top: 1px solid rgba(37, 99, 235, 0.18);
   border-bottom: 1px solid rgba(37, 99, 235, 0.18);
   background: rgba(37, 99, 235, 0.06);
-  padding: 12px 14px;
+  padding: 12px 14px 12px 0;
 }
 
 .transport-entry-mode {
+  grid-column: 2;
   color: var(--time-station);
   font-size: 12px;
   font-weight: 850;
@@ -510,7 +569,9 @@ button:focus-visible,
 }
 
 .transport-entry-content {
+  grid-column: 3;
   min-width: 0;
+  margin-left: 12px;
 }
 
 .transport-entry-route {
