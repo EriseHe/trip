@@ -828,6 +828,10 @@ function createTimelineBlockNode(day, block, index, blockCount) {
   const hasHotel = block.items.some((item) => getTimelineItemType(item) === "hotel");
   node.className = `timeline-block${index === 0 ? " is-first" : ""}${index === blockCount - 1 ? " is-last" : ""}${hasHotel ? " has-hotel" : ""}`;
 
+  const rail = document.createElement("div");
+  rail.className = "timeline-rail";
+  rail.setAttribute("aria-hidden", "true");
+
   const time = document.createElement("div");
   time.className = "timeline-time";
   time.textContent = block.time;
@@ -838,7 +842,7 @@ function createTimelineBlockNode(day, block, index, blockCount) {
     items.appendChild(createTimelineItemNode(day, item));
   });
 
-  node.append(time, items);
+  node.append(rail, time, items);
   return node;
 }
 
@@ -879,6 +883,10 @@ function createTimelineConnectorNode(connection) {
   const node = document.createElement("div");
   node.className = `timeline-connector${connection?.detailed ? " is-detailed" : ""}`;
 
+  const rail = document.createElement("div");
+  rail.className = "timeline-rail";
+  rail.setAttribute("aria-hidden", "true");
+
   const time = document.createElement("div");
   time.className = "timeline-connector-time";
 
@@ -898,7 +906,7 @@ function createTimelineConnectorNode(connection) {
     }
   }
 
-  node.append(time, content);
+  node.append(rail, time, content);
   return node;
 }
 
