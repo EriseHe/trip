@@ -339,7 +339,6 @@ button:focus-visible,
 .timeline {
   display: grid;
   gap: 0;
-  --timeline-time-column: 64px;
 }
 
 .day-heading {
@@ -354,27 +353,74 @@ button:focus-visible,
 .timeline-block,
 .timeline-connector {
   display: grid;
-  grid-template-columns: var(--timeline-time-column) minmax(0, 1fr);
+  grid-template-columns: 15px 72px minmax(0, 1fr);
   gap: 0;
   position: relative;
 }
 
 .timeline-block {
   align-items: start;
-  padding: 5px 0;
+  padding: 5px 14px 5px 0;
+  --timeline-dot-center: 9px;
+  --timeline-dot-top: 5px;
 }
 
 .timeline-block.has-hotel {
   margin-right: -18px;
   margin-left: -18px;
-  padding-right: 18px;
+  padding-right: 32px;
   padding-left: 18px;
   background: rgba(15, 118, 110, 0.14);
 }
 
-.timeline-time {
+.timeline-block.is-day-first .timeline-rail::before {
+  top: var(--timeline-dot-center);
+}
+
+.timeline-block.is-day-last .timeline-rail::before {
+  bottom: calc(100% - var(--timeline-dot-center));
+}
+
+.timeline-block.has-hotel .timeline-dot {
+  background: var(--time-hotel);
+}
+
+.timeline-rail {
   grid-column: 1;
-  justify-self: start;
+  position: relative;
+  align-self: stretch;
+  width: 12px;
+  min-height: 100%;
+  pointer-events: none;
+}
+
+.timeline-rail::before {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: 50%;
+  width: 2px;
+  background: rgba(37, 99, 235, 0.22);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.timeline-dot {
+  position: absolute;
+  top: var(--timeline-dot-top);
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--time-station);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.22);
+  transform: translateX(-50%);
+}
+
+.timeline-time {
+  grid-column: 2;
+  justify-self: center;
   color: var(--time-destination);
   font-size: 14px;
   font-weight: 850;
@@ -388,11 +434,11 @@ button:focus-visible,
 }
 
 .timeline-items {
-  grid-column: 2;
+  grid-column: 3;
   display: grid;
   gap: 7px;
   min-width: 0;
-  margin-left: 0;
+  margin-left: 10px;
 }
 
 .timeline-item {
@@ -400,11 +446,11 @@ button:focus-visible,
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.84);
   cursor: pointer;
-  padding: 10px;
+  padding: 13px 14px;
 }
 
 .timeline-item:not(.timeline-item--plain) {
-  margin-left: -10px;
+  margin-left: -14px;
 }
 
 .timeline-item:hover {
@@ -462,7 +508,7 @@ button:focus-visible,
 
 .timeline-connector {
   min-height: 26px;
-  padding: 0;
+  padding: 0 14px 0 0;
   color: var(--subtle);
 }
 
@@ -470,11 +516,15 @@ button:focus-visible,
   min-height: 64px;
 }
 
-.timeline-connector-content {
+.timeline-connector-spacer {
   grid-column: 2;
+}
+
+.timeline-connector-content {
+  grid-column: 3;
   align-self: center;
   min-width: 0;
-  margin-left: 0;
+  margin-left: 10px;
   padding: 3px 0;
 }
 
@@ -494,8 +544,8 @@ button:focus-visible,
 .timeline-connector--train .timeline-connector-content,
 .timeline-connector--shinkansen .timeline-connector-content,
 .timeline-connector--flight .timeline-connector-content {
-  margin-left: -10px;
-  padding: 8px 10px;
+  margin-left: -4px;
+  padding: 8px 14px;
   border-top: 1px solid rgba(37, 99, 235, 0.18);
   border-bottom: 1px solid rgba(37, 99, 235, 0.18);
   background: rgba(37, 99, 235, 0.06);
@@ -759,11 +809,6 @@ button:focus-visible,
 
   .panel-section {
     max-height: none;
-    padding: 14px;
-  }
-
-  .timeline {
-    --timeline-time-column: 58px;
   }
 
   .editor-page {

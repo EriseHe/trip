@@ -814,12 +814,9 @@ function renderTimeline() {
       defaultTravelMode: state.itinerary.defaultTravelMode,
     });
     blocks.forEach((block, index) => {
-      fragment.appendChild(createTimelineBlockNode(day, block));
+      fragment.appendChild(createTimelineBlockNode(day, block, index, blocks.length));
       if (index < blocks.length - 1) {
-        const connector = createTimelineConnectorNode(block.connectionToNext);
-        if (connector) {
-          fragment.appendChild(connector);
-        }
+        fragment.appendChild(createTimelineConnectorNode(block.connectionToNext));
       }
     });
   });
@@ -827,10 +824,11 @@ function renderTimeline() {
   els.timeline.replaceChildren(fragment);
 }
 
-function createTimelineBlockNode(day, block) {
+function createTimelineBlockNode(day, block, index, blockCount) {
   const node = document.createElement("section");
   const hasHotel = block.items.some((item) => getTimelineItemType(item) === "hotel");
-  node.className = `timeline-block${hasHotel ? " has-hotel" : ""}`;
+  node.className = `timeline-block${index === 0 ? " is-day-first" : ""}${index === blockCount - 1 ? " is-day-last" : ""}${hasHotel ? " has-hotel" : ""}`;
+  const rail = createTimelineRailNode(true);
 
   const time = document.createElement("div");
   time.className = "timeline-time";
@@ -842,7 +840,7 @@ function createTimelineBlockNode(day, block) {
     items.appendChild(createTimelineItemNode(day, item));
   });
 
-  node.append(time, items);
+  node.append(rail, time, items);
   return node;
 }
 
@@ -879,34 +877,46 @@ function getTimelineItemType(item) {
   return normalizeStopType(stop.type || inferStopType(stop));
 }
 
-function createTimelineConnectorNode(connection) {
-  if (!connection?.showDetails) return null;
+function createTimelineRailNode(hasDot = false) {
+  const rail = document.createElement("span");
+  rail.className = `timeline-rail${hasDot ? " timeline-rail--stop" : ""}`;
+  rail.setAttribute("aria-hidden", "true");
 
+  if (hasDot) {
+    const dot = document.createElement("span");
+    dot.className = "timeline-dot";
+    rail.appendChild(dot);
+  }
+
+  return rail;
+}
+
+function createTimelineConnectorNode(connection) {
   const node = document.createElement("div");
   const travelMode = normalizeTravelMode(connection?.summary?.travelMode || connection?.mode);
   node.className = `timeline-connector timeline-connector--${travelMode.toLowerCase()}${connection?.detailed ? " is-detailed" : ""}`;
+  const rail = createTimelineRailNode();
+
+  const spacer = document.createElement("div");
+  spacer.className = "timeline-connector-spacer";
 
   const content = document.createElement("div");
   content.className = "timeline-connector-content";
-
-  const metricsText = formatLegMetrics(connection.summary, modeLabel(travelMode));
-  if (metricsText) {
+  if (connection?.showDetails) {
     const metrics = document.createElement("div");
     metrics.className = "timeline-connector-metrics";
-    metrics.textContent = metricsText;
+    metrics.textContent = formatLegMetrics(connection.summary, modeLabel(travelMode));
     content.appendChild(metrics);
+
+    if (connection.detailed && connection.note) {
+      const note = document.createElement("p");
+      note.className = "timeline-connector-note";
+      note.textContent = connection.note;
+      content.appendChild(note);
+    }
   }
 
-  if (connection.detailed && connection.note) {
-    const note = document.createElement("p");
-    note.className = "timeline-connector-note";
-    note.textContent = connection.note;
-    content.appendChild(note);
-  }
-
-  if (!content.hasChildNodes()) return null;
-
-  node.append(content);
+  node.append(rail, spacer, content);
   return node;
 }
 
