@@ -92,7 +92,7 @@ textarea {
 input:focus,
 textarea:focus,
 button:focus-visible,
-.timeline-item:focus-visible {
+.stop-card:focus-visible {
   outline: 4px solid rgba(15, 118, 110, 0.18);
   outline-offset: 2px;
 }
@@ -338,7 +338,7 @@ button:focus-visible,
 
 .timeline {
   display: grid;
-  gap: 0;
+  gap: 8px;
 }
 
 .day-heading {
@@ -350,176 +350,196 @@ button:focus-visible,
   text-transform: uppercase;
 }
 
-.timeline-block,
-.timeline-connector {
+.stop-card {
   display: grid;
-  grid-template-columns: 16px 84px minmax(0, 1fr);
-  column-gap: 0;
-}
-
-.timeline-block,
-.timeline-connector {
-  position: relative;
-}
-
-.timeline-rail {
-  position: relative;
-  grid-column: 1;
-  grid-row: 1;
-  min-height: 100%;
-}
-
-.timeline-rail::before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: rgba(37, 99, 235, 0.24);
-  content: "";
-  transform: translateX(-50%);
-}
-
-.timeline-block.has-hotel {
-  margin-right: -18px;
-  margin-left: -18px;
-  padding-right: 18px;
-  padding-left: 18px;
-  background: rgba(15, 118, 110, 0.14);
-}
-
-.timeline-time {
-  position: relative;
-  z-index: 1;
-  grid-column: 2;
-  align-self: start;
-  justify-self: start;
-  min-width: 84px;
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  border-radius: 999px;
-  background: #fff;
-  color: var(--time-destination);
-  font-size: 14px;
-  font-weight: 850;
-  line-height: 1.25;
-  margin-top: 8px;
-  padding: 5px 8px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.timeline-block.has-hotel .timeline-time {
-  border-color: rgba(15, 118, 110, 0.28);
-  background: rgba(255, 255, 255, 0.78);
-  color: var(--time-hotel);
-}
-
-.timeline-block.is-first .timeline-rail::before {
-  top: 24px;
-}
-
-.timeline-block.is-last .timeline-rail::before {
-  bottom: calc(100% - 24px);
-}
-
-.timeline-items {
-  display: grid;
-  grid-column: 3;
-  gap: 7px;
-  min-width: 0;
-  margin-left: 10px;
-  padding: 5px 0;
-}
-
-.timeline-item {
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
   border: 1px solid var(--border);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.84);
   cursor: pointer;
-  padding: 11px 14px;
+  padding: 13px 14px;
 }
 
-.timeline-item:hover {
+.stop-card:hover {
   border-color: var(--border);
   background: rgba(255, 255, 255, 0.84);
 }
 
-.timeline-item.is-now {
+.stop-card.is-now {
   border-color: rgba(15, 118, 110, 0.44);
   background: rgba(15, 118, 110, 0.1);
 }
 
-.timeline-item--plain {
+.stop-card--plain {
   border-color: transparent;
   border-radius: 12px;
   background: transparent;
-  padding: 5px 14px;
+  padding: 7px 14px;
 }
 
-.timeline-item--plain:hover {
+.stop-card--plain:hover {
   border-color: transparent;
   background: transparent;
   transform: none;
 }
 
-.timeline-item--hotel,
-.timeline-item--hotel:hover,
-.timeline-item--hotel.is-now {
+.stop-card--hotel,
+.stop-card--hotel:hover,
+.stop-card--hotel.is-now {
+  margin-right: -18px;
+  margin-left: -18px;
   border-color: transparent;
   border-radius: 0;
-  background: transparent;
+  background: rgba(15, 118, 110, 0.14);
+  padding-right: 32px;
+  padding-left: 32px;
 }
 
-.timeline-item--hotel h3 {
+.stop-card--hotel:hover {
+  background: rgba(15, 118, 110, 0.18);
+}
+
+.stop-card--hotel .stop-time {
   color: var(--time-hotel);
 }
 
-.timeline-item--station h3 {
+.stop-card--station .stop-time {
   color: var(--time-station);
 }
 
-.timeline-item h3 {
+.stop-card--hotel .stop-body h3 {
+  color: var(--time-hotel);
+}
+
+.stop-card--station .stop-body h3 {
+  color: var(--time-station);
+}
+
+.stop-card--destination .stop-time,
+.stop-card--sight .stop-time {
+  color: var(--time-destination);
+}
+
+.stop-card--restaurant .stop-time {
+  color: var(--time-restaurant);
+}
+
+.stop-card--area .stop-time {
+  color: var(--time-area);
+}
+
+.stop-time {
+  color: var(--time-destination);
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.stop-body {
+  min-width: 0;
+}
+
+.stop-body h3 {
   margin: 0 0 4px;
   font-size: 15px;
   line-height: 1.25;
 }
 
-.timeline-item p {
+.stop-body p {
   margin: 0;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.4;
 }
 
-.timeline-connector {
-  min-height: 18px;
+.leg-summary {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+  margin: -2px 0;
+  color: var(--subtle);
+  font-size: 12px;
 }
 
-.timeline-connector.is-detailed {
-  min-height: 58px;
+.leg-summary-arrow {
+  text-align: center;
 }
 
-.timeline-connector-content {
-  grid-column: 3;
-  align-self: center;
+.leg-summary-content {
   min-width: 0;
-  margin-left: 10px;
-  padding: 3px 14px;
 }
 
-.timeline-connector-metrics {
+.leg-summary-metrics {
+  line-height: 1.4;
+}
+
+.leg-summary-navigation {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.leg-summary.fallback {
+  color: var(--muted);
+}
+
+.leg-summary.cached {
   color: var(--green);
+}
+
+.transport-entry {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+  border-top: 1px solid rgba(37, 99, 235, 0.18);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.18);
+  background: rgba(37, 99, 235, 0.06);
+  padding: 12px 14px;
+}
+
+.transport-entry-mode {
+  color: var(--time-station);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.transport-entry-content {
+  min-width: 0;
+}
+
+.transport-entry-route {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+  align-items: baseline;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.transport-entry-route strong {
+  font-weight: 850;
+}
+
+.transport-entry-route span {
+  color: var(--time-station);
+}
+
+.transport-entry-meta {
+  margin-top: 3px;
+  color: var(--time-station);
   font-size: 12px;
   font-weight: 750;
   line-height: 1.4;
 }
 
-.timeline-connector.is-detailed .timeline-connector-metrics {
-  color: var(--time-station);
-  font-weight: 850;
-}
-
-.timeline-connector-note {
+.transport-entry-navigation {
   margin: 4px 0 0;
   color: var(--muted);
   font-size: 12px;

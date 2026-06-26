@@ -404,8 +404,29 @@ function createRouteCacheEntry(leg, directions, resultLeg) {
       arrival,
       estimateSource: directions.estimateSource,
       approximate: directions.approximate || false,
+      navigation: createDirectionsNavigation(resultLeg),
     },
   };
+}
+
+function createDirectionsNavigation(resultLeg) {
+  const transitSegments = (resultLeg?.steps || [])
+    .map((step) => formatTransitStep(step.transit))
+    .filter(Boolean);
+  return transitSegments.join("；");
+}
+
+function formatTransitStep(transit) {
+  if (!transit) return "";
+
+  const line = transit.line?.short_name || transit.line?.name || transit.line?.vehicle?.name || "";
+  const departure = transit.departure_stop?.name || "";
+  const arrival = transit.arrival_stop?.name || "";
+  const stops = Number(transit.num_stops);
+  const route = departure && arrival ? `${departure} → ${arrival}` : departure || arrival;
+  const stopCount = Number.isFinite(stops) && stops > 0 ? `${stops}站` : "";
+
+  return [line, route, stopCount].filter(Boolean).join(" · ");
 }
 
 function getDirectionsLegPath(resultLeg) {
@@ -435,6 +456,7 @@ function createFallbackRouteCacheEntry(leg) {
       distance: "已显示直线",
       fallback: true,
       manualEstimate: Boolean(manualDuration),
+      navigation: leg.originStop.navigationToNext || "",
     },
   };
 }
