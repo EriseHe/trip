@@ -893,21 +893,19 @@ function createTimelineRailNode(hasDot = false) {
 
 function createTimelineConnectorNode(connection) {
   const node = document.createElement("div");
-  node.className = `timeline-connector${connection?.detailed ? " is-detailed" : ""}`;
+  const travelMode = normalizeTravelMode(connection?.summary?.travelMode || connection?.mode);
+  node.className = `timeline-connector timeline-connector--${travelMode.toLowerCase()}${connection?.detailed ? " is-detailed" : ""}`;
   const rail = createTimelineRailNode();
 
-  const mode = document.createElement("div");
-  mode.className = "timeline-connector-mode";
-  if (connection?.showDetails) {
-    mode.textContent = modeLabel(connection.summary?.travelMode || connection.mode);
-  }
+  const spacer = document.createElement("div");
+  spacer.className = "timeline-connector-spacer";
 
   const content = document.createElement("div");
   content.className = "timeline-connector-content";
   if (connection?.showDetails) {
     const metrics = document.createElement("div");
     metrics.className = "timeline-connector-metrics";
-    metrics.textContent = formatLegMetrics(connection.summary);
+    metrics.textContent = formatLegMetrics(connection.summary, modeLabel(travelMode));
     content.appendChild(metrics);
 
     if (connection.detailed && connection.note) {
@@ -918,19 +916,18 @@ function createTimelineConnectorNode(connection) {
     }
   }
 
-  node.append(rail, mode, content);
+  node.append(rail, spacer, content);
   return node;
 }
 
-function formatLegMetrics(summary = {}) {
+function formatLegMetrics(summary = {}, mode = "") {
   if (summary.planned) {
-    return summary.duration && summary.duration !== "未计算"
-      ? summary.duration
-      : "未计算路线";
+    const duration = summary.duration && summary.duration !== "未计算" ? summary.duration : "未计算路线";
+    return [mode, duration].filter(Boolean).join(" · ");
   }
   const duration = summary.duration && summary.duration !== "未计算" ? summary.duration : "";
   const distance = summary.distance && !summary.fallback && summary.distance !== "计划连线" ? summary.distance : "";
-  return [duration, distance].filter(Boolean).join(" · ");
+  return [mode, duration, distance].filter(Boolean).join(" · ");
 }
 
 function openStopInfoWindow(day, stop, stopIndex, marker) {

@@ -353,7 +353,7 @@ button:focus-visible,
 .timeline-block,
 .timeline-connector {
   display: grid;
-  grid-template-columns: 15px 58px minmax(0, 1fr);
+  grid-template-columns: 15px 72px minmax(0, 1fr);
   gap: 0;
   position: relative;
 }
@@ -420,10 +420,12 @@ button:focus-visible,
 
 .timeline-time {
   grid-column: 2;
+  justify-self: center;
   color: var(--time-destination);
   font-size: 14px;
   font-weight: 850;
   line-height: 1.25;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -436,7 +438,7 @@ button:focus-visible,
   display: grid;
   gap: 7px;
   min-width: 0;
-  margin-left: 12px;
+  margin-left: 10px;
 }
 
 .timeline-item {
@@ -445,6 +447,10 @@ button:focus-visible,
   background: rgba(255, 255, 255, 0.84);
   cursor: pointer;
   padding: 13px 14px;
+}
+
+.timeline-item:not(.timeline-item--plain) {
+  margin-left: -14px;
 }
 
 .timeline-item:hover {
@@ -510,21 +516,15 @@ button:focus-visible,
   min-height: 64px;
 }
 
-.timeline-connector-mode {
+.timeline-connector-spacer {
   grid-column: 2;
-  align-self: center;
-  color: var(--time-station);
-  font-size: 12px;
-  font-weight: 850;
-  line-height: 1.4;
-  text-align: right;
 }
 
 .timeline-connector-content {
   grid-column: 3;
   align-self: center;
   min-width: 0;
-  margin-left: 12px;
+  margin-left: 10px;
   padding: 3px 0;
 }
 
@@ -536,6 +536,25 @@ button:focus-visible,
 }
 
 .timeline-connector.is-detailed .timeline-connector-metrics {
+  color: var(--time-station);
+  font-weight: 850;
+}
+
+.timeline-connector--transit .timeline-connector-content,
+.timeline-connector--train .timeline-connector-content,
+.timeline-connector--shinkansen .timeline-connector-content,
+.timeline-connector--flight .timeline-connector-content {
+  margin-left: -4px;
+  padding: 8px 14px;
+  border-top: 1px solid rgba(37, 99, 235, 0.18);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.18);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.timeline-connector--transit .timeline-connector-metrics,
+.timeline-connector--train .timeline-connector-metrics,
+.timeline-connector--shinkansen .timeline-connector-metrics,
+.timeline-connector--flight .timeline-connector-metrics {
   color: var(--time-station);
   font-weight: 850;
 }
