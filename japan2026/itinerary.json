@@ -439,149 +439,103 @@
     {
       "id": "2026-06-28-tokyo-to-nagoya",
       "date": "2026-06-28",
-      "label": "6/28 · 东京 → 名古屋",
+      "label": "6/28 · 名古屋港水族馆 / 名駅寿司",
       "color": "#7c3aed",
       "stops": [
         {
-          "id": "shinjuku-prince-checkout",
-          "time": "08:30",
-          "duration": "30m",
-          "title": "新宿王子大饭店",
-          "place": "Shinjuku Prince Hotel, Tokyo, Japan",
-          "coords": {
-            "lat": 35.69475,
-            "lng": 139.7005
-          },
-          "notes": "办理退房。",
-          "travelModeToNext": "TRANSIT",
-          "type": "hotel"
-        },
-        {
-          "id": "tokyo-station-to-nagoya",
-          "time": "10:00",
-          "duration": "30m",
-          "title": "东京站",
-          "place": "Tokyo Station, Tokyo, Japan",
-          "coords": {
-            "lat": 35.681236,
-            "lng": 139.767125
-          },
-          "notes": "搭乘新干线前往名古屋，约1小时40分抵达。",
-          "departAt": "10:20",
-          "arriveAt": "12:00",
-          "travelDurationToNext": "约 1 小时 40 分钟",
-          "transportFrom": "东京站",
-          "transportTo": "名古屋站",
-          "transportFromMapsQuery": "东京站，Tokyo, Japan",
-          "transportToMapsQuery": "名古屋站，Nagoya, Japan",
-          "transportNote": "在东京站进入东海道新干线区域，乘往名古屋方向的列车；抵达后按樱通口 / 太阁通口指示出站。",
-          "travelModeToNext": "SHINKANSEN",
-          "type": "station"
-        },
-        {
-          "id": "nagoya-station-arrival",
+          "id": "shinpachi-shokudo-nagoya-lunch",
           "time": "12:00",
-          "duration": "30m",
-          "title": "名古屋站",
-          "place": "Nagoya Station, Nagoya, Aichi, Japan",
-          "coords": {
-            "lat": 35.170915,
-            "lng": 136.881537
-          },
-          "notes": "抵达名古屋。",
-          "travelModeToNext": "WALKING",
-          "type": "station"
-        },
-        {
-          "id": "via-inn-nagoya",
-          "time": "12:45",
-          "duration": "30m",
-          "title": "名古屋站前椿町维亚酒店",
-          "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, 9-13 Tsubakicho, Nakamura Ward, Nagoya, Aichi, Japan",
-          "coords": {
-            "lat": 35.1695482,
-            "lng": 136.8782109
-          },
-          "notes": "名古屋酒店 (6/28)。放下行李，准备游览。",
-          "travelModeToNext": "DRIVING",
-          "type": "hotel"
-        },
-        {
-          "id": "nagoya-castle",
-          "time": "14:30",
-          "duration": "1h 30m",
-          "title": "名古屋城",
-          "place": "Nagoya Castle, Nagoya, Aichi, Japan",
-          "coords": {
-            "lat": 35.185575,
-            "lng": 136.899
-          },
-          "notes": "参观江户时代的名古屋城天守阁和本丸御殿。",
-          "travelModeToNext": "DRIVING",
-          "type": "sight"
-        },
-        {
-          "id": "osu-kannon",
-          "time": "17:00",
+          "departAt": "12:45",
           "duration": "45m",
-          "title": "大须观音",
-          "place": "Osu Kannon, Nagoya, Aichi, Japan",
+          "title": "しんぱち食堂 名古屋駅西口店",
+          "place": "Shinpachi Shokudō Nagoya Station West Exit",
+          "address": "7-17 Tsubakicho, Nakamura Ward, Nagoya, Aichi 453-0015, Japan",
+          "mapsQuery": "しんぱち食堂 名古屋駅西口店, 7-17 Tsubakicho, Nakamura Ward, Nagoya, Aichi 453-0015, Japan",
           "coords": {
-            "lat": 35.159563,
-            "lng": 136.905968
+            "lat": 35.1691,
+            "lng": 136.87905
           },
-          "notes": "参拜名古屋著名寺院，附近有古老商店街可逛。",
-          "travelModeToNext": "WALKING",
+          "notes": "现在午饭；吃完直接去名古屋港水族馆。",
+          "travelDurationToNext": "约 45 分钟",
+          "transportFrom": "名古屋站",
+          "transportTo": "名古屋港站",
+          "transportFromMapsQuery": "名古屋站，Nagoya, Japan",
+          "transportToMapsQuery": "名古屋港站，Nagoya, Japan",
+          "navigationToNext": "步行回名古屋站；到金山换乘名港线，名古屋港站下，步行去水族馆。",
+          "travelModeToNext": "TRANSIT",
+          "type": "restaurant"
+        },
+        {
+          "id": "nagoya-port-aquarium",
+          "time": "13:30",
+          "departAt": "16:45",
+          "duration": "3h 15m",
+          "title": "名古屋港水族馆",
+          "place": "Nagoya Port Aquarium, 1-3 Minatomachi, Minato Ward, Nagoya, Aichi 455-0033, Japan",
+          "address": "1-3 Minatomachi, Minato Ward, Nagoya, Aichi 455-0033, Japan",
+          "mapsQuery": "名古屋港水族館, 1-3 Minatomachi, Minato Ward, Nagoya, Aichi 455-0033, Japan",
+          "coords": {
+            "lat": 35.090607,
+            "lng": 136.878602
+          },
+          "notes": "下午主行程；重点看主展馆、海豚和虎鲸区域。16:45 左右离开，预留回名駅吃饭时间。",
+          "travelDurationToNext": "约 50 分钟",
+          "transportFrom": "名古屋港站",
+          "transportTo": "名古屋站",
+          "transportFromMapsQuery": "名古屋港站，Nagoya, Japan",
+          "transportToMapsQuery": "名古屋站，Nagoya, Japan",
+          "navigationToNext": "名古屋港站乘名港线回金山，再换乘到名古屋站；17:45 前回到名駅区域比较稳。",
+          "travelModeToNext": "TRANSIT",
           "type": "sight"
         },
         {
-          "id": "osu-shopping-district",
+          "id": "meieki-sushi-tsugu-omakase",
           "time": "18:00",
-          "duration": "1h 30m",
-          "title": "大须商店街",
-          "place": "Osu Shopping District, Nagoya, Aichi, Japan",
+          "departAt": "20:15",
+          "duration": "2h",
+          "title": "Meieki Sushi Tsugu · Omakase",
+          "place": "nel centro リニア名駅 2F, 10-23 Tsubakicho, Nakamura Ward, Nagoya, Aichi 453-0015, Japan",
+          "address": "Japan, 〒453-0015 Aichi, Nagoya, Nakamura Ward, Tsubakicho, 10−23 nel centro リニア名駅 2F",
+          "mapsQuery": "Japan, 〒453-0015 Aichi, Nagoya, Nakamura Ward, Tsubakicho, 10−23 nel centro リニア名駅 2F",
           "coords": {
-            "lat": 35.158704,
-            "lng": 136.904813
+            "lat": 35.16935,
+            "lng": 136.8794
           },
-          "notes": "逛街购买电子产品、二手和服以及小吃。",
-          "travelModeToNext": "DRIVING",
-          "type": "area"
-        },
-        {
-          "id": "oasis-21-sakae",
-          "time": "20:00",
-          "duration": "1h",
-          "title": "荣 / Oasis 21",
-          "place": "Oasis 21, Nagoya, Aichi, Japan",
-          "coords": {
-            "lat": 35.170278,
-            "lng": 136.909717
-          },
-          "notes": "夜景优美的现代建筑，可散步观赏光之水盘。",
-          "travelModeToNext": "WALKING",
-          "type": "area"
+          "notes": "18:00 准时。名古屋城、大须、Oasis 21 今天先不排；如果晚饭后还有体力，再去 Jazz Inn LOVELY。",
+          "travelModeToNext": "TRANSIT",
+          "type": "restaurant",
+          "travelDurationToNext": "约 25 分钟",
+          "transportFrom": "名古屋站",
+          "transportTo": "荣站",
+          "transportFromMapsQuery": "名古屋站，Nagoya, Japan",
+          "transportToMapsQuery": "荣站，Nagoya, Japan",
+          "navigationToNext": "从名駅区域搭东山线到荣站；出站后步行去 Jazz Inn LOVELY。想省体力也可以直接打车。"
         },
         {
           "id": "jazz-inn-lovely",
-          "time": "22:00",
+          "time": "20:45",
+          "departAt": "22:45",
           "duration": "2h",
           "title": "Jazz Inn LOVELY",
-          "place": "Jazz Inn LOVELY, Higashisakura, Nagoya, Japan",
+          "place": "Jazz Inn LOVELY, Higashisakura, Nagoya, Aichi, Japan",
+          "mapsQuery": "Jazz Inn LOVELY, Higashisakura, Nagoya, Aichi, Japan",
           "coords": {
             "lat": 35.1709,
             "lng": 136.909
           },
-          "notes": "1975年开业的老牌爵士俱乐部，被誉为名古屋最尊敬的爵士场地之一。这里每晚都有现场演出，室内温馨，重视音乐体验，建议提前预约。",
+          "notes": "晚饭后的可选现场爵士；如果水族馆和 omakase 已经很累，就直接跳过回酒店。",
+          "travelDurationToNext": "约 20 分钟",
+          "navigationToNext": "结束后建议打车回名古屋站西口酒店；地铁也可回名古屋站。",
           "travelModeToNext": "DRIVING",
           "type": "nightlife"
         },
         {
           "id": "via-inn-return-0628",
-          "time": "00:00",
+          "time": "23:10",
           "duration": "过夜",
           "title": "名古屋站前椿町维亚酒店",
-          "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, Nagoya, Japan",
+          "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, 9-13 Tsubakicho, Nakamura Ward, Nagoya, Aichi, Japan",
+          "mapsQuery": "VIA INN NAGOYA EKIMAE TSUBAKICHO, 9-13 Tsubakicho, Nakamura Ward, Nagoya, Aichi, Japan",
           "coords": {
             "lat": 35.1695482,
             "lng": 136.8782109

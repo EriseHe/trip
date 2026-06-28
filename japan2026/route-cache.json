@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-26T02:17:01.914Z",
+  "generatedAt": "2026-06-28T07:20:24.406Z",
   "source": "japan2026/itinerary.json",
-  "itineraryHash": "bb2aee1a6e1fbd585de7cd40dc2187e94769a7dd2034ed6a5b91690e0c8c67ee",
-  "routeCount": 68,
+  "itineraryHash": "2a5c5148555741c1d8e511bc85b9a33ab777abd7d853529e8f666ae3e652e5df",
+  "routeCount": 4,
   "requestCount": 40,
-  "approximateCount": 0,
-  "fallbackCount": 14,
-  "failedCount": 14,
+  "approximateCount": 4,
+  "fallbackCount": 4,
+  "failedCount": 13,
   "failures": [
     {
       "cacheKey": "2026-06-26|10:15|TRANSIT|35.689756,139.699370|35.710686,139.796374",
@@ -25,12 +25,6 @@
       "cacheKey": "2026-06-26|20:55|TRANSIT|35.699246,139.770939|35.694750,139.700500",
       "fromStopId": "gigo-akihabara-3-optional",
       "toStopId": "shinjuku-prince-return-0626",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-28|08:30|TRANSIT|35.694750,139.700500|35.681236,139.767125",
-      "fromStopId": "shinjuku-prince-checkout",
-      "toStopId": "tokyo-station-to-nagoya",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
@@ -31860,6 +31854,114 @@
         "approximate": false,
         "navigation": ""
       }
+    }
+  },
+  "2026-06-28|12:00|TRANSIT|35.169100,136.879050|35.090607,136.878602": {
+    "createdAt": "2026-06-28T03:23:54.367Z",
+    "path": [
+      {
+        "lat": 35.1691,
+        "lng": 136.87905
+      },
+      {
+        "lat": 35.090607,
+        "lng": 136.878602
+      }
+    ],
+    "summary": {
+      "fromStopId": "shinpachi-shokudo-nagoya-lunch",
+      "toStopId": "nagoya-port-aquarium",
+      "travelMode": "TRANSIT",
+      "requestedTravelMode": "TRANSIT",
+      "duration": "约 45 分钟",
+      "distance": "约 10 公里",
+      "departure": "12:45",
+      "arrival": "13:30",
+      "estimateSource": "manual-schedule",
+      "approximate": true,
+      "fallback": true,
+      "navigation": "步行回名古屋站；到金山换乘名港线，名古屋港站下，步行去水族馆。"
+    }
+  },
+  "2026-06-28|13:30|TRANSIT|35.090607,136.878602|35.169350,136.879400": {
+    "createdAt": "2026-06-28T03:23:54.371Z",
+    "path": [
+      {
+        "lat": 35.090607,
+        "lng": 136.878602
+      },
+      {
+        "lat": 35.16935,
+        "lng": 136.8794
+      }
+    ],
+    "summary": {
+      "fromStopId": "nagoya-port-aquarium",
+      "toStopId": "meieki-sushi-tsugu-omakase",
+      "travelMode": "TRANSIT",
+      "requestedTravelMode": "TRANSIT",
+      "duration": "约 50 分钟",
+      "distance": "约 10 公里",
+      "departure": "16:45",
+      "arrival": "17:35",
+      "estimateSource": "manual-schedule",
+      "approximate": true,
+      "fallback": true,
+      "navigation": "名古屋港站乘名港线回金山，再换乘到名古屋站；17:45 前回到名駅区域比较稳。"
+    }
+  },
+  "2026-06-28|18:00|TRANSIT|35.169350,136.879400|35.170900,136.909000": {
+    "createdAt": "2026-06-28T07:20:24.387Z",
+    "path": [
+      {
+        "lat": 35.16935,
+        "lng": 136.8794
+      },
+      {
+        "lat": 35.1709,
+        "lng": 136.909
+      }
+    ],
+    "summary": {
+      "fromStopId": "meieki-sushi-tsugu-omakase",
+      "toStopId": "jazz-inn-lovely",
+      "travelMode": "TRANSIT",
+      "requestedTravelMode": "TRANSIT",
+      "duration": "约 25 分钟",
+      "distance": "约 3 公里",
+      "departure": "20:15",
+      "arrival": "20:45",
+      "estimateSource": "manual-schedule",
+      "approximate": true,
+      "fallback": true,
+      "navigation": "从名駅区域搭东山线到荣站；出站后步行去 Jazz Inn LOVELY。想省体力也可以直接打车。"
+    }
+  },
+  "2026-06-28|20:45|DRIVING|35.170900,136.909000|35.169548,136.878211": {
+    "createdAt": "2026-06-28T07:20:24.406Z",
+    "path": [
+      {
+        "lat": 35.1709,
+        "lng": 136.909
+      },
+      {
+        "lat": 35.1695482,
+        "lng": 136.8782109
+      }
+    ],
+    "summary": {
+      "fromStopId": "jazz-inn-lovely",
+      "toStopId": "via-inn-return-0628",
+      "travelMode": "DRIVING",
+      "requestedTravelMode": "DRIVING",
+      "duration": "约 20 分钟",
+      "distance": "约 3 公里",
+      "departure": "22:45",
+      "arrival": "23:10",
+      "estimateSource": "manual-schedule",
+      "approximate": true,
+      "fallback": true,
+      "navigation": "结束后建议打车回名古屋站西口酒店；地铁也可回名古屋站。"
     }
   }
 }
