@@ -439,7 +439,7 @@
     {
       "id": "2026-06-28-tokyo-to-nagoya",
       "date": "2026-06-28",
-      "label": "6/28 · 名駅 / 寿司 / Oasis 21 夜景",
+      "label": "6/28 · 名駅 / 寿司 / Oasis 21 / Jazz",
       "color": "#7c3aed",
       "stops": [
         {
@@ -496,7 +496,7 @@
             "lat": 35.1695482,
             "lng": 136.8782109
           },
-          "notes": "现在从酒店出发。饭前不跨区，先在名駅附近轻松逛，Oasis 21 留到饭后看夜景。",
+          "notes": "现在从酒店出发。饭前不跨区，先在名駅附近轻松逛，Oasis 21 和 Jazz 放到饭后。",
           "travelDurationToNext": "约 6 分钟",
           "navigationToNext": "从酒店步行到 JR Gate Tower / 高岛屋一带，控制体力和时间。",
           "travelModeToNext": "WALKING",
@@ -534,22 +534,22 @@
             "lat": 35.16935,
             "lng": 136.8794
           },
-          "notes": "18:30 准时。吃完后直接去 Oasis 21，夜景比饭前更好。",
+          "notes": "18:30 准时。吃完先冲 Oasis 21 快拍，再步行去 Jazz Inn LOVELY 听最后一段 live。",
           "travelDurationToNext": "约 20 分钟",
           "transportFrom": "名古屋站",
           "transportTo": "荣站",
           "transportFromMapsQuery": "名古屋站，Nagoya, Japan",
           "transportToMapsQuery": "荣站，Nagoya, Japan",
-          "navigationToNext": "从名古屋站搭东山线到荣站，出站去 Oasis 21；如果吃完比较晚，直接打车更稳。",
+          "navigationToNext": "从名古屋站搭东山线到荣站，出站先去 Oasis 21；如果 20:45 以后才离开餐厅，就直接二选一：Jazz 或 Oasis。",
           "travelModeToNext": "TRANSIT",
           "type": "restaurant"
         },
         {
-          "id": "oasis-21-night",
+          "id": "oasis-21-night-quick",
           "time": "20:55",
-          "departAt": "21:20",
-          "duration": "25m",
-          "title": "Oasis 21 水之宇宙船夜景",
+          "departAt": "21:15",
+          "duration": "20m",
+          "title": "Oasis 21 / MIRAI TOWER 夜景快拍",
           "place": "Oasis 21, 1 Chome-11-1 Higashisakura, Higashi Ward, Nagoya, Aichi, Japan",
           "address": "1 Chome-11-1 Higashisakura, Higashi Ward, Nagoya, Aichi 461-0005, Japan",
           "mapsQuery": "Oasis 21, 1 Chome-11-1 Higashisakura, Higashi Ward, Nagoya, Aichi, Japan",
@@ -557,52 +557,34 @@
             "lat": 35.170616,
             "lng": 136.908662
           },
-          "notes": "放在饭后更好看。若屋顶水景已接近关闭，就在银河广场和外部拍夜景。",
-          "travelDurationToNext": "约 6 分钟",
-          "navigationToNext": "从 Oasis 21 步行到久屋大通公园和中部电力 MIRAI TOWER 外观。",
-          "travelModeToNext": "WALKING",
-          "type": "sight"
-        },
-        {
-          "id": "hisaya-mirai-tower-night",
-          "time": "21:25",
-          "departAt": "21:45",
-          "duration": "20m",
-          "title": "久屋大通公园 / 中部电力 MIRAI TOWER 夜景",
-          "place": "Chubu Electric Power MIRAI TOWER, 3 Chome-6-15 Nishiki, Naka Ward, Nagoya, Aichi, Japan",
-          "address": "3 Chome-6-15 Nishiki, Naka Ward, Nagoya, Aichi 460-0003, Japan",
-          "mapsQuery": "中部电力 MIRAI TOWER, 3 Chome-6-15 Nishiki, Naka Ward, Nagoya, Aichi, Japan",
-          "coords": {
-            "lat": 35.172239,
-            "lng": 136.908401
-          },
-          "notes": "只安排外观和公园夜景，不强求上塔；如果累了可直接回酒店。",
+          "notes": "先快拍夜景。水之宇宙船 21:00 关，赶上就先上去；赶不上就拍银河广场、外观和电视塔方向。",
           "travelDurationToNext": "约 5 分钟",
-          "navigationToNext": "Jazz Inn LOVELY 就在荣/东樱附近，想听现场再过去。",
+          "navigationToNext": "从 Oasis 21 / 荣站 7A 一带步行到 Jazz Inn LOVELY。",
           "travelModeToNext": "WALKING",
           "type": "sight"
         },
         {
-          "id": "jazz-inn-lovely",
-          "time": "21:50",
-          "departAt": "22:45",
-          "duration": "可选",
-          "title": "Jazz Inn LOVELY（可选）",
-          "place": "Jazz Inn LOVELY, Higashisakura, Nagoya, Aichi, Japan",
-          "mapsQuery": "Jazz Inn LOVELY, Higashisakura, Nagoya, Aichi, Japan",
+          "id": "jazz-inn-lovely-last-set",
+          "time": "21:20",
+          "departAt": "22:00",
+          "duration": "40m",
+          "title": "Jazz Inn LOVELY · 最后一段 Live",
+          "place": "Jazz Inn LOVELY, 1 Chome-10-15 Higashisakura, Higashi Ward, Nagoya, Aichi, Japan",
+          "address": "1 Chome-10-15 Higashisakura, Higashi Ward, Nagoya, Aichi 461-0005, Japan",
+          "mapsQuery": "Jazz Inn LOVELY, 1 Chome-10-15 Higashisakura, Higashi Ward, Nagoya, Aichi, Japan",
           "coords": {
             "lat": 35.1709,
             "lng": 136.909
           },
-          "notes": "如果晚饭后还有体力再去；不想赶就跳过，Oasis 21 夜景已经够完整。",
+          "notes": "Live 22:00 结束，21:20 到还能听最后一段。若在 Oasis 拍太久，就直接跳过回酒店。",
           "travelDurationToNext": "约 20 分钟",
-          "navigationToNext": "结束后建议打车回名古屋站西口酒店；地铁也可回名古屋站。",
+          "navigationToNext": "Live 结束后建议打车回名古屋站西口酒店；地铁也可从荣站回名古屋站。",
           "travelModeToNext": "DRIVING",
           "type": "nightlife"
         },
         {
           "id": "via-inn-return-0628",
-          "time": "23:10",
+          "time": "22:25",
           "duration": "过夜",
           "title": "名古屋站前椿町维亚酒店",
           "place": "VIA INN NAGOYA EKIMAE TSUBAKICHO, 9-13 Tsubakicho, Nakamura Ward, Nagoya, Aichi, Japan",
