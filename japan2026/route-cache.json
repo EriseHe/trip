@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-28T07:23:28.112Z",
+  "generatedAt": "2026-06-28T07:55:14.167Z",
   "source": "japan2026/itinerary.json",
-  "itineraryHash": "0a84fb0f1da58c77279b60f6795b10d0654cb0b584f00e2cf2d92e2cda6e3261",
-  "routeCount": 64,
+  "itineraryHash": "303068f93ea3d326a8e42ff1d9cf935afc1360bf01a68a299f6cb72a4140ae96",
+  "routeCount": 67,
   "requestCount": 37,
-  "approximateCount": 0,
-  "fallbackCount": 16,
-  "failedCount": 16,
+  "approximateCount": 7,
+  "fallbackCount": 20,
+  "failedCount": 13,
   "failures": [
     {
       "cacheKey": "2026-06-26|10:15|TRANSIT|35.689756,139.699370|35.710686,139.796374",
@@ -25,24 +25,6 @@
       "cacheKey": "2026-06-26|20:55|TRANSIT|35.699246,139.770939|35.694750,139.700500",
       "fromStopId": "gigo-akihabara-3-optional",
       "toStopId": "shinjuku-prince-return-0626",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-28|12:00|TRANSIT|35.169100,136.879050|35.090607,136.878602",
-      "fromStopId": "shinpachi-shokudo-nagoya-lunch",
-      "toStopId": "nagoya-port-aquarium",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-28|13:30|TRANSIT|35.090607,136.878602|35.169350,136.879400",
-      "fromStopId": "nagoya-port-aquarium",
-      "toStopId": "meieki-sushi-tsugu-omakase",
-      "message": "路线计算失败：ZERO_RESULTS"
-    },
-    {
-      "cacheKey": "2026-06-28|18:00|TRANSIT|35.169350,136.879400|35.170900,136.909000",
-      "fromStopId": "meieki-sushi-tsugu-omakase",
-      "toStopId": "jazz-inn-lovely",
       "message": "路线计算失败：ZERO_RESULTS"
     },
     {
@@ -7576,629 +7558,6 @@
         "duration": "22分钟",
         "distance": "6.0 公里",
         "departure": "20:00",
-        "arrival": "",
-        "estimateSource": "planned-schedule",
-        "approximate": false,
-        "navigation": ""
-      }
-    },
-    "2026-06-28|12:00|TRANSIT|35.169100,136.879050|35.090607,136.878602": {
-      "createdAt": "2026-06-28T07:23:21.691Z",
-      "path": [
-        {
-          "lat": 35.1691,
-          "lng": 136.87905
-        },
-        {
-          "lat": 35.090607,
-          "lng": 136.878602
-        }
-      ],
-      "summary": {
-        "fromStopId": "shinpachi-shokudo-nagoya-lunch",
-        "toStopId": "nagoya-port-aquarium",
-        "travelMode": "TRANSIT",
-        "duration": "约 45 分钟",
-        "distance": "已显示直线",
-        "fallback": true,
-        "manualEstimate": true,
-        "navigation": "步行回名古屋站；到金山换乘名港线，名古屋港站下，步行去水族馆。"
-      }
-    },
-    "2026-06-28|13:30|TRANSIT|35.090607,136.878602|35.169350,136.879400": {
-      "createdAt": "2026-06-28T07:23:21.973Z",
-      "path": [
-        {
-          "lat": 35.090607,
-          "lng": 136.878602
-        },
-        {
-          "lat": 35.16935,
-          "lng": 136.8794
-        }
-      ],
-      "summary": {
-        "fromStopId": "nagoya-port-aquarium",
-        "toStopId": "meieki-sushi-tsugu-omakase",
-        "travelMode": "TRANSIT",
-        "duration": "约 50 分钟",
-        "distance": "已显示直线",
-        "fallback": true,
-        "manualEstimate": true,
-        "navigation": "名古屋港站乘名港线回金山，再换乘到名古屋站；17:45 前回到名駅区域比较稳。"
-      }
-    },
-    "2026-06-28|18:00|TRANSIT|35.169350,136.879400|35.170900,136.909000": {
-      "createdAt": "2026-06-28T07:23:22.259Z",
-      "path": [
-        {
-          "lat": 35.16935,
-          "lng": 136.8794
-        },
-        {
-          "lat": 35.1709,
-          "lng": 136.909
-        }
-      ],
-      "summary": {
-        "fromStopId": "meieki-sushi-tsugu-omakase",
-        "toStopId": "jazz-inn-lovely",
-        "travelMode": "TRANSIT",
-        "duration": "约 25 分钟",
-        "distance": "已显示直线",
-        "fallback": true,
-        "manualEstimate": true,
-        "navigation": "从名駅区域搭东山线到荣站；出站后步行去 Jazz Inn LOVELY。想省体力也可以直接打车。"
-      }
-    },
-    "2026-06-28|20:45|DRIVING|35.170900,136.909000|35.169548,136.878211": {
-      "createdAt": "2026-06-28T07:23:22.536Z",
-      "path": [
-        {
-          "lat": 35.17085,
-          "lng": 136.90894
-        },
-        {
-          "lat": 35.17063,
-          "lng": 136.90897
-        },
-        {
-          "lat": 35.170480000000005,
-          "lng": 136.90898
-        },
-        {
-          "lat": 35.170440000000006,
-          "lng": 136.90899000000002
-        },
-        {
-          "lat": 35.17034,
-          "lng": 136.90900000000002
-        },
-        {
-          "lat": 35.170120000000004,
-          "lng": 136.90902
-        },
-        {
-          "lat": 35.170120000000004,
-          "lng": 136.90902
-        },
-        {
-          "lat": 35.169970000000006,
-          "lng": 136.90904
-        },
-        {
-          "lat": 35.16996,
-          "lng": 136.90886
-        },
-        {
-          "lat": 35.169920000000005,
-          "lng": 136.9083
-        },
-        {
-          "lat": 35.16991,
-          "lng": 136.90815
-        },
-        {
-          "lat": 35.169900000000005,
-          "lng": 136.90799
-        },
-        {
-          "lat": 35.16989,
-          "lng": 136.90796
-        },
-        {
-          "lat": 35.16989,
-          "lng": 136.90784000000002
-        },
-        {
-          "lat": 35.16986,
-          "lng": 136.90737000000001
-        },
-        {
-          "lat": 35.169850000000004,
-          "lng": 136.90715
-        },
-        {
-          "lat": 35.16984,
-          "lng": 136.90703000000002
-        },
-        {
-          "lat": 35.169830000000005,
-          "lng": 136.9069
-        },
-        {
-          "lat": 35.16982,
-          "lng": 136.90673
-        },
-        {
-          "lat": 35.169810000000005,
-          "lng": 136.90658000000002
-        },
-        {
-          "lat": 35.1698,
-          "lng": 136.90648000000002
-        },
-        {
-          "lat": 35.169790000000006,
-          "lng": 136.90626
-        },
-        {
-          "lat": 35.16978,
-          "lng": 136.90608
-        },
-        {
-          "lat": 35.16977,
-          "lng": 136.90604000000002
-        },
-        {
-          "lat": 35.169760000000004,
-          "lng": 136.90584
-        },
-        {
-          "lat": 35.16975,
-          "lng": 136.90564
-        },
-        {
-          "lat": 35.16973,
-          "lng": 136.90542000000002
-        },
-        {
-          "lat": 35.169720000000005,
-          "lng": 136.90525000000002
-        },
-        {
-          "lat": 35.169700000000006,
-          "lng": 136.90493
-        },
-        {
-          "lat": 35.169700000000006,
-          "lng": 136.90485
-        },
-        {
-          "lat": 35.16969,
-          "lng": 136.90480000000002
-        },
-        {
-          "lat": 35.16967,
-          "lng": 136.90447
-        },
-        {
-          "lat": 35.169650000000004,
-          "lng": 136.90427000000003
-        },
-        {
-          "lat": 35.16962,
-          "lng": 136.90378
-        },
-        {
-          "lat": 35.1696,
-          "lng": 136.90348
-        },
-        {
-          "lat": 35.16958,
-          "lng": 136.90329
-        },
-        {
-          "lat": 35.16957,
-          "lng": 136.90307
-        },
-        {
-          "lat": 35.16957,
-          "lng": 136.90295
-        },
-        {
-          "lat": 35.16955,
-          "lng": 136.90261
-        },
-        {
-          "lat": 35.169540000000005,
-          "lng": 136.9024
-        },
-        {
-          "lat": 35.169520000000006,
-          "lng": 136.90210000000002
-        },
-        {
-          "lat": 35.16951,
-          "lng": 136.90188
-        },
-        {
-          "lat": 35.169500000000006,
-          "lng": 136.90181
-        },
-        {
-          "lat": 35.16948,
-          "lng": 136.90146000000001
-        },
-        {
-          "lat": 35.16946,
-          "lng": 136.90124
-        },
-        {
-          "lat": 35.16944,
-          "lng": 136.90091
-        },
-        {
-          "lat": 35.16942,
-          "lng": 136.90073
-        },
-        {
-          "lat": 35.169380000000004,
-          "lng": 136.90004000000002
-        },
-        {
-          "lat": 35.16937,
-          "lng": 136.89974
-        },
-        {
-          "lat": 35.169320000000006,
-          "lng": 136.89912
-        },
-        {
-          "lat": 35.16928,
-          "lng": 136.89859
-        },
-        {
-          "lat": 35.169270000000004,
-          "lng": 136.89836000000003
-        },
-        {
-          "lat": 35.169250000000005,
-          "lng": 136.89808000000002
-        },
-        {
-          "lat": 35.16924,
-          "lng": 136.89784
-        },
-        {
-          "lat": 35.16922,
-          "lng": 136.8975
-        },
-        {
-          "lat": 35.16921,
-          "lng": 136.89733
-        },
-        {
-          "lat": 35.169200000000004,
-          "lng": 136.89708000000002
-        },
-        {
-          "lat": 35.169200000000004,
-          "lng": 136.89707
-        },
-        {
-          "lat": 35.16919,
-          "lng": 136.89677
-        },
-        {
-          "lat": 35.16919,
-          "lng": 136.89647000000002
-        },
-        {
-          "lat": 35.16919,
-          "lng": 136.89645000000002
-        },
-        {
-          "lat": 35.169200000000004,
-          "lng": 136.89621000000002
-        },
-        {
-          "lat": 35.16922,
-          "lng": 136.89576000000002
-        },
-        {
-          "lat": 35.169250000000005,
-          "lng": 136.89530000000002
-        },
-        {
-          "lat": 35.1693,
-          "lng": 136.89478
-        },
-        {
-          "lat": 35.169430000000006,
-          "lng": 136.89335
-        },
-        {
-          "lat": 35.169500000000006,
-          "lng": 136.89265
-        },
-        {
-          "lat": 35.169520000000006,
-          "lng": 136.89243000000002
-        },
-        {
-          "lat": 35.169540000000005,
-          "lng": 136.89221
-        },
-        {
-          "lat": 35.16955,
-          "lng": 136.89207000000002
-        },
-        {
-          "lat": 35.16955,
-          "lng": 136.89199000000002
-        },
-        {
-          "lat": 35.169560000000004,
-          "lng": 136.89157
-        },
-        {
-          "lat": 35.169560000000004,
-          "lng": 136.89144000000002
-        },
-        {
-          "lat": 35.16955,
-          "lng": 136.8913
-        },
-        {
-          "lat": 35.16953,
-          "lng": 136.89098
-        },
-        {
-          "lat": 35.169500000000006,
-          "lng": 136.89072000000002
-        },
-        {
-          "lat": 35.16944,
-          "lng": 136.89042
-        },
-        {
-          "lat": 35.169380000000004,
-          "lng": 136.89013
-        },
-        {
-          "lat": 35.16933,
-          "lng": 136.8899
-        },
-        {
-          "lat": 35.169290000000004,
-          "lng": 136.8897
-        },
-        {
-          "lat": 35.16928,
-          "lng": 136.88967000000002
-        },
-        {
-          "lat": 35.16912,
-          "lng": 136.88892
-        },
-        {
-          "lat": 35.168960000000006,
-          "lng": 136.8882
-        },
-        {
-          "lat": 35.16874,
-          "lng": 136.88716000000002
-        },
-        {
-          "lat": 35.168690000000005,
-          "lng": 136.88692
-        },
-        {
-          "lat": 35.16855,
-          "lng": 136.88623
-        },
-        {
-          "lat": 35.168530000000004,
-          "lng": 136.88612
-        },
-        {
-          "lat": 35.168470000000006,
-          "lng": 136.88581000000002
-        },
-        {
-          "lat": 35.16843,
-          "lng": 136.88561
-        },
-        {
-          "lat": 35.16839,
-          "lng": 136.88538
-        },
-        {
-          "lat": 35.168350000000004,
-          "lng": 136.88517000000002
-        },
-        {
-          "lat": 35.168350000000004,
-          "lng": 136.88517000000002
-        },
-        {
-          "lat": 35.168310000000005,
-          "lng": 136.88500000000002
-        },
-        {
-          "lat": 35.16845,
-          "lng": 136.88495
-        },
-        {
-          "lat": 35.16859,
-          "lng": 136.88491000000002
-        },
-        {
-          "lat": 35.168730000000004,
-          "lng": 136.88487
-        },
-        {
-          "lat": 35.1689,
-          "lng": 136.88482000000002
-        },
-        {
-          "lat": 35.16903,
-          "lng": 136.88477
-        },
-        {
-          "lat": 35.16903,
-          "lng": 136.88477
-        },
-        {
-          "lat": 35.16901,
-          "lng": 136.88466000000003
-        },
-        {
-          "lat": 35.169000000000004,
-          "lng": 136.88461
-        },
-        {
-          "lat": 35.16897,
-          "lng": 136.88445000000002
-        },
-        {
-          "lat": 35.16893,
-          "lng": 136.88420000000002
-        },
-        {
-          "lat": 35.16888,
-          "lng": 136.8839
-        },
-        {
-          "lat": 35.168850000000006,
-          "lng": 136.88368
-        },
-        {
-          "lat": 35.16884,
-          "lng": 136.88362
-        },
-        {
-          "lat": 35.16883,
-          "lng": 136.88359
-        },
-        {
-          "lat": 35.16875,
-          "lng": 136.88323
-        },
-        {
-          "lat": 35.168710000000004,
-          "lng": 136.88309
-        },
-        {
-          "lat": 35.16864,
-          "lng": 136.88278000000003
-        },
-        {
-          "lat": 35.16863,
-          "lng": 136.88272
-        },
-        {
-          "lat": 35.16856,
-          "lng": 136.88244
-        },
-        {
-          "lat": 35.16848,
-          "lng": 136.88212000000001
-        },
-        {
-          "lat": 35.168440000000004,
-          "lng": 136.8819
-        },
-        {
-          "lat": 35.168400000000005,
-          "lng": 136.88138
-        },
-        {
-          "lat": 35.16837,
-          "lng": 136.88104
-        },
-        {
-          "lat": 35.168380000000006,
-          "lng": 136.88091
-        },
-        {
-          "lat": 35.168380000000006,
-          "lng": 136.88069000000002
-        },
-        {
-          "lat": 35.16839,
-          "lng": 136.88027000000002
-        },
-        {
-          "lat": 35.168400000000005,
-          "lng": 136.8801
-        },
-        {
-          "lat": 35.16841,
-          "lng": 136.87948
-        },
-        {
-          "lat": 35.168420000000005,
-          "lng": 136.87883000000002
-        },
-        {
-          "lat": 35.168420000000005,
-          "lng": 136.87866000000002
-        },
-        {
-          "lat": 35.168420000000005,
-          "lng": 136.87866000000002
-        },
-        {
-          "lat": 35.16856,
-          "lng": 136.87854000000002
-        },
-        {
-          "lat": 35.168690000000005,
-          "lng": 136.87844
-        },
-        {
-          "lat": 35.168980000000005,
-          "lng": 136.87821000000002
-        },
-        {
-          "lat": 35.169070000000005,
-          "lng": 136.87814
-        },
-        {
-          "lat": 35.16913,
-          "lng": 136.87810000000002
-        },
-        {
-          "lat": 35.169180000000004,
-          "lng": 136.87807
-        },
-        {
-          "lat": 35.16922,
-          "lng": 136.87805
-        },
-        {
-          "lat": 35.169380000000004,
-          "lng": 136.87797
-        },
-        {
-          "lat": 35.169380000000004,
-          "lng": 136.87797
-        },
-        {
-          "lat": 35.169360000000005,
-          "lng": 136.87820000000002
-        }
-      ],
-      "summary": {
-        "fromStopId": "jazz-inn-lovely",
-        "toStopId": "via-inn-return-0628",
-        "travelMode": "DRIVING",
-        "requestedTravelMode": "DRIVING",
-        "duration": "13分钟",
-        "distance": "3.1 公里",
-        "departure": "20:45",
         "arrival": "",
         "estimateSource": "planned-schedule",
         "approximate": false,
@@ -28277,6 +27636,195 @@
         "estimateSource": "planned-schedule",
         "approximate": false,
         "navigation": ""
+      }
+    },
+    "2026-06-28|12:00|TRANSIT|35.169100,136.879050|35.090607,136.878602": {
+      "createdAt": "2026-06-28T07:55:14.167Z",
+      "path": [
+        {
+          "lat": 35.1691,
+          "lng": 136.87905
+        },
+        {
+          "lat": 35.090607,
+          "lng": 136.878602
+        }
+      ],
+      "summary": {
+        "fromStopId": "shinpachi-shokudo-nagoya-lunch",
+        "toStopId": "nagoya-port-aquarium",
+        "travelMode": "TRANSIT",
+        "requestedTravelMode": "TRANSIT",
+        "duration": "约 45 分钟",
+        "distance": "约 10 公里",
+        "departure": "12:45",
+        "arrival": "13:30",
+        "estimateSource": "manual-schedule",
+        "approximate": true,
+        "fallback": true,
+        "navigation": "名古屋站到金山换乘名港线，名古屋港站下，步行去水族馆。"
+      }
+    },
+    "2026-06-28|13:30|DRIVING|35.090607,136.878602|35.169548,136.878211": {
+      "createdAt": "2026-06-28T07:55:14.167Z",
+      "path": [
+        {
+          "lat": 35.090607,
+          "lng": 136.878602
+        },
+        {
+          "lat": 35.1695482,
+          "lng": 136.8782109
+        }
+      ],
+      "summary": {
+        "fromStopId": "nagoya-port-aquarium",
+        "toStopId": "via-inn-rest-0628",
+        "travelMode": "DRIVING",
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 25 分钟",
+        "distance": "约 10 公里",
+        "departure": "14:50",
+        "arrival": "15:15",
+        "estimateSource": "manual-schedule",
+        "approximate": true,
+        "fallback": true,
+        "navigation": "已回到名駅酒店休息。"
+      }
+    },
+    "2026-06-28|16:45|TRANSIT|35.169548,136.878211|35.170616,136.908662": {
+      "createdAt": "2026-06-28T07:55:14.167Z",
+      "path": [
+        {
+          "lat": 35.1695482,
+          "lng": 136.8782109
+        },
+        {
+          "lat": 35.170616,
+          "lng": 136.908662
+        }
+      ],
+      "summary": {
+        "fromStopId": "via-inn-rest-0628",
+        "toStopId": "oasis-21-evening",
+        "travelMode": "TRANSIT",
+        "requestedTravelMode": "TRANSIT",
+        "duration": "约 20 分钟",
+        "distance": "约 3 公里",
+        "departure": "16:45",
+        "arrival": "17:05",
+        "estimateSource": "manual-schedule",
+        "approximate": true,
+        "fallback": true,
+        "navigation": "从名古屋站搭东山线到荣站，出站就是 Oasis 21；如果想省体力也可以直接打车。"
+      }
+    },
+    "2026-06-28|17:05|WALKING|35.170616,136.908662|35.172239,136.908401": {
+      "createdAt": "2026-06-28T07:55:14.167Z",
+      "path": [
+        {
+          "lat": 35.170616,
+          "lng": 136.908662
+        },
+        {
+          "lat": 35.172239,
+          "lng": 136.908401
+        }
+      ],
+      "summary": {
+        "fromStopId": "oasis-21-evening",
+        "toStopId": "hisaya-mirai-tower-evening",
+        "travelMode": "WALKING",
+        "requestedTravelMode": "WALKING",
+        "duration": "约 6 分钟",
+        "distance": "约 400 米",
+        "departure": "17:30",
+        "arrival": "17:35",
+        "estimateSource": "manual-schedule",
+        "approximate": true,
+        "fallback": true,
+        "navigation": "从 Oasis 21 直接步行到久屋大通公园和中部电力 MIRAI TOWER 外观。"
+      }
+    },
+    "2026-06-28|17:35|TRANSIT|35.172239,136.908401|35.169350,136.879400": {
+      "createdAt": "2026-06-28T07:55:14.167Z",
+      "path": [
+        {
+          "lat": 35.172239,
+          "lng": 136.908401
+        },
+        {
+          "lat": 35.16935,
+          "lng": 136.8794
+        }
+      ],
+      "summary": {
+        "fromStopId": "hisaya-mirai-tower-evening",
+        "toStopId": "meieki-sushi-tsugu-omakase",
+        "travelMode": "TRANSIT",
+        "requestedTravelMode": "TRANSIT",
+        "duration": "约 25 分钟",
+        "distance": "约 3 公里",
+        "departure": "17:55",
+        "arrival": "18:20",
+        "estimateSource": "manual-schedule",
+        "approximate": true,
+        "fallback": true,
+        "navigation": "17:55 从荣站搭东山线回名古屋站，或直接打车到餐厅；18:15 左右到最稳。"
+      }
+    },
+    "2026-06-28|18:30|TRANSIT|35.169350,136.879400|35.170900,136.909000": {
+      "createdAt": "2026-06-28T07:55:14.167Z",
+      "path": [
+        {
+          "lat": 35.16935,
+          "lng": 136.8794
+        },
+        {
+          "lat": 35.1709,
+          "lng": 136.909
+        }
+      ],
+      "summary": {
+        "fromStopId": "meieki-sushi-tsugu-omakase",
+        "toStopId": "jazz-inn-lovely",
+        "travelMode": "TRANSIT",
+        "requestedTravelMode": "TRANSIT",
+        "duration": "约 25 分钟",
+        "distance": "约 3 公里",
+        "departure": "20:30",
+        "arrival": "21:00",
+        "estimateSource": "manual-schedule",
+        "approximate": true,
+        "fallback": true,
+        "navigation": "晚饭后如果还有体力，从名駅区域搭东山线到荣站，再步行去 Jazz Inn LOVELY；累了就跳过。"
+      }
+    },
+    "2026-06-28|21:00|DRIVING|35.170900,136.909000|35.169548,136.878211": {
+      "createdAt": "2026-06-28T07:55:14.167Z",
+      "path": [
+        {
+          "lat": 35.1709,
+          "lng": 136.909
+        },
+        {
+          "lat": 35.1695482,
+          "lng": 136.8782109
+        }
+      ],
+      "summary": {
+        "fromStopId": "jazz-inn-lovely",
+        "toStopId": "via-inn-return-0628",
+        "travelMode": "DRIVING",
+        "requestedTravelMode": "DRIVING",
+        "duration": "约 20 分钟",
+        "distance": "约 3 公里",
+        "departure": "22:45",
+        "arrival": "23:10",
+        "estimateSource": "manual-schedule",
+        "approximate": true,
+        "fallback": true,
+        "navigation": "结束后建议打车回名古屋站西口酒店；地铁也可回名古屋站。"
       }
     }
   }
